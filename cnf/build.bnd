@@ -1,0 +1,68 @@
+javac.source: 17
+javac.target: 17
+
+Bundle-DocURL: https://github.com/de-jena/ibis-ip
+Bundle-SCM: url=https://github.com/de-jena/ibis-ip, \
+	connection=scm:git:git@github.com:de-jena/ibis-ip.git, \
+	developerConnection=scm:git:git@github.com:de-jena/ibis-ip.git
+
+
+Bundle-Developers: \
+    sbischof; \
+        email="stefan.bischof@jena.de"; \
+        name="Stefan Bischof"; \
+        organization="City of Jena"; \
+        organizationUrl="https://www.jena.de"; \
+        roles="architect,developer", \
+    jalbert; \
+        email="j.albert@data-in-motion.biz"; \
+        name="Juergen Albert"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://www.datainmotion.de"; \
+        roles="architect,developer", \
+    mhoffmann; \
+        name="Mark Hoffmann"; \
+        email="m.hoffmann@data-in-motion.biz"; \
+        url="https://www.datainmotion.de"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://www.datainmotion.de"; \
+        roles="developer,architect"
+
+# We include setups for
+#	Gecko EMF OSGi - geckoEMF
+#	OSGi-Test Support - gecko-osgitest
+#	DIMC Github-Configuration - gecko-dimc
+#	Jacoco Support - gecko-jacoco
+-library: \
+	geckoEMF,\
+	geckoOSGi-Test,\
+	geckoDIMC,\
+	geckoJacoco,\
+	geckoEMFUtil
+	
+# Needed because we enabled library 'gecko-dimc' 	
+github-project: de-jena/ibis-ip
+base-version: 1.0.0.SNAPSHOT
+ibis-version: ${base-version}.SNAPSHOT
+
+# Maven Central Group-Id
+-groupid: de.jena.ibis-ip
+
+-fixupmessages: \
+	"No metadata for revision";\
+		restrict:=error;\
+    	is:=warning
+
+-snapshot: ${tstamp}-SNAPSHOT
+-pom: version=${versionmask;===s;${@version}}	
+# Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
+releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${ibis-version}));REPOS}
+
+# If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
+-maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
+
+-plugin: aQute.bnd.deployer.repository.LocalIndexedRepo;\
+		local               =${.}/local;\
+		overwrite           =true;\
+		pretty              =true;\
+		name            	=Local
