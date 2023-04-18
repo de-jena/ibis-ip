@@ -13,8 +13,6 @@ package de.jena.ibis.components;
 
 import java.io.IOException;
 import java.net.MulticastSocket;
-import java.util.Collections;
-import java.util.List;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -58,7 +56,6 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	public void activate(IbisUDPServiceConfig config) throws ConfigurationException{
 		IbisUDPHelper.checkUDPServiceConfig(config);
 		this.config = config;		
-		executeAllSubscriptionOperations();
 	}
 	
 	@Deactivate() 
@@ -71,8 +68,8 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	 * @see de.jena.ibis.apis.IbisGNSSLocationService#connectToGNSSLocationData()
 	 */
 	@Override
-	public Integer connectToGNSSLocationData() {
-		return doConnectToGNSSLocationData();
+	public void connectToGNSSLocationData() {
+		doConnectToGNSSLocationData();
 	}
 
 	/* 
@@ -80,9 +77,8 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	 * @see de.jena.ibis.apis.GeneralIbisUDPService#executeAllSubscriptionOperations()
 	 */
 	@Override
-	public List<Integer> executeAllSubscriptionOperations() {
-//		return List.of(connectToGNSSLocationData());
-		return Collections.emptyList();
+	public void executeAllSubscriptionOperations() {
+		doConnectToGNSSLocationData();
 	}
 	
 	/* 
@@ -90,12 +86,10 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	 * @see de.jena.ibis.apis.GeneralIbisService#executeAllUnsubscriptionOperations()
 	 */
 	@Override
-	public List<Integer> executeAllUnsubscriptionOperations() {
+	public void executeAllUnsubscriptionOperations() {
 		if(socket != null && socket.isConnected()) {
 			socket.disconnect();
-			return List.of(200);
 		} 
-		return Collections.emptyList();		
 	}
 
 	/* 
@@ -116,15 +110,13 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 		return config.serviceId();
 	}
 
-	private Integer doConnectToGNSSLocationData() {
-		
+	private void doConnectToGNSSLocationData() {		
 		try {
 			socket = new MulticastSocket(config.listenerPort());
-			return IbisUDPHelper.setupUDPConnection(socket, config, "GetGNSSLocationData", rsFactory, eventAdmin);
+			IbisUDPHelper.setupUDPConnection(socket, config, "GetGNSSLocationData", rsFactory, eventAdmin);
 		} catch(IOException e) {
 			LOGGER.severe(() -> String.format("Something went wrong when trying to connect to multicast group for %s", config.serviceId()));
 			e.printStackTrace();
-			return -1;
 		}	
 	}
 }

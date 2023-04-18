@@ -5,7 +5,7 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" suppressGenModelAnnotations="false"
     copyrightFields="false" operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>ibis-enumerations.ecore</foreignModel>
-  <genPackages prefix="IbisEnumerations" basePackage="de.jena.ibis" resource="XMI"
+  <genPackages prefix="IbisEnumerations" basePackage="de.jena.ibis" resource="XML"
       disposableProviderFactory="true" ecorePackage="ibis-enumerations.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibis-enumerations.ecore#//AirSubmodeEnumeration">
       <genEnumLiterals ecoreEnumLiteral="ibis-enumerations.ecore#//AirSubmodeEnumeration/unknown"/>

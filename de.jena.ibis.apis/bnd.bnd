@@ -9,5 +9,6 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	de.jena.ibis.device.management.service.model;version=latest,\
 	de.jena.ibis.enumerations.model;version=latest,\
 	de.jena.ibis.gnss.location.service.model;version=latest,\
+	de.jena.ibis.ticket.validation.service.model;version=latest,\
 	org.osgi.util.pushstream,\
 	org.eclipse.emf.ecore

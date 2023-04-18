@@ -59,41 +59,32 @@ public interface IbisDeviceManagementService extends GeneralIbisTCPService {
 		
 	
 //	SUBSCRIBE/UNSUBSCRIBE Operations
-	Integer subscribeDeviceInformation();
+	void subscribeDeviceInformation();	
+	void unsubscribeDeviceInformation();
 	
-	Integer unsubscribeDeviceInformation();
+	void subscribeDeviceStatus();	
+	void unsubscribeDeviceStatus();
 	
-	Integer subscribeDeviceStatus();
+	void subscribeDeviceErrorMessages();	
+	void unsubscribeDeviceErrorMessages();
 	
-	Integer unsubscribeDeviceStatus();
+	void subscribeServiceInformation();	
+	void unsubscribeServiceInformation();
 	
-	Integer subscribeDeviceErrorMessages();
+	void subscribeServiceStatus();	
+	void unsubscribeServiceStatus();
 	
-	Integer unsubscribeDeviceErrorMessages();
+	void subscribeAllSubdeviceInformation();	
+	void unsubscribeAllSubdeviceInformation();
 	
-	Integer subscribeServiceInformation();
+	void subscribeDeviceStatusInformation();	
+	void unsubscribeDeviceStatusInformation();
 	
-	Integer unsubscribeServiceInformation();
+	void subscribeAllSubdeviceStatusInformation();	
+	void unsubscribeAllSubdeviceStatusInformation();
 	
-	Integer subscribeServiceStatus();
-	
-	Integer unsubscribeServiceStatus();
-	
-	Integer subscribeAllSubdeviceInformation();
-	
-	Integer unsubscribeAllSubdeviceInformation();
-	
-	Integer subscribeDeviceStatusInformation();
-	
-	Integer unsubscribeDeviceStatusInformation();
-	
-	Integer subscribeAllSubdeviceStatusInformation();
-	
-	Integer unsubscribeAllSubdeviceStatusInformation();
-	
-	Integer subscribeAllSubdeviceErrorMessages();
-	
-	Integer unsubscribeAllSubdeviceErrorMessages();
+	void subscribeAllSubdeviceErrorMessages();	
+	void unsubscribeAllSubdeviceErrorMessages();
 	
 	
 //	UPDATE Operations (they are optional)

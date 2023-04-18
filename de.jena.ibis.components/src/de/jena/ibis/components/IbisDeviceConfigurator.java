@@ -111,6 +111,7 @@ public class IbisDeviceConfigurator {
 		case "TicketValidationService":
 			return config.ticketValidationServicePort();
 		default:
+			LOGGER.severe(() -> String.format("Service %s not supported!", service));
 			return null;
 		}
 	}

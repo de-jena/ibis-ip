@@ -181,22 +181,6 @@ public class IbisCustomerInfoServiceTest  {
 		VehicleData responseData = response.getVehicleData();
 		assertThat(responseData).isNotNull();
 	}
-	
-	@Disabled
-	@Test
-	public void testSubscribeAllData(@InjectService() ServiceAware<IbisCustomerInformationService> customerInfoAware) {
-		assertThat(customerInfoAware).isNotNull();
-		IbisCustomerInformationService customerInfoService = customerInfoAware.getService();
-		assertThat(customerInfoService).isNotNull();
-
-		Integer response = customerInfoService.subscribeAllData();
-		assertThat(response).isNotNull();
-		assertThat(response).isEqualTo(200);
-		
-		response = customerInfoService.unsubscribeAllData();
-		assertThat(response).isNotNull();
-		assertThat(response).isEqualTo(200);
-	}
 
 	@Disabled
 	@Test

@@ -50,37 +50,37 @@ public interface IbisCustomerInformationService extends GeneralIbisTCPService{
 	
 //	SUBSCRIBE/UNSUBSCRIBE Operations
 	
-	Integer subscribeAllData();
+	void subscribeAllData();
 	
-	Integer unsubscribeAllData();
+	void unsubscribeAllData();
 	
-	Integer subscribeCurrentAnnouncement();
+	void subscribeCurrentAnnouncement();
 	
-	Integer unsubscribeCurrentAnnouncement();
+	void unsubscribeCurrentAnnouncement();
 	
-	Integer subscribeCurrentConnectionInformation();
+	void subscribeCurrentConnectionInformation();
 	
-	Integer unsubscribeCurrentConnectionInformation();
+	void unsubscribeCurrentConnectionInformation();
 	
-	Integer subscribeCurrentDisplayContent();
+	void subscribeCurrentDisplayContent();
 	
-	Integer unsubscribeCurrentDisplayContent();
+	void unsubscribeCurrentDisplayContent();
 	
-	Integer subscribeCurrentStopPoint();
+	void subscribeCurrentStopPoint();
 	
-	Integer unsubscribeCurrentStopPoint();
+	void unsubscribeCurrentStopPoint();
 	
-	Integer subscribeCurrentStopIndex();
+	void subscribeCurrentStopIndex();
 	
-	Integer unsubscribeCurrentStopIndex();
+	void unsubscribeCurrentStopIndex();
 	
-	Integer subscribeTripData();
+	void subscribeTripData();
 	
-	Integer unsubscribeTripData();
+	void unsubscribeTripData();
 	
-	Integer subscribeVehicleData();
+	void subscribeVehicleData();
 	
-	Integer unsubscribeVehicleData();
+	void unsubscribeVehicleData();
 	
 	
 //	RETRIEVE Operations

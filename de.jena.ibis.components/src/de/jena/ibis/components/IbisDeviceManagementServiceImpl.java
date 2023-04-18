@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
@@ -23,13 +24,12 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ServiceScope;
 
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.GeneralIbisTCPService;
 import de.jena.ibis.apis.IbisDeviceManagementService;
 import de.jena.ibis.apis.IbisTCPServiceConfig;
-import de.jena.ibis.components.helper.DeviceManagementServiceConstants;
+import de.jena.ibis.apis.constants.DeviceManagementServiceConstants;
 import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
 import de.jena.ibis.ibis_common.DataAcceptedResponse;
@@ -53,8 +53,8 @@ import de.jena.ibis.ibis_devicemanagementservice.ServiceInformationResponse;
 import de.jena.ibis.ibis_devicemanagementservice.ServiceStatusResponse;
 import de.jena.ibis.ibis_devicemanagementservice.UpdateHistoryResponse;
 
-@Component(name = "IbisDeviceManagementService", 
-scope = ServiceScope.PROTOTYPE, service = {IbisDeviceManagementService.class, GeneralIbisTCPService.class, GeneralIbisService.class},
+@Component(immediate = true, name = "IbisDeviceManagementService", 
+service = {IbisDeviceManagementService.class, GeneralIbisTCPService.class, GeneralIbisService.class},
 configurationPid = "DeviceManagementService", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementService{
 	
@@ -64,7 +64,7 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	@Reference 
 	IbisCommonPackage ibisCommonPackage;
 	
-	@Reference
+	@Reference(target = "(emf.resource.configurator.name=GeckoXMLResourceFactory)")
 	private ComponentServiceObjects<ResourceSet> resourceSetFactory;
 	
     private IbisTCPServiceConfig config;
@@ -74,7 +74,6 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	public void activate(IbisTCPServiceConfig config) throws ConfigurationException{
 		IbisTCPHelper.checkTCPServiceConfig(config);
 		this.config = config;
-		executeAllSubscriptionOperations();
 	}
 	
 	@Deactivate() 
@@ -88,9 +87,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public DeviceInformationResponse getDeviceInformation() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_DEVICE_INFO, null, 
-				deviceManagementServicePackage.getDeviceInformationResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_DEVICE_INFO, 
+				deviceManagementServicePackage.getDeviceInformationResponse());
 	}
 
 	/* 
@@ -99,9 +97,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public DeviceConfigurationResponse getDeviceConfiguration() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_DEVICE_CONFIGURATION, null, 
-				deviceManagementServicePackage.getDeviceConfigurationResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_DEVICE_CONFIGURATION, 
+				deviceManagementServicePackage.getDeviceConfigurationResponse());
 	}
 
 	/* 
@@ -110,9 +107,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public DeviceStatusResponse getDeviceStatus() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS, null, 
-				deviceManagementServicePackage.getDeviceStatusResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS, 
+				deviceManagementServicePackage.getDeviceStatusResponse());
 	}
 
 	/* 
@@ -121,9 +117,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public DeviceErrorMessagesResponse getDeviceErrorMessages() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_DEVICE_ERR_MSG, null, 
-				deviceManagementServicePackage.getDeviceErrorMessagesResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_DEVICE_ERR_MSG, 
+				deviceManagementServicePackage.getDeviceErrorMessagesResponse());
 	}
 
 	/* 
@@ -132,9 +127,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public ServiceInformationResponse getServiceInformation() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_SERVICE_INFO, null, 
-				deviceManagementServicePackage.getServiceInformationResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_SERVICE_INFO, 
+				deviceManagementServicePackage.getServiceInformationResponse());
 	}
 
 	/* 
@@ -143,9 +137,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public ServiceStatusResponse getServiceStatus() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_SERVICE_STATUS, null, 
-				deviceManagementServicePackage.getServiceStatusResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_SERVICE_STATUS,
+				deviceManagementServicePackage.getServiceStatusResponse());
 	}
 
 	/* 
@@ -154,9 +147,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public AllSubdeviceInformationResponse getAllSubdeviceInformation() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_INFO, null, 
-				deviceManagementServicePackage.getAllSubdeviceInformationResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_INFO,
+				deviceManagementServicePackage.getAllSubdeviceInformationResponse());
 	}
 
 	/* 
@@ -165,9 +157,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public DeviceStatusInformationResponse getDeviceStatusInformation() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS_INFO, null, 
-				deviceManagementServicePackage.getDeviceStatusInformationResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS_INFO,
+				deviceManagementServicePackage.getDeviceStatusInformationResponse());
 	}
 
 	/* 
@@ -176,9 +167,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public AllSubdeviceInformationResponse getAllSubdeviceStatusInformation() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_STATUS_INFO, null, 
-				deviceManagementServicePackage.getAllSubdeviceStatusInformationResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_STATUS_INFO,
+				deviceManagementServicePackage.getAllSubdeviceStatusInformationResponse());
 	}
 
 	/* 
@@ -187,9 +177,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 */
 	@Override
 	public AllSubdeviceErrorMessagesResponse getAllSubdeviceErrorMessages() {
-		return IbisHttpRequestHelper.sendHttpRequest(config.serviceIP(), config.servicePort(), DeviceManagementServiceConstants.SERVICE_NAME, 
-				DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_ERR_MSG, null, 
-				deviceManagementServicePackage.getAllSubdeviceErrorMessagesResponse(), resourceSetFactory);
+		return executeGetOperation(DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_ERR_MSG, 
+				deviceManagementServicePackage.getAllSubdeviceErrorMessagesResponse());
 	}
 
 	/* 
@@ -197,8 +186,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeDeviceInformation(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeDeviceInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_INFO);
+	public void subscribeDeviceInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_INFO);
 	}
 
 	/* 
@@ -206,8 +195,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeDeviceInformation(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeDeviceInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_INFO);
+	public void unsubscribeDeviceInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_INFO);
 	}
 
 	/* 
@@ -215,8 +204,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeDeviceStatus(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeDeviceStatus() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS);
+	public void subscribeDeviceStatus() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS);
 	}
 
 	/* 
@@ -224,8 +213,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeDeviceStatus(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeDeviceStatus() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_STATUS);
+	public void unsubscribeDeviceStatus() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_STATUS);
 	}
 
 	/* 
@@ -233,8 +222,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeDeviceErrorMessages(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeDeviceErrorMessages() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_ERR_MSG);
+	public void subscribeDeviceErrorMessages() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_ERR_MSG);
 	}
 
 	/* 
@@ -242,8 +231,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeDeviceErrorMessages(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeDeviceErrorMessages() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_ERR_MSG);
+	public void unsubscribeDeviceErrorMessages() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_ERR_MSG);
 	}
 
 	/* 
@@ -251,8 +240,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeServiceInformation(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeServiceInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_INFO);
+	public void subscribeServiceInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_INFO);
 	}
 
 	/* 
@@ -260,8 +249,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeServiceInformation(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeServiceInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_SERVICE_INFO);
+	public void unsubscribeServiceInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_SERVICE_INFO);
 	}
 
 	/* 
@@ -269,8 +258,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeServiceStatus(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeServiceStatus() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_STATUS);
+	public void subscribeServiceStatus() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_STATUS);
 	}
 
 	/* 
@@ -278,8 +267,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeServiceStatus(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeServiceStatus() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_SERVICE_STATUS);
+	public void unsubscribeServiceStatus() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_SERVICE_STATUS);
 	}
 
 	/* 
@@ -287,8 +276,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeAllSubdeviceInformation(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeAllSubdeviceInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_INFO);
+	public void subscribeAllSubdeviceInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_INFO);
 	}
 
 	/* 
@@ -296,8 +285,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeAllSubdeviceInformation(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeAllSubdeviceInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_ALL_SUBDEVICE_INFO);
+	public void unsubscribeAllSubdeviceInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_ALL_SUBDEVICE_INFO);
 	}
 
 	/* 
@@ -305,8 +294,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeDeviceStatusInformation(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeDeviceStatusInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS_INFO);
+	public void subscribeDeviceStatusInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS_INFO);
 	}
 
 	/* 
@@ -314,8 +303,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeDeviceStatusInformation(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeDeviceStatusInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_STATUS_INFO);
+	public void unsubscribeDeviceStatusInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_DEVICE_STATUS_INFO);
 	}
 
 	/* 
@@ -323,8 +312,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeAllSubdeviceStatusInformation(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeAllSubdeviceStatusInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_STATUS_INFO);
+	public void subscribeAllSubdeviceStatusInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_STATUS_INFO);
 	}
 
 	/* 
@@ -332,8 +321,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeAllSubdeviceStatusInformation(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeAllSubdeviceStatusInformation() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_ALL_SUBDEVICE_STATUS_INFO);
+	public void unsubscribeAllSubdeviceStatusInformation() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_ALL_SUBDEVICE_STATUS_INFO);
 	}
 
 	/* 
@@ -341,8 +330,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#subscribeAllSubdeviceErrorMessages(de.jena.ibis.common.SubscribeRequest)
 	 */
 	@Override
-	public Integer subscribeAllSubdeviceErrorMessages() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_ERR_MSG);
+	public void subscribeAllSubdeviceErrorMessages() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_ERR_MSG);
 	}
 
 	/* 
@@ -350,8 +339,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.IbisDeviceManagementService#unsubscribeAllSubdeviceErrorMessages(de.jena.ibis.common.UnsubscribeRequest)
 	 */
 	@Override
-	public Integer unsubscribeAllSubdeviceErrorMessages() {
-		return doSendSubscriptionRequest(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_ALL_SUBDEVICE_ERR_MSG);
+	public void unsubscribeAllSubdeviceErrorMessages() {
+		executeSubscriptionOperation(DeviceManagementServiceConstants.OPERATION_UNSUBSCRIBE_ALL_SUBDEVICE_ERR_MSG);
 	}
 
 	/* 
@@ -438,26 +427,10 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	@Override
 	public List<GeneralResponse> executeAllGetOperations() {
 		List<GeneralResponse> results = new ArrayList<>();
-		results.add(getAllSubdeviceErrorMessages());
-		results.add(getAllSubdeviceInformation());
-		results.add(getAllSubdeviceStatusInformation());
-		results.add(getDeviceConfiguration());
-		results.add(getDeviceErrorMessages());
-		results.add(getDeviceInformation());
-		results.add(getDeviceStatus());
-		results.add(getDeviceStatusInformation());
-		results.add(getServiceInformation());
-		results.add(getServiceStatus());
+		DeviceManagementServiceConstants.getAllGetOperations().forEach(operation -> results.add(executeGetOperation(operation)));
 		return results;
 	}
 
-	private Integer executeSubscriptionOperation(String operation) {
-		return doSendSubscriptionRequest(operation);
-	}
-
-	private Integer doSendSubscriptionRequest(String operation) {
-		return IbisTCPHelper.sendSubscriptionRequest(config, operation, ibisCommonPackage, resourceSetFactory);
-	}
 
 	/* 
 	 * (non-Javadoc)
@@ -482,12 +455,8 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeAllSubscriptionOperations()
 	 */
 	@Override
-	public List<Integer> executeAllSubscriptionOperations() {
-		List<Integer> results = new ArrayList<>();
-		DeviceManagementServiceConstants.getAllSubscriptionOperations().forEach(operation -> {
-			results.add(executeSubscriptionOperation(operation));
-		});
-		return results;
+	public void executeAllSubscriptionOperations() {
+		DeviceManagementServiceConstants.getAllSubscriptionOperations().forEach(operation -> executeSubscriptionOperation(operation));
 	}
 
 	/* 
@@ -495,13 +464,16 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeAllUnsubscriptionOperations()
 	 */
 	@Override
-	public List<Integer> executeAllUnsubscriptionOperations() {
-		List<Integer> results = new ArrayList<>();
-		DeviceManagementServiceConstants.getAllUnsubscriptionOperations().forEach(operation -> {
-			results.add(executeSubscriptionOperation(operation));
-		});
-		return results;
+	public void executeAllUnsubscriptionOperations() {
+		DeviceManagementServiceConstants.getAllUnsubscriptionOperations().forEach(operation -> executeSubscriptionOperation(operation));
 	}
-
+	
+	private void executeSubscriptionOperation(String operation) {
+		IbisTCPHelper.sendSubscriptionRequest(config, operation, ibisCommonPackage, resourceSetFactory);
+	}
+	
+	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
+		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
+	}
 	
 }

@@ -2803,7 +2803,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubscribeRequest" eSuperTypes="#//GeneralSubscribeRequest">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="SubscribeRequestStructure"/>
+      <details key="name" value="SubscribeRequest"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
   </eClassifiers>
@@ -2812,7 +2812,7 @@
       <details key="documentation" value="For compatibility reasons, this structure is now a sequence of members, all of which are optional - of course, at least one member should be included in meaningful data."/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="SubscribeResponseStructure"/>
+      <details key="name" value="SubscribeResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="active" eType="#//IBISIPBoolean"
@@ -3147,13 +3147,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnsubscribeRequest" eSuperTypes="#//GeneralSubscribeRequest">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="UnsubscribeRequestStructure"/>
+      <details key="name" value="UnsubscribeRequest"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnsubscribeResponse" eSuperTypes="#//GeneralResponse">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="UnsubscribeResponseStructure"/>
+      <details key="name" value="UnsubscribeResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="active" lowerBound="1"

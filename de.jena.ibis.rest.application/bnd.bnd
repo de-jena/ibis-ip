@@ -11,7 +11,14 @@
 	jakarta.ws.rs-api;version=latest,\
 	de.jena.ibis.apis,\
 	de.jena.ibis.runtime,\
-	org.apache.felix.http.servlet-api
+	org.apache.felix.http.servlet-api;version=latest,\
+	de.jena.ibis.customer.info.service.model,\
+	de.jena.ibis.common.model,\
+	org.eclipse.emf.ecore,\
+	org.osgi.service.component,\
+	org.eclipse.emf.common,\
+	org.eclipse.emf.ecore.xmi,\
+	org.osgi.service.event
 	
 Bundle-Version: 1.0.0.SNAPSHOT
 

@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.components;
+package de.jena.ibis.components.helper;
 
 import java.util.Map;
 

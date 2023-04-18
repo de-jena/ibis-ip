@@ -28,5 +28,5 @@ public interface GeneralIbisTCPService extends GeneralIbisService {
 	List<GeneralResponse> executeAllGetOperations();
 		
 	GeneralResponse executeGetOperation(String operation);	
-	
+		
 }

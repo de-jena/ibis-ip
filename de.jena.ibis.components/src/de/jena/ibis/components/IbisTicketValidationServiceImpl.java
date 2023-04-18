@@ -14,7 +14,7 @@ package de.jena.ibis.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.NotImplementedException;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
@@ -23,34 +23,43 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ServiceScope;
 
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.GeneralIbisTCPService;
 import de.jena.ibis.apis.IbisTCPServiceConfig;
 import de.jena.ibis.apis.IbisTicketValidationService;
+import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
+import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
-import de.jena.ibis.components.helper.TicketValidationServiceConstants;
 import de.jena.ibis.ibis_common.GeneralResponse;
 import de.jena.ibis.ibis_common.IbisCommonPackage;
+import de.jena.ibis.ibis_ticketvalidationservice.CurrentLineResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.CurrentShortHaulStopsResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.CurrentTariffStopResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.IbisTicketValidationServicePackage;
+import de.jena.ibis.ibis_ticketvalidationservice.RazziaResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.VehicleDataResponse;
 
 /**
  * 
  * @author ilenia
  * @since Mar 30, 2023
  */
-@Component(name = "IbisTicketValidationService", 
-scope = ServiceScope.PROTOTYPE, service = {IbisTicketValidationService.class, GeneralIbisTCPService.class, GeneralIbisService.class},
+@Component(immediate=true, name = "IbisTicketValidationService", 
+service = {IbisTicketValidationService.class, GeneralIbisTCPService.class, GeneralIbisService.class},
 configurationPid = "TicketValidationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class IbisTicketValidationServiceImpl implements IbisTicketValidationService {
+	
+	@Reference
+	IbisTicketValidationServicePackage ticketValidationServicePackage;
 	
 	@Reference 
 	IbisCommonPackage ibisCommonPackage;
 	
-	@Reference
+	@Reference(target = "(emf.resource.configurator.name=GeckoXMLResourceFactory)")
 	private ComponentServiceObjects<ResourceSet> resourceSetFactory;
+	
 	private IbisTCPServiceConfig config;
-
 
 	@Activate
 	public void activate(IbisTCPServiceConfig config) throws ConfigurationException {
@@ -88,7 +97,18 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public GeneralResponse executeGetOperation(String operation) {
-		throw new NotImplementedException("No GET operations currently implemented for TicketValidationService");
+		switch(operation) {
+		case TicketValidationServiceConstants.OPERATION_GET_CURRENT_LINE:
+			return getCurrentLine();
+		case TicketValidationServiceConstants.OPERATION_GET_CURRENT_TARIFF_STOP:
+			return getCurrentTariffStop();
+		case TicketValidationServiceConstants.OPERATION_GET_RAZZIA:
+			return getRazzia();
+		case TicketValidationServiceConstants.OPERATION_GET_VEHICLE_DATA:
+			return getVehicleData();
+		default:
+			throw new IllegalArgumentException(String.format("Operation %s not implemented for %s!", operation, config.serviceName()));			
+		}
 	}
 	
 	/* 
@@ -97,11 +117,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public List<GeneralResponse> executeAllGetOperations() {
-		throw new NotImplementedException("No GET operations currently implemented for TicketValidationService");
-	}
-
-	private Integer executeSubscriptionOperation(String operation) {
-		return doSendSubscriptionRequest(operation);
+		List<GeneralResponse> results = new ArrayList<>();
+		TicketValidationServiceConstants.getAllGetOperations().forEach(operation -> results.add(executeGetOperation(operation)));
+		return results;
 	}
 
 	/* 
@@ -109,12 +127,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeAllSubscriptionOperations()
 	 */
 	@Override
-	public List<Integer> executeAllSubscriptionOperations() {
-		List<Integer> results = new ArrayList<>(); 
-		TicketValidationServiceConstants.getAllSubscriptionOperations().forEach(operation -> {
-			 results.add(executeSubscriptionOperation(operation));
-		 });
-		return results;
+	public void executeAllSubscriptionOperations() {
+		TicketValidationServiceConstants.getAllSubscriptionOperations().forEach(operation -> executeSubscriptionOperation(operation));
 	}
 
 	/* 
@@ -122,12 +136,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeAllUnsubscriptionOperations()
 	 */
 	@Override
-	public List<Integer> executeAllUnsubscriptionOperations() {
-		List<Integer> results = new ArrayList<>(); 
-		TicketValidationServiceConstants.getAllUnsubscriptionOperations().forEach(operation -> {
-			 results.add(executeSubscriptionOperation(operation));
-		 });
-		return results;
+	public void executeAllUnsubscriptionOperations() {
+		TicketValidationServiceConstants.getAllUnsubscriptionOperations().forEach(operation -> executeSubscriptionOperation(operation));
 	}
 
 	/* 
@@ -135,8 +145,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#subscribeCurrentTariffStop()
 	 */
 	@Override
-	public Integer subscribeCurrentTariffStop() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_TARIFF_STOP);
+	public void subscribeCurrentTariffStop() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_TARIFF_STOP);
 	}
 
 	/* 
@@ -144,8 +154,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#unsubscribeCurrentTariffStop()
 	 */
 	@Override
-	public Integer unsubscribeCurrentTariffStop() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_TARIFF_STOP);
+	public void unsubscribeCurrentTariffStop() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_TARIFF_STOP);
 	}
 
 	/* 
@@ -153,8 +163,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#subscribeRazzia()
 	 */
 	@Override
-	public Integer subscribeRazzia() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_RAZZIA);
+	public void subscribeRazzia() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_RAZZIA);
 	}
 
 	/* 
@@ -162,8 +172,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#unsubscribeRazzia()
 	 */
 	@Override
-	public Integer unsubscribeRazzia() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_RAZZIA);
+	public void unsubscribeRazzia() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_RAZZIA);
 	}
 
 	/* 
@@ -171,8 +181,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#subscribeCurrentLine()
 	 */
 	@Override
-	public Integer subscribeCurrentLine() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_LINE);
+	public void subscribeCurrentLine() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_LINE);
 	}
 
 	/* 
@@ -180,8 +190,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#unsubscribeCurrentLine()
 	 */
 	@Override
-	public Integer unsubscribeCurrentLine() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_LINE);
+	public void unsubscribeCurrentLine() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_LINE);
 	}
 
 	/* 
@@ -189,8 +199,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#subscribeVehicleData()
 	 */
 	@Override
-	public Integer subscribeVehicleData() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA);
+	public void subscribeVehicleData() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA);
 	}
 
 	/* 
@@ -198,13 +208,88 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 * @see de.jena.ibis.apis.IbisTicketValidationService#unsubscribeVehicleData()
 	 */
 	@Override
-	public Integer unsubscribeVehicleData() {
-		return doSendSubscriptionRequest(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA);
+	public void unsubscribeVehicleData() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA);
 	}
 	
-	private Integer doSendSubscriptionRequest(String operation) {
-		return IbisTCPHelper.sendSubscriptionRequest(config, operation, ibisCommonPackage, resourceSetFactory);
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#subscribeShortHaulStops()
+	 */
+	@Override
+	public void subscribeShortHaulStops() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_SHORT_HAUL_STOPS);		
 	}
 
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#unsubscribeShortHaulStops()
+	 */
+	@Override
+	public void unsubscribeShortHaulStops() {
+		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_SHORT_HAUL_STOPS);	
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#getCurrentTariffStop()
+	 */
+	@Override
+	public CurrentTariffStopResponse getCurrentTariffStop() {
+		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_CURRENT_TARIFF_STOP,
+				ticketValidationServicePackage.getCurrentTariffStopResponse());
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#getRazzia()
+	 */
+	@Override
+	public RazziaResponse getRazzia() {
+		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_RAZZIA,
+				ticketValidationServicePackage.getRazziaResponse());
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#getCurrentLine()
+	 */
+	@Override
+	public CurrentLineResponse getCurrentLine() {
+		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_CURRENT_LINE,
+				ticketValidationServicePackage.getCurrentLineResponse());
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#getVehicleData()
+	 */
+	@Override
+	public VehicleDataResponse getVehicleData() {
+		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_VEHICLE_DATA,
+				ticketValidationServicePackage.getVehicleDataResponse());
+	}
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#getShortHaulsStops()
+	 */
+	@Override
+	public CurrentShortHaulStopsResponse getShortHaulsStops() {
+		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_SHORT_HAUL_STOPS,
+				ticketValidationServicePackage.getCurrentShortHaulStopsResponse());
+	}
+	
+	private void executeSubscriptionOperation(String operation) {
+		IbisTCPHelper.sendSubscriptionRequest(config, operation, ibisCommonPackage, resourceSetFactory);
+	}
+	
+	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
+		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
+	}
+
+
+
+	
 	
 }

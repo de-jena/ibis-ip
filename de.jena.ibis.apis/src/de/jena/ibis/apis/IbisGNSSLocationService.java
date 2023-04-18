@@ -21,6 +21,6 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface IbisGNSSLocationService extends GeneralIbisService {
 	
-	Integer connectToGNSSLocationData();
+	void connectToGNSSLocationData();
 	
 }

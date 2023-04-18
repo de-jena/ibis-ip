@@ -18,10 +18,11 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
 
 import de.jena.ibis.apis.IbisTCPServiceConfig;
-import de.jena.ibis.ibis_common.GeneralSubscribeRequest;
 import de.jena.ibis.ibis_common.IBISIPInt;
 import de.jena.ibis.ibis_common.IBISIPString;
 import de.jena.ibis.ibis_common.IbisCommonPackage;
+import de.jena.ibis.ibis_common.SubscribeRequest;
+import de.jena.ibis.ibis_common.SubscribeResponse;
 
 /**
  * 
@@ -46,8 +47,8 @@ public class IbisTCPHelper {
 		}
 	}
 	
-	public static GeneralSubscribeRequest createSubscriptionRequest(IbisTCPServiceConfig serviceConfig, String operation, IbisCommonPackage ibisCommonPackage) {
-		GeneralSubscribeRequest subscriptionRequest = ibisCommonPackage.getIbisCommonFactory().createGeneralSubscribeRequest();
+	public static SubscribeRequest createSubscriptionRequest(IbisTCPServiceConfig serviceConfig, String operation, IbisCommonPackage ibisCommonPackage) {
+		SubscribeRequest subscriptionRequest = ibisCommonPackage.getIbisCommonFactory().createSubscribeRequest();
 		
 		IBISIPString ibisClientIP = ibisCommonPackage.getIbisCommonFactory().createIBISIPString();
 		ibisClientIP.setValue(serviceConfig.serviceClientSubscriptionIP());
@@ -56,7 +57,7 @@ public class IbisTCPHelper {
 		ibisClientPort.setValue(serviceConfig.serviceClientSubscriptionPort());
 		
 		IBISIPString ibisClientPath = ibisCommonPackage.getIbisCommonFactory().createIBISIPString();
-		String path = "ibis/rest/" + serviceConfig.serviceId()+"/"+operation;
+		String path = "/ibis/rest/" + serviceConfig.serviceId()+"/"+operation;
 		ibisClientPath.setValue(path);
 		
 		subscriptionRequest.setClientIPAddress(ibisClientIP);
@@ -66,12 +67,28 @@ public class IbisTCPHelper {
 		return subscriptionRequest;
 	}
 	
-	public static Integer sendSubscriptionRequest(IbisTCPServiceConfig serviceConfig, String operation, 
+	public static SubscribeResponse sendSubscriptionRequest(IbisTCPServiceConfig serviceConfig, String operation, 
 			IbisCommonPackage ibisCommonPackage, ComponentServiceObjects<ResourceSet> rsFactory) {
-		GeneralSubscribeRequest subscribeRequest = 
+		SubscribeRequest subscribeRequest = 
 				IbisTCPHelper.createSubscriptionRequest(serviceConfig, operation, ibisCommonPackage);
 		
-		return IbisHttpRequestHelper.sendHttpSubscriptionRequest(serviceConfig.serviceIP(), serviceConfig.servicePort(),
-				serviceConfig.serviceName(), operation, subscribeRequest, rsFactory);
+		SubscribeResponse response = IbisHttpRequestHelper.sendHttpRequest(serviceConfig, operation, subscribeRequest, ibisCommonPackage.getSubscribeResponse(), rsFactory);
+		if(response != null) {
+			if(!isSubscribeResponseValid(response, operation)) {
+				LOGGER.warning(() -> String.format("Subscription response for service %s and operation %s is not valid. Returning null!", serviceConfig.serviceId(), operation));
+				return null;
+			} else {
+				LOGGER.info(() -> String.format("Subscription for service %s and operation %s was successfull! Starting listening to it.", serviceConfig.serviceId(), operation));
+			}
+		}		
+		return response;
+	}
+	
+	public static boolean isSubscribeResponseValid(SubscribeResponse subscribeResponse, String operation) {
+		if(!subscribeResponse.getActive().isValue()) {
+			LOGGER.warning(() -> String.format("Subscription for operation %s is not active!", operation));
+			return false;
+		}
+		return true;
 	}
 }

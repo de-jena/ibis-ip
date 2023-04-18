@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.components.helper;
+package de.jena.ibis.apis.constants;
 
 import java.util.List;
 
@@ -55,6 +55,12 @@ public interface CustomerInformationServiceConstants {
 	public static final String OPERATION_UNSUBSCRIBE_VEHICLE_DATA = "UnsubscribeVehicleData";
 	
 	public static final String OPERATION_RETRIEVE_PARTIAL_STOP_SEQUENCE = "RetrievePartialStopSequence";
+	
+	public static List<String> getAllGetOperations() {
+		return List.of(OPERATION_GET_ALL_DATA, OPERATION_GET_CURRENT_ANNOUNCEMENT, OPERATION_GET_CURRENT_CONNECTION_INFO,
+				OPERATION_GET_CURRENT_DISPLAY_CONTENT, OPERATION_GET_CURRENT_STOP_INDEX, OPERATION_GET_CURRENT_STOP_POINT,
+				OPERATION_GET_TRIP_DATA, OPERATION_GET_VEHICLE_DATA);
+	}
 	
 	public static List<String> getAllSubscriptionOperations() {
 		return List.of(OPERATION_SUBSCRIBE_ALL_DATA, OPERATION_SUBSCRIBE_CURRENT_ANNOUNCEMENT, OPERATION_SUBSCRIBE_CURRENT_CONNECTION_INFO,

@@ -7,7 +7,7 @@
     usedGenPackages="../../de.jena.ibis.common.model/model/ibis-common.genmodel#//ibis_common ../../de.jena.ibis.enumerations.model/model/ibis-enumerations.genmodel#//ibis_enumerations"
     operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>ibis-devicemanagementservice.ecore</foreignModel>
-  <genPackages prefix="IbisDeviceManagementService" basePackage="de.jena.ibis" resource="XMI"
+  <genPackages prefix="IbisDeviceManagementService" basePackage="de.jena.ibis" resource="XML"
       disposableProviderFactory="true" ecorePackage="ibis-devicemanagementservice.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibis-devicemanagementservice.ecore#//ChecksumType">
       <genEnumLiterals ecoreEnumLiteral="ibis-devicemanagementservice.ecore#//ChecksumType/CRC32"/>

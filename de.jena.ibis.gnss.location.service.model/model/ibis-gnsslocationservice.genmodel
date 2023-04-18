@@ -7,7 +7,7 @@
     usedGenPackages="../../de.jena.ibis.common.model/model/ibis-common.genmodel#//ibis_common ../../de.jena.ibis.enumerations.model/model/ibis-enumerations.genmodel#//ibis_enumerations"
     operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>ibis-gnsslocationservice.ecore</foreignModel>
-  <genPackages prefix="IbisGNSSLocationService" basePackage="de.jena.ibis" resource="XMI"
+  <genPackages prefix="IbisGNSSLocationService" basePackage="de.jena.ibis" resource="XML"
       disposableProviderFactory="true" ecorePackage="ibis-gnsslocationservice.ecore#/">
     <genClasses ecoreClass="ibis-gnsslocationservice.ecore#//GNSSLocationData">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-gnsslocationservice.ecore#//GNSSLocationData/latitude"/>

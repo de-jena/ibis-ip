@@ -13,6 +13,12 @@ package de.jena.ibis.apis;
 
 import org.osgi.annotation.versioning.ProviderType;
 
+import de.jena.ibis.ibis_ticketvalidationservice.CurrentLineResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.CurrentShortHaulStopsResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.CurrentTariffStopResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.RazziaResponse;
+import de.jena.ibis.ibis_ticketvalidationservice.VehicleDataResponse;
+
 /**
  * 
  * @author ilenia
@@ -21,20 +27,32 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface IbisTicketValidationService extends GeneralIbisTCPService{
 	
+//	GET Operations
+	
+	CurrentTariffStopResponse getCurrentTariffStop();
+	
+	RazziaResponse getRazzia();
+	
+	CurrentLineResponse getCurrentLine();
+	
+	VehicleDataResponse getVehicleData();
+	
+	CurrentShortHaulStopsResponse getShortHaulsStops();
+	
 //	Subscribe/Unsubscribe Operations
 	
-	Integer subscribeCurrentTariffStop();
-	Integer unsubscribeCurrentTariffStop();
+	void subscribeCurrentTariffStop();
+	void unsubscribeCurrentTariffStop();
 	
-	Integer subscribeRazzia();
-	Integer unsubscribeRazzia();
+	void subscribeRazzia();
+	void unsubscribeRazzia();
 	
-	Integer subscribeCurrentLine();
-	Integer unsubscribeCurrentLine();
+	void subscribeCurrentLine();
+	void unsubscribeCurrentLine();
 	
-	Integer subscribeVehicleData();
-	Integer unsubscribeVehicleData();
+	void subscribeVehicleData();
+	void unsubscribeVehicleData();
 	
-	
-
+	void subscribeShortHaulStops();
+	void unsubscribeShortHaulStops();
 }

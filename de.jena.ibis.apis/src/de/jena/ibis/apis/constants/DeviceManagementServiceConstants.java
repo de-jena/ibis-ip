@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.components.helper;
+package de.jena.ibis.apis.constants;
 
 import java.util.List;
 
@@ -62,6 +62,12 @@ public interface DeviceManagementServiceConstants {
 	public static final String OPERATION_SUBSCRIBE_ALL_SUBDEVICE_ERR_MSG = "SubscribeAllSubdeviceErrorMessages";
 	public static final String OPERATION_UNSUBSCRIBE_ALL_SUBDEVICE_ERR_MSG = "UnsubscribeAllSubdeviceErrorMessages";
 
+	public static List<String> getAllGetOperations() {
+		return List.of(OPERATION_GET_ALL_SUBDEVICE_ERR_MSG, OPERATION_GET_ALL_SUBDEVICE_INFO, OPERATION_GET_ALL_SUBDEVICE_STATUS_INFO,
+				OPERATION_GET_DEVICE_CONFIGURATION, OPERATION_GET_DEVICE_ERR_MSG, OPERATION_GET_DEVICE_INFO, OPERATION_GET_DEVICE_STATUS,
+				OPERATION_GET_DEVICE_STATUS_INFO, OPERATION_GET_SERVICE_INFO, OPERATION_GET_SERVICE_STATUS);
+	}
+	
 	public static List<String> getAllSubscriptionOperations() {
 		return List.of(OPERATION_SUBSCRIBE_DEVICE_INFO, OPERATION_SUBSCRIBE_DEVICE_STATUS, OPERATION_SUBSCRIBE_DEVICE_ERR_MSG, 
 				OPERATION_SUBSCRIBE_SERVICE_INFO, OPERATION_SUBSCRIBE_SERVICE_STATUS, OPERATION_SUBSCRIBE_ALL_SUBDEVICE_INFO, 

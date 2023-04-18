@@ -13,21 +13,29 @@ package de.jena.ibis.rest.application.resource;
 
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventAdmin;
 import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
-import de.jena.ibis.apis.GeneralIbisTCPService;
+import de.jena.ibis.apis.helper.IbisResponseHelper;
 import de.jena.ibis.runtime.annotation.RequireRuntime;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Context;
@@ -40,53 +48,63 @@ import jakarta.ws.rs.core.Response;
  */
 @RequireRuntime
 @JakartarsResource
-@Component(name = IbisResource.COMPONENT_NAME, service = IbisResource.class, scope = ServiceScope.PROTOTYPE, configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = IbisResource.COMPONENT_NAME, service = IbisResource.class, 
+	scope = ServiceScope.PROTOTYPE, configurationPolicy = ConfigurationPolicy.REQUIRE)
 @Path("")
 public class IbisResource {
 	
-	public static final String COMPONENT_NAME = "IbisJakartarsResource";
-	public static final String IBIS_SERVICE_REFERENCE_NAME = "ibisService.ref";
+	@Reference
+	EventAdmin eventAdmin;
+	
+	@Reference
+	private ComponentServiceObjects<ResourceSet> rsFactory;
 
-	@Reference(name = IbisResource.IBIS_SERVICE_REFERENCE_NAME)
-	private GeneralIbisTCPService ibisService;
-	
+	public static final String COMPONENT_NAME = "IbisJakartarsResource";
+
 	@GET
-	@Path("/hello")
-	public String hello() {
-		return "Configured for " + ibisService.getServiceId();
+	@Path("/{serviceId}/hello")
+	public String hello(@PathParam("serviceId") String serviceId) {
+		return "Configured for " + serviceId;
 	}
-	
+
 	@POST
-	@Path("/{operationName}")
+	@Path("/{serviceId}/{operationName}")
 	@Consumes
-//	@Consumes({MediaType.MEDIA_TYPE_WILDCARD, MediaType.APPLICATION_XML, "application/xmi"})
-	public Response post(@PathParam("operationName") String operationName, @Context HttpServletRequest request) {
-		
-		System.out.println(String.format("Received POST request to %s - %s", ibisService.getServiceId(), operationName));
-		try {
-			System.out.write(request.getInputStream().readAllBytes());
-		} catch(IOException e) {
-			e.printStackTrace();
+	public Response post(@PathParam("serviceId") String serviceId, @PathParam("operationName") String operationName, @Context HttpServletRequest request) {
+
+		System.out.println(String.format("Received POST request to %s - %s", serviceId, operationName));
+		if(request != null) {
+			try {
+				String[] split = serviceId.split("-");
+				if(split.length == 2) {
+					String serviceName = split[0];
+					EClass responseEClass = IbisResponseHelper.getResponseEClass(serviceName, operationName);
+					if(responseEClass != null) {
+						ResourceSet set = rsFactory.getService();
+						set.getPackageRegistry().put(null, responseEClass.getEPackage());
+						Resource responseRes = set.createResource(URI.createURI("temp.xml"), "application/xml");
+						Map<String, Object> responseOptions = new HashMap<>();
+						responseOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+						responseOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+						responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
+						responseRes.load(request.getInputStream(), responseOptions);
+						Map<String, Object> properties = new HashMap<>();
+						properties.put("serviceId", serviceId);
+						properties.put("operation", operationName);
+						properties.put("data", responseRes.getContents().get(0));
+						Event evt = new Event("TCPResponse/"+serviceId+"/"+operationName+"/", properties);								
+						eventAdmin.postEvent(evt);
+						System.out.println("Resource loaded successfully!");
+					}
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
+		else {
+			System.out.println("Request is null!");
+
+		}
 		return Response.ok().build();
 	}
-	
-	@PUT
-	@Path("/{operationName}")
-//	@Consumes({MediaType.MEDIA_TYPE_WILDCARD, MediaType.APPLICATION_XML, "application/xmi"})
-	@Consumes
-	public Response put(@PathParam("operationName") String operationName, @Context HttpServletRequest request) {
-		
-		System.out.println(String.format("Received PUT request to %s - %s", ibisService.getServiceId(), operationName));
-		try {
-			System.out.write(request.getInputStream().readAllBytes());
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		return Response.ok().build();
-	}
-	
-	
 }
