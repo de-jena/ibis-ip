@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
 
-import de.jena.ibis.ibis_common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralResponse;
 
 /**
  * 

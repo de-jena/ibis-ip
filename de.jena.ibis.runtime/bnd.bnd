@@ -3,7 +3,8 @@
 	org.osgi.annotation.bundle;version=latest,\
 	org.osgi.service.jakartars,\
 	org.osgi.service.servlet,\
-	jakarta.ws.rs-api;version=latest
+	jakarta.ws.rs-api;version=latest,\
+	org.gecko.qvt.osgi.component
 	
 Bundle-Version: 1.0.0.SNAPSHOT
 Export-Package: \

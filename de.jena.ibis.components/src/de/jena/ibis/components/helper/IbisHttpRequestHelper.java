@@ -28,8 +28,8 @@ import org.gecko.emf.osgi.EMFUriHandlerConstants;
 import org.osgi.service.component.ComponentServiceObjects;
 
 import de.jena.ibis.apis.IbisTCPServiceConfig;
-import de.jena.ibis.ibis_common.DocumentRoot;
-import de.jena.ibis.ibis_common.GeneralResponse;
+import de.jena.model.ibis.common.DocumentRoot;
+import de.jena.model.ibis.common.GeneralResponse;
 
 /**
  * 

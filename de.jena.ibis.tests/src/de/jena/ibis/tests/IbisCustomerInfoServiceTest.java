@@ -30,23 +30,23 @@ import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
 import de.jena.ibis.apis.IbisCustomerInformationService;
-import de.jena.ibis.ibis_customerinformationservice.AllData;
-import de.jena.ibis.ibis_customerinformationservice.AllDataResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentAnnouncementData;
-import de.jena.ibis.ibis_customerinformationservice.CurrentAnnouncementResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentConnectionInformationData;
-import de.jena.ibis.ibis_customerinformationservice.CurrentConnectionInformationResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentDisplayContentData;
-import de.jena.ibis.ibis_customerinformationservice.CurrentDisplayContentResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopIndexData;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopIndexResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopPointData;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopPointResponse;
-import de.jena.ibis.ibis_customerinformationservice.IbisCustomerInformationServicePackage;
-import de.jena.ibis.ibis_customerinformationservice.TripData;
-import de.jena.ibis.ibis_customerinformationservice.TripDataResponse;
-import de.jena.ibis.ibis_customerinformationservice.VehicleData;
-import de.jena.ibis.ibis_customerinformationservice.VehicleDataResponse;
+import de.jena.model.ibis.customerinformationservice.AllData;
+import de.jena.model.ibis.customerinformationservice.AllDataResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementData;
+import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentConnectionInformationData;
+import de.jena.model.ibis.customerinformationservice.CurrentConnectionInformationResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentData;
+import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentStopIndexData;
+import de.jena.model.ibis.customerinformationservice.CurrentStopIndexResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentStopPointData;
+import de.jena.model.ibis.customerinformationservice.CurrentStopPointResponse;
+import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServicePackage;
+import de.jena.model.ibis.customerinformationservice.TripData;
+import de.jena.model.ibis.customerinformationservice.TripDataResponse;
+import de.jena.model.ibis.customerinformationservice.VehicleData;
+import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
 
 
 

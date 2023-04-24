@@ -88,11 +88,14 @@ public class IbisResource {
 						responseOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 						responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
 						responseRes.load(request.getInputStream(), responseOptions);
+						
 						Map<String, Object> properties = new HashMap<>();
 						properties.put("serviceId", serviceId);
 						properties.put("operation", operationName);
+						properties.put("eclass", responseEClass);
 						properties.put("data", responseRes.getContents().get(0));
-						Event evt = new Event("TCPResponse/"+serviceId+"/"+operationName+"/", properties);								
+						
+						Event evt = new Event("TCPResponse/"+serviceId+"/"+operationName, properties);								
 						eventAdmin.postEvent(evt);
 						System.out.println("Resource loaded successfully!");
 					}

@@ -1,0 +1,13 @@
+{
+	":configurator:resource-version": 1,
+	":configurator:symbolicname": "IbisConfig",
+	":configurator:version": "0.0.0",
+	"IbisDeviceConfigurator~bus201": {
+		"deviceId" : "201",
+		"deviceName": "Bus 201",
+		"deviceIP": "10.6.11.68",
+		"refTCPServices" : [
+			"CustomerInformationService"
+		]
+	}
+}

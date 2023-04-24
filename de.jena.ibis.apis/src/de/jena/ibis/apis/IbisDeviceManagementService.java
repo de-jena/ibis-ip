@@ -11,23 +11,23 @@
  */
 package de.jena.ibis.apis;
 
-import de.jena.ibis.ibis_common.DataAcceptedResponse;
-import de.jena.ibis.ibis_devicemanagementservice.AllSubdeviceErrorMessagesResponse;
-import de.jena.ibis.ibis_devicemanagementservice.AllSubdeviceInformationResponse;
-import de.jena.ibis.ibis_devicemanagementservice.DeviceConfigurationResponse;
-import de.jena.ibis.ibis_devicemanagementservice.DeviceErrorMessagesResponse;
-import de.jena.ibis.ibis_devicemanagementservice.DeviceInformationResponse;
-import de.jena.ibis.ibis_devicemanagementservice.DeviceStatusInformationResponse;
-import de.jena.ibis.ibis_devicemanagementservice.DeviceStatusResponse;
-import de.jena.ibis.ibis_devicemanagementservice.FinalizeUpdateRequest;
-import de.jena.ibis.ibis_devicemanagementservice.FinalizeUpdateResponse;
-import de.jena.ibis.ibis_devicemanagementservice.InstallUpdateRequest;
-import de.jena.ibis.ibis_devicemanagementservice.InstallUpdateResponse;
-import de.jena.ibis.ibis_devicemanagementservice.RetrieveUpdateStateRequest;
-import de.jena.ibis.ibis_devicemanagementservice.RetrieveUpdateStateResponse;
-import de.jena.ibis.ibis_devicemanagementservice.ServiceInformationResponse;
-import de.jena.ibis.ibis_devicemanagementservice.ServiceStatusResponse;
-import de.jena.ibis.ibis_devicemanagementservice.UpdateHistoryResponse;
+import de.jena.model.ibis.common.DataAcceptedResponse;
+import de.jena.model.ibis.devicemanagementservice.AllSubdeviceErrorMessagesResponse;
+import de.jena.model.ibis.devicemanagementservice.AllSubdeviceInformationResponse;
+import de.jena.model.ibis.devicemanagementservice.DeviceConfigurationResponse;
+import de.jena.model.ibis.devicemanagementservice.DeviceErrorMessagesResponse;
+import de.jena.model.ibis.devicemanagementservice.DeviceInformationResponse;
+import de.jena.model.ibis.devicemanagementservice.DeviceStatusInformationResponse;
+import de.jena.model.ibis.devicemanagementservice.DeviceStatusResponse;
+import de.jena.model.ibis.devicemanagementservice.FinalizeUpdateRequest;
+import de.jena.model.ibis.devicemanagementservice.FinalizeUpdateResponse;
+import de.jena.model.ibis.devicemanagementservice.InstallUpdateRequest;
+import de.jena.model.ibis.devicemanagementservice.InstallUpdateResponse;
+import de.jena.model.ibis.devicemanagementservice.RetrieveUpdateStateRequest;
+import de.jena.model.ibis.devicemanagementservice.RetrieveUpdateStateResponse;
+import de.jena.model.ibis.devicemanagementservice.ServiceInformationResponse;
+import de.jena.model.ibis.devicemanagementservice.ServiceStatusResponse;
+import de.jena.model.ibis.devicemanagementservice.UpdateHistoryResponse;
 
 /**
  * 

@@ -13,11 +13,11 @@ package de.jena.ibis.apis;
 
 import org.osgi.annotation.versioning.ProviderType;
 
-import de.jena.ibis.ibis_ticketvalidationservice.CurrentLineResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.CurrentShortHaulStopsResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.CurrentTariffStopResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.RazziaResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.VehicleDataResponse;
+import de.jena.model.ibis.ticketvalidationservice.CurrentLineResponse;
+import de.jena.model.ibis.ticketvalidationservice.CurrentShortHaulStopsResponse;
+import de.jena.model.ibis.ticketvalidationservice.CurrentTariffStopResponse;
+import de.jena.model.ibis.ticketvalidationservice.RazziaResponse;
+import de.jena.model.ibis.ticketvalidationservice.VehicleDataResponse;
 
 /**
  * 

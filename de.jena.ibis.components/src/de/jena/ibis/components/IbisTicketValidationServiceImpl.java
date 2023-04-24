@@ -31,14 +31,14 @@ import de.jena.ibis.apis.IbisTicketValidationService;
 import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
 import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
-import de.jena.ibis.ibis_common.GeneralResponse;
-import de.jena.ibis.ibis_common.IbisCommonPackage;
-import de.jena.ibis.ibis_ticketvalidationservice.CurrentLineResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.CurrentShortHaulStopsResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.CurrentTariffStopResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.IbisTicketValidationServicePackage;
-import de.jena.ibis.ibis_ticketvalidationservice.RazziaResponse;
-import de.jena.ibis.ibis_ticketvalidationservice.VehicleDataResponse;
+import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.IbisCommonPackage;
+import de.jena.model.ibis.ticketvalidationservice.CurrentLineResponse;
+import de.jena.model.ibis.ticketvalidationservice.CurrentShortHaulStopsResponse;
+import de.jena.model.ibis.ticketvalidationservice.CurrentTariffStopResponse;
+import de.jena.model.ibis.ticketvalidationservice.IbisTicketValidationServicePackage;
+import de.jena.model.ibis.ticketvalidationservice.RazziaResponse;
+import de.jena.model.ibis.ticketvalidationservice.VehicleDataResponse;
 
 /**
  * 

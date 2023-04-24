@@ -13,16 +13,16 @@ package de.jena.ibis.apis;
 
 import org.osgi.annotation.versioning.ProviderType;
 
-import de.jena.ibis.ibis_customerinformationservice.AllDataResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentAnnouncementResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentConnectionInformationResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentDisplayContentResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopIndexResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopPointResponse;
-import de.jena.ibis.ibis_customerinformationservice.PartialStopSequenceRequest;
-import de.jena.ibis.ibis_customerinformationservice.PartialStopSequenceResponse;
-import de.jena.ibis.ibis_customerinformationservice.TripDataResponse;
-import de.jena.ibis.ibis_customerinformationservice.VehicleDataResponse;
+import de.jena.model.ibis.customerinformationservice.AllDataResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentConnectionInformationResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentStopIndexResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentStopPointResponse;
+import de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest;
+import de.jena.model.ibis.customerinformationservice.PartialStopSequenceResponse;
+import de.jena.model.ibis.customerinformationservice.TripDataResponse;
+import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
 
 
 

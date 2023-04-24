@@ -5,6 +5,9 @@
 -resolve.effective: active;skip:="osgi.service"
 -enable-slf4j-logback: true
 
+-runblacklist: \
+	bnd.identity;id='org.gecko.emf.osgi.api';version='[4,5)',\
+	bnd.identity;id='org.gecko.emf.osgi.component';version='[4,5)',\
 
 -runproperties: \
 	osgi.console=,\
@@ -75,20 +78,52 @@
 	org.eclipse.emf.common;version='[2.28.0,2.28.1)',\
 	org.eclipse.emf.ecore;version='[2.33.0,2.33.1)',\
 	org.eclipse.emf.ecore.xmi;version='[2.18.0,2.18.1)',\
-	org.gecko.emf.osgi.api;version='[4.1.1,4.1.2)',\
 	org.gecko.emf.osgi.api;version='[5.0.0,5.0.1)',\
 	org.gecko.emf.osgi.component;version='[5.0.0,5.0.1)',\
-	org.osgi.service.component;version='[1.5.0,1.5.1)'
+	org.osgi.service.component;version='[1.5.0,1.5.1)',\
+	com.fasterxml.jackson.core.jackson-annotations;version='[2.14.0,2.14.1)',\
+	com.fasterxml.jackson.core.jackson-core;version='[2.14.0,2.14.1)',\
+	com.fasterxml.jackson.core.jackson-databind;version='[2.14.0,2.14.1)',\
+	de.dim.eclipse.core.runtime;version='[3.14.0,3.14.1)',\
+	de.dim.eclipse.osgi;version='[3.12.50,3.12.51)',\
+	de.dim.equinox.common;version='[3.9.0,3.9.1)',\
+	de.jena.ibis.event.handlers;version=snapshot,\
+	de.jena.ibis.sensinact.mmt;version=snapshot,\
+	de.jena.ibis.sensinact.mmt.util;version=snapshot,\
+	de.jena.ibis.sensinact.model;version=snapshot,\
+	lpg.runtime.java;version='[2.0.17,2.0.18)',\
+	org.apache.felix.log;version='[1.2.4,1.2.5)',\
+	org.eclipse.core.runtime;version='[3.14.0,3.14.1)',\
+	org.eclipse.emf.ecore.change;version='[2.14.0,2.14.1)',\
+	org.eclipse.m2m.qvt.oml;version='[3.10.0,3.10.1)',\
+	org.eclipse.m2m.qvt.oml.common;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.cst.parser;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.ecore.imperativeocl;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.emf.util;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.ocl;version='[3.9.0,3.9.1)',\
+	org.eclipse.ocl;version='[3.10.400,3.10.401)',\
+	org.eclipse.ocl.common;version='[1.8.400,1.8.401)',\
+	org.eclipse.ocl.ecore;version='[3.14.0,3.14.1)',\
+	org.eclipse.sensinact.gateway.core.annotation;version='[0.0.2,0.0.3)',\
+	org.eclipse.sensinact.gateway.core.api;version='[0.0.2,0.0.3)',\
+	org.eclipse.sensinact.gateway.core.geo-json;version='[0.0.2,0.0.3)',\
+	org.eclipse.sensinact.gateway.core.models.provider;version='[0.0.2,0.0.3)',\
+	org.gecko.core.pool;version='[1.1.0,1.1.1)',\
+	org.gecko.qvt.osgi.api;version='[4.1.1,4.1.2)',\
+	org.gecko.qvt.osgi.component;version='[1.0.6,1.0.7)'
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	bnd.identity;id='de.jena.ibis.rest.application',\
-	bnd.identity;id='de.jena.ibis.components',\
 	bnd.identity;id='de.jena.ibis.runtime',\
 	bnd.identity;id='slf4j.simple',\
 	bnd.identity;id='org.glassfish.jaxb.runtime',\
-	bnd.identity;id='org.apache.felix.eventadmin'
+	bnd.identity;id='org.apache.felix.eventadmin',\
+	bnd.identity;id='de.jena.ibis.event.handlers',\
+	bnd.identity;id='org.gecko.emf.osgi.component',\
+	bnd.identity;id='org.gecko.qvt.osgi.component',\
+	bnd.identity;id='de.jena.ibis.sensinact.mmt',\
+	bnd.identity;id='de.jena.ibis.sensinact.mmt.util'
 
 -runrepos: \
 	Workspace,\
@@ -103,4 +138,5 @@
 	GeckoEMF Dependencies,\
 	GeckoEMF Util Dependencies,\
 	Jacoco Dependencies,\
-	OSGi-Test Dependencies
+	OSGi-Test Dependencies,\
+	SensiNact SDK

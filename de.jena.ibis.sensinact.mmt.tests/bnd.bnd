@@ -1,0 +1,23 @@
+Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.annotation.Testable;CONCRETE}
+
+-library: \
+	enable-emf,\
+	enableOSGi-Test
+
+
+	
+Private-Package: de.jena.ibis.sensinact.mmt.tests
+Bundle-Version: 1.0.0.SNAPSHOT
+
+# Sometimes without DynamicImport Mockito will not find certain classes
+#DynamicImport-Package: *
+-buildpath: \
+	org.gecko.qvt.osgi.api,\
+	org.gecko.core.pool,\
+	de.jena.ibis.customer.info.service.model;version=latest,\
+	de.jena.ibis.common.model;version=latest,\
+	de.jena.ibis.enumerations.model;version=latest,\
+	org.osgi.test.junit5.cm,\
+	de.jena.ibis.sensinact.model;version=latest,\
+	org.eclipse.sensinact.gateway.core.models.provider,\
+	org.eclipse.m2m.qvt.oml

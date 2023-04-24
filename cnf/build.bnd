@@ -44,6 +44,9 @@ Bundle-Developers: \
 github-project: de-jena/ibis-ip
 base-version: 1.0.0.SNAPSHOT
 ibis-version: ${base-version}.SNAPSHOT
+sensinact.version: 0.0.2-SNAPSHOT
+jackson.version: 2.14.0
+
 
 # Maven Central Group-Id
 -groupid: de.jena.ibis-ip

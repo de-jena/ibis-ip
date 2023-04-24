@@ -14,6 +14,7 @@ package de.jena.ibis.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.cm.ConfigurationException;
@@ -32,19 +33,19 @@ import de.jena.ibis.apis.IbisTCPServiceConfig;
 import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
 import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
-import de.jena.ibis.ibis_common.GeneralResponse;
-import de.jena.ibis.ibis_common.IbisCommonPackage;
-import de.jena.ibis.ibis_customerinformationservice.AllDataResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentAnnouncementResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentConnectionInformationResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentDisplayContentResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopIndexResponse;
-import de.jena.ibis.ibis_customerinformationservice.CurrentStopPointResponse;
-import de.jena.ibis.ibis_customerinformationservice.IbisCustomerInformationServicePackage;
-import de.jena.ibis.ibis_customerinformationservice.PartialStopSequenceRequest;
-import de.jena.ibis.ibis_customerinformationservice.PartialStopSequenceResponse;
-import de.jena.ibis.ibis_customerinformationservice.TripDataResponse;
-import de.jena.ibis.ibis_customerinformationservice.VehicleDataResponse;
+import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.IbisCommonPackage;
+import de.jena.model.ibis.customerinformationservice.AllDataResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentConnectionInformationResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentStopIndexResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentStopPointResponse;
+import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServicePackage;
+import de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest;
+import de.jena.model.ibis.customerinformationservice.PartialStopSequenceResponse;
+import de.jena.model.ibis.customerinformationservice.TripDataResponse;
+import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
 
 
 /**
@@ -312,11 +313,8 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 * @see de.jena.ibis.apis.IbisCustomerInformationService#retrievePartialStopSequence(de.jena.ibis.customerinformationservice.CustomerInformationServiceRetrievePartialStopSequenceRequest)
 	 */
 	@Override
-	public PartialStopSequenceResponse retrievePartialStopSequence(
-			PartialStopSequenceRequest request) {
-		return IbisHttpRequestHelper.sendHttpRequest(config, 
-				CustomerInformationServiceConstants.OPERATION_RETRIEVE_PARTIAL_STOP_SEQUENCE, request, 
-				customerInfoServicePackage.getPartialStopSequenceResponse(), resourceSetFactory);
+	public PartialStopSequenceResponse retrievePartialStopSequence(PartialStopSequenceRequest request) {
+		throw new NotImplementedException("Operation not supported yet!");
 	}
 
 	/* 

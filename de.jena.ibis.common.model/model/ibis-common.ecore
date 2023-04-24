@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ibis_common" nsURI="http://jena.de/mdo/ibis-common/1.0" nsPrefix="ibis_common">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="common" nsURI="https://jena.de/models/ibis/common/1.0" nsPrefix="common">
   <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
     <details key="qualified" value="false"/>
   </eAnnotations>

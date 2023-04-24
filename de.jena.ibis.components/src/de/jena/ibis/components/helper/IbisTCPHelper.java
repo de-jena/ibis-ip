@@ -18,11 +18,11 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
 
 import de.jena.ibis.apis.IbisTCPServiceConfig;
-import de.jena.ibis.ibis_common.IBISIPInt;
-import de.jena.ibis.ibis_common.IBISIPString;
-import de.jena.ibis.ibis_common.IbisCommonPackage;
-import de.jena.ibis.ibis_common.SubscribeRequest;
-import de.jena.ibis.ibis_common.SubscribeResponse;
+import de.jena.model.ibis.common.IBISIPInt;
+import de.jena.model.ibis.common.IBISIPString;
+import de.jena.model.ibis.common.IbisCommonPackage;
+import de.jena.model.ibis.common.SubscribeRequest;
+import de.jena.model.ibis.common.SubscribeResponse;
 
 /**
  * 

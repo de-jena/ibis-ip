@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.EClass;
 import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
 import de.jena.ibis.apis.constants.DeviceManagementServiceConstants;
 import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
-import de.jena.ibis.ibis_customerinformationservice.IbisCustomerInformationServicePackage;
-import de.jena.ibis.ibis_devicemanagementservice.IbisDeviceManagementServicePackage;
-import de.jena.ibis.ibis_ticketvalidationservice.IbisTicketValidationServicePackage;
+import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServicePackage;
+import de.jena.model.ibis.devicemanagementservice.IbisDeviceManagementServicePackage;
+import de.jena.model.ibis.ticketvalidationservice.IbisTicketValidationServicePackage;
 
 /**
  * 
