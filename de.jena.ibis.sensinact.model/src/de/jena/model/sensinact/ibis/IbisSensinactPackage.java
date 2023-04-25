@@ -184,13 +184,22 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Ibis Admin</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__IBIS_ADMIN = ProviderPackage.PROVIDER_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Ibis Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 8;
+	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of operations of the '<em>Ibis Device</em>' class.
@@ -1270,34 +1279,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_ADMIN__METADATA = ProviderPackage.ADMIN__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Friendly Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IBIS_ADMIN__FRIENDLY_NAME = ProviderPackage.ADMIN__FRIENDLY_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Location</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IBIS_ADMIN__LOCATION = ProviderPackage.ADMIN__LOCATION;
-
-	/**
-	 * The feature id for the '<em><b>Model Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IBIS_ADMIN__MODEL_URI = ProviderPackage.ADMIN__MODEL_URI;
+	int IBIS_ADMIN__METADATA = ProviderPackage.SERVICE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Device Type</b></em>' attribute.
@@ -1306,7 +1288,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_ADMIN__DEVICE_TYPE = ProviderPackage.ADMIN_FEATURE_COUNT + 0;
+	int IBIS_ADMIN__DEVICE_TYPE = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ibis Admin</em>' class.
@@ -1315,7 +1297,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_ADMIN_FEATURE_COUNT = ProviderPackage.ADMIN_FEATURE_COUNT + 1;
+	int IBIS_ADMIN_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Ibis Admin</em>' class.
@@ -1324,7 +1306,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_ADMIN_OPERATION_COUNT = ProviderPackage.ADMIN_OPERATION_COUNT + 0;
+	int IBIS_ADMIN_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -1424,6 +1406,17 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getIbisDevice_CustomerInfoCurrentDisplayContentData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getIbisAdmin <em>Ibis Admin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Ibis Admin</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getIbisAdmin()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_IbisAdmin();
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.CustomerInfoAllData <em>Customer Info All Data</em>}'.
@@ -2546,6 +2539,14 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA = eINSTANCE.getIbisDevice_CustomerInfoCurrentDisplayContentData();
+
+		/**
+		 * The meta object literal for the '<em><b>Ibis Admin</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__IBIS_ADMIN = eINSTANCE.getIbisDevice_IbisAdmin();
 
 		/**
 		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.CustomerInfoAllDataImpl <em>Customer Info All Data</em>}' class.

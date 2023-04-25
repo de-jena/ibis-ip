@@ -24,6 +24,8 @@
         eType="#//CustomerInfoCurrentConnectionData" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="customerInfoCurrentDisplayContentData"
         eType="#//CustomerInfoCurrentDisplayContentData" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ibisAdmin" eType="#//IbisAdmin"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomerInfoAllData" eSuperTypes="../../org.eclipse.sensinact.gateway.core.models.provider/model/sensinact.ecore#//Service">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceName" lowerBound="1"
@@ -183,7 +185,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
         eType="ecore:EDataType ../../org.eclipse.sensinact.gateway.core.models.provider/model/sensinact.ecore#//EInstant"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IbisAdmin" eSuperTypes="../../org.eclipse.sensinact.gateway.core.models.provider/model/sensinact.ecore#//Admin">
+  <eClassifiers xsi:type="ecore:EClass" name="IbisAdmin" eSuperTypes="../../org.eclipse.sensinact.gateway.core.models.provider/model/sensinact.ecore#//Service">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceType" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

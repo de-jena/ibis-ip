@@ -28,7 +28,9 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 import org.osgi.service.event.propertytypes.EventTopics;
 
+import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
+import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 
 /**
  * This event handler listens to the ibis data the bus,tram,etc are sending 
@@ -72,8 +74,12 @@ public class IbisTCPEventHandler implements EventHandler {
 			try {
 				IbisDevice push = (IbisDevice) transformator.startTransformation(data);
 				push.setId(providerId);
+				
+				IbisAdmin ibisAdmin = IbisSensinactFactory.eINSTANCE.createIbisAdmin();
+				ibisAdmin.setDeviceType(deviceType);
+				push.setIbisAdmin(ibisAdmin);
+				
 				Admin admin = ProviderFactory.eINSTANCE.createAdmin();
-//				admin.setDeviceType(deviceType);
 				admin.setFriendlyName("Ibis - " + providerId);
 				push.setAdmin(admin);
 				sensinact.pushUpdate(push);

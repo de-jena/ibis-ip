@@ -12,7 +12,7 @@
  */
 package de.jena.model.sensinact.ibis;
 
-import org.eclipse.sensinact.model.core.provider.Admin;
+import org.eclipse.sensinact.model.core.provider.Service;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -33,7 +33,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface IbisAdmin extends Admin {
+public interface IbisAdmin extends Service {
 	/**
 	 * Returns the value of the '<em><b>Device Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->

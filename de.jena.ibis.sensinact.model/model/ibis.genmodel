@@ -18,6 +18,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/customerInfoCurrentAnnouncementData"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/customerInfoCurrentConnectionData"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/customerInfoCurrentDisplayContentData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/ibisAdmin"/>
     </genClasses>
     <genClasses ecoreClass="ibis.ecore#//CustomerInfoAllData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//CustomerInfoAllData/serviceName"/>

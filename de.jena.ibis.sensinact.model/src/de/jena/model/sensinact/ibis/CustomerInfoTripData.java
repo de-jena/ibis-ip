@@ -239,6 +239,9 @@ public interface CustomerInfoTripData extends Service {
 	 * Returns the value of the '<em><b>Timetable Delay</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Delay in seconds. Earlier times wrt schedule are represented by negative numbers.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Timetable Delay</em>' attribute.
 	 * @see #setTimetableDelay(int)
 	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getCustomerInfoTripData_TimetableDelay()

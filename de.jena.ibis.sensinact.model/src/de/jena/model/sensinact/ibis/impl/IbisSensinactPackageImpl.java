@@ -270,6 +270,16 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
+	public EReference getIbisDevice_IbisAdmin() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCustomerInfoAllData() {
 		return customerInfoAllDataEClass;
 	}
@@ -1242,6 +1252,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_CONNECTION_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__IBIS_ADMIN);
 
 		customerInfoAllDataEClass = createEClass(CUSTOMER_INFO_ALL_DATA);
 		createEAttribute(customerInfoAllDataEClass, CUSTOMER_INFO_ALL_DATA__SERVICE_NAME);
@@ -1387,7 +1398,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		customerInfoCurrentAnnouncementDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		customerInfoCurrentConnectionDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		customerInfoCurrentDisplayContentDataEClass.getESuperTypes().add(theProviderPackage.getService());
-		ibisAdminEClass.getESuperTypes().add(theProviderPackage.getAdmin());
+		ibisAdminEClass.getESuperTypes().add(theProviderPackage.getService());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ibisDeviceEClass, IbisDevice.class, "IbisDevice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1399,6 +1410,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEReference(getIbisDevice_CustomerInfoCurrentAnnouncementData(), this.getCustomerInfoCurrentAnnouncementData(), null, "customerInfoCurrentAnnouncementData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentConnectionData(), this.getCustomerInfoCurrentConnectionData(), null, "customerInfoCurrentConnectionData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentDisplayContentData(), this.getCustomerInfoCurrentDisplayContentData(), null, "customerInfoCurrentDisplayContentData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_IbisAdmin(), this.getIbisAdmin(), null, "ibisAdmin", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerInfoAllDataEClass, CustomerInfoAllData.class, "CustomerInfoAllData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomerInfoAllData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, CustomerInfoAllData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1542,6 +1554,12 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		   source,
 		   new String[] {
 			   "documentation", "This represents the public transport device, meaning the bus, tram, or whatever."
+		   });
+		addAnnotation
+		  (getCustomerInfoTripData_TimetableDelay(),
+		   source,
+		   new String[] {
+			   "documentation", "Delay in seconds. Earlier times wrt schedule are represented by negative numbers."
 		   });
 	}
 

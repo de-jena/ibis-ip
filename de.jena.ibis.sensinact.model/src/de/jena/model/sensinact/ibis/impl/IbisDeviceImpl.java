@@ -20,6 +20,7 @@ import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopIndexData;
 import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopPointData;
 import de.jena.model.sensinact.ibis.CustomerInfoTripData;
 import de.jena.model.sensinact.ibis.CustomerInfoVehicleData;
+import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
 
@@ -49,6 +50,7 @@ import org.eclipse.sensinact.model.core.provider.impl.ProviderImpl;
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentAnnouncementData <em>Customer Info Current Announcement Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentConnectionData <em>Customer Info Current Connection Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentDisplayContentData <em>Customer Info Current Display Content Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getIbisAdmin <em>Ibis Admin</em>}</li>
  * </ul>
  *
  * @generated
@@ -133,6 +135,16 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @ordered
 	 */
 	protected CustomerInfoCurrentDisplayContentData customerInfoCurrentDisplayContentData;
+
+	/**
+	 * The cached value of the '{@link #getIbisAdmin() <em>Ibis Admin</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIbisAdmin()
+	 * @generated
+	 * @ordered
+	 */
+	protected IbisAdmin ibisAdmin;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -519,6 +531,51 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @generated
 	 */
 	@Override
+	public IbisAdmin getIbisAdmin() {
+		return ibisAdmin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetIbisAdmin(IbisAdmin newIbisAdmin, NotificationChain msgs) {
+		IbisAdmin oldIbisAdmin = ibisAdmin;
+		ibisAdmin = newIbisAdmin;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, oldIbisAdmin, newIbisAdmin);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIbisAdmin(IbisAdmin newIbisAdmin) {
+		if (newIbisAdmin != ibisAdmin) {
+			NotificationChain msgs = null;
+			if (ibisAdmin != null)
+				msgs = ((InternalEObject)ibisAdmin).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, null, msgs);
+			if (newIbisAdmin != null)
+				msgs = ((InternalEObject)newIbisAdmin).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, null, msgs);
+			msgs = basicSetIbisAdmin(newIbisAdmin, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, newIbisAdmin, newIbisAdmin));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA:
@@ -537,6 +594,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return basicSetCustomerInfoCurrentConnectionData(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return basicSetCustomerInfoCurrentDisplayContentData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				return basicSetIbisAdmin(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -565,6 +624,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return getCustomerInfoCurrentConnectionData();
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return getCustomerInfoCurrentDisplayContentData();
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				return getIbisAdmin();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -600,6 +661,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return;
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				setCustomerInfoCurrentDisplayContentData((CustomerInfoCurrentDisplayContentData)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				setIbisAdmin((IbisAdmin)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -637,6 +701,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				setCustomerInfoCurrentDisplayContentData((CustomerInfoCurrentDisplayContentData)null);
 				return;
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				setIbisAdmin((IbisAdmin)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -665,6 +732,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return customerInfoCurrentConnectionData != null;
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return customerInfoCurrentDisplayContentData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				return ibisAdmin != null;
 		}
 		return super.eIsSet(featureID);
 	}

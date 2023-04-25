@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.sensinact.model.core.provider.impl.AdminImpl;
+import org.eclipse.sensinact.model.core.provider.impl.ServiceImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ import org.eclipse.sensinact.model.core.provider.impl.AdminImpl;
  *
  * @generated
  */
-public class IbisAdminImpl extends AdminImpl implements IbisAdmin {
+public class IbisAdminImpl extends ServiceImpl implements IbisAdmin {
 	/**
 	 * The default value of the '{@link #getDeviceType() <em>Device Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
