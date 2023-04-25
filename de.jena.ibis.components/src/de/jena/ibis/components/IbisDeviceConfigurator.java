@@ -39,7 +39,6 @@ import de.jena.ibis.apis.IbisDeviceConfiguratorConfig;
 @RequireConfigurationAdmin
 public class IbisDeviceConfigurator {
 
-//	public static final String IBIS_SERVICE_TARGET_FILTER = "IbisService.ref";
 	private static final Logger LOGGER = Logger.getLogger(IbisDeviceConfigurator.class.getName());
 
 	private ConfigurationAdmin configAdmin;
@@ -72,21 +71,6 @@ public class IbisDeviceConfigurator {
 		});
 		serviceConfigs.clear();
 	}
-	
-//	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC,
-//			name = IBIS_SERVICE_TARGET_FILTER,
-//			policyOption = ReferencePolicyOption.GREEDY, unbind = "unbindIbisService")
-//	protected void bindIbisService(GeneralIbisService ibisService, Map<String, Object> properties) throws IOException {
-//		
-//		LOGGER.info(()->"Binding IbisService " + ibisService.getServiceId() + " in Configurator " + config.deviceId());
-//		ibisService.executeAllSubscriptionOperations();
-//		
-//	}
-//
-//	protected void unbindIbisService(GeneralIbisService ibisService) {
-//		LOGGER.info(()->"Unbinding IbisService " + ibisService.getServiceId() + " in Configurator " + config.deviceId());
-//		ibisService.executeAllUnsubscriptionOperations();
-//	}
 	
 	private void updateServiceConfig(String service) throws IOException {		
 		String factoryPid = service;
@@ -133,8 +117,8 @@ public class IbisDeviceConfigurator {
 	private Dictionary<String, Object> createTCPServiceProperties(String service, String servicePort) {
 		Dictionary<String, Object> props = new Hashtable<String, Object>();
 		props.put("serviceType", "TCP");
-//		props.put(IBIS_SERVICE_TARGET_FILTER + ".target", "(deviceId="+config.deviceId()+")");
-		props.put("deviceId", config.deviceId());
+		props.put("refDeviceId", config.deviceId());
+		props.put("refDeviceType", config.deviceType());
 		props.put("serviceName", service);
 		props.put("serviceId", service+"-"+config.deviceId());
 		props.put("serviceIP", config.deviceIP());
@@ -147,8 +131,8 @@ public class IbisDeviceConfigurator {
 	private Dictionary<String, Object> createUDPServiceProperties(String service) {
 		Dictionary<String, Object> props = new Hashtable<String, Object>();
 		props.put("serviceType", "UDP");
-//		props.put(IBIS_SERVICE_TARGET_FILTER + ".target", "(deviceId="+config.deviceId()+")");
-		props.put("deviceId", config.deviceId());
+		props.put("refDeviceId", config.deviceId());
+		props.put("refDeviceType", config.deviceType());
 		props.put("serviceName", service);
 		props.put("serviceId", service+"-"+config.deviceId());
 		props.put("serviceIP", config.deviceIP());

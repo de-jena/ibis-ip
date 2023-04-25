@@ -22,6 +22,10 @@ public @interface IbisUDPServiceConfig {
 	
 	public String serviceName() default "";
 	
+	public String refDeviceId() default "";
+	
+	public String refDeviceType() default "";
+	
 	public int listenerPort() default 53000;
 	
 	public String listenerNetworkInterface() default "";

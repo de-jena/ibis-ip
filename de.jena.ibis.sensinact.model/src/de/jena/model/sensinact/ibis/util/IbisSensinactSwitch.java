@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.eclipse.sensinact.model.core.provider.Admin;
 import org.eclipse.sensinact.model.core.provider.Provider;
 import org.eclipse.sensinact.model.core.provider.Service;
 
@@ -139,6 +140,14 @@ public class IbisSensinactSwitch<T> extends Switch<T> {
 				CustomerInfoCurrentDisplayContentData customerInfoCurrentDisplayContentData = (CustomerInfoCurrentDisplayContentData)theEObject;
 				T result = caseCustomerInfoCurrentDisplayContentData(customerInfoCurrentDisplayContentData);
 				if (result == null) result = caseService(customerInfoCurrentDisplayContentData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IbisSensinactPackage.IBIS_ADMIN: {
+				IbisAdmin ibisAdmin = (IbisAdmin)theEObject;
+				T result = caseIbisAdmin(ibisAdmin);
+				if (result == null) result = caseAdmin(ibisAdmin);
+				if (result == null) result = caseService(ibisAdmin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -282,6 +291,21 @@ public class IbisSensinactSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ibis Admin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ibis Admin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIbisAdmin(IbisAdmin object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Provider</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -308,6 +332,21 @@ public class IbisSensinactSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseService(Service object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Admin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Admin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdmin(Admin object) {
 		return null;
 	}
 

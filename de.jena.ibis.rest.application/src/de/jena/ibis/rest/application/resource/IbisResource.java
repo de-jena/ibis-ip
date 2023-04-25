@@ -49,13 +49,13 @@ import jakarta.ws.rs.core.Response;
 @RequireRuntime
 @JakartarsResource
 @Component(name = IbisResource.COMPONENT_NAME, service = IbisResource.class, 
-	scope = ServiceScope.PROTOTYPE, configurationPolicy = ConfigurationPolicy.REQUIRE)
+scope = ServiceScope.PROTOTYPE, configurationPolicy = ConfigurationPolicy.REQUIRE)
 @Path("")
 public class IbisResource {
-	
+
 	@Reference
 	EventAdmin eventAdmin;
-	
+
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
 
@@ -68,38 +68,37 @@ public class IbisResource {
 	}
 
 	@POST
-	@Path("/{serviceId}/{operationName}")
+	@Path("/{deviceId}/{deviceType}/{serviceName}/{operationName}")
 	@Consumes
-	public Response post(@PathParam("serviceId") String serviceId, @PathParam("operationName") String operationName, @Context HttpServletRequest request) {
+	public Response post(@PathParam("deviceId") String deviceId, @PathParam("deviceType") String deviceType, @PathParam("serviceName") String serviceName, @PathParam("operationName") String operationName, @Context HttpServletRequest request) {
 
-		System.out.println(String.format("Received POST request to %s - %s", serviceId, operationName));
+		System.out.println(String.format("Received POST request to %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
 		if(request != null) {
 			try {
-				String[] split = serviceId.split("-");
-				if(split.length == 2) {
-					String serviceName = split[0];
-					EClass responseEClass = IbisResponseHelper.getResponseEClass(serviceName, operationName);
-					if(responseEClass != null) {
-						ResourceSet set = rsFactory.getService();
-						set.getPackageRegistry().put(null, responseEClass.getEPackage());
-						Resource responseRes = set.createResource(URI.createURI("temp.xml"), "application/xml");
-						Map<String, Object> responseOptions = new HashMap<>();
-						responseOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-						responseOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-						responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
-						responseRes.load(request.getInputStream(), responseOptions);
-						
-						Map<String, Object> properties = new HashMap<>();
-						properties.put("serviceId", serviceId);
-						properties.put("operation", operationName);
-						properties.put("eclass", responseEClass);
-						properties.put("data", responseRes.getContents().get(0));
-						
-						Event evt = new Event("TCPResponse/"+serviceId+"/"+operationName, properties);								
-						eventAdmin.postEvent(evt);
-						System.out.println("Resource loaded successfully!");
-					}
+
+				EClass responseEClass = IbisResponseHelper.getResponseEClass(serviceName, operationName);
+				if(responseEClass != null) {
+					ResourceSet set = rsFactory.getService();
+					set.getPackageRegistry().put(null, responseEClass.getEPackage());
+					Resource responseRes = set.createResource(URI.createURI("temp.xml"), "application/xml");
+					Map<String, Object> responseOptions = new HashMap<>();
+					responseOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+					responseOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+					responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
+					responseRes.load(request.getInputStream(), responseOptions);
+					Map<String, Object> properties = new HashMap<>();
+					properties.put("deviceId", deviceId);
+					properties.put("deviceType", deviceType);
+					properties.put("serviceName", serviceName);
+					properties.put("operation", operationName);
+					properties.put("eclass", responseEClass);
+					properties.put("data", responseRes.getContents().get(0));
+
+					Event evt = new Event(String.format("TCPResponse/%s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), properties);								
+					eventAdmin.postEvent(evt);
+					System.out.println("Resource loaded successfully!");
 				}
+
 			} catch(IOException e) {
 				e.printStackTrace();
 			}

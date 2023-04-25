@@ -20,6 +20,7 @@ import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopIndexData;
 import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopPointData;
 import de.jena.model.sensinact.ibis.CustomerInfoTripData;
 import de.jena.model.sensinact.ibis.CustomerInfoVehicleData;
+import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
@@ -102,6 +103,13 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	private EClass customerInfoCurrentDisplayContentDataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ibisAdminEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1182,6 +1190,26 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
+	public EClass getIbisAdmin() {
+		return ibisAdminEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIbisAdmin_DeviceType() {
+		return (EAttribute)ibisAdminEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IbisSensinactFactory getIbisSensinactFactory() {
 		return (IbisSensinactFactory)getEFactoryInstance();
 	}
@@ -1314,6 +1342,9 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEAttribute(customerInfoCurrentDisplayContentDataEClass, CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA__SERVICE_NAME);
 		createEAttribute(customerInfoCurrentDisplayContentDataEClass, CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA__SERVICE_OPERATION);
 		createEAttribute(customerInfoCurrentDisplayContentDataEClass, CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA__TIMESTAMP);
+
+		ibisAdminEClass = createEClass(IBIS_ADMIN);
+		createEAttribute(ibisAdminEClass, IBIS_ADMIN__DEVICE_TYPE);
 	}
 
 	/**
@@ -1356,6 +1387,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		customerInfoCurrentAnnouncementDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		customerInfoCurrentConnectionDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		customerInfoCurrentDisplayContentDataEClass.getESuperTypes().add(theProviderPackage.getService());
+		ibisAdminEClass.getESuperTypes().add(theProviderPackage.getAdmin());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ibisDeviceEClass, IbisDevice.class, "IbisDevice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1467,6 +1499,9 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEAttribute(getCustomerInfoCurrentDisplayContentData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, CustomerInfoCurrentDisplayContentData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCustomerInfoCurrentDisplayContentData_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, CustomerInfoCurrentDisplayContentData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCustomerInfoCurrentDisplayContentData_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 1, 1, CustomerInfoCurrentDisplayContentData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ibisAdminEClass, IbisAdmin.class, "IbisAdmin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIbisAdmin_DeviceType(), ecorePackage.getEString(), "deviceType", null, 1, 1, IbisAdmin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

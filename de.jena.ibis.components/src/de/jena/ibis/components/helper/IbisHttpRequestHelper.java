@@ -39,35 +39,6 @@ import de.jena.model.ibis.common.GeneralResponse;
 public class IbisHttpRequestHelper {
 
 	public static final Logger LOGGER = Logger.getLogger(IbisHttpRequestHelper.class.getName());
-
-//	public static Integer sendHttpSubscriptionRequest(String host, String port, String serviceName, String operationName,
-//			EObject request,
-//			ComponentServiceObjects<ResourceSet> rsFactory) {
-//		URI uri = calculateURI(host, port, serviceName, operationName);
-//		try {
-//			return doSendHttpSubscriptionRequest(uri, "POST", request, rsFactory);	
-//		} catch (Exception e) {
-//			LOGGER.severe(String.format("Something went wrong during request %s. Returning null!", uri.toString()));
-//			return null;
-//		}
-//	}
-//	
-//	public static <T extends GeneralResponse> T sendHttpSubscriptionRequest2(String host, String port, String serviceName, String operationName,
-//			EObject request,
-//			ComponentServiceObjects<ResourceSet> rsFactory) {
-//		URI uri = calculateURI(host, port, serviceName, operationName);
-//		try {
-//			Optional<GeneralResponse> responseOpt =  doSendHttpRequest(uri, "POST", request, IbisCommonPackage.eINSTANCE.getSubscribeResponse(), rsFactory);	
-//			if(isResponseValid(responseOpt, operationName)) {
-//				return (T) responseOpt.get();
-//			}
-//			LOGGER.severe(String.format("Response for URI %s is not valid. Returning null!", uri.toString()));
-//			return null;
-//		} catch (Throwable e) {
-//			LOGGER.severe(String.format("Something went wrong during request %s. Returning null!", uri.toString()));
-//			return null;
-//		}
-//	}
 	
 	@SuppressWarnings("unchecked")
 	public static <T extends GeneralResponse> T sendHttpRequest(IbisTCPServiceConfig serviceConfig, String operationName, EObject request, EClass responseClass,
@@ -103,40 +74,6 @@ public class IbisHttpRequestHelper {
 		sb.append(operationName);
 		return sb.toString();
 	}
-
-//	private static int doSendHttpSubscriptionRequest(URI uri, String method, EObject request,
-//			ComponentServiceObjects<ResourceSet> rsFactory) throws Exception {
-//
-//		ResourceSet set = rsFactory.getService();
-//
-//		try {
-//			Map<String, Object> options = new HashMap<>();			
-//			IbisResource requestRes = new IbisResource(uri);
-//			set.getResources().add(requestRes);
-//
-//			//			Add the request parameters to the request resource
-//			Map<String, Object> headers = new HashMap<>();
-//			if(request != null) {
-//				requestRes.getContents().add(request);			
-//				headers.put("Content-Type", "application/xml; charset=utf-8");
-//			}			
-//			headers.put("Accept", "application/xml; charset=utf-8");
-//			headers.put("Method", method);
-//			options.put(EMFUriHandlerConstants.OPTION_HTTP_HEADERS, headers);
-//			options.put(EMFUriHandlerConstants.OPTION_HTTP_METHOD, method);				
-//			options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-//			options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-//			options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-//			requestRes.save(System.out, options);
-//			requestRes.save(options);
-//			return requestRes.getResponseCode();
-//		} catch (Exception e) {
-//			throw e;
-//		} finally {
-//			rsFactory.ungetService(set);
-//		}
-//	}
-
 
 	@SuppressWarnings("unchecked")
 	private static <T extends GeneralResponse> Optional<T> doSendHttpRequest(URI uri, String method, EObject request, EClass responseClass,

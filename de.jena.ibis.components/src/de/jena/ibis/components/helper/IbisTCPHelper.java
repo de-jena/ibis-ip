@@ -57,7 +57,8 @@ public class IbisTCPHelper {
 		ibisClientPort.setValue(serviceConfig.serviceClientSubscriptionPort());
 		
 		IBISIPString ibisClientPath = ibisCommonPackage.getIbisCommonFactory().createIBISIPString();
-		String path = "/ibis/rest/" + serviceConfig.serviceId()+"/"+operation;
+//		String path = "/ibis/rest/" + serviceConfig.serviceId()+"/"+operation;
+		String path = "/ibis/rest/" + serviceConfig.refDeviceId() + "/" + serviceConfig.refDeviceType() + "/" + serviceConfig.serviceName()+"/"+operation;
 		ibisClientPath.setValue(path);
 		
 		subscriptionRequest.setClientIPAddress(ibisClientIP);

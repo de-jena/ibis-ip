@@ -22,6 +22,8 @@ public @interface IbisDeviceConfiguratorConfig {
 	
 	public String deviceName() default "";
 	
+	public String deviceType() default "BUS";
+	
 	public String deviceIP() default "";
 	
 	public String clientSubscriptionIP() default "192.168.243.250";

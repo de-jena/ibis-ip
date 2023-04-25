@@ -60,19 +60,21 @@ public class IbisTCPEventHandler implements EventHandler {
 	public void handleEvent(Event evt) {
 		System.out.println("Event arrived for topic " + evt.getTopic());
 //		We try to push event into sensinact here
-		publish((EObject) evt.getProperty("data"), (String) evt.getProperty("serviceId"), (String) evt.getProperty("operation"));
+		String providerId = (String) evt.getProperty("deviceId") + "-" + (String) evt.getProperty("serviceName") + "-" + (String) evt.getProperty("operation");
+		publish((EObject) evt.getProperty("data"), providerId, (String) evt.getProperty("deviceType"));
 	}
 	
-	private void publish(EObject data, String serviceId, String operationName) {
+	private void publish(EObject data, String providerId, String deviceType) {
 		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
 		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
 		if(pool != null) {
 			ModelTransformator transformator = pool.poll();
 			try {
 				IbisDevice push = (IbisDevice) transformator.startTransformation(data);
-				push.setId(serviceId);
+				push.setId(providerId);
 				Admin admin = ProviderFactory.eINSTANCE.createAdmin();
-				admin.setFriendlyName("Ibis - " + serviceId + "-" + operationName);
+//				admin.setDeviceType(deviceType);
+				admin.setFriendlyName("Ibis - " + providerId);
 				push.setAdmin(admin);
 				sensinact.pushUpdate(push);
 			} catch(Exception e) {

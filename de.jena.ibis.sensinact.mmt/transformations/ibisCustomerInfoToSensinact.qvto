@@ -206,7 +206,7 @@ mapping CUSTOMERINFO::TripData::tripToService(friendlyServiceName : String, oper
 	
 	timetableDelay := self.tripInformation.timetableDelay.value;
 	if(self.tripInformation.timetableDelay.value.oclIsUndefined().not()){
-		metadata += toMetadataEntry(eClass.getEStructuralFeature("timetableDelay"), friendlyServiceName, null, "true", null);
+		metadata += toMetadataEntry(eClass.getEStructuralFeature("timetableDelay"), friendlyServiceName, "sec", "true", null);
 	};
 	
 	routeDirection := self.tripInformation.routeDirection.toString();
@@ -345,12 +345,7 @@ mapping CUSTOMERINFO::VehicleData::vehicleToService(friendlyServiceName : String
 		metadata += toMetadataEntry(eClass.getEStructuralFeature("tripState"), friendlyServiceName, null, "true", null);
 	};
 }
-//
-////	We do not have access to the service and device id here, we need to set them elsewhere
-////mapping SENSOR::IceSENSOR::toAdmin(): PROVIDER::Admin{
-////	friendlyName := "ICECat Sensore - " + self.ice_id;
-////}
-//
+
 mapping CUSTOMERINFO::AllData::allDataToService(friendlyServiceName : String, operation : String): SENSINACT::CustomerInfoAllData {
 	var eClass := SENSINACT::CustomerInfoAllData.oclAsType(ECORE::EClass);
 	

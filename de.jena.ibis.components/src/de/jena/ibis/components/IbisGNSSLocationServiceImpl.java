@@ -119,4 +119,22 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 			e.printStackTrace();
 		}	
 	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisService#getRefDeviceId()
+	 */
+	@Override
+	public String getRefDeviceId() {
+		return config.refDeviceId();
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisService#getRefDeviceType()
+	 */
+	@Override
+	public String getRefDeviceType() {
+		return config.refDeviceType();
+	}
 }

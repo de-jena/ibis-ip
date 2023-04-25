@@ -5,6 +5,7 @@
 	"IbisDeviceConfigurator~bus201": {
 		"deviceId" : "201",
 		"deviceName": "Bus 201",
+		"devicaType": "BUS",
 		"deviceIP": "10.6.11.68",
 		"refTCPServices" : [
 			"CustomerInformationService"

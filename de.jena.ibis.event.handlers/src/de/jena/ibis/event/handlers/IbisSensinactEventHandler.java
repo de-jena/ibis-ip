@@ -33,7 +33,7 @@ public class IbisSensinactEventHandler implements TypedEventHandler<ResourceData
 	public void notify(String topic, ResourceDataNotification event) {
 		System.out.println(
 				String.format("Sensinact event for %s/%s/%s/%s Old Value: %s New Value: %s", 
-						event.model, event.provider, event.service, event.resource, event.newValue));
+						event.model, event.provider, event.service, event.resource, event.oldValue, event.newValue));
 		
 	}
 

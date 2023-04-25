@@ -75,6 +75,7 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 			case IbisSensinactPackage.CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA: return createCustomerInfoCurrentAnnouncementData();
 			case IbisSensinactPackage.CUSTOMER_INFO_CURRENT_CONNECTION_DATA: return createCustomerInfoCurrentConnectionData();
 			case IbisSensinactPackage.CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA: return createCustomerInfoCurrentDisplayContentData();
+			case IbisSensinactPackage.IBIS_ADMIN: return createIbisAdmin();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -177,6 +178,17 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 	public CustomerInfoCurrentDisplayContentData createCustomerInfoCurrentDisplayContentData() {
 		CustomerInfoCurrentDisplayContentDataImpl customerInfoCurrentDisplayContentData = new CustomerInfoCurrentDisplayContentDataImpl();
 		return customerInfoCurrentDisplayContentData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IbisAdmin createIbisAdmin() {
+		IbisAdminImpl ibisAdmin = new IbisAdminImpl();
+		return ibisAdmin;
 	}
 
 	/**

@@ -22,6 +22,10 @@ public @interface IbisTCPServiceConfig {
 	
 	public String serviceName() default "";
 	
+	public String refDeviceId() default "";
+	
+	public String refDeviceType() default "";
+	
 	public String servicePort() default "";
 	
 	public String serviceIP() default "";

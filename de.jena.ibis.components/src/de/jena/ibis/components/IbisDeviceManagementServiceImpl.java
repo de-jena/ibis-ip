@@ -475,5 +475,23 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
 		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
 	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisService#getRefDeviceId()
+	 */
+	@Override
+	public String getRefDeviceId() {
+		return config.refDeviceId();
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisService#getRefDeviceType()
+	 */
+	@Override
+	public String getRefDeviceType() {
+		return config.refDeviceType();
+	}
 	
 }

@@ -116,6 +116,15 @@ public interface IbisSensinactFactory extends EFactory {
 	CustomerInfoCurrentDisplayContentData createCustomerInfoCurrentDisplayContentData();
 
 	/**
+	 * Returns a new object of class '<em>Ibis Admin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ibis Admin</em>'.
+	 * @generated
+	 */
+	IbisAdmin createIbisAdmin();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

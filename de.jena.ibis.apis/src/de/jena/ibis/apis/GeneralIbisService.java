@@ -25,6 +25,10 @@ public interface GeneralIbisService {
 	
 	String getServiceId();
 	
+	String getRefDeviceId();
+	
+	String getRefDeviceType();
+	
 	void executeAllSubscriptionOperations();
 	
 	void executeAllUnsubscriptionOperations();
