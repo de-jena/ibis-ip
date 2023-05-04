@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.components.helper;
+package de.jena.ibis.raspberry.pi.helper;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;

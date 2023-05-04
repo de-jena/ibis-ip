@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.components;
+package de.jena.ibis.raspberry.pi;
 
 import java.io.IOException;
 import java.net.MulticastSocket;
@@ -23,21 +23,20 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.event.EventAdmin;
 
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.IbisGNSSLocationService;
 import de.jena.ibis.apis.IbisUDPServiceConfig;
-import de.jena.ibis.components.helper.IbisUDPHelper;
+import de.jena.ibis.raspberry.pi.helper.IbisUDPHelper;
 
 /**
  * 
  * @author ilenia
  * @since Jan 18, 2023
  */
-@Component(name = "IbisGNSSLocationService", 
-scope = ServiceScope.PROTOTYPE, service = {IbisGNSSLocationService.class, GeneralIbisService.class},
+@Component(immediate=true, name = "IbisGNSSLocationService", 
+service = {IbisGNSSLocationService.class, GeneralIbisService.class},
 configurationPid = "GNSSLocationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 
@@ -56,6 +55,7 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	public void activate(IbisUDPServiceConfig config) throws ConfigurationException{
 		IbisUDPHelper.checkUDPServiceConfig(config);
 		this.config = config;		
+		LOGGER.info("GNSSLocationService is up and running!");
 	}
 	
 	@Deactivate() 
