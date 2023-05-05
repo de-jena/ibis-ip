@@ -1308,6 +1308,206 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int IBIS_ADMIN_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.PassengerCountingDoorCountingStateImpl <em>Passenger Counting Door Counting State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.PassengerCountingDoorCountingStateImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Door Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__DOOR_ID = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Exit Side</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__EXIT_SIDE = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Door Counting Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__DOOR_COUNTING_TYPE = ProviderPackage.SERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>In</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__IN = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Out</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE__OUT = ProviderPackage.SERVICE_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of structural features of the '<em>Passenger Counting Door Counting State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of operations of the '<em>Passenger Counting Door Counting State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.DoorStateImpl <em>Door State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.DoorStateImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getDoorState()
+	 * @generated
+	 */
+	int DOOR_STATE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Door Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE__DOOR_ID = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Exit Side</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE__EXIT_SIDE = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Door State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE__DOOR_STATE = ProviderPackage.SERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Door State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Door State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.IbisDevice <em>Ibis Device</em>}'.
@@ -2444,6 +2644,180 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getIbisAdmin_DeviceType();
 
 	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState <em>Passenger Counting Door Counting State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Passenger Counting Door Counting State</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState
+	 * @generated
+	 */
+	EClass getPassengerCountingDoorCountingState();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getServiceName()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getServiceOperation()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getTimestamp()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getDoorId <em>Door Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Door Id</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getDoorId()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_DoorId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getExitSide <em>Exit Side</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Exit Side</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getExitSide()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_ExitSide();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getDoorCountingType <em>Door Counting Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Door Counting Type</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getDoorCountingType()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_DoorCountingType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getIn <em>In</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>In</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getIn()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_In();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getOut <em>Out</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Out</em>'.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState#getOut()
+	 * @see #getPassengerCountingDoorCountingState()
+	 * @generated
+	 */
+	EAttribute getPassengerCountingDoorCountingState_Out();
+
+	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.DoorState <em>Door State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Door State</em>'.
+	 * @see de.jena.model.sensinact.ibis.DoorState
+	 * @generated
+	 */
+	EClass getDoorState();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.DoorState#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.DoorState#getServiceName()
+	 * @see #getDoorState()
+	 * @generated
+	 */
+	EAttribute getDoorState_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.DoorState#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.DoorState#getServiceOperation()
+	 * @see #getDoorState()
+	 * @generated
+	 */
+	EAttribute getDoorState_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.DoorState#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.DoorState#getTimestamp()
+	 * @see #getDoorState()
+	 * @generated
+	 */
+	EAttribute getDoorState_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.DoorState#getDoorId <em>Door Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Door Id</em>'.
+	 * @see de.jena.model.sensinact.ibis.DoorState#getDoorId()
+	 * @see #getDoorState()
+	 * @generated
+	 */
+	EAttribute getDoorState_DoorId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.DoorState#getExitSide <em>Exit Side</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Exit Side</em>'.
+	 * @see de.jena.model.sensinact.ibis.DoorState#getExitSide()
+	 * @see #getDoorState()
+	 * @generated
+	 */
+	EAttribute getDoorState_ExitSide();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.DoorState#getDoorState <em>Door State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Door State</em>'.
+	 * @see de.jena.model.sensinact.ibis.DoorState#getDoorState()
+	 * @see #getDoorState()
+	 * @generated
+	 */
+	EAttribute getDoorState_DoorState();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3317,6 +3691,138 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute IBIS_ADMIN__DEVICE_TYPE = eINSTANCE.getIbisAdmin_DeviceType();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.PassengerCountingDoorCountingStateImpl <em>Passenger Counting Door Counting State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.PassengerCountingDoorCountingStateImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getPassengerCountingDoorCountingState()
+		 * @generated
+		 */
+		EClass PASSENGER_COUNTING_DOOR_COUNTING_STATE = eINSTANCE.getPassengerCountingDoorCountingState();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__SERVICE_NAME = eINSTANCE.getPassengerCountingDoorCountingState_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__SERVICE_OPERATION = eINSTANCE.getPassengerCountingDoorCountingState_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__TIMESTAMP = eINSTANCE.getPassengerCountingDoorCountingState_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Door Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__DOOR_ID = eINSTANCE.getPassengerCountingDoorCountingState_DoorId();
+
+		/**
+		 * The meta object literal for the '<em><b>Exit Side</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__EXIT_SIDE = eINSTANCE.getPassengerCountingDoorCountingState_ExitSide();
+
+		/**
+		 * The meta object literal for the '<em><b>Door Counting Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__DOOR_COUNTING_TYPE = eINSTANCE.getPassengerCountingDoorCountingState_DoorCountingType();
+
+		/**
+		 * The meta object literal for the '<em><b>In</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__IN = eINSTANCE.getPassengerCountingDoorCountingState_In();
+
+		/**
+		 * The meta object literal for the '<em><b>Out</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PASSENGER_COUNTING_DOOR_COUNTING_STATE__OUT = eINSTANCE.getPassengerCountingDoorCountingState_Out();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.DoorStateImpl <em>Door State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.DoorStateImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getDoorState()
+		 * @generated
+		 */
+		EClass DOOR_STATE = eINSTANCE.getDoorState();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR_STATE__SERVICE_NAME = eINSTANCE.getDoorState_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR_STATE__SERVICE_OPERATION = eINSTANCE.getDoorState_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR_STATE__TIMESTAMP = eINSTANCE.getDoorState_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Door Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR_STATE__DOOR_ID = eINSTANCE.getDoorState_DoorId();
+
+		/**
+		 * The meta object literal for the '<em><b>Exit Side</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR_STATE__EXIT_SIDE = eINSTANCE.getDoorState_ExitSide();
+
+		/**
+		 * The meta object literal for the '<em><b>Door State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOOR_STATE__DOOR_STATE = eINSTANCE.getDoorState_DoorState();
 
 	}
 

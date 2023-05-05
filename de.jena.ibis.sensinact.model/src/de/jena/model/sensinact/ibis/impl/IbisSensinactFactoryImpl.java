@@ -76,6 +76,8 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 			case IbisSensinactPackage.CUSTOMER_INFO_CURRENT_CONNECTION_DATA: return createCustomerInfoCurrentConnectionData();
 			case IbisSensinactPackage.CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA: return createCustomerInfoCurrentDisplayContentData();
 			case IbisSensinactPackage.IBIS_ADMIN: return createIbisAdmin();
+			case IbisSensinactPackage.PASSENGER_COUNTING_DOOR_COUNTING_STATE: return createPassengerCountingDoorCountingState();
+			case IbisSensinactPackage.DOOR_STATE: return createDoorState();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -189,6 +191,28 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 	public IbisAdmin createIbisAdmin() {
 		IbisAdminImpl ibisAdmin = new IbisAdminImpl();
 		return ibisAdmin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PassengerCountingDoorCountingState createPassengerCountingDoorCountingState() {
+		PassengerCountingDoorCountingStateImpl passengerCountingDoorCountingState = new PassengerCountingDoorCountingStateImpl();
+		return passengerCountingDoorCountingState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DoorState createDoorState() {
+		DoorStateImpl doorState = new DoorStateImpl();
+		return doorState;
 	}
 
 	/**

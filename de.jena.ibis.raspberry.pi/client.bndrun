@@ -38,6 +38,7 @@ remote = \
 	remote; \
 	jdb = 8999;\
 	host = 192.168.255.105
+	#host = 192.168.243.1
 #	host = 192.168.178.66
 #	host = localhost
 	#shell = -1;\

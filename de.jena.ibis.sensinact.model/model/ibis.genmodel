@@ -123,5 +123,23 @@
     <genClasses ecoreClass="ibis.ecore#//IbisAdmin">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//IbisAdmin/deviceType"/>
     </genClasses>
+    <genClasses ecoreClass="ibis.ecore#//PassengerCountingDoorCountingState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/serviceOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/doorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/exitSide"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/doorCountingType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/in"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//PassengerCountingDoorCountingState/out"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis.ecore#//DoorState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//DoorState/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//DoorState/serviceOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//DoorState/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//DoorState/doorId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//DoorState/exitSide"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//DoorState/doorState"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

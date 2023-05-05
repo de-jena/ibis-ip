@@ -121,6 +121,14 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 				return createIbisAdminAdapter();
 			}
 			@Override
+			public Adapter casePassengerCountingDoorCountingState(PassengerCountingDoorCountingState object) {
+				return createPassengerCountingDoorCountingStateAdapter();
+			}
+			@Override
+			public Adapter caseDoorState(DoorState object) {
+				return createDoorStateAdapter();
+			}
+			@Override
 			public Adapter caseProvider(Provider object) {
 				return createProviderAdapter();
 			}
@@ -285,6 +293,34 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIbisAdminAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState <em>Passenger Counting Door Counting State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState
+	 * @generated
+	 */
+	public Adapter createPassengerCountingDoorCountingStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.DoorState <em>Door State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.DoorState
+	 * @generated
+	 */
+	public Adapter createDoorStateAdapter() {
 		return null;
 	}
 

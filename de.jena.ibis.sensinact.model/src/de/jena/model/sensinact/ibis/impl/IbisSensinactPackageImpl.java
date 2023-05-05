@@ -20,10 +20,12 @@ import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopIndexData;
 import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopPointData;
 import de.jena.model.sensinact.ibis.CustomerInfoTripData;
 import de.jena.model.sensinact.ibis.CustomerInfoVehicleData;
+import de.jena.model.sensinact.ibis.DoorState;
 import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
+import de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -110,6 +112,20 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	private EClass ibisAdminEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass passengerCountingDoorCountingStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass doorStateEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1220,6 +1236,166 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
+	public EClass getPassengerCountingDoorCountingState() {
+		return passengerCountingDoorCountingStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_ServiceName() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_ServiceOperation() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_Timestamp() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_DoorId() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_ExitSide() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_DoorCountingType() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_In() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPassengerCountingDoorCountingState_Out() {
+		return (EAttribute)passengerCountingDoorCountingStateEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDoorState() {
+		return doorStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoorState_ServiceName() {
+		return (EAttribute)doorStateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoorState_ServiceOperation() {
+		return (EAttribute)doorStateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoorState_Timestamp() {
+		return (EAttribute)doorStateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoorState_DoorId() {
+		return (EAttribute)doorStateEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoorState_ExitSide() {
+		return (EAttribute)doorStateEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoorState_DoorState() {
+		return (EAttribute)doorStateEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IbisSensinactFactory getIbisSensinactFactory() {
 		return (IbisSensinactFactory)getEFactoryInstance();
 	}
@@ -1356,6 +1532,24 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 
 		ibisAdminEClass = createEClass(IBIS_ADMIN);
 		createEAttribute(ibisAdminEClass, IBIS_ADMIN__DEVICE_TYPE);
+
+		passengerCountingDoorCountingStateEClass = createEClass(PASSENGER_COUNTING_DOOR_COUNTING_STATE);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__SERVICE_NAME);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__SERVICE_OPERATION);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__TIMESTAMP);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__DOOR_ID);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__EXIT_SIDE);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__DOOR_COUNTING_TYPE);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__IN);
+		createEAttribute(passengerCountingDoorCountingStateEClass, PASSENGER_COUNTING_DOOR_COUNTING_STATE__OUT);
+
+		doorStateEClass = createEClass(DOOR_STATE);
+		createEAttribute(doorStateEClass, DOOR_STATE__SERVICE_NAME);
+		createEAttribute(doorStateEClass, DOOR_STATE__SERVICE_OPERATION);
+		createEAttribute(doorStateEClass, DOOR_STATE__TIMESTAMP);
+		createEAttribute(doorStateEClass, DOOR_STATE__DOOR_ID);
+		createEAttribute(doorStateEClass, DOOR_STATE__EXIT_SIDE);
+		createEAttribute(doorStateEClass, DOOR_STATE__DOOR_STATE);
 	}
 
 	/**
@@ -1399,6 +1593,8 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		customerInfoCurrentConnectionDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		customerInfoCurrentDisplayContentDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		ibisAdminEClass.getESuperTypes().add(theProviderPackage.getService());
+		passengerCountingDoorCountingStateEClass.getESuperTypes().add(theProviderPackage.getService());
+		doorStateEClass.getESuperTypes().add(theProviderPackage.getService());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ibisDeviceEClass, IbisDevice.class, "IbisDevice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1514,6 +1710,24 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 
 		initEClass(ibisAdminEClass, IbisAdmin.class, "IbisAdmin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIbisAdmin_DeviceType(), ecorePackage.getEString(), "deviceType", null, 1, 1, IbisAdmin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(passengerCountingDoorCountingStateEClass, PassengerCountingDoorCountingState.class, "PassengerCountingDoorCountingState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPassengerCountingDoorCountingState_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassengerCountingDoorCountingState_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassengerCountingDoorCountingState_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 1, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassengerCountingDoorCountingState_DoorId(), ecorePackage.getEString(), "doorId", null, 1, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassengerCountingDoorCountingState_ExitSide(), ecorePackage.getEString(), "exitSide", null, 0, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassengerCountingDoorCountingState_DoorCountingType(), ecorePackage.getEString(), "doorCountingType", null, 0, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassengerCountingDoorCountingState_In(), ecorePackage.getEInt(), "in", null, 0, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPassengerCountingDoorCountingState_Out(), ecorePackage.getEInt(), "out", null, 0, 1, PassengerCountingDoorCountingState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(doorStateEClass, DoorState.class, "DoorState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDoorState_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoorState_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoorState_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 1, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoorState_DoorId(), ecorePackage.getEString(), "doorId", null, 1, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoorState_ExitSide(), ecorePackage.getEString(), "exitSide", null, 0, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDoorState_DoorState(), ecorePackage.getEString(), "doorState", null, 0, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

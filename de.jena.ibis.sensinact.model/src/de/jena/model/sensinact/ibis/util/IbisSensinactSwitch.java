@@ -149,6 +149,20 @@ public class IbisSensinactSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case IbisSensinactPackage.PASSENGER_COUNTING_DOOR_COUNTING_STATE: {
+				PassengerCountingDoorCountingState passengerCountingDoorCountingState = (PassengerCountingDoorCountingState)theEObject;
+				T result = casePassengerCountingDoorCountingState(passengerCountingDoorCountingState);
+				if (result == null) result = caseService(passengerCountingDoorCountingState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IbisSensinactPackage.DOOR_STATE: {
+				DoorState doorState = (DoorState)theEObject;
+				T result = caseDoorState(doorState);
+				if (result == null) result = caseService(doorState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -300,6 +314,36 @@ public class IbisSensinactSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIbisAdmin(IbisAdmin object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Passenger Counting Door Counting State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Passenger Counting Door Counting State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePassengerCountingDoorCountingState(PassengerCountingDoorCountingState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Door State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Door State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDoorState(DoorState object) {
 		return null;
 	}
 

@@ -125,6 +125,24 @@ public interface IbisSensinactFactory extends EFactory {
 	IbisAdmin createIbisAdmin();
 
 	/**
+	 * Returns a new object of class '<em>Passenger Counting Door Counting State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Passenger Counting Door Counting State</em>'.
+	 * @generated
+	 */
+	PassengerCountingDoorCountingState createPassengerCountingDoorCountingState();
+
+	/**
+	 * Returns a new object of class '<em>Door State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Door State</em>'.
+	 * @generated
+	 */
+	DoorState createDoorState();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

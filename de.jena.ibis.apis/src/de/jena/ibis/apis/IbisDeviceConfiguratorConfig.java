@@ -30,7 +30,7 @@ public @interface IbisDeviceConfiguratorConfig {
 	
 	public int clientSubscriptionPort() default 52000;
 	
-	public String customerInfoServicePort() default "51000";
+	public String customerInfoServicePort() default "2092";
 	
 	public String ticketValidationServicePort() default "51001";
 

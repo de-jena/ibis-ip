@@ -6,7 +6,7 @@
 		"deviceId" : "201",
 		"deviceName": "Bus 201",
 		"deviceType": "BUS",
-		"deviceIP": "10.6.11.68",
+		"deviceIP": "192.168.243.1",
 		"refTCPServices" : [
 			"CustomerInformationService"
 		]

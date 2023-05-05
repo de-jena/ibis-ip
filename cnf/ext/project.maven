@@ -151,3 +151,5 @@ com.fasterxml.jackson.dataformat:jackson-dataformat-properties:${def;jackson.ver
 com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${def;jackson.version;2.13.3}
 com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${def;jackson.version;2.13.3}
 
+org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5
+
