@@ -143,6 +143,15 @@ public interface IbisSensinactFactory extends EFactory {
 	DoorState createDoorState();
 
 	/**
+	 * Returns a new object of class '<em>Stop Requested</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Stop Requested</em>'.
+	 * @generated
+	 */
+	StopRequested createStopRequested();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

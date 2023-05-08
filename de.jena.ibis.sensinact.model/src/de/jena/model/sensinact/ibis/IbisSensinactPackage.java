@@ -112,13 +112,22 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__LINKED_PROVIDERS = ProviderPackage.PROVIDER__LINKED_PROVIDERS;
 
 	/**
+	 * The feature id for the '<em><b>Ibis Admin</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__IBIS_ADMIN = ProviderPackage.PROVIDER_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Customer Info All Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 0;
+	int IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Customer Info Current Stop Index Data</b></em>' containment reference.
@@ -127,7 +136,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 1;
+	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Customer Info Current Stop Point Data</b></em>' containment reference.
@@ -136,7 +145,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_POINT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 2;
+	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_POINT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Customer Info Trip Data</b></em>' containment reference.
@@ -145,7 +154,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_TRIP_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 3;
+	int IBIS_DEVICE__CUSTOMER_INFO_TRIP_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Customer Info Vehicle Data</b></em>' containment reference.
@@ -154,7 +163,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_VEHICLE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 4;
+	int IBIS_DEVICE__CUSTOMER_INFO_VEHICLE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Customer Info Current Announcement Data</b></em>' containment reference.
@@ -163,7 +172,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 5;
+	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Customer Info Current Connection Data</b></em>' containment reference.
@@ -172,7 +181,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_CONNECTION_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 6;
+	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_CONNECTION_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Customer Info Current Display Content Data</b></em>' containment reference.
@@ -181,16 +190,34 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 7;
+	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Ibis Admin</b></em>' containment reference.
+	 * The feature id for the '<em><b>Door Counting State Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE__IBIS_ADMIN = ProviderPackage.PROVIDER_FEATURE_COUNT + 8;
+	int IBIS_DEVICE__DOOR_COUNTING_STATE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Door State Data</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__DOOR_STATE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Stop Requested</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__STOP_REQUESTED = ProviderPackage.PROVIDER_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Ibis Device</em>' class.
@@ -199,7 +226,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 9;
+	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of operations of the '<em>Ibis Device</em>' class.
@@ -1508,6 +1535,79 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int DOOR_STATE_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.StopRequestedImpl <em>Stop Requested</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.StopRequestedImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getStopRequested()
+	 * @generated
+	 */
+	int STOP_REQUESTED = 12;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Stop Requested</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED__STOP_REQUESTED = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Stop Requested</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Stop Requested</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.IbisDevice <em>Ibis Device</em>}'.
@@ -1518,6 +1618,17 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EClass getIbisDevice();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getIbisAdmin <em>Ibis Admin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Ibis Admin</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getIbisAdmin()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_IbisAdmin();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getCustomerInfoAllData <em>Customer Info All Data</em>}'.
@@ -1608,15 +1719,37 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getIbisDevice_CustomerInfoCurrentDisplayContentData();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getIbisAdmin <em>Ibis Admin</em>}'.
+	 * Returns the meta object for the reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Ibis Admin</em>'.
-	 * @see de.jena.model.sensinact.ibis.IbisDevice#getIbisAdmin()
+	 * @return the meta object for the reference '<em>Door Counting State Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData()
 	 * @see #getIbisDevice()
 	 * @generated
 	 */
-	EReference getIbisDevice_IbisAdmin();
+	EReference getIbisDevice_DoorCountingStateData();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Door State Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_DoorStateData();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Stop Requested</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getStopRequested()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_StopRequested();
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.CustomerInfoAllData <em>Customer Info All Data</em>}'.
@@ -2818,6 +2951,60 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getDoorState_DoorState();
 
 	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.StopRequested <em>Stop Requested</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Stop Requested</em>'.
+	 * @see de.jena.model.sensinact.ibis.StopRequested
+	 * @generated
+	 */
+	EClass getStopRequested();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.StopRequested#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.StopRequested#getServiceName()
+	 * @see #getStopRequested()
+	 * @generated
+	 */
+	EAttribute getStopRequested_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.StopRequested#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.StopRequested#getServiceOperation()
+	 * @see #getStopRequested()
+	 * @generated
+	 */
+	EAttribute getStopRequested_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.StopRequested#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.StopRequested#getTimestamp()
+	 * @see #getStopRequested()
+	 * @generated
+	 */
+	EAttribute getStopRequested_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.StopRequested#isStopRequested <em>Stop Requested</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Stop Requested</em>'.
+	 * @see de.jena.model.sensinact.ibis.StopRequested#isStopRequested()
+	 * @see #getStopRequested()
+	 * @generated
+	 */
+	EAttribute getStopRequested_StopRequested();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2849,6 +3036,14 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EClass IBIS_DEVICE = eINSTANCE.getIbisDevice();
+
+		/**
+		 * The meta object literal for the '<em><b>Ibis Admin</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__IBIS_ADMIN = eINSTANCE.getIbisDevice_IbisAdmin();
 
 		/**
 		 * The meta object literal for the '<em><b>Customer Info All Data</b></em>' containment reference feature.
@@ -2915,12 +3110,28 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA = eINSTANCE.getIbisDevice_CustomerInfoCurrentDisplayContentData();
 
 		/**
-		 * The meta object literal for the '<em><b>Ibis Admin</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Door Counting State Data</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IBIS_DEVICE__IBIS_ADMIN = eINSTANCE.getIbisDevice_IbisAdmin();
+		EReference IBIS_DEVICE__DOOR_COUNTING_STATE_DATA = eINSTANCE.getIbisDevice_DoorCountingStateData();
+
+		/**
+		 * The meta object literal for the '<em><b>Door State Data</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__DOOR_STATE_DATA = eINSTANCE.getIbisDevice_DoorStateData();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Requested</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__STOP_REQUESTED = eINSTANCE.getIbisDevice_StopRequested();
 
 		/**
 		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.CustomerInfoAllDataImpl <em>Customer Info All Data</em>}' class.
@@ -3823,6 +4034,48 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute DOOR_STATE__DOOR_STATE = eINSTANCE.getDoorState_DoorState();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.StopRequestedImpl <em>Stop Requested</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.StopRequestedImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getStopRequested()
+		 * @generated
+		 */
+		EClass STOP_REQUESTED = eINSTANCE.getStopRequested();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STOP_REQUESTED__SERVICE_NAME = eINSTANCE.getStopRequested_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STOP_REQUESTED__SERVICE_OPERATION = eINSTANCE.getStopRequested_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STOP_REQUESTED__TIMESTAMP = eINSTANCE.getStopRequested_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Requested</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STOP_REQUESTED__STOP_REQUESTED = eINSTANCE.getStopRequested_StopRequested();
 
 	}
 

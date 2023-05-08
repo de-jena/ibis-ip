@@ -26,6 +26,7 @@ import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
 import de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState;
+import de.jena.model.sensinact.ibis.StopRequested;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -128,6 +129,13 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	private EClass doorStateEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stopRequestedEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -206,7 +214,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoAllData() {
+	public EReference getIbisDevice_IbisAdmin() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -216,7 +224,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoCurrentStopIndexData() {
+	public EReference getIbisDevice_CustomerInfoAllData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -226,7 +234,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoCurrentStopPointData() {
+	public EReference getIbisDevice_CustomerInfoCurrentStopIndexData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -236,7 +244,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoTripData() {
+	public EReference getIbisDevice_CustomerInfoCurrentStopPointData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -246,7 +254,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoVehicleData() {
+	public EReference getIbisDevice_CustomerInfoTripData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -256,7 +264,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoCurrentAnnouncementData() {
+	public EReference getIbisDevice_CustomerInfoVehicleData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -266,7 +274,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoCurrentConnectionData() {
+	public EReference getIbisDevice_CustomerInfoCurrentAnnouncementData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -276,7 +284,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CustomerInfoCurrentDisplayContentData() {
+	public EReference getIbisDevice_CustomerInfoCurrentConnectionData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -286,8 +294,38 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_IbisAdmin() {
+	public EReference getIbisDevice_CustomerInfoCurrentDisplayContentData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_DoorCountingStateData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_DoorStateData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_StopRequested() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1396,6 +1434,56 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
+	public EClass getStopRequested() {
+		return stopRequestedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStopRequested_ServiceName() {
+		return (EAttribute)stopRequestedEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStopRequested_ServiceOperation() {
+		return (EAttribute)stopRequestedEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStopRequested_Timestamp() {
+		return (EAttribute)stopRequestedEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStopRequested_StopRequested() {
+		return (EAttribute)stopRequestedEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IbisSensinactFactory getIbisSensinactFactory() {
 		return (IbisSensinactFactory)getEFactoryInstance();
 	}
@@ -1420,6 +1508,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 
 		// Create classes and their features
 		ibisDeviceEClass = createEClass(IBIS_DEVICE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__IBIS_ADMIN);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_POINT_DATA);
@@ -1428,7 +1517,9 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_CONNECTION_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA);
-		createEReference(ibisDeviceEClass, IBIS_DEVICE__IBIS_ADMIN);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR_COUNTING_STATE_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR_STATE_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__STOP_REQUESTED);
 
 		customerInfoAllDataEClass = createEClass(CUSTOMER_INFO_ALL_DATA);
 		createEAttribute(customerInfoAllDataEClass, CUSTOMER_INFO_ALL_DATA__SERVICE_NAME);
@@ -1550,6 +1641,12 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEAttribute(doorStateEClass, DOOR_STATE__DOOR_ID);
 		createEAttribute(doorStateEClass, DOOR_STATE__EXIT_SIDE);
 		createEAttribute(doorStateEClass, DOOR_STATE__DOOR_STATE);
+
+		stopRequestedEClass = createEClass(STOP_REQUESTED);
+		createEAttribute(stopRequestedEClass, STOP_REQUESTED__SERVICE_NAME);
+		createEAttribute(stopRequestedEClass, STOP_REQUESTED__SERVICE_OPERATION);
+		createEAttribute(stopRequestedEClass, STOP_REQUESTED__TIMESTAMP);
+		createEAttribute(stopRequestedEClass, STOP_REQUESTED__STOP_REQUESTED);
 	}
 
 	/**
@@ -1595,9 +1692,11 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		ibisAdminEClass.getESuperTypes().add(theProviderPackage.getService());
 		passengerCountingDoorCountingStateEClass.getESuperTypes().add(theProviderPackage.getService());
 		doorStateEClass.getESuperTypes().add(theProviderPackage.getService());
+		stopRequestedEClass.getESuperTypes().add(theProviderPackage.getService());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ibisDeviceEClass, IbisDevice.class, "IbisDevice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIbisDevice_IbisAdmin(), this.getIbisAdmin(), null, "ibisAdmin", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoAllData(), this.getCustomerInfoAllData(), null, "customerInfoAllData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentStopIndexData(), this.getCustomerInfoCurrentStopIndexData(), null, "customerInfoCurrentStopIndexData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentStopPointData(), this.getCustomerInfoCurrentStopPointData(), null, "customerInfoCurrentStopPointData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1606,7 +1705,9 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEReference(getIbisDevice_CustomerInfoCurrentAnnouncementData(), this.getCustomerInfoCurrentAnnouncementData(), null, "customerInfoCurrentAnnouncementData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentConnectionData(), this.getCustomerInfoCurrentConnectionData(), null, "customerInfoCurrentConnectionData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentDisplayContentData(), this.getCustomerInfoCurrentDisplayContentData(), null, "customerInfoCurrentDisplayContentData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIbisDevice_IbisAdmin(), this.getIbisAdmin(), null, "ibisAdmin", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_DoorCountingStateData(), this.getPassengerCountingDoorCountingState(), null, "doorCountingStateData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_DoorStateData(), this.getDoorState(), null, "doorStateData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_StopRequested(), this.getStopRequested(), null, "stopRequested", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerInfoAllDataEClass, CustomerInfoAllData.class, "CustomerInfoAllData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomerInfoAllData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, CustomerInfoAllData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1728,6 +1829,12 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEAttribute(getDoorState_DoorId(), ecorePackage.getEString(), "doorId", null, 1, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoorState_ExitSide(), ecorePackage.getEString(), "exitSide", null, 0, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDoorState_DoorState(), ecorePackage.getEString(), "doorState", null, 0, 1, DoorState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stopRequestedEClass, StopRequested.class, "StopRequested", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStopRequested_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, StopRequested.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStopRequested_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, StopRequested.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStopRequested_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 1, 1, StopRequested.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStopRequested_StopRequested(), ecorePackage.getEBoolean(), "stopRequested", null, 0, 1, StopRequested.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

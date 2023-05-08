@@ -68,7 +68,33 @@
 	org.osgi.service.typedevent;version='[1.0.0,1.0.1)',\
 	org.osgi.util.pushstream;version='[1.1.0,1.1.1)',\
 	slf4j.api;version='[1.7.25,1.7.26)',\
-	slf4j.simple;version='[1.7.25,1.7.26)'
+	slf4j.simple;version='[1.7.25,1.7.26)',\
+	de.jena.ibis.sensinact.model;version=snapshot,\
+	de.dim.eclipse.core.runtime;version='[3.14.0,3.14.1)',\
+	de.dim.eclipse.osgi;version='[3.12.50,3.12.51)',\
+	de.dim.equinox.common;version='[3.9.0,3.9.1)',\
+	de.jena.ibis.event.handlers;version=snapshot,\
+	lpg.runtime.java;version='[2.0.17,2.0.18)',\
+	org.apache.felix.eventadmin;version='[1.6.2,1.6.3)',\
+	org.eclipse.core.runtime;version='[3.14.0,3.14.1)',\
+	org.eclipse.emf.ecore.change;version='[2.14.0,2.14.1)',\
+	org.eclipse.m2m.qvt.oml;version='[3.10.0,3.10.1)',\
+	org.eclipse.m2m.qvt.oml.common;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.cst.parser;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.ecore.imperativeocl;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.emf.util;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.ocl;version='[3.9.0,3.9.1)',\
+	org.eclipse.ocl;version='[3.10.400,3.10.401)',\
+	org.eclipse.ocl.common;version='[1.8.400,1.8.401)',\
+	org.eclipse.ocl.ecore;version='[3.14.0,3.14.1)',\
+	org.gecko.core.pool;version='[1.1.0,1.1.1)',\
+	org.gecko.qvt.osgi.api;version='[4.1.1,4.1.2)',\
+	org.gecko.qvt.osgi.component;version='[1.0.6,1.0.7)',\
+	de.jena.ibis.simulator.config;version=snapshot,\
+	de.jena.ibis.common.model;version=snapshot,\
+	de.jena.ibis.enumerations.model;version=snapshot,\
+	de.jena.ibis.sensinact.mmt;version=snapshot,\
+	de.jena.ibis.sensinact.mmt.util;version=snapshot
 
 -runrequires: \
 	bnd.identity;id='de.jena.ibis.sensinact.mqtt',\
@@ -86,7 +112,11 @@
 	bnd.identity;id='org.eclipse.sensinact.gateway.core.models.provider',\
 	bnd.identity;id='org.eclipse.sensinact.gateway.core.api',\
 	bnd.identity;id='org.eclipse.sensinact.gateway.core.geo-json',\
-	bnd.identity;id='slf4j.simple'
+	bnd.identity;id='slf4j.simple',\
+	bnd.identity;id='de.jena.ibis.event.handlers',\
+	bnd.identity;id='de.jena.ibis.simulator.config',\
+	bnd.identity;id='de.jena.ibis.sensinact.mmt',\
+	bnd.identity;id='de.jena.ibis.sensinact.mmt.util'
 
 -runrepos: \
 	Workspace,\

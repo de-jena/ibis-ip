@@ -20,9 +20,12 @@ import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopIndexData;
 import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopPointData;
 import de.jena.model.sensinact.ibis.CustomerInfoTripData;
 import de.jena.model.sensinact.ibis.CustomerInfoVehicleData;
+import de.jena.model.sensinact.ibis.DoorState;
 import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
+import de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState;
+import de.jena.model.sensinact.ibis.StopRequested;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -42,6 +45,7 @@ import org.eclipse.sensinact.model.core.provider.impl.ProviderImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getIbisAdmin <em>Ibis Admin</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoAllData <em>Customer Info All Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentStopIndexData <em>Customer Info Current Stop Index Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentStopPointData <em>Customer Info Current Stop Point Data</em>}</li>
@@ -50,12 +54,24 @@ import org.eclipse.sensinact.model.core.provider.impl.ProviderImpl;
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentAnnouncementData <em>Customer Info Current Announcement Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentConnectionData <em>Customer Info Current Connection Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCustomerInfoCurrentDisplayContentData <em>Customer Info Current Display Content Data</em>}</li>
- *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getIbisAdmin <em>Ibis Admin</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getDoorCountingStateData <em>Door Counting State Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getDoorStateData <em>Door State Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getStopRequested <em>Stop Requested</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
+	/**
+	 * The cached value of the '{@link #getIbisAdmin() <em>Ibis Admin</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIbisAdmin()
+	 * @generated
+	 * @ordered
+	 */
+	protected IbisAdmin ibisAdmin;
+
 	/**
 	 * The cached value of the '{@link #getCustomerInfoAllData() <em>Customer Info All Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -137,14 +153,34 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	protected CustomerInfoCurrentDisplayContentData customerInfoCurrentDisplayContentData;
 
 	/**
-	 * The cached value of the '{@link #getIbisAdmin() <em>Ibis Admin</em>}' containment reference.
+	 * The cached value of the '{@link #getDoorCountingStateData() <em>Door Counting State Data</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIbisAdmin()
+	 * @see #getDoorCountingStateData()
 	 * @generated
 	 * @ordered
 	 */
-	protected IbisAdmin ibisAdmin;
+	protected PassengerCountingDoorCountingState doorCountingStateData;
+
+	/**
+	 * The cached value of the '{@link #getDoorStateData() <em>Door State Data</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoorStateData()
+	 * @generated
+	 * @ordered
+	 */
+	protected DoorState doorStateData;
+
+	/**
+	 * The cached value of the '{@link #getStopRequested() <em>Stop Requested</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStopRequested()
+	 * @generated
+	 * @ordered
+	 */
+	protected StopRequested stopRequested;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +199,51 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	@Override
 	protected EClass eStaticClass() {
 		return IbisSensinactPackage.Literals.IBIS_DEVICE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IbisAdmin getIbisAdmin() {
+		return ibisAdmin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetIbisAdmin(IbisAdmin newIbisAdmin, NotificationChain msgs) {
+		IbisAdmin oldIbisAdmin = ibisAdmin;
+		ibisAdmin = newIbisAdmin;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, oldIbisAdmin, newIbisAdmin);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIbisAdmin(IbisAdmin newIbisAdmin) {
+		if (newIbisAdmin != ibisAdmin) {
+			NotificationChain msgs = null;
+			if (ibisAdmin != null)
+				msgs = ((InternalEObject)ibisAdmin).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, null, msgs);
+			if (newIbisAdmin != null)
+				msgs = ((InternalEObject)newIbisAdmin).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, null, msgs);
+			msgs = basicSetIbisAdmin(newIbisAdmin, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, newIbisAdmin, newIbisAdmin));
 	}
 
 	/**
@@ -531,8 +612,16 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @generated
 	 */
 	@Override
-	public IbisAdmin getIbisAdmin() {
-		return ibisAdmin;
+	public PassengerCountingDoorCountingState getDoorCountingStateData() {
+		if (doorCountingStateData != null && doorCountingStateData.eIsProxy()) {
+			InternalEObject oldDoorCountingStateData = (InternalEObject)doorCountingStateData;
+			doorCountingStateData = (PassengerCountingDoorCountingState)eResolveProxy(oldDoorCountingStateData);
+			if (doorCountingStateData != oldDoorCountingStateData) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, oldDoorCountingStateData, doorCountingStateData));
+			}
+		}
+		return doorCountingStateData;
 	}
 
 	/**
@@ -540,14 +629,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIbisAdmin(IbisAdmin newIbisAdmin, NotificationChain msgs) {
-		IbisAdmin oldIbisAdmin = ibisAdmin;
-		ibisAdmin = newIbisAdmin;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, oldIbisAdmin, newIbisAdmin);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public PassengerCountingDoorCountingState basicGetDoorCountingStateData() {
+		return doorCountingStateData;
 	}
 
 	/**
@@ -556,18 +639,91 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @generated
 	 */
 	@Override
-	public void setIbisAdmin(IbisAdmin newIbisAdmin) {
-		if (newIbisAdmin != ibisAdmin) {
-			NotificationChain msgs = null;
-			if (ibisAdmin != null)
-				msgs = ((InternalEObject)ibisAdmin).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, null, msgs);
-			if (newIbisAdmin != null)
-				msgs = ((InternalEObject)newIbisAdmin).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, null, msgs);
-			msgs = basicSetIbisAdmin(newIbisAdmin, msgs);
-			if (msgs != null) msgs.dispatch();
+	public void setDoorCountingStateData(PassengerCountingDoorCountingState newDoorCountingStateData) {
+		PassengerCountingDoorCountingState oldDoorCountingStateData = doorCountingStateData;
+		doorCountingStateData = newDoorCountingStateData;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, oldDoorCountingStateData, doorCountingStateData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DoorState getDoorStateData() {
+		if (doorStateData != null && doorStateData.eIsProxy()) {
+			InternalEObject oldDoorStateData = (InternalEObject)doorStateData;
+			doorStateData = (DoorState)eResolveProxy(oldDoorStateData);
+			if (doorStateData != oldDoorStateData) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, oldDoorStateData, doorStateData));
+			}
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN, newIbisAdmin, newIbisAdmin));
+		return doorStateData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DoorState basicGetDoorStateData() {
+		return doorStateData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDoorStateData(DoorState newDoorStateData) {
+		DoorState oldDoorStateData = doorStateData;
+		doorStateData = newDoorStateData;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, oldDoorStateData, doorStateData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StopRequested getStopRequested() {
+		if (stopRequested != null && stopRequested.eIsProxy()) {
+			InternalEObject oldStopRequested = (InternalEObject)stopRequested;
+			stopRequested = (StopRequested)eResolveProxy(oldStopRequested);
+			if (stopRequested != oldStopRequested) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, oldStopRequested, stopRequested));
+			}
+		}
+		return stopRequested;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StopRequested basicGetStopRequested() {
+		return stopRequested;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStopRequested(StopRequested newStopRequested) {
+		StopRequested oldStopRequested = stopRequested;
+		stopRequested = newStopRequested;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, oldStopRequested, stopRequested));
 	}
 
 	/**
@@ -578,6 +734,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				return basicSetIbisAdmin(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA:
 				return basicSetCustomerInfoAllData(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA:
@@ -594,8 +752,6 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return basicSetCustomerInfoCurrentConnectionData(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return basicSetCustomerInfoCurrentDisplayContentData(null, msgs);
-			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
-				return basicSetIbisAdmin(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -608,6 +764,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				return getIbisAdmin();
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA:
 				return getCustomerInfoAllData();
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA:
@@ -624,8 +782,15 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return getCustomerInfoCurrentConnectionData();
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return getCustomerInfoCurrentDisplayContentData();
-			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
-				return getIbisAdmin();
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA:
+				if (resolve) return getDoorCountingStateData();
+				return basicGetDoorCountingStateData();
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA:
+				if (resolve) return getDoorStateData();
+				return basicGetDoorStateData();
+			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
+				if (resolve) return getStopRequested();
+				return basicGetStopRequested();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -638,6 +803,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				setIbisAdmin((IbisAdmin)newValue);
+				return;
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA:
 				setCustomerInfoAllData((CustomerInfoAllData)newValue);
 				return;
@@ -662,8 +830,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				setCustomerInfoCurrentDisplayContentData((CustomerInfoCurrentDisplayContentData)newValue);
 				return;
-			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
-				setIbisAdmin((IbisAdmin)newValue);
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA:
+				setDoorCountingStateData((PassengerCountingDoorCountingState)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA:
+				setDoorStateData((DoorState)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
+				setStopRequested((StopRequested)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -677,6 +851,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				setIbisAdmin((IbisAdmin)null);
+				return;
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA:
 				setCustomerInfoAllData((CustomerInfoAllData)null);
 				return;
@@ -701,8 +878,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				setCustomerInfoCurrentDisplayContentData((CustomerInfoCurrentDisplayContentData)null);
 				return;
-			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
-				setIbisAdmin((IbisAdmin)null);
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA:
+				setDoorCountingStateData((PassengerCountingDoorCountingState)null);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA:
+				setDoorStateData((DoorState)null);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
+				setStopRequested((StopRequested)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -716,6 +899,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
+				return ibisAdmin != null;
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_ALL_DATA:
 				return customerInfoAllData != null;
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA:
@@ -732,8 +917,12 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return customerInfoCurrentConnectionData != null;
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return customerInfoCurrentDisplayContentData != null;
-			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
-				return ibisAdmin != null;
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA:
+				return doorCountingStateData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA:
+				return doorStateData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
+				return stopRequested != null;
 		}
 		return super.eIsSet(featureID);
 	}

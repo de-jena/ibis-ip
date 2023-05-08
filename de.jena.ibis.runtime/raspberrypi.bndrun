@@ -130,7 +130,8 @@ remote = \
 	org.objectweb.asm.tree.analysis;version='[9.3.0,9.3.1)',\
 	org.objectweb.asm.util;version='[9.3.0,9.3.1)',\
 	org.osgi.service.jakartars;version='[2.0.0,2.0.1)',\
-	org.osgi.service.servlet;version='[2.0.0,2.0.1)'
+	org.osgi.service.servlet;version='[2.0.0,2.0.1)',\
+	de.jena.ibis.raspberry.config;version=snapshot
 
 -runrequires: \
 	bnd.identity;id='de.jena.ibis.runtime',\
@@ -145,7 +146,8 @@ remote = \
 	bnd.identity;id='de.jena.ibis.customer.info.service.model',\
 	bnd.identity;id='org.eclipse.sensinact.gateway.core.impl',\
 	bnd.identity;id='de.jena.ibis.components',\
-	bnd.identity;id='de.jena.ibis.rest.application'
+	bnd.identity;id='de.jena.ibis.rest.application',\
+	bnd.identity;id='de.jena.ibis.raspberry.config'
 
 -runrepos: \
 	Workspace,\

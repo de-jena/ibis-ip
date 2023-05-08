@@ -1,0 +1,22 @@
+{
+	":configurator:resource-version": 1,
+	":configurator:version": "1.0.0",
+	":configurator:symbolic-name": "MMTMainConfig",
+	
+	"ConfigurableModelTransformatorPool~ibis": {
+		"pool.componentName": "modelTransformatorService",
+		"pool.size": 100,
+		"pool.timeout": 100,
+		"poolRef.target": "(pool.group=sensinactPool)"
+	},
+	
+	"PrototypeConfigurableTransformationService~ibis": {
+		"name": "ibis",
+		"qvt.templatePath": "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto",
+		"qvt.transformatorName": "ibisCustomerInfoToSensinact",
+		"qvt.model.target": "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))",
+		"pool.name": "ibisPool",
+		"pool.group": "sensinactPool",
+		"pool.asService": false
+	}
+}

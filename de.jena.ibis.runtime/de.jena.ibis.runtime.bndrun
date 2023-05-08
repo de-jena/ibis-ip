@@ -123,7 +123,8 @@
 	bnd.identity;id='org.gecko.emf.osgi.component',\
 	bnd.identity;id='org.gecko.qvt.osgi.component',\
 	bnd.identity;id='de.jena.ibis.sensinact.mmt',\
-	bnd.identity;id='de.jena.ibis.sensinact.mmt.util'
+	bnd.identity;id='de.jena.ibis.sensinact.mmt.util',\
+	bnd.identity;id='de.jena.ibis.local.config'
 
 -runrepos: \
 	Workspace,\

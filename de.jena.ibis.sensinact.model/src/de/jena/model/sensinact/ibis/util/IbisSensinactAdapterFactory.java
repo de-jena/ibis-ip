@@ -129,6 +129,10 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 				return createDoorStateAdapter();
 			}
 			@Override
+			public Adapter caseStopRequested(StopRequested object) {
+				return createStopRequestedAdapter();
+			}
+			@Override
 			public Adapter caseProvider(Provider object) {
 				return createProviderAdapter();
 			}
@@ -321,6 +325,20 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDoorStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.StopRequested <em>Stop Requested</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.StopRequested
+	 * @generated
+	 */
+	public Adapter createStopRequestedAdapter() {
 		return null;
 	}
 

@@ -1,8 +1,5 @@
 //Blackbox to convert dates
 import de.jena.ibis.sensinact.mmt.util.IbisDateTimeToInstantBlackbox;
-//import de.jena.ibis.sensinact.mmt.util.GregorianCalendarToDateBlackBox2;
-
-//import de.jena.ibis.sensinact.mmt.util.MsToDateBlackBox;
 
 modeltype XML "strict" uses type('http://www.eclipse.org/emf/2003/XMLType');
 modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');

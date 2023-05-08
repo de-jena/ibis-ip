@@ -20,8 +20,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sensinact.prototype.PrototypePush;
+import org.gecko.core.pool.Pool;
 import org.gecko.osgi.messaging.Message;
 import org.gecko.osgi.messaging.MessagingService;
+import org.gecko.qvt.osgi.api.ConfigurableModelTransformatorPool;
+import org.gecko.qvt.osgi.api.ModelTransformator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -31,12 +34,18 @@ import org.osgi.service.component.annotations.ReferenceScope;
 import org.osgi.util.pushstream.PushStream;
 
 import de.dim.trafficos.publictransport.model.publictransport.PublicTransportDataValue;
+import de.jena.model.sensinact.ibis.IbisAdmin;
+import de.jena.model.sensinact.ibis.IbisDevice;
+import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 
-@Component(immediate=true)
+@Component(immediate=true, name="IbisSensinactMqtt")
 public class IbisSensinactMqtt {
 	
 	@Reference
-	private PrototypePush sensiNact;
+	private PrototypePush sensinact;
+	
+	@Reference(target = ("(pool.componentName=simulatorModelTransformatorService)"))
+	private ConfigurableModelTransformatorPool poolComponent;
 
 	private ResourceSet resourceSet;
 	private PushStream<Message> subscription;
@@ -62,7 +71,7 @@ public class IbisSensinactMqtt {
 		try {
 
 			byte[] content = message.payload().array();
-			System.out.println("Recieved Public Transport Message");
+			System.out.println("Recieved Public Transport Message: " + message.topic());
 			ByteArrayInputStream bais = new ByteArrayInputStream(content);
 			resource.load(bais, saveOptions);
 			PublicTransportDataValue value = (PublicTransportDataValue) resource.getContents().get(0);
@@ -77,7 +86,27 @@ public class IbisSensinactMqtt {
 	}
 	
 	private void handlePublicTransportDataValue(PublicTransportDataValue value) {
-//		sensinact update here after transformation
+
+		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
+		Pool<ModelTransformator> pool = poolMap.get("simulatorModelTransformatorService-ibisSimulatorPool");
+		if(pool != null) {
+			ModelTransformator transformator = pool.poll();
+			try {
+				IbisDevice push = (IbisDevice) transformator.startTransformation(value);				
+				
+				IbisAdmin ibisAdmin = IbisSensinactFactory.eINSTANCE.createIbisAdmin();
+				ibisAdmin.setDeviceType("SIMULATED-TRAM");
+				push.setIbisAdmin(ibisAdmin);
+				
+				sensinact.pushUpdate(push);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			finally {
+				pool.release(transformator);
+			}
+		}
 	}
 	
 	@Deactivate

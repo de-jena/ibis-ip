@@ -78,6 +78,7 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 			case IbisSensinactPackage.IBIS_ADMIN: return createIbisAdmin();
 			case IbisSensinactPackage.PASSENGER_COUNTING_DOOR_COUNTING_STATE: return createPassengerCountingDoorCountingState();
 			case IbisSensinactPackage.DOOR_STATE: return createDoorState();
+			case IbisSensinactPackage.STOP_REQUESTED: return createStopRequested();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -213,6 +214,17 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 	public DoorState createDoorState() {
 		DoorStateImpl doorState = new DoorStateImpl();
 		return doorState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StopRequested createStopRequested() {
+		StopRequestedImpl stopRequested = new StopRequestedImpl();
+		return stopRequested;
 	}
 
 	/**

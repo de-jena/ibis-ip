@@ -18,5 +18,4 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	
 -privatepackage: \
 	de.jena.ibis.components,\
-	de.jena.ibis.components.helper,\
-	de.jena.ibis.event.handlers
+	de.jena.ibis.components.helper
