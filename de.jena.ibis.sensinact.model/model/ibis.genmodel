@@ -20,7 +20,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/customerInfoCurrentConnectionData"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/customerInfoCurrentDisplayContentData"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/doorCountingStateData"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/doorStateData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/doorStateData"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/stopRequested"/>
     </genClasses>
     <genClasses ecoreClass="ibis.ecore#//CustomerInfoAllData">

@@ -153,7 +153,7 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	protected CustomerInfoCurrentDisplayContentData customerInfoCurrentDisplayContentData;
 
 	/**
-	 * The cached value of the '{@link #getDoorCountingStateData() <em>Door Counting State Data</em>}' reference.
+	 * The cached value of the '{@link #getDoorCountingStateData() <em>Door Counting State Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDoorCountingStateData()
@@ -163,7 +163,7 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	protected PassengerCountingDoorCountingState doorCountingStateData;
 
 	/**
-	 * The cached value of the '{@link #getDoorStateData() <em>Door State Data</em>}' reference.
+	 * The cached value of the '{@link #getDoorStateData() <em>Door State Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDoorStateData()
@@ -173,7 +173,7 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	protected DoorState doorStateData;
 
 	/**
-	 * The cached value of the '{@link #getStopRequested() <em>Stop Requested</em>}' reference.
+	 * The cached value of the '{@link #getStopRequested() <em>Stop Requested</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStopRequested()
@@ -613,14 +613,6 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 */
 	@Override
 	public PassengerCountingDoorCountingState getDoorCountingStateData() {
-		if (doorCountingStateData != null && doorCountingStateData.eIsProxy()) {
-			InternalEObject oldDoorCountingStateData = (InternalEObject)doorCountingStateData;
-			doorCountingStateData = (PassengerCountingDoorCountingState)eResolveProxy(oldDoorCountingStateData);
-			if (doorCountingStateData != oldDoorCountingStateData) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, oldDoorCountingStateData, doorCountingStateData));
-			}
-		}
 		return doorCountingStateData;
 	}
 
@@ -629,8 +621,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PassengerCountingDoorCountingState basicGetDoorCountingStateData() {
-		return doorCountingStateData;
+	public NotificationChain basicSetDoorCountingStateData(PassengerCountingDoorCountingState newDoorCountingStateData, NotificationChain msgs) {
+		PassengerCountingDoorCountingState oldDoorCountingStateData = doorCountingStateData;
+		doorCountingStateData = newDoorCountingStateData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, oldDoorCountingStateData, newDoorCountingStateData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -640,10 +638,17 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 */
 	@Override
 	public void setDoorCountingStateData(PassengerCountingDoorCountingState newDoorCountingStateData) {
-		PassengerCountingDoorCountingState oldDoorCountingStateData = doorCountingStateData;
-		doorCountingStateData = newDoorCountingStateData;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, oldDoorCountingStateData, doorCountingStateData));
+		if (newDoorCountingStateData != doorCountingStateData) {
+			NotificationChain msgs = null;
+			if (doorCountingStateData != null)
+				msgs = ((InternalEObject)doorCountingStateData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, null, msgs);
+			if (newDoorCountingStateData != null)
+				msgs = ((InternalEObject)newDoorCountingStateData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, null, msgs);
+			msgs = basicSetDoorCountingStateData(newDoorCountingStateData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA, newDoorCountingStateData, newDoorCountingStateData));
 	}
 
 	/**
@@ -653,14 +658,6 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 */
 	@Override
 	public DoorState getDoorStateData() {
-		if (doorStateData != null && doorStateData.eIsProxy()) {
-			InternalEObject oldDoorStateData = (InternalEObject)doorStateData;
-			doorStateData = (DoorState)eResolveProxy(oldDoorStateData);
-			if (doorStateData != oldDoorStateData) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, oldDoorStateData, doorStateData));
-			}
-		}
 		return doorStateData;
 	}
 
@@ -669,8 +666,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DoorState basicGetDoorStateData() {
-		return doorStateData;
+	public NotificationChain basicSetDoorStateData(DoorState newDoorStateData, NotificationChain msgs) {
+		DoorState oldDoorStateData = doorStateData;
+		doorStateData = newDoorStateData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, oldDoorStateData, newDoorStateData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -680,10 +683,17 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 */
 	@Override
 	public void setDoorStateData(DoorState newDoorStateData) {
-		DoorState oldDoorStateData = doorStateData;
-		doorStateData = newDoorStateData;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, oldDoorStateData, doorStateData));
+		if (newDoorStateData != doorStateData) {
+			NotificationChain msgs = null;
+			if (doorStateData != null)
+				msgs = ((InternalEObject)doorStateData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, null, msgs);
+			if (newDoorStateData != null)
+				msgs = ((InternalEObject)newDoorStateData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, null, msgs);
+			msgs = basicSetDoorStateData(newDoorStateData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA, newDoorStateData, newDoorStateData));
 	}
 
 	/**
@@ -693,14 +703,6 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 */
 	@Override
 	public StopRequested getStopRequested() {
-		if (stopRequested != null && stopRequested.eIsProxy()) {
-			InternalEObject oldStopRequested = (InternalEObject)stopRequested;
-			stopRequested = (StopRequested)eResolveProxy(oldStopRequested);
-			if (stopRequested != oldStopRequested) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, oldStopRequested, stopRequested));
-			}
-		}
 		return stopRequested;
 	}
 
@@ -709,8 +711,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StopRequested basicGetStopRequested() {
-		return stopRequested;
+	public NotificationChain basicSetStopRequested(StopRequested newStopRequested, NotificationChain msgs) {
+		StopRequested oldStopRequested = stopRequested;
+		stopRequested = newStopRequested;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, oldStopRequested, newStopRequested);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -720,10 +728,17 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 */
 	@Override
 	public void setStopRequested(StopRequested newStopRequested) {
-		StopRequested oldStopRequested = stopRequested;
-		stopRequested = newStopRequested;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, oldStopRequested, stopRequested));
+		if (newStopRequested != stopRequested) {
+			NotificationChain msgs = null;
+			if (stopRequested != null)
+				msgs = ((InternalEObject)stopRequested).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, null, msgs);
+			if (newStopRequested != null)
+				msgs = ((InternalEObject)newStopRequested).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, null, msgs);
+			msgs = basicSetStopRequested(newStopRequested, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED, newStopRequested, newStopRequested));
 	}
 
 	/**
@@ -752,6 +767,12 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return basicSetCustomerInfoCurrentConnectionData(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return basicSetCustomerInfoCurrentDisplayContentData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA:
+				return basicSetDoorCountingStateData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA:
+				return basicSetDoorStateData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
+				return basicSetStopRequested(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -783,14 +804,11 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 			case IbisSensinactPackage.IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA:
 				return getCustomerInfoCurrentDisplayContentData();
 			case IbisSensinactPackage.IBIS_DEVICE__DOOR_COUNTING_STATE_DATA:
-				if (resolve) return getDoorCountingStateData();
-				return basicGetDoorCountingStateData();
+				return getDoorCountingStateData();
 			case IbisSensinactPackage.IBIS_DEVICE__DOOR_STATE_DATA:
-				if (resolve) return getDoorStateData();
-				return basicGetDoorStateData();
+				return getDoorStateData();
 			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
-				if (resolve) return getStopRequested();
-				return basicGetStopRequested();
+				return getStopRequested();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

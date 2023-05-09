@@ -248,66 +248,66 @@ public interface IbisDevice extends Provider {
 	void setCustomerInfoCurrentDisplayContentData(CustomerInfoCurrentDisplayContentData value);
 
 	/**
-	 * Returns the value of the '<em><b>Door Counting State Data</b></em>' reference.
+	 * Returns the value of the '<em><b>Door Counting State Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Door Counting State Data</em>' reference.
+	 * @return the value of the '<em>Door Counting State Data</em>' containment reference.
 	 * @see #setDoorCountingStateData(PassengerCountingDoorCountingState)
 	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_DoorCountingStateData()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	PassengerCountingDoorCountingState getDoorCountingStateData();
 
 	/**
-	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}' reference.
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Door Counting State Data</em>' reference.
+	 * @param value the new value of the '<em>Door Counting State Data</em>' containment reference.
 	 * @see #getDoorCountingStateData()
 	 * @generated
 	 */
 	void setDoorCountingStateData(PassengerCountingDoorCountingState value);
 
 	/**
-	 * Returns the value of the '<em><b>Door State Data</b></em>' reference.
+	 * Returns the value of the '<em><b>Door State Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Door State Data</em>' reference.
+	 * @return the value of the '<em>Door State Data</em>' containment reference.
 	 * @see #setDoorStateData(DoorState)
 	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_DoorStateData()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	DoorState getDoorStateData();
 
 	/**
-	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}' reference.
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Door State Data</em>' reference.
+	 * @param value the new value of the '<em>Door State Data</em>' containment reference.
 	 * @see #getDoorStateData()
 	 * @generated
 	 */
 	void setDoorStateData(DoorState value);
 
 	/**
-	 * Returns the value of the '<em><b>Stop Requested</b></em>' reference.
+	 * Returns the value of the '<em><b>Stop Requested</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stop Requested</em>' reference.
+	 * @return the value of the '<em>Stop Requested</em>' containment reference.
 	 * @see #setStopRequested(StopRequested)
 	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_StopRequested()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	StopRequested getStopRequested();
 
 	/**
-	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}' reference.
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Stop Requested</em>' reference.
+	 * @param value the new value of the '<em>Stop Requested</em>' containment reference.
 	 * @see #getStopRequested()
 	 * @generated
 	 */

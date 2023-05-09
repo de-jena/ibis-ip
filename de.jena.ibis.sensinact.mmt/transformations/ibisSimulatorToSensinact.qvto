@@ -62,12 +62,12 @@ mapping SIMULATOR::PublicTransportDoorChange::toDoorState() : SENSINACT::DoorSta
 	};
 	
 	doorState := self.type.toString();
-	if(self.type.oclIsUndefined().not()){
+	if(self.type.toString().oclIsUndefined().not()){
 		metadata += toMetadataEntry(eClass.getEStructuralFeature("doorState"), "DoorStateService", null, "true", null);
 	};
 	
 	exitSide := self.doorSide.toString();
-	if(self.doorSide.oclIsUndefined().not()){
+	if(self.doorSide.toString().oclIsUndefined().not()){
 		metadata += toMetadataEntry(eClass.getEStructuralFeature("exitSide"), "DoorStateService", null, "true", null);
 	};
 }
@@ -84,12 +84,12 @@ mapping SIMULATOR::PublicTransportDoorCount::toDoorCount() : SENSINACT::Passenge
 	};
 	
 	doorCountingType := self.type.toString();
-	if(self.type.oclIsUndefined().not()){
+	if(self.type.toString().oclIsUndefined().not()){
 		metadata += toMetadataEntry(eClass.getEStructuralFeature("doorCountingType"), "PassengerCountingService", null, "true", null);
 	};
 	
 	exitSide := self.doorSide.toString();
-	if(self.doorSide.oclIsUndefined().not()){
+	if(self.doorSide.toString().oclIsUndefined().not()){
 		metadata += toMetadataEntry(eClass.getEStructuralFeature("exitSide"), "PassengerCountingService", null, "true", null);
 	};
 	
@@ -113,10 +113,6 @@ mapping SIMULATOR::PublicTransportStopRequested::toStopRequested() : SENSINACT::
 	if(self.stopRequested.oclIsUndefined().not()){
 		metadata += toMetadataEntry(eClass.getEStructuralFeature("stopRequested"), "PassengerInfoService", null, "true", null);
 	};
-}
-
-mapping SIMULATOR::PublicTransportPosition::toSensinactPosition() : PROVIDER::Admin {
-//	location := getGeoJson(self.position.latitude, self.position.longitude);
 }
 
 helper toMetadataEntry(feature : ECORE::EStructuralFeature, friendlyServiceName : String, unit : String, hide : String, type : String): PROVIDER::FeatureMetadata {

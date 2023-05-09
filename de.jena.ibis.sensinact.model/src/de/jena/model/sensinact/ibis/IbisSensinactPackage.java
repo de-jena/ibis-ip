@@ -193,7 +193,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Door Counting State Data</b></em>' reference.
+	 * The feature id for the '<em><b>Door Counting State Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -202,7 +202,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__DOOR_COUNTING_STATE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Door State Data</b></em>' reference.
+	 * The feature id for the '<em><b>Door State Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -211,7 +211,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__DOOR_STATE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 10;
 
 	/**
-	 * The feature id for the '<em><b>Stop Requested</b></em>' reference.
+	 * The feature id for the '<em><b>Stop Requested</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1719,10 +1719,10 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getIbisDevice_CustomerInfoCurrentDisplayContentData();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Door Counting State Data</em>'.
+	 * @return the meta object for the containment reference '<em>Door Counting State Data</em>'.
 	 * @see de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData()
 	 * @see #getIbisDevice()
 	 * @generated
@@ -1730,10 +1730,10 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getIbisDevice_DoorCountingStateData();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Door State Data</em>'.
+	 * @return the meta object for the containment reference '<em>Door State Data</em>'.
 	 * @see de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData()
 	 * @see #getIbisDevice()
 	 * @generated
@@ -1741,10 +1741,10 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getIbisDevice_DoorStateData();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Stop Requested</em>'.
+	 * @return the meta object for the containment reference '<em>Stop Requested</em>'.
 	 * @see de.jena.model.sensinact.ibis.IbisDevice#getStopRequested()
 	 * @see #getIbisDevice()
 	 * @generated
@@ -3110,7 +3110,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA = eINSTANCE.getIbisDevice_CustomerInfoCurrentDisplayContentData();
 
 		/**
-		 * The meta object literal for the '<em><b>Door Counting State Data</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Door Counting State Data</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3118,7 +3118,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference IBIS_DEVICE__DOOR_COUNTING_STATE_DATA = eINSTANCE.getIbisDevice_DoorCountingStateData();
 
 		/**
-		 * The meta object literal for the '<em><b>Door State Data</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Door State Data</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3126,7 +3126,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference IBIS_DEVICE__DOOR_STATE_DATA = eINSTANCE.getIbisDevice_DoorStateData();
 
 		/**
-		 * The meta object literal for the '<em><b>Stop Requested</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Stop Requested</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
