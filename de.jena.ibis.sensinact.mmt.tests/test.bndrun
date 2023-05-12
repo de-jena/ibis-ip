@@ -1,6 +1,5 @@
 -library: \
-	enableOSGi-Test,\
-	enable-emf
+	enableOSGi-Test
 
 -runrequires: \
 	bnd.identity;id='de.jena.ibis.sensinact.mmt.tests',\
@@ -13,7 +12,8 @@
 	bnd.identity;id='de.jena.ibis.common.model',\
 	bnd.identity;id='de.jena.ibis.customer.info.service.model',\
 	bnd.identity;id='de.jena.ibis.enumerations.model',\
-	bnd.identity;id='de.jena.ibis.sensinact.model'
+	bnd.identity;id='de.jena.ibis.sensinact.model',\
+	bnd.identity;id='de.jena.ibis.gnss.location.service.model'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-17
@@ -76,5 +76,6 @@
 	com.fasterxml.jackson.core.jackson-databind;version='[2.14.0,2.14.1)',\
 	de.jena.ibis.sensinact.model;version=snapshot,\
 	org.eclipse.sensinact.gateway.core.geo-json;version='[0.0.2,0.0.3)',\
-	org.eclipse.sensinact.gateway.core.models.provider;version='[0.0.2,0.0.3)'
+	org.eclipse.sensinact.gateway.core.models.provider;version='[0.0.2,0.0.3)',\
+	de.jena.ibis.gnss.location.service.model;version=snapshot
 -resolve: manual

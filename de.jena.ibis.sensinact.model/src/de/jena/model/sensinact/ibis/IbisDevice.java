@@ -41,6 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getGnssLocationData <em>Gnss Location Data</em>}</li>
  * </ul>
  *
  * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice()
@@ -312,5 +313,27 @@ public interface IbisDevice extends Provider {
 	 * @generated
 	 */
 	void setStopRequested(StopRequested value);
+
+	/**
+	 * Returns the value of the '<em><b>Gnss Location Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Gnss Location Data</em>' containment reference.
+	 * @see #setGnssLocationData(GNSSLocationData)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_GnssLocationData()
+	 * @model containment="true"
+	 * @generated
+	 */
+	GNSSLocationData getGnssLocationData();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getGnssLocationData <em>Gnss Location Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Gnss Location Data</em>' containment reference.
+	 * @see #getGnssLocationData()
+	 * @generated
+	 */
+	void setGnssLocationData(GNSSLocationData value);
 
 } // IbisDevice

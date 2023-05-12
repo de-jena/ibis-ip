@@ -79,6 +79,7 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 			case IbisSensinactPackage.PASSENGER_COUNTING_DOOR_COUNTING_STATE: return createPassengerCountingDoorCountingState();
 			case IbisSensinactPackage.DOOR_STATE: return createDoorState();
 			case IbisSensinactPackage.STOP_REQUESTED: return createStopRequested();
+			case IbisSensinactPackage.GNSS_LOCATION_DATA: return createGNSSLocationData();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -225,6 +226,17 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 	public StopRequested createStopRequested() {
 		StopRequestedImpl stopRequested = new StopRequestedImpl();
 		return stopRequested;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public GNSSLocationData createGNSSLocationData() {
+		GNSSLocationDataImpl gnssLocationData = new GNSSLocationDataImpl();
+		return gnssLocationData;
 	}
 
 	/**

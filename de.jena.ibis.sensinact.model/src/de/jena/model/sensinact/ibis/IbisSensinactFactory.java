@@ -152,6 +152,15 @@ public interface IbisSensinactFactory extends EFactory {
 	StopRequested createStopRequested();
 
 	/**
+	 * Returns a new object of class '<em>GNSS Location Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>GNSS Location Data</em>'.
+	 * @generated
+	 */
+	GNSSLocationData createGNSSLocationData();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

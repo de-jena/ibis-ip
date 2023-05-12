@@ -14,21 +14,13 @@ package de.jena.ibis.sensinact.mmt.tests;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Map;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.gecko.core.pool.Pool;
 import org.gecko.qvt.osgi.api.ConfigurableModelTransformatorPool;
 import org.gecko.qvt.osgi.api.ModelTransformator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.osgi.framework.BundleContext;
-import org.osgi.test.common.annotation.InjectBundleContext;
 import org.osgi.test.common.annotation.InjectService;
 import org.osgi.test.common.annotation.Property;
 import org.osgi.test.common.annotation.config.WithConfiguration;
@@ -37,15 +29,9 @@ import org.osgi.test.junit5.cm.ConfigurationExtension;
 import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
+import de.jena.ibis.sensinact.mmt.tests.helper.IbisToSensinactTestHelper;
 import de.jena.model.ibis.common.Announcement;
-import de.jena.model.ibis.common.IBISIPBoolean;
-import de.jena.model.ibis.common.IBISIPDateTime;
-import de.jena.model.ibis.common.IBISIPInt;
-import de.jena.model.ibis.common.IBISIPLanguage;
-import de.jena.model.ibis.common.IBISIPNMTOKEN;
-import de.jena.model.ibis.common.IBISIPString;
 import de.jena.model.ibis.common.IbisCommonFactory;
-import de.jena.model.ibis.common.InternationalTextType;
 import de.jena.model.ibis.common.StopInformation;
 import de.jena.model.ibis.common.TripInformation;
 import de.jena.model.ibis.customerinformationservice.AllData;
@@ -92,13 +78,8 @@ import de.jena.model.sensinact.ibis.IbisDevice;
 @ExtendWith(BundleContextExtension.class)
 @ExtendWith(ServiceExtension.class)
 @ExtendWith(ConfigurationExtension.class)
-public class IbisSensinactMMTTest {
+public class IbisCustomerInfoToSensinactMMTTest {
 
-
-	@BeforeEach
-	public void before(@InjectBundleContext BundleContext ctx) {
-		System.out.println("Test");
-	}
 
 	@Test
 	@WithConfiguration(
@@ -116,8 +97,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -139,21 +120,22 @@ public class IbisSensinactMMTTest {
 		AllDataResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createAllDataResponse();
 		AllData data = IbisCustomerInformationServiceFactory.eINSTANCE.createAllData();
 	
-		data.setTimeStamp(createIBisDateTime(new Date()));
-		data.setDefaultLanguage(createIbisLanguage("en"));
-		data.setVehicleRef(createIbisToken("vehicleRefTest"));
-		data.setCurrentStopIndex(createIbisInt(7));
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		data.setDefaultLanguage(IbisToSensinactTestHelper.createIbisLanguage("en"));
+		data.setVehicleRef(IbisToSensinactTestHelper.createIbisToken("vehicleRefTest"));
+		data.setCurrentStopIndex(IbisToSensinactTestHelper.createIbisInt(7));
 		data.setRouteDeviation(RouteDeviationEnumeration.ONROUTE);
 		data.setDoorState(DoorOpenStateEnumeration.SINGLE_DOOR_OPEN);
 		data.setExitSide(ExitSideEnumeration.LEFT);
-		data.setInPanic(createIbisBoolean(false));
-		data.setMovingDirectionForward(createIbisBoolean(true));
-		data.setSpeakerActive(createIbisBoolean(false));
-		data.setStopInformationActive(createIbisBoolean(true));
-		data.setVehicleStopRequested(createIbisBoolean(false));
+		data.setInPanic(IbisToSensinactTestHelper.createIbisBoolean(false));
+		data.setMovingDirectionForward(IbisToSensinactTestHelper.createIbisBoolean(true));
+		data.setSpeakerActive(IbisToSensinactTestHelper.createIbisBoolean(false));
+		data.setStopInformationActive(IbisToSensinactTestHelper.createIbisBoolean(true));
+		data.setVehicleStopRequested(IbisToSensinactTestHelper.createIbisBoolean(false));
 		data.setVehicleMode(VehicleModeEnumeration.BUS);		
 		data.setTripState(TripStateEnumeration.OFF_DUTY);
 		response.setAllData(data);
+		
 		
 		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
@@ -195,8 +177,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -218,7 +200,7 @@ public class IbisSensinactMMTTest {
 		CurrentConnectionInformationResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentConnectionInformationResponse();
 		CurrentConnectionInformationData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentConnectionInformationData();
 	
-		data.setTimeStamp(createIBisDateTime(new Date()));		
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));		
 		
 		response.setCurrentConnectionData(data);
 		
@@ -247,8 +229,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -270,7 +252,7 @@ public class IbisSensinactMMTTest {
 		CurrentDisplayContentResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentDisplayContentResponse();
 		CurrentDisplayContentData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentDisplayContentData();
 		
-		data.setTimeStamp(createIBisDateTime(new Date()));		
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));		
 		response.setCurrentDisplayContentData(data);
 		
 		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
@@ -298,8 +280,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -321,14 +303,14 @@ public class IbisSensinactMMTTest {
 		CurrentAnnouncementResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentAnnouncementResponse();
 		CurrentAnnouncementData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentAnnouncementData();
 	
-		data.setTimeStamp(createIBisDateTime(new Date()));
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
 		Announcement announcement = IbisCommonFactory.eINSTANCE.createAnnouncement();
-		announcement.setAnnouncementRef(createIbisToken("annRefTest"));
-		announcement.getAnnouncementText().add(createIbisTextType("Ann 1"));
-		announcement.getAnnouncementText().add(createIbisTextType("Ann 2"));
-		announcement.getAnnouncementText().add(createIbisTextType("Ann 3"));
-		announcement.getAnnouncementTTSText().add(createIbisTextType("TTS Ann 1"));
-		announcement.getAnnouncementTTSText().add(createIbisTextType("TTS Ann 2"));
+		announcement.setAnnouncementRef(IbisToSensinactTestHelper.createIbisToken("annRefTest"));
+		announcement.getAnnouncementText().add(IbisToSensinactTestHelper.createIbisTextType("Ann 1"));
+		announcement.getAnnouncementText().add(IbisToSensinactTestHelper.createIbisTextType("Ann 2"));
+		announcement.getAnnouncementText().add(IbisToSensinactTestHelper.createIbisTextType("Ann 3"));
+		announcement.getAnnouncementTTSText().add(IbisToSensinactTestHelper.createIbisTextType("TTS Ann 1"));
+		announcement.getAnnouncementTTSText().add(IbisToSensinactTestHelper.createIbisTextType("TTS Ann 2"));
 		data.setCurrentAnnouncement(announcement);		
 		
 		response.setCurrentAnnouncementData(data);
@@ -365,8 +347,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -388,8 +370,8 @@ public class IbisSensinactMMTTest {
 		CurrentStopIndexResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopIndexResponse();
 		CurrentStopIndexData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopIndexData();
 	
-		data.setTimeStamp(createIBisDateTime(new Date()));
-		data.setCurrentStopIndex(createIbisInt(7));
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		data.setCurrentStopIndex(IbisToSensinactTestHelper.createIbisInt(7));
 		
 		response.setCurrentStopIndexData(data);
 		
@@ -421,8 +403,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -444,23 +426,23 @@ public class IbisSensinactMMTTest {
 		CurrentStopPointResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopPointResponse();
 		CurrentStopPointData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopPointData();
 	
-		data.setTimeStamp(createIBisDateTime(new Date()));
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
 		StopInformation stopInfo = IbisCommonFactory.eINSTANCE.createStopInformation();
-		stopInfo.setArrivalExpected(createIBisDateTime(new Date()));
-		stopInfo.setArrivalScheduled(createIBisDateTime(new Date()));
-		stopInfo.setDepartureExpected(createIBisDateTime(new Date()));
-		stopInfo.setDepartureScheduled(createIBisDateTime(new Date()));
-		stopInfo.setDistanceToNextStop(createIbisInt(3));
-		stopInfo.setPlatform(createIbisString("platformTest"));
-		stopInfo.setRecordedArrivalTime(createIBisDateTime(new Date()));
-		stopInfo.setStopIndex(createIbisInt(7));
-		stopInfo.setStopRef(createIbisToken("stopRefTest"));
-		stopInfo.getStopName().add(createIbisTextType("Stop Name 1"));
-		stopInfo.getStopName().add(createIbisTextType("Stop Name 2"));
-		stopInfo.getStopAlternativeName().add(createIbisTextType("Stop Alternative Name 1"));
-		stopInfo.getStopAlternativeName().add(createIbisTextType("Stop Alternative Name 2"));
-		stopInfo.getFareZone().add(createIbisToken("Fare Zone 1"));
-		stopInfo.getFareZone().add(createIbisToken("Fare Zone 2"));
+		stopInfo.setArrivalExpected(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		stopInfo.setArrivalScheduled(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		stopInfo.setDepartureExpected(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		stopInfo.setDepartureScheduled(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		stopInfo.setDistanceToNextStop(IbisToSensinactTestHelper.createIbisInt(3));
+		stopInfo.setPlatform(IbisToSensinactTestHelper.createIbisString("platformTest"));
+		stopInfo.setRecordedArrivalTime(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		stopInfo.setStopIndex(IbisToSensinactTestHelper.createIbisInt(7));
+		stopInfo.setStopRef(IbisToSensinactTestHelper.createIbisToken("stopRefTest"));
+		stopInfo.getStopName().add(IbisToSensinactTestHelper.createIbisTextType("Stop Name 1"));
+		stopInfo.getStopName().add(IbisToSensinactTestHelper.createIbisTextType("Stop Name 2"));
+		stopInfo.getStopAlternativeName().add(IbisToSensinactTestHelper.createIbisTextType("Stop Alternative Name 1"));
+		stopInfo.getStopAlternativeName().add(IbisToSensinactTestHelper.createIbisTextType("Stop Alternative Name 2"));
+		stopInfo.getFareZone().add(IbisToSensinactTestHelper.createIbisToken("Fare Zone 1"));
+		stopInfo.getFareZone().add(IbisToSensinactTestHelper.createIbisToken("Fare Zone 2"));
 
 		data.setCurrentStopPoint(stopInfo);
 		response.setCurrentStopPointData(data);
@@ -507,8 +489,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -532,28 +514,28 @@ public class IbisSensinactMMTTest {
 		
 		TripInformation tripInfo = IbisCommonFactory.eINSTANCE.createTripInformation();
 		tripInfo.setLocationState(LocationStateEnumeration.AT_STOP);
-		tripInfo.setPathDestinationNumber(createIbisInt(7));
-		tripInfo.setPatternNumber(createIbisInt(4));
+		tripInfo.setPathDestinationNumber(IbisToSensinactTestHelper.createIbisInt(7));
+		tripInfo.setPatternNumber(IbisToSensinactTestHelper.createIbisInt(4));
 		tripInfo.setRouteDirection(RouteDirectionEnumeration.CLOCKWISE);
-		tripInfo.setRunNumber(createIbisInt(23));
-		tripInfo.setTimetableDelay(createIbisInt(3));
-		tripInfo.setTripRef(createIbisToken("tripRefTest"));
-		tripInfo.setAdditionalTextMessage(createIbisTextType("Msg"));
-		tripInfo.setAdditionalTextMessage1(createIbisTextType("Msg1"));
-		tripInfo.setAdditionalTextMessage2(createIbisTextType("Msg2"));
-		tripInfo.setAdditionalTextMessage3(createIbisTextType("Msg3"));
-		tripInfo.setAdditionalTextMessage4(createIbisTextType("Msg4"));
-		tripInfo.setAdditionalTextMessage5(createIbisTextType("Msg5"));
-		tripInfo.setAdditionalTextMessage6(createIbisTextType("Msg6"));
-		tripInfo.setAdditionalTextMessage7(createIbisTextType("Msg7"));
-		tripInfo.setAdditionalTextMessage8(createIbisTextType("Msg8"));
-		tripInfo.setAdditionalTextMessage9(createIbisTextType("Msg9"));
+		tripInfo.setRunNumber(IbisToSensinactTestHelper.createIbisInt(23));
+		tripInfo.setTimetableDelay(IbisToSensinactTestHelper.createIbisInt(3));
+		tripInfo.setTripRef(IbisToSensinactTestHelper.createIbisToken("tripRefTest"));
+		tripInfo.setAdditionalTextMessage(IbisToSensinactTestHelper.createIbisTextType("Msg"));
+		tripInfo.setAdditionalTextMessage1(IbisToSensinactTestHelper.createIbisTextType("Msg1"));
+		tripInfo.setAdditionalTextMessage2(IbisToSensinactTestHelper.createIbisTextType("Msg2"));
+		tripInfo.setAdditionalTextMessage3(IbisToSensinactTestHelper.createIbisTextType("Msg3"));
+		tripInfo.setAdditionalTextMessage4(IbisToSensinactTestHelper.createIbisTextType("Msg4"));
+		tripInfo.setAdditionalTextMessage5(IbisToSensinactTestHelper.createIbisTextType("Msg5"));
+		tripInfo.setAdditionalTextMessage6(IbisToSensinactTestHelper.createIbisTextType("Msg6"));
+		tripInfo.setAdditionalTextMessage7(IbisToSensinactTestHelper.createIbisTextType("Msg7"));
+		tripInfo.setAdditionalTextMessage8(IbisToSensinactTestHelper.createIbisTextType("Msg8"));
+		tripInfo.setAdditionalTextMessage9(IbisToSensinactTestHelper.createIbisTextType("Msg9"));
 
 		
-		data.setTimeStamp(createIBisDateTime(new Date()));
-		data.setDefaultLanguage(createIbisLanguage("en"));
-		data.setVehicleRef(createIbisToken("vehicleRefTest"));
-		data.setCurrentStopIndex(createIbisInt(7));
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		data.setDefaultLanguage(IbisToSensinactTestHelper.createIbisLanguage("en"));
+		data.setVehicleRef(IbisToSensinactTestHelper.createIbisToken("vehicleRefTest"));
+		data.setCurrentStopIndex(IbisToSensinactTestHelper.createIbisInt(7));
 		data.setTripInformation(tripInfo);
 		response.setTripData(data);
 		
@@ -604,8 +586,8 @@ public class IbisSensinactMMTTest {
 			location = "?",
 			properties = {
 					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisCustomerInfoToSensinact"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
+					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
 					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
 					@Property(key = "pool.name", value= "ibisPool"),
 					@Property(key = "pool.group", value = "sensinactPool"),
@@ -627,16 +609,16 @@ public class IbisSensinactMMTTest {
 		VehicleDataResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createVehicleDataResponse();
 		VehicleData data = IbisCustomerInformationServiceFactory.eINSTANCE.createVehicleData();
 	
-		data.setTimeStamp(createIBisDateTime(new Date()));
-		data.setVehicleRef(createIbisToken("vehicleRefTest"));
+		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		data.setVehicleRef(IbisToSensinactTestHelper.createIbisToken("vehicleRefTest"));
 		data.setRouteDeviation(RouteDeviationEnumeration.ONROUTE);
 		data.setDoorState(DoorOpenStateEnumeration.SINGLE_DOOR_OPEN);
 		data.setExitSide(ExitSideEnumeration.LEFT);
-		data.setInPanic(createIbisBoolean(false));
-		data.setMovingDirectionForward(createIbisBoolean(true));
-		data.setSpeakerActive(createIbisBoolean(false));
-		data.setStopInformationActive(createIbisBoolean(true));
-		data.setVehicleStopRequested(createIbisBoolean(false));
+		data.setInPanic(IbisToSensinactTestHelper.createIbisBoolean(false));
+		data.setMovingDirectionForward(IbisToSensinactTestHelper.createIbisBoolean(true));
+		data.setSpeakerActive(IbisToSensinactTestHelper.createIbisBoolean(false));
+		data.setStopInformationActive(IbisToSensinactTestHelper.createIbisBoolean(true));
+		data.setVehicleStopRequested(IbisToSensinactTestHelper.createIbisBoolean(false));
 		data.setVehicleMode(VehicleModeEnumeration.BUS);		
 		data.setTripState(TripStateEnumeration.OFF_DUTY);
 		
@@ -663,51 +645,4 @@ public class IbisSensinactMMTTest {
 		assertThat(sensinactData.getMetadata()).isNotEmpty();
 		assertThat(sensinactData.getMetadata()).hasSize(11);		
 	}
-	
-	private IBISIPString createIbisString(String value) {
-		IBISIPString ibisStr = IbisCommonFactory.eINSTANCE.createIBISIPString();
-		ibisStr.setValue(value);
-		return ibisStr;
-	}
-	
-	private InternationalTextType createIbisTextType(String value) {
-		InternationalTextType text = IbisCommonFactory.eINSTANCE.createInternationalTextType();
-		text.setValue(value);
-		return text;
-	}
-	
-	private IBISIPBoolean createIbisBoolean(boolean value) {
-		IBISIPBoolean ibisBoolean = IbisCommonFactory.eINSTANCE.createIBISIPBoolean();
-		ibisBoolean.setValue(value);
-		return ibisBoolean;
-	}
-	
-	private IBISIPNMTOKEN createIbisToken(String value) {
-		IBISIPNMTOKEN ibisToken = IbisCommonFactory.eINSTANCE.createIBISIPNMTOKEN();
-		ibisToken.setValue(value);
-		return ibisToken;
-	}
-	
-	private IBISIPInt createIbisInt(int value) {
-		IBISIPInt ibisInt = IbisCommonFactory.eINSTANCE.createIBISIPInt();
-		ibisInt.setValue(value);
-		return ibisInt;
-	}
-	
-	private IBISIPLanguage createIbisLanguage(String value) {
-		IBISIPLanguage language = IbisCommonFactory.eINSTANCE.createIBISIPLanguage();
-		language.setValue(value);
-		return language;
-	}
-	
-	private IBISIPDateTime createIBisDateTime(Date date) throws DatatypeConfigurationException {
-		IBISIPDateTime timestamp = IbisCommonFactory.eINSTANCE.createIBISIPDateTime();
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(date);
-		XMLGregorianCalendar xCal = DatatypeFactory.newInstance()
-		    .newXMLGregorianCalendar(cal);
-		timestamp.setValue(xCal);
-		return timestamp;
-	}
-
 }

@@ -133,6 +133,10 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 				return createStopRequestedAdapter();
 			}
 			@Override
+			public Adapter caseGNSSLocationData(GNSSLocationData object) {
+				return createGNSSLocationDataAdapter();
+			}
+			@Override
 			public Adapter caseProvider(Provider object) {
 				return createProviderAdapter();
 			}
@@ -339,6 +343,20 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStopRequestedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.GNSSLocationData <em>GNSS Location Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData
+	 * @generated
+	 */
+	public Adapter createGNSSLocationDataAdapter() {
 		return null;
 	}
 

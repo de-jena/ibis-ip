@@ -21,6 +21,7 @@ import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopPointData;
 import de.jena.model.sensinact.ibis.CustomerInfoTripData;
 import de.jena.model.sensinact.ibis.CustomerInfoVehicleData;
 import de.jena.model.sensinact.ibis.DoorState;
+import de.jena.model.sensinact.ibis.GNSSLocationData;
 import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
@@ -57,6 +58,7 @@ import org.eclipse.sensinact.model.core.provider.impl.ProviderImpl;
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getDoorCountingStateData <em>Door Counting State Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getDoorStateData <em>Door State Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getStopRequested <em>Stop Requested</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getGnssLocationData <em>Gnss Location Data</em>}</li>
  * </ul>
  *
  * @generated
@@ -181,6 +183,16 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @ordered
 	 */
 	protected StopRequested stopRequested;
+
+	/**
+	 * The cached value of the '{@link #getGnssLocationData() <em>Gnss Location Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGnssLocationData()
+	 * @generated
+	 * @ordered
+	 */
+	protected GNSSLocationData gnssLocationData;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -747,6 +759,51 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @generated
 	 */
 	@Override
+	public GNSSLocationData getGnssLocationData() {
+		return gnssLocationData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGnssLocationData(GNSSLocationData newGnssLocationData, NotificationChain msgs) {
+		GNSSLocationData oldGnssLocationData = gnssLocationData;
+		gnssLocationData = newGnssLocationData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA, oldGnssLocationData, newGnssLocationData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setGnssLocationData(GNSSLocationData newGnssLocationData) {
+		if (newGnssLocationData != gnssLocationData) {
+			NotificationChain msgs = null;
+			if (gnssLocationData != null)
+				msgs = ((InternalEObject)gnssLocationData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA, null, msgs);
+			if (newGnssLocationData != null)
+				msgs = ((InternalEObject)newGnssLocationData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA, null, msgs);
+			msgs = basicSetGnssLocationData(newGnssLocationData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA, newGnssLocationData, newGnssLocationData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
@@ -773,6 +830,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return basicSetDoorStateData(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
 				return basicSetStopRequested(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
+				return basicSetGnssLocationData(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -809,6 +868,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return getDoorStateData();
 			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
 				return getStopRequested();
+			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
+				return getGnssLocationData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -856,6 +917,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return;
 			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
 				setStopRequested((StopRequested)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
+				setGnssLocationData((GNSSLocationData)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -905,6 +969,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
 				setStopRequested((StopRequested)null);
 				return;
+			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
+				setGnssLocationData((GNSSLocationData)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -941,6 +1008,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return doorStateData != null;
 			case IbisSensinactPackage.IBIS_DEVICE__STOP_REQUESTED:
 				return stopRequested != null;
+			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
+				return gnssLocationData != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -2,9 +2,9 @@
 	":configurator:resource-version": 1,
 	":configurator:symbolicname": "IbisConfig",
 	":configurator:version": "0.0.0",
-	"IbisDeviceConfigurator~tram201": {
-		"deviceId" : "201",
-		"deviceName": "Tram 201",
+	"IbisDeviceConfigurator~tram702": {
+		"deviceId" : "tram702",
+		"deviceName": "Tram 702",
 		"deviceType": "TRAM",
 		"deviceIP": "192.168.243.1",
 		"refTCPServices" : [

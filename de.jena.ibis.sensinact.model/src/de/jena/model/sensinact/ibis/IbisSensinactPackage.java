@@ -220,13 +220,22 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__STOP_REQUESTED = ProviderPackage.PROVIDER_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Gnss Location Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__GNSS_LOCATION_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Ibis Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 12;
+	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of operations of the '<em>Ibis Device</em>' class.
@@ -1608,6 +1617,214 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int STOP_REQUESTED_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.GNSSLocationDataImpl <em>GNSS Location Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.GNSSLocationDataImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getGNSSLocationData()
+	 * @generated
+	 */
+	int GNSS_LOCATION_DATA = 13;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__DATE = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__TIME = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Latitude Degree</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__LATITUDE_DEGREE = ProviderPackage.SERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Longitude Degree</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__LONGITUDE_DEGREE = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Latitude Direction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__LATITUDE_DIRECTION = ProviderPackage.SERVICE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Longitude Direction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__LONGITUDE_DIRECTION = ProviderPackage.SERVICE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Altitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__ALTITUDE = ProviderPackage.SERVICE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Speed Over Ground</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__SPEED_OVER_GROUND = ProviderPackage.SERVICE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Signal Quality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__SIGNAL_QUALITY = ProviderPackage.SERVICE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Number Of Satellites</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__NUMBER_OF_SATELLITES = ProviderPackage.SERVICE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Dilution Of Precision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__HORIZONTAL_DILUTION_OF_PRECISION = ProviderPackage.SERVICE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Dilution Of Precision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__VERTICAL_DILUTION_OF_PRECISION = ProviderPackage.SERVICE_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Track Degree True</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__TRACK_DEGREE_TRUE = ProviderPackage.SERVICE_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Track Degree Magnetic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__TRACK_DEGREE_MAGNETIC = ProviderPackage.SERVICE_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>GNSS Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__GNSS_TYPE = ProviderPackage.SERVICE_FEATURE_COUNT + 17;
+
+	/**
+	 * The feature id for the '<em><b>GNSS Coordinate System</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA__GNSS_COORDINATE_SYSTEM = ProviderPackage.SERVICE_FEATURE_COUNT + 18;
+
+	/**
+	 * The number of structural features of the '<em>GNSS Location Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 19;
+
+	/**
+	 * The number of operations of the '<em>GNSS Location Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.IbisDevice <em>Ibis Device</em>}'.
@@ -1750,6 +1967,17 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getIbisDevice_StopRequested();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getGnssLocationData <em>Gnss Location Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Gnss Location Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getGnssLocationData()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_GnssLocationData();
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.CustomerInfoAllData <em>Customer Info All Data</em>}'.
@@ -3005,6 +3233,225 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getStopRequested_StopRequested();
 
 	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.GNSSLocationData <em>GNSS Location Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>GNSS Location Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData
+	 * @generated
+	 */
+	EClass getGNSSLocationData();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getServiceName()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getServiceOperation()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getTimestamp()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getDate <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getDate()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_Date();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getTime <em>Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getTime()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_Time();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getLatitudeDegree <em>Latitude Degree</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Latitude Degree</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getLatitudeDegree()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_LatitudeDegree();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getLongitudeDegree <em>Longitude Degree</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Longitude Degree</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getLongitudeDegree()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_LongitudeDegree();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getLatitudeDirection <em>Latitude Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Latitude Direction</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getLatitudeDirection()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_LatitudeDirection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getLongitudeDirection <em>Longitude Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Longitude Direction</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getLongitudeDirection()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_LongitudeDirection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getAltitude <em>Altitude</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Altitude</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getAltitude()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_Altitude();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getSpeedOverGround <em>Speed Over Ground</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Speed Over Ground</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getSpeedOverGround()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_SpeedOverGround();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getSignalQuality <em>Signal Quality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Signal Quality</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getSignalQuality()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_SignalQuality();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getNumberOfSatellites <em>Number Of Satellites</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Satellites</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getNumberOfSatellites()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_NumberOfSatellites();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getHorizontalDilutionOfPrecision <em>Horizontal Dilution Of Precision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Horizontal Dilution Of Precision</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getHorizontalDilutionOfPrecision()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_HorizontalDilutionOfPrecision();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getVerticalDilutionOfPrecision <em>Vertical Dilution Of Precision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vertical Dilution Of Precision</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getVerticalDilutionOfPrecision()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_VerticalDilutionOfPrecision();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getTrackDegreeTrue <em>Track Degree True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Track Degree True</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getTrackDegreeTrue()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_TrackDegreeTrue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getTrackDegreeMagnetic <em>Track Degree Magnetic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Track Degree Magnetic</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getTrackDegreeMagnetic()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_TrackDegreeMagnetic();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getGNSSType <em>GNSS Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>GNSS Type</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getGNSSType()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_GNSSType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.GNSSLocationData#getGNSSCoordinateSystem <em>GNSS Coordinate System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>GNSS Coordinate System</em>'.
+	 * @see de.jena.model.sensinact.ibis.GNSSLocationData#getGNSSCoordinateSystem()
+	 * @see #getGNSSLocationData()
+	 * @generated
+	 */
+	EAttribute getGNSSLocationData_GNSSCoordinateSystem();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3132,6 +3579,14 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference IBIS_DEVICE__STOP_REQUESTED = eINSTANCE.getIbisDevice_StopRequested();
+
+		/**
+		 * The meta object literal for the '<em><b>Gnss Location Data</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__GNSS_LOCATION_DATA = eINSTANCE.getIbisDevice_GnssLocationData();
 
 		/**
 		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.CustomerInfoAllDataImpl <em>Customer Info All Data</em>}' class.
@@ -4076,6 +4531,168 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute STOP_REQUESTED__STOP_REQUESTED = eINSTANCE.getStopRequested_StopRequested();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.GNSSLocationDataImpl <em>GNSS Location Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.GNSSLocationDataImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getGNSSLocationData()
+		 * @generated
+		 */
+		EClass GNSS_LOCATION_DATA = eINSTANCE.getGNSSLocationData();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__SERVICE_NAME = eINSTANCE.getGNSSLocationData_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__SERVICE_OPERATION = eINSTANCE.getGNSSLocationData_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__TIMESTAMP = eINSTANCE.getGNSSLocationData_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__DATE = eINSTANCE.getGNSSLocationData_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__TIME = eINSTANCE.getGNSSLocationData_Time();
+
+		/**
+		 * The meta object literal for the '<em><b>Latitude Degree</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__LATITUDE_DEGREE = eINSTANCE.getGNSSLocationData_LatitudeDegree();
+
+		/**
+		 * The meta object literal for the '<em><b>Longitude Degree</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__LONGITUDE_DEGREE = eINSTANCE.getGNSSLocationData_LongitudeDegree();
+
+		/**
+		 * The meta object literal for the '<em><b>Latitude Direction</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__LATITUDE_DIRECTION = eINSTANCE.getGNSSLocationData_LatitudeDirection();
+
+		/**
+		 * The meta object literal for the '<em><b>Longitude Direction</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__LONGITUDE_DIRECTION = eINSTANCE.getGNSSLocationData_LongitudeDirection();
+
+		/**
+		 * The meta object literal for the '<em><b>Altitude</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__ALTITUDE = eINSTANCE.getGNSSLocationData_Altitude();
+
+		/**
+		 * The meta object literal for the '<em><b>Speed Over Ground</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__SPEED_OVER_GROUND = eINSTANCE.getGNSSLocationData_SpeedOverGround();
+
+		/**
+		 * The meta object literal for the '<em><b>Signal Quality</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__SIGNAL_QUALITY = eINSTANCE.getGNSSLocationData_SignalQuality();
+
+		/**
+		 * The meta object literal for the '<em><b>Number Of Satellites</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__NUMBER_OF_SATELLITES = eINSTANCE.getGNSSLocationData_NumberOfSatellites();
+
+		/**
+		 * The meta object literal for the '<em><b>Horizontal Dilution Of Precision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__HORIZONTAL_DILUTION_OF_PRECISION = eINSTANCE.getGNSSLocationData_HorizontalDilutionOfPrecision();
+
+		/**
+		 * The meta object literal for the '<em><b>Vertical Dilution Of Precision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__VERTICAL_DILUTION_OF_PRECISION = eINSTANCE.getGNSSLocationData_VerticalDilutionOfPrecision();
+
+		/**
+		 * The meta object literal for the '<em><b>Track Degree True</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__TRACK_DEGREE_TRUE = eINSTANCE.getGNSSLocationData_TrackDegreeTrue();
+
+		/**
+		 * The meta object literal for the '<em><b>Track Degree Magnetic</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__TRACK_DEGREE_MAGNETIC = eINSTANCE.getGNSSLocationData_TrackDegreeMagnetic();
+
+		/**
+		 * The meta object literal for the '<em><b>GNSS Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__GNSS_TYPE = eINSTANCE.getGNSSLocationData_GNSSType();
+
+		/**
+		 * The meta object literal for the '<em><b>GNSS Coordinate System</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNSS_LOCATION_DATA__GNSS_COORDINATE_SYSTEM = eINSTANCE.getGNSSLocationData_GNSSCoordinateSystem();
 
 	}
 

@@ -18,6 +18,7 @@ import org.eclipse.m2m.qvt.oml.blackbox.java.Operation;
 import org.gecko.qvt.osgi.api.ModelTransformationConstants;
 import org.osgi.service.component.annotations.Component;
 
+import de.jena.model.ibis.common.IBISIPDate;
 import de.jena.model.ibis.common.IBISIPDateTime;
 import de.jena.model.ibis.common.IbisCommonPackage;
 
@@ -32,6 +33,14 @@ public class IbisDateTimeToInstantBlackbox {
 	public Long getMillis(IBISIPDateTime ibisDateTime) {
 		if(ibisDateTime != null) {			
 			return ibisDateTime.getValue().toGregorianCalendar().getTimeInMillis();	
+		}
+		return null;
+	}
+	
+	@Operation(description = "Converts from IBISIPDate into milliseconds")
+	public Long getMillis(IBISIPDate ibisDate) {
+		if(ibisDate != null) {			
+			return ibisDate.getValue().toGregorianCalendar().getTimeInMillis();	
 		}
 		return null;
 	}

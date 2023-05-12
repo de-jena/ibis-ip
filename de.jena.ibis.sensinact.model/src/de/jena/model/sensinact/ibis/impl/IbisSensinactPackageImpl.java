@@ -21,6 +21,7 @@ import de.jena.model.sensinact.ibis.CustomerInfoCurrentStopPointData;
 import de.jena.model.sensinact.ibis.CustomerInfoTripData;
 import de.jena.model.sensinact.ibis.CustomerInfoVehicleData;
 import de.jena.model.sensinact.ibis.DoorState;
+import de.jena.model.sensinact.ibis.GNSSLocationData;
 import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactFactory;
@@ -134,6 +135,13 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	private EClass stopRequestedEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gnssLocationDataEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -326,6 +334,16 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	@Override
 	public EReference getIbisDevice_StopRequested() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_GnssLocationData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -1484,6 +1502,206 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
+	public EClass getGNSSLocationData() {
+		return gnssLocationDataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_ServiceName() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_ServiceOperation() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_Timestamp() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_Date() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_Time() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_LatitudeDegree() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_LongitudeDegree() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_LatitudeDirection() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_LongitudeDirection() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_Altitude() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_SpeedOverGround() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_SignalQuality() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_NumberOfSatellites() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_HorizontalDilutionOfPrecision() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_VerticalDilutionOfPrecision() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_TrackDegreeTrue() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_TrackDegreeMagnetic() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_GNSSType() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGNSSLocationData_GNSSCoordinateSystem() {
+		return (EAttribute)gnssLocationDataEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IbisSensinactFactory getIbisSensinactFactory() {
 		return (IbisSensinactFactory)getEFactoryInstance();
 	}
@@ -1520,6 +1738,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR_COUNTING_STATE_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR_STATE_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__STOP_REQUESTED);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__GNSS_LOCATION_DATA);
 
 		customerInfoAllDataEClass = createEClass(CUSTOMER_INFO_ALL_DATA);
 		createEAttribute(customerInfoAllDataEClass, CUSTOMER_INFO_ALL_DATA__SERVICE_NAME);
@@ -1647,6 +1866,27 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEAttribute(stopRequestedEClass, STOP_REQUESTED__SERVICE_OPERATION);
 		createEAttribute(stopRequestedEClass, STOP_REQUESTED__TIMESTAMP);
 		createEAttribute(stopRequestedEClass, STOP_REQUESTED__STOP_REQUESTED);
+
+		gnssLocationDataEClass = createEClass(GNSS_LOCATION_DATA);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__SERVICE_NAME);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__SERVICE_OPERATION);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__TIMESTAMP);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__DATE);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__TIME);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__LATITUDE_DEGREE);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__LONGITUDE_DEGREE);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__LATITUDE_DIRECTION);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__LONGITUDE_DIRECTION);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__ALTITUDE);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__SPEED_OVER_GROUND);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__SIGNAL_QUALITY);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__NUMBER_OF_SATELLITES);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__HORIZONTAL_DILUTION_OF_PRECISION);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__VERTICAL_DILUTION_OF_PRECISION);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__TRACK_DEGREE_TRUE);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__TRACK_DEGREE_MAGNETIC);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__GNSS_TYPE);
+		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__GNSS_COORDINATE_SYSTEM);
 	}
 
 	/**
@@ -1693,6 +1933,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		passengerCountingDoorCountingStateEClass.getESuperTypes().add(theProviderPackage.getService());
 		doorStateEClass.getESuperTypes().add(theProviderPackage.getService());
 		stopRequestedEClass.getESuperTypes().add(theProviderPackage.getService());
+		gnssLocationDataEClass.getESuperTypes().add(theProviderPackage.getService());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ibisDeviceEClass, IbisDevice.class, "IbisDevice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1708,6 +1949,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEReference(getIbisDevice_DoorCountingStateData(), this.getPassengerCountingDoorCountingState(), null, "doorCountingStateData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_DoorStateData(), this.getDoorState(), null, "doorStateData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_StopRequested(), this.getStopRequested(), null, "stopRequested", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_GnssLocationData(), this.getGNSSLocationData(), null, "gnssLocationData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerInfoAllDataEClass, CustomerInfoAllData.class, "CustomerInfoAllData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomerInfoAllData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, CustomerInfoAllData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1835,6 +2077,27 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEAttribute(getStopRequested_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, StopRequested.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStopRequested_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 1, 1, StopRequested.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStopRequested_StopRequested(), ecorePackage.getEBoolean(), "stopRequested", null, 0, 1, StopRequested.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gnssLocationDataEClass, GNSSLocationData.class, "GNSSLocationData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGNSSLocationData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_Date(), theProviderPackage.getEInstant(), "date", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_Time(), theProviderPackage.getEInstant(), "time", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_LatitudeDegree(), ecorePackage.getEDouble(), "latitudeDegree", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_LongitudeDegree(), ecorePackage.getEDouble(), "longitudeDegree", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_LatitudeDirection(), ecorePackage.getEString(), "latitudeDirection", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_LongitudeDirection(), ecorePackage.getEString(), "longitudeDirection", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_Altitude(), ecorePackage.getEDouble(), "altitude", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_SpeedOverGround(), ecorePackage.getEDouble(), "speedOverGround", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_SignalQuality(), ecorePackage.getEString(), "signalQuality", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_NumberOfSatellites(), ecorePackage.getEInt(), "numberOfSatellites", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_HorizontalDilutionOfPrecision(), ecorePackage.getEDouble(), "horizontalDilutionOfPrecision", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_VerticalDilutionOfPrecision(), ecorePackage.getEDouble(), "verticalDilutionOfPrecision", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_TrackDegreeTrue(), ecorePackage.getEDouble(), "trackDegreeTrue", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_TrackDegreeMagnetic(), ecorePackage.getEDouble(), "trackDegreeMagnetic", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_GNSSType(), ecorePackage.getEString(), "gNSSType", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNSSLocationData_GNSSCoordinateSystem(), ecorePackage.getEString(), "gNSSCoordinateSystem", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
