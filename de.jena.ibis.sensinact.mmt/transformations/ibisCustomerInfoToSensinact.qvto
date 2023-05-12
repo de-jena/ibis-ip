@@ -25,40 +25,50 @@ main() {
 
 mapping CUSTOMERINFO::AllDataResponse::allDataToService(): SENSINACT::IbisDevice {
 	customerInfoAllData := self.allData.map allDataToService("CustomerInformationService", "AllData");
+	admin := toAdmin("CustomerInformationService-AllData");
 }
 
 mapping CUSTOMERINFO::CurrentAnnouncementResponse::announcementToService(): SENSINACT::IbisDevice {
 	customerInfoCurrentAnnouncementData := self.currentAnnouncementData.map announcementToService("CustomerInformationService", "CurrentAnnouncementData");
+	admin := toAdmin("CustomerInformationService-CurrentAnnoucement");
 }
 
 mapping CUSTOMERINFO::CurrentConnectionInformationResponse::connectionToService(): SENSINACT::IbisDevice {
 	customerInfoCurrentConnectionData := self.currentConnectionData.map connectionToService("CustomerInformationService", "CurrentConnectionInformationData");
+	admin := toAdmin("CustomerInformationService-CurrentConnectionInformation");
 }
 
 mapping CUSTOMERINFO::CurrentDisplayContentResponse::displayToService(): SENSINACT::IbisDevice {
 	customerInfoCurrentDisplayContentData := self.currentDisplayContentData.map displayToService("CustomerInformationService", "CurrentDisplayContentData");
+	admin := toAdmin("CustomerInformationService-CurrentDisplayContent");
 }
 
 mapping CUSTOMERINFO::CurrentStopIndexResponse::stopIndexToService(): SENSINACT::IbisDevice {
 	customerInfoCurrentStopIndexData := self.currentStopIndexData.map stopIndexToService("CustomerInformationService", "CurrentStopIndexData");
+	admin := toAdmin("CustomerInformationService-CurrentStopIndex");
 }
 
 mapping CUSTOMERINFO::CurrentStopPointResponse::stopPointToService(): SENSINACT::IbisDevice {
 	customerInfoCurrentStopPointData := self.currentStopPointData.map stopPointToService("CustomerInformationService", "CurrentStopPointData");
+	admin := toAdmin("CustomerInformationService-CurrentStopPoint");
 }
 
 mapping CUSTOMERINFO::TripDataResponse::tripToService(): SENSINACT::IbisDevice {
 	customerInfoTripData := self.tripData.map tripToService("CustomerInformationService", "TripData");
+	admin := toAdmin("CustomerInformationService-TripData");
 }
 
 mapping CUSTOMERINFO::VehicleDataResponse::vehicleToService(): SENSINACT::IbisDevice {
 	customerInfoVehicleData := self.vehicleData.map vehicleToService("CustomerInformationService", "VehicleData");
+	admin := toAdmin("CustomerInformationService-VehicleData");
 }
 
 mapping CUSTOMERINFO::CurrentAnnouncementData::announcementToService(friendlyServiceName : String, operation : String): SENSINACT::CustomerInfoCurrentAnnouncementData {
 	var eClass := SENSINACT::CustomerInfoCurrentAnnouncementData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();	
+	serviceName := "CustomerInformationService";
+	serviceOperation := "CurrentAnnouncement";
 	
 	announcementRef := self.currentAnnouncement.announcementRef.value;
 	if(self.currentAnnouncement.announcementRef.value.oclIsUndefined().not()){
@@ -86,6 +96,8 @@ mapping CUSTOMERINFO::CurrentConnectionInformationData::connectionToService(frie
 	var eClass := SENSINACT::CustomerInfoCurrentConnectionData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();	
+	serviceName := "CustomerInformationService";
+	serviceOperation := "CurrentConnectionInformation";
 	
 //	TODO: connection is a list in ibis 	
 }
@@ -94,6 +106,8 @@ mapping CUSTOMERINFO::CurrentDisplayContentData::displayToService(friendlyServic
 	var eClass := SENSINACT::CustomerInfoCurrentDisplayContentData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();	
+	serviceName := "CustomerInformationService";
+	serviceOperation := "CurrentDisplayContent";
 	
 //	TODO: add display content list to sensinact model
 	
@@ -103,6 +117,8 @@ mapping CUSTOMERINFO::CurrentStopIndexData::stopIndexToService(friendlyServiceNa
 	var eClass := SENSINACT::CustomerInfoCurrentStopIndexData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();
+	serviceName := "CustomerInformationService";
+	serviceOperation := "CurrentStopIndex";
 		
 	currentStopIndex := self.currentStopIndex.value;
 	if(self.currentStopIndex.value.oclIsUndefined().not()){
@@ -114,6 +130,8 @@ mapping CUSTOMERINFO::CurrentStopPointData::stopPointToService(friendlyServiceNa
 	var eClass := SENSINACT::CustomerInfoCurrentStopPointData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();
+	serviceName := "CustomerInformationService";
+	serviceOperation := "CurrentStopPointData";
 		
 	stopIndex := self.currentStopPoint.stopIndex.value;
 	if(self.currentStopPoint.stopIndex.value.oclIsUndefined().not()){
@@ -180,6 +198,8 @@ mapping CUSTOMERINFO::TripData::tripToService(friendlyServiceName : String, oper
 	var eClass := SENSINACT::CustomerInfoTripData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();
+	serviceName := "CustomerInformationService";
+	serviceOperation := "TripData";
 		
 	vehicleRef := self.vehicleRef.value;
 	if(self.vehicleRef.value.oclIsUndefined().not()){
@@ -286,6 +306,8 @@ mapping CUSTOMERINFO::VehicleData::vehicleToService(friendlyServiceName : String
 	var eClass := SENSINACT::CustomerInfoVehicleData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();
+	serviceName := "CustomerInformationService";
+	serviceOperation := "VechicleData";
 		
 	vehicleRef := self.vehicleRef.value;
 	if(self.vehicleRef.value.oclIsUndefined().not()){
@@ -347,6 +369,8 @@ mapping CUSTOMERINFO::AllData::allDataToService(friendlyServiceName : String, op
 	var eClass := SENSINACT::CustomerInfoAllData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.timeStamp.getEInstant();
+	serviceName := "CustomerInformationService";
+	serviceOperation := "AllData";
 		
 	vehicleRef := self.vehicleRef.value;
 	if(self.vehicleRef.value.oclIsUndefined().not()){
@@ -445,4 +469,11 @@ helper toCustomMetadata(key : String, theValue : String): PROVIDER::FeatureCusto
 		value := theValue;
 	};
 	return entry;
+}
+
+helper toAdmin(name : String) : PROVIDER::Admin {
+	var admin := object PROVIDER::Admin {
+		friendlyName := name;
+	};
+	return admin;
 }

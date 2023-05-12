@@ -15,4 +15,8 @@ Private-Package: de.jena.ibis.event.handlers
 	org.eclipse.sensinact.gateway.core.models.provider,\
 	org.osgi.util.promise;version=latest,\
 	org.osgi.util.function;version=latest,\
-	org.osgi.service.typedevent
+	org.osgi.service.typedevent,\
+	org.gecko.osgi.messaging,\
+	org.osgi.service.component,\
+	de.jena.upd.sensinact.generic.message.model,\
+	org.gecko.emf.json

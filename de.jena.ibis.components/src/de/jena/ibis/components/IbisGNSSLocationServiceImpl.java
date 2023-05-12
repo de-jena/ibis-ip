@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.raspberry.pi;
+package de.jena.ibis.components;
 
 import java.io.IOException;
 import java.net.MulticastSocket;
@@ -28,7 +28,7 @@ import org.osgi.service.event.EventAdmin;
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.IbisGNSSLocationService;
 import de.jena.ibis.apis.IbisUDPServiceConfig;
-import de.jena.ibis.raspberry.pi.helper.IbisUDPHelper;
+import de.jena.ibis.components.helper.IbisUDPHelper;
 
 /**
  * 

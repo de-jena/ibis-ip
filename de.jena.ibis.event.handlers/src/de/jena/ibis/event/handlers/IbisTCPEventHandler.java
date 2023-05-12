@@ -15,8 +15,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sensinact.model.core.provider.Admin;
-import org.eclipse.sensinact.model.core.provider.ProviderFactory;
 import org.eclipse.sensinact.prototype.PrototypePush;
 import org.gecko.core.pool.Pool;
 import org.gecko.qvt.osgi.api.ConfigurableModelTransformatorPool;
@@ -52,7 +50,7 @@ public class IbisTCPEventHandler implements EventHandler {
 	
 	@Activate 
 	public void activate() {
-		System.out.println("TCP Event Handler is active!");
+		LOGGER.info("TCP Event Handler is active!");
 	}
 	/* 
 	 * (non-Javadoc)
@@ -60,10 +58,8 @@ public class IbisTCPEventHandler implements EventHandler {
 	 */
 	@Override
 	public void handleEvent(Event evt) {
-		System.out.println("Event arrived for topic " + evt.getTopic());
-//		We try to push event into sensinact here
-		String providerId = (String) evt.getProperty("deviceId") + "-" + (String) evt.getProperty("serviceName") + "-" + (String) evt.getProperty("operation");
-		publish((EObject) evt.getProperty("data"), providerId, (String) evt.getProperty("deviceType"));
+		LOGGER.info("Event arrived for topic " + evt.getTopic());
+		publish((EObject) evt.getProperty("data"), (String) evt.getProperty("deviceId"), (String) evt.getProperty("deviceType"));
 	}
 	
 	private void publish(EObject data, String providerId, String deviceType) {
@@ -79,14 +75,10 @@ public class IbisTCPEventHandler implements EventHandler {
 				ibisAdmin.setDeviceType(deviceType);
 				push.setIbisAdmin(ibisAdmin);
 				
-				Admin admin = ProviderFactory.eINSTANCE.createAdmin();
-				admin.setFriendlyName("Ibis - " + providerId);
-				push.setAdmin(admin);
 				sensinact.pushUpdate(push);
 			} catch(Exception e) {
 				e.printStackTrace();
-			}
-			
+			}			
 			finally {
 				pool.release(transformator);
 			}

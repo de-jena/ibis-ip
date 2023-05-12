@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.raspberry.pi;
+package de.jena.ibis.components;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -41,12 +41,8 @@ public class CPUTemp {
 
 	private ScheduledExecutorService executor;
 
-//	private String topic;
-
 	@Activate
 	public void activate() {
-//		String intersectionId = config.intersectionId();
-//		topic = "ilsa/" + intersectionId + "/thermal";
 		executor = Executors.newScheduledThreadPool(1);
 		executor.scheduleAtFixedRate(this::checkTemp, 0, 2, TimeUnit.MINUTES);
 	}
@@ -63,17 +59,11 @@ public class CPUTemp {
 			values.add(value);
 			int total = values.stream().mapToInt(Integer::valueOf).sum();
 			logger.log(Level.INFO, "Now: {0}°C - Average: {1}°C - Number of measurements: {2}", toCelsius(value), toCelsius(total / values.size()),values.size());
-//			sendMqtt(value);
 		} catch (Exception e) {
 			logger.log(Level.INFO, "Error during temperature check: ",e);
 		}
 
 	}
-
-//	private void sendMqtt(int value) throws Exception {
-//		ByteBuffer buffer = ByteBuffer.wrap(("" + toCelsius(value)).getBytes());
-//		messaging.publish(topic, buffer);
-//	}
 
 	private double toCelsius(int value) {
 		return value / 1000d;

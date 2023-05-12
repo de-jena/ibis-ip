@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.raspberry.pi.helper;
+package de.jena.ibis.components.helper;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -87,7 +87,7 @@ public class IbisUDPHelper {
 							properties.put("serviceId", serviceConfig.serviceId());
 							properties.put("operation", operation);
 							properties.put("data", res.getContents().get(0));
-							Event evt = new Event("UDPPacket/"+serviceConfig.serviceId()+"/"+operation+"/", properties);								
+							Event evt = new Event("UDPPacket/"+serviceConfig.serviceId()+"/"+operation, properties);								
 							eventAdmin.postEvent(evt);
 						}
 					} finally {

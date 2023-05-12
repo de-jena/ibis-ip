@@ -2,10 +2,10 @@
 	":configurator:resource-version": 1,
 	":configurator:symbolicname": "IbisConfig",
 	":configurator:version": "0.0.0",
-	"IbisDeviceConfigurator~bus201": {
+	"IbisDeviceConfigurator~tram201": {
 		"deviceId" : "201",
-		"deviceName": "Bus 201",
-		"deviceType": "BUS",
+		"deviceName": "Tram 201",
+		"deviceType": "TRAM",
 		"deviceIP": "192.168.243.1",
 		"refTCPServices" : [
 			"CustomerInformationService"
