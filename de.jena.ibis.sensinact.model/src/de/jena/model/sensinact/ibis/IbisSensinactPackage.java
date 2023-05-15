@@ -229,13 +229,49 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__GNSS_LOCATION_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Current Tariff Stop Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Razzia Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__RAZZIA_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Current Line Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__CURRENT_LINE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Vehicle Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__VEHICLE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 16;
+
+	/**
 	 * The number of structural features of the '<em>Ibis Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 13;
+	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 17;
 
 	/**
 	 * The number of operations of the '<em>Ibis Device</em>' class.
@@ -1825,6 +1861,487 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int GNSS_LOCATION_DATA_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationCurrentTariffStopDataImpl <em>Ticket Validation Current Tariff Stop Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.TicketValidationCurrentTariffStopDataImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA = 14;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Stop Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_INDEX = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Stop Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_REF = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Stop Name</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Stop Alternative Name</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_ALTERNATIVE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Platform</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__PLATFORM = ProviderPackage.SERVICE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Arrival Scheduled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__ARRIVAL_SCHEDULED = ProviderPackage.SERVICE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Arrival Expected</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__ARRIVAL_EXPECTED = ProviderPackage.SERVICE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Departure Scheduled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DEPARTURE_SCHEDULED = ProviderPackage.SERVICE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Departure Expected</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DEPARTURE_EXPECTED = ProviderPackage.SERVICE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Recorded Arrival Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__RECORDED_ARRIVAL_TIME = ProviderPackage.SERVICE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Distance To Next Stop</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DISTANCE_TO_NEXT_STOP = ProviderPackage.SERVICE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Fare Zone</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__FARE_ZONE = ProviderPackage.SERVICE_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Current Trip Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__CURRENT_TRIP_REF = ProviderPackage.SERVICE_FEATURE_COUNT + 15;
+
+	/**
+	 * The number of structural features of the '<em>Ticket Validation Current Tariff Stop Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 16;
+
+	/**
+	 * The number of operations of the '<em>Ticket Validation Current Tariff Stop Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationRazziaDataImpl <em>Ticket Validation Razzia Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.TicketValidationRazziaDataImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationRazziaData()
+	 * @generated
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA = 15;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Razzia State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA__RAZZIA_STATE = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Ticket Validation Razzia Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Ticket Validation Razzia Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationCurrentLineDataImpl <em>Ticket Validation Current Line Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.TicketValidationCurrentLineDataImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA = 16;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Line Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_REF = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Line Name</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Line Short Name</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_SHORT_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Line Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_CODE = ProviderPackage.SERVICE_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of structural features of the '<em>Ticket Validation Current Line Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of operations of the '<em>Ticket Validation Current Line Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationVehicleDataImpl <em>Ticket Validation Vehicle Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.TicketValidationVehicleDataImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationVehicleData()
+	 * @generated
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA = 17;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Service Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__SERVICE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__SERVICE_OPERATION = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__TIMESTAMP = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Vehicle Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__VEHICLE_REF = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Route Deviation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__ROUTE_DEVIATION = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Door State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__DOOR_STATE = ProviderPackage.SERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Moving Direction Forward</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__MOVING_DIRECTION_FORWARD = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Vehicle Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__VEHICLE_MODE = ProviderPackage.SERVICE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Driver Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA__DRIVER_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of structural features of the '<em>Ticket Validation Vehicle Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 9;
+
+	/**
+	 * The number of operations of the '<em>Ticket Validation Vehicle Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.IbisDevice <em>Ibis Device</em>}'.
@@ -1978,6 +2495,50 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getIbisDevice_GnssLocationData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentTariffStopData <em>Current Tariff Stop Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Current Tariff Stop Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getCurrentTariffStopData()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_CurrentTariffStopData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getRazziaData <em>Razzia Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Razzia Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getRazziaData()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_RazziaData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentLineData <em>Current Line Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Current Line Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getCurrentLineData()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_CurrentLineData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getVehicleData <em>Vehicle Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Vehicle Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getVehicleData()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_VehicleData();
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.CustomerInfoAllData <em>Customer Info All Data</em>}'.
@@ -3452,6 +4013,453 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getGNSSLocationData_GNSSCoordinateSystem();
 
 	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData <em>Ticket Validation Current Tariff Stop Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ticket Validation Current Tariff Stop Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData
+	 * @generated
+	 */
+	EClass getTicketValidationCurrentTariffStopData();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getServiceName()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getServiceOperation()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getTimestamp()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopIndex <em>Stop Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Stop Index</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopIndex()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_StopIndex();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopRef <em>Stop Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Stop Ref</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopRef()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_StopRef();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopName <em>Stop Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Stop Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopName()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_StopName();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopAlternativeName <em>Stop Alternative Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Stop Alternative Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getStopAlternativeName()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_StopAlternativeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getPlatform <em>Platform</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Platform</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getPlatform()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_Platform();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getArrivalScheduled <em>Arrival Scheduled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Arrival Scheduled</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getArrivalScheduled()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_ArrivalScheduled();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getArrivalExpected <em>Arrival Expected</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Arrival Expected</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getArrivalExpected()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_ArrivalExpected();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getDepartureScheduled <em>Departure Scheduled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Departure Scheduled</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getDepartureScheduled()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_DepartureScheduled();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getDepartureExpected <em>Departure Expected</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Departure Expected</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getDepartureExpected()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_DepartureExpected();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getRecordedArrivalTime <em>Recorded Arrival Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Recorded Arrival Time</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getRecordedArrivalTime()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_RecordedArrivalTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getDistanceToNextStop <em>Distance To Next Stop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Distance To Next Stop</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getDistanceToNextStop()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_DistanceToNextStop();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getFareZone <em>Fare Zone</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Fare Zone</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getFareZone()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_FareZone();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getCurrentTripRef <em>Current Trip Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Current Trip Ref</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData#getCurrentTripRef()
+	 * @see #getTicketValidationCurrentTariffStopData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentTariffStopData_CurrentTripRef();
+
+	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.TicketValidationRazziaData <em>Ticket Validation Razzia Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ticket Validation Razzia Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationRazziaData
+	 * @generated
+	 */
+	EClass getTicketValidationRazziaData();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationRazziaData#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationRazziaData#getServiceName()
+	 * @see #getTicketValidationRazziaData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationRazziaData_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationRazziaData#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationRazziaData#getServiceOperation()
+	 * @see #getTicketValidationRazziaData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationRazziaData_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationRazziaData#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationRazziaData#getTimestamp()
+	 * @see #getTicketValidationRazziaData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationRazziaData_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationRazziaData#getRazziaState <em>Razzia State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Razzia State</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationRazziaData#getRazziaState()
+	 * @see #getTicketValidationRazziaData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationRazziaData_RazziaState();
+
+	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData <em>Ticket Validation Current Line Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ticket Validation Current Line Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData
+	 * @generated
+	 */
+	EClass getTicketValidationCurrentLineData();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getServiceName()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getServiceOperation()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getTimestamp()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineRef <em>Line Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Ref</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineRef()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_LineRef();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineName <em>Line Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Line Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineName()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_LineName();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineShortName <em>Line Short Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Line Short Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineShortName()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_LineShortName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineNumber <em>Line Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Number</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineNumber()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_LineNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineCode <em>Line Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Code</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData#getLineCode()
+	 * @see #getTicketValidationCurrentLineData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationCurrentLineData_LineCode();
+
+	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData <em>Ticket Validation Vehicle Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ticket Validation Vehicle Data</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData
+	 * @generated
+	 */
+	EClass getTicketValidationVehicleData();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getServiceName <em>Service Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getServiceName()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_ServiceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getServiceOperation <em>Service Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Operation</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getServiceOperation()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_ServiceOperation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getTimestamp()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_Timestamp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getVehicleRef <em>Vehicle Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vehicle Ref</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getVehicleRef()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_VehicleRef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getRouteDeviation <em>Route Deviation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Route Deviation</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getRouteDeviation()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_RouteDeviation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getDoorState <em>Door State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Door State</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getDoorState()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_DoorState();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#isMovingDirectionForward <em>Moving Direction Forward</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Moving Direction Forward</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#isMovingDirectionForward()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_MovingDirectionForward();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getVehicleMode <em>Vehicle Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vehicle Mode</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getVehicleMode()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_VehicleMode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData#getDriverNumber <em>Driver Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Driver Number</em>'.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData#getDriverNumber()
+	 * @see #getTicketValidationVehicleData()
+	 * @generated
+	 */
+	EAttribute getTicketValidationVehicleData_DriverNumber();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3587,6 +4595,38 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference IBIS_DEVICE__GNSS_LOCATION_DATA = eINSTANCE.getIbisDevice_GnssLocationData();
+
+		/**
+		 * The meta object literal for the '<em><b>Current Tariff Stop Data</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA = eINSTANCE.getIbisDevice_CurrentTariffStopData();
+
+		/**
+		 * The meta object literal for the '<em><b>Razzia Data</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__RAZZIA_DATA = eINSTANCE.getIbisDevice_RazziaData();
+
+		/**
+		 * The meta object literal for the '<em><b>Current Line Data</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__CURRENT_LINE_DATA = eINSTANCE.getIbisDevice_CurrentLineData();
+
+		/**
+		 * The meta object literal for the '<em><b>Vehicle Data</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__VEHICLE_DATA = eINSTANCE.getIbisDevice_VehicleData();
 
 		/**
 		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.CustomerInfoAllDataImpl <em>Customer Info All Data</em>}' class.
@@ -4693,6 +5733,342 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute GNSS_LOCATION_DATA__GNSS_COORDINATE_SYSTEM = eINSTANCE.getGNSSLocationData_GNSSCoordinateSystem();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationCurrentTariffStopDataImpl <em>Ticket Validation Current Tariff Stop Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.TicketValidationCurrentTariffStopDataImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationCurrentTariffStopData()
+		 * @generated
+		 */
+		EClass TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA = eINSTANCE.getTicketValidationCurrentTariffStopData();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__SERVICE_NAME = eINSTANCE.getTicketValidationCurrentTariffStopData_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__SERVICE_OPERATION = eINSTANCE.getTicketValidationCurrentTariffStopData_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__TIMESTAMP = eINSTANCE.getTicketValidationCurrentTariffStopData_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_INDEX = eINSTANCE.getTicketValidationCurrentTariffStopData_StopIndex();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_REF = eINSTANCE.getTicketValidationCurrentTariffStopData_StopRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Name</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_NAME = eINSTANCE.getTicketValidationCurrentTariffStopData_StopName();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Alternative Name</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_ALTERNATIVE_NAME = eINSTANCE.getTicketValidationCurrentTariffStopData_StopAlternativeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Platform</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__PLATFORM = eINSTANCE.getTicketValidationCurrentTariffStopData_Platform();
+
+		/**
+		 * The meta object literal for the '<em><b>Arrival Scheduled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__ARRIVAL_SCHEDULED = eINSTANCE.getTicketValidationCurrentTariffStopData_ArrivalScheduled();
+
+		/**
+		 * The meta object literal for the '<em><b>Arrival Expected</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__ARRIVAL_EXPECTED = eINSTANCE.getTicketValidationCurrentTariffStopData_ArrivalExpected();
+
+		/**
+		 * The meta object literal for the '<em><b>Departure Scheduled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DEPARTURE_SCHEDULED = eINSTANCE.getTicketValidationCurrentTariffStopData_DepartureScheduled();
+
+		/**
+		 * The meta object literal for the '<em><b>Departure Expected</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DEPARTURE_EXPECTED = eINSTANCE.getTicketValidationCurrentTariffStopData_DepartureExpected();
+
+		/**
+		 * The meta object literal for the '<em><b>Recorded Arrival Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__RECORDED_ARRIVAL_TIME = eINSTANCE.getTicketValidationCurrentTariffStopData_RecordedArrivalTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Distance To Next Stop</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DISTANCE_TO_NEXT_STOP = eINSTANCE.getTicketValidationCurrentTariffStopData_DistanceToNextStop();
+
+		/**
+		 * The meta object literal for the '<em><b>Fare Zone</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__FARE_ZONE = eINSTANCE.getTicketValidationCurrentTariffStopData_FareZone();
+
+		/**
+		 * The meta object literal for the '<em><b>Current Trip Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__CURRENT_TRIP_REF = eINSTANCE.getTicketValidationCurrentTariffStopData_CurrentTripRef();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationRazziaDataImpl <em>Ticket Validation Razzia Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.TicketValidationRazziaDataImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationRazziaData()
+		 * @generated
+		 */
+		EClass TICKET_VALIDATION_RAZZIA_DATA = eINSTANCE.getTicketValidationRazziaData();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_RAZZIA_DATA__SERVICE_NAME = eINSTANCE.getTicketValidationRazziaData_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_RAZZIA_DATA__SERVICE_OPERATION = eINSTANCE.getTicketValidationRazziaData_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_RAZZIA_DATA__TIMESTAMP = eINSTANCE.getTicketValidationRazziaData_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Razzia State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_RAZZIA_DATA__RAZZIA_STATE = eINSTANCE.getTicketValidationRazziaData_RazziaState();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationCurrentLineDataImpl <em>Ticket Validation Current Line Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.TicketValidationCurrentLineDataImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationCurrentLineData()
+		 * @generated
+		 */
+		EClass TICKET_VALIDATION_CURRENT_LINE_DATA = eINSTANCE.getTicketValidationCurrentLineData();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__SERVICE_NAME = eINSTANCE.getTicketValidationCurrentLineData_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__SERVICE_OPERATION = eINSTANCE.getTicketValidationCurrentLineData_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__TIMESTAMP = eINSTANCE.getTicketValidationCurrentLineData_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_REF = eINSTANCE.getTicketValidationCurrentLineData_LineRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Name</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_NAME = eINSTANCE.getTicketValidationCurrentLineData_LineName();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Short Name</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_SHORT_NAME = eINSTANCE.getTicketValidationCurrentLineData_LineShortName();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_NUMBER = eINSTANCE.getTicketValidationCurrentLineData_LineNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_CODE = eINSTANCE.getTicketValidationCurrentLineData_LineCode();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.TicketValidationVehicleDataImpl <em>Ticket Validation Vehicle Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.TicketValidationVehicleDataImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTicketValidationVehicleData()
+		 * @generated
+		 */
+		EClass TICKET_VALIDATION_VEHICLE_DATA = eINSTANCE.getTicketValidationVehicleData();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__SERVICE_NAME = eINSTANCE.getTicketValidationVehicleData_ServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__SERVICE_OPERATION = eINSTANCE.getTicketValidationVehicleData_ServiceOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__TIMESTAMP = eINSTANCE.getTicketValidationVehicleData_Timestamp();
+
+		/**
+		 * The meta object literal for the '<em><b>Vehicle Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__VEHICLE_REF = eINSTANCE.getTicketValidationVehicleData_VehicleRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Route Deviation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__ROUTE_DEVIATION = eINSTANCE.getTicketValidationVehicleData_RouteDeviation();
+
+		/**
+		 * The meta object literal for the '<em><b>Door State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__DOOR_STATE = eINSTANCE.getTicketValidationVehicleData_DoorState();
+
+		/**
+		 * The meta object literal for the '<em><b>Moving Direction Forward</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__MOVING_DIRECTION_FORWARD = eINSTANCE.getTicketValidationVehicleData_MovingDirectionForward();
+
+		/**
+		 * The meta object literal for the '<em><b>Vehicle Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__VEHICLE_MODE = eINSTANCE.getTicketValidationVehicleData_VehicleMode();
+
+		/**
+		 * The meta object literal for the '<em><b>Driver Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TICKET_VALIDATION_VEHICLE_DATA__DRIVER_NUMBER = eINSTANCE.getTicketValidationVehicleData_DriverNumber();
 
 	}
 

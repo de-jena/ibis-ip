@@ -42,6 +42,8 @@ public interface TicketValidationServiceConstants {
 	public static final String OPERATION_SUBSCRIBE_SHORT_HAUL_STOPS = "SubscribeShortHaulStops";
 	public static final String OPERATION_UNSUBSCRIBE_SHORT_HAUL_STOPS = "UnsubscribeShortHaulStops";
 	
+	public static final String OPERATION_RETRIEVE_TRIP_DATA = "RetrieveTripData";
+	
 	public static List<String> getAllGetOperations() {
 		return List.of(OPERATION_GET_CURRENT_TARIFF_STOP, OPERATION_GET_RAZZIA, OPERATION_GET_CURRENT_LINE,
 				OPERATION_GET_VEHICLE_DATA, OPERATION_GET_SHORT_HAUL_STOPS);

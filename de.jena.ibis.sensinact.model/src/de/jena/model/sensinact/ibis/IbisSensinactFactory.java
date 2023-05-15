@@ -161,6 +161,42 @@ public interface IbisSensinactFactory extends EFactory {
 	GNSSLocationData createGNSSLocationData();
 
 	/**
+	 * Returns a new object of class '<em>Ticket Validation Current Tariff Stop Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ticket Validation Current Tariff Stop Data</em>'.
+	 * @generated
+	 */
+	TicketValidationCurrentTariffStopData createTicketValidationCurrentTariffStopData();
+
+	/**
+	 * Returns a new object of class '<em>Ticket Validation Razzia Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ticket Validation Razzia Data</em>'.
+	 * @generated
+	 */
+	TicketValidationRazziaData createTicketValidationRazziaData();
+
+	/**
+	 * Returns a new object of class '<em>Ticket Validation Current Line Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ticket Validation Current Line Data</em>'.
+	 * @generated
+	 */
+	TicketValidationCurrentLineData createTicketValidationCurrentLineData();
+
+	/**
+	 * Returns a new object of class '<em>Ticket Validation Vehicle Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ticket Validation Vehicle Data</em>'.
+	 * @generated
+	 */
+	TicketValidationVehicleData createTicketValidationVehicleData();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

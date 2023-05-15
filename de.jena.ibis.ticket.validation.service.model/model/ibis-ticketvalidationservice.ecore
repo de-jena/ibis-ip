@@ -140,7 +140,7 @@
       <details key="name" value="TicketValidationService.GetRazziaResponseStructure"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="razziaData" eType="#//RazziaResponseData"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="razziaData" eType="#//RazziaData"
         containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -163,7 +163,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RazziaResponseData">
+  <eClassifiers xsi:type="ecore:EClass" name="RazziaData">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="TicketValidationService.RazziaResponseDataStructure"/>
       <details key="kind" value="elementOnly"/>

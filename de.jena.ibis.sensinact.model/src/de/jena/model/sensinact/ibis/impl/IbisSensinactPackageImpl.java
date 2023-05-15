@@ -28,6 +28,10 @@ import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
 import de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState;
 import de.jena.model.sensinact.ibis.StopRequested;
+import de.jena.model.sensinact.ibis.TicketValidationCurrentLineData;
+import de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData;
+import de.jena.model.sensinact.ibis.TicketValidationRazziaData;
+import de.jena.model.sensinact.ibis.TicketValidationVehicleData;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -142,6 +146,34 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	private EClass gnssLocationDataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ticketValidationCurrentTariffStopDataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ticketValidationRazziaDataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ticketValidationCurrentLineDataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ticketValidationVehicleDataEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -344,6 +376,46 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	@Override
 	public EReference getIbisDevice_GnssLocationData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_CurrentTariffStopData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_RazziaData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_CurrentLineData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_VehicleData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -1702,6 +1774,416 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
+	public EClass getTicketValidationCurrentTariffStopData() {
+		return ticketValidationCurrentTariffStopDataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_ServiceName() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_ServiceOperation() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_Timestamp() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_StopIndex() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_StopRef() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_StopName() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_StopAlternativeName() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_Platform() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_ArrivalScheduled() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_ArrivalExpected() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_DepartureScheduled() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_DepartureExpected() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_RecordedArrivalTime() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_DistanceToNextStop() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_FareZone() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentTariffStopData_CurrentTripRef() {
+		return (EAttribute)ticketValidationCurrentTariffStopDataEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTicketValidationRazziaData() {
+		return ticketValidationRazziaDataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationRazziaData_ServiceName() {
+		return (EAttribute)ticketValidationRazziaDataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationRazziaData_ServiceOperation() {
+		return (EAttribute)ticketValidationRazziaDataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationRazziaData_Timestamp() {
+		return (EAttribute)ticketValidationRazziaDataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationRazziaData_RazziaState() {
+		return (EAttribute)ticketValidationRazziaDataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTicketValidationCurrentLineData() {
+		return ticketValidationCurrentLineDataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_ServiceName() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_ServiceOperation() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_Timestamp() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_LineRef() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_LineName() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_LineShortName() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_LineNumber() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationCurrentLineData_LineCode() {
+		return (EAttribute)ticketValidationCurrentLineDataEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTicketValidationVehicleData() {
+		return ticketValidationVehicleDataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_ServiceName() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_ServiceOperation() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_Timestamp() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_VehicleRef() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_RouteDeviation() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_DoorState() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_MovingDirectionForward() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_VehicleMode() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTicketValidationVehicleData_DriverNumber() {
+		return (EAttribute)ticketValidationVehicleDataEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IbisSensinactFactory getIbisSensinactFactory() {
 		return (IbisSensinactFactory)getEFactoryInstance();
 	}
@@ -1739,6 +2221,10 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR_STATE_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__STOP_REQUESTED);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__GNSS_LOCATION_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__RAZZIA_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__CURRENT_LINE_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__VEHICLE_DATA);
 
 		customerInfoAllDataEClass = createEClass(CUSTOMER_INFO_ALL_DATA);
 		createEAttribute(customerInfoAllDataEClass, CUSTOMER_INFO_ALL_DATA__SERVICE_NAME);
@@ -1887,6 +2373,51 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__TRACK_DEGREE_MAGNETIC);
 		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__GNSS_TYPE);
 		createEAttribute(gnssLocationDataEClass, GNSS_LOCATION_DATA__GNSS_COORDINATE_SYSTEM);
+
+		ticketValidationCurrentTariffStopDataEClass = createEClass(TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__SERVICE_NAME);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__SERVICE_OPERATION);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__TIMESTAMP);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_INDEX);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_REF);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_NAME);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__STOP_ALTERNATIVE_NAME);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__PLATFORM);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__ARRIVAL_SCHEDULED);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__ARRIVAL_EXPECTED);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DEPARTURE_SCHEDULED);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DEPARTURE_EXPECTED);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__RECORDED_ARRIVAL_TIME);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__DISTANCE_TO_NEXT_STOP);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__FARE_ZONE);
+		createEAttribute(ticketValidationCurrentTariffStopDataEClass, TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA__CURRENT_TRIP_REF);
+
+		ticketValidationRazziaDataEClass = createEClass(TICKET_VALIDATION_RAZZIA_DATA);
+		createEAttribute(ticketValidationRazziaDataEClass, TICKET_VALIDATION_RAZZIA_DATA__SERVICE_NAME);
+		createEAttribute(ticketValidationRazziaDataEClass, TICKET_VALIDATION_RAZZIA_DATA__SERVICE_OPERATION);
+		createEAttribute(ticketValidationRazziaDataEClass, TICKET_VALIDATION_RAZZIA_DATA__TIMESTAMP);
+		createEAttribute(ticketValidationRazziaDataEClass, TICKET_VALIDATION_RAZZIA_DATA__RAZZIA_STATE);
+
+		ticketValidationCurrentLineDataEClass = createEClass(TICKET_VALIDATION_CURRENT_LINE_DATA);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__SERVICE_NAME);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__SERVICE_OPERATION);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__TIMESTAMP);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_REF);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_NAME);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_SHORT_NAME);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_NUMBER);
+		createEAttribute(ticketValidationCurrentLineDataEClass, TICKET_VALIDATION_CURRENT_LINE_DATA__LINE_CODE);
+
+		ticketValidationVehicleDataEClass = createEClass(TICKET_VALIDATION_VEHICLE_DATA);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__SERVICE_NAME);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__SERVICE_OPERATION);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__TIMESTAMP);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__VEHICLE_REF);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__ROUTE_DEVIATION);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__DOOR_STATE);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__MOVING_DIRECTION_FORWARD);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__VEHICLE_MODE);
+		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__DRIVER_NUMBER);
 	}
 
 	/**
@@ -1934,6 +2465,10 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		doorStateEClass.getESuperTypes().add(theProviderPackage.getService());
 		stopRequestedEClass.getESuperTypes().add(theProviderPackage.getService());
 		gnssLocationDataEClass.getESuperTypes().add(theProviderPackage.getService());
+		ticketValidationCurrentTariffStopDataEClass.getESuperTypes().add(theProviderPackage.getService());
+		ticketValidationRazziaDataEClass.getESuperTypes().add(theProviderPackage.getService());
+		ticketValidationCurrentLineDataEClass.getESuperTypes().add(theProviderPackage.getService());
+		ticketValidationVehicleDataEClass.getESuperTypes().add(theProviderPackage.getService());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ibisDeviceEClass, IbisDevice.class, "IbisDevice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1950,6 +2485,10 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEReference(getIbisDevice_DoorStateData(), this.getDoorState(), null, "doorStateData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_StopRequested(), this.getStopRequested(), null, "stopRequested", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_GnssLocationData(), this.getGNSSLocationData(), null, "gnssLocationData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_CurrentTariffStopData(), this.getTicketValidationCurrentTariffStopData(), null, "currentTariffStopData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_RazziaData(), this.getTicketValidationRazziaData(), null, "razziaData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_CurrentLineData(), this.getTicketValidationCurrentLineData(), null, "currentLineData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_VehicleData(), this.getTicketValidationVehicleData(), null, "vehicleData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerInfoAllDataEClass, CustomerInfoAllData.class, "CustomerInfoAllData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomerInfoAllData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, CustomerInfoAllData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2098,6 +2637,51 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEAttribute(getGNSSLocationData_TrackDegreeMagnetic(), ecorePackage.getEDouble(), "trackDegreeMagnetic", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNSSLocationData_GNSSType(), ecorePackage.getEString(), "gNSSType", null, 1, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNSSLocationData_GNSSCoordinateSystem(), ecorePackage.getEString(), "gNSSCoordinateSystem", null, 0, 1, GNSSLocationData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ticketValidationCurrentTariffStopDataEClass, TicketValidationCurrentTariffStopData.class, "TicketValidationCurrentTariffStopData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTicketValidationCurrentTariffStopData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_StopIndex(), ecorePackage.getEInt(), "stopIndex", "-1", 1, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_StopRef(), ecorePackage.getEString(), "stopRef", null, 1, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_StopName(), ecorePackage.getEString(), "stopName", null, 1, -1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_StopAlternativeName(), ecorePackage.getEString(), "stopAlternativeName", null, 0, -1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_Platform(), ecorePackage.getEString(), "platform", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_ArrivalScheduled(), theProviderPackage.getEInstant(), "arrivalScheduled", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_ArrivalExpected(), theProviderPackage.getEInstant(), "arrivalExpected", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_DepartureScheduled(), theProviderPackage.getEInstant(), "departureScheduled", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_DepartureExpected(), theProviderPackage.getEInstant(), "departureExpected", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_RecordedArrivalTime(), theProviderPackage.getEInstant(), "recordedArrivalTime", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_DistanceToNextStop(), ecorePackage.getEInt(), "distanceToNextStop", "-1", 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_FareZone(), ecorePackage.getEString(), "fareZone", null, 0, -1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentTariffStopData_CurrentTripRef(), ecorePackage.getEString(), "currentTripRef", null, 0, 1, TicketValidationCurrentTariffStopData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ticketValidationRazziaDataEClass, TicketValidationRazziaData.class, "TicketValidationRazziaData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTicketValidationRazziaData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, TicketValidationRazziaData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationRazziaData_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, TicketValidationRazziaData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationRazziaData_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 0, 1, TicketValidationRazziaData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationRazziaData_RazziaState(), ecorePackage.getEString(), "razziaState", null, 1, 1, TicketValidationRazziaData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ticketValidationCurrentLineDataEClass, TicketValidationCurrentLineData.class, "TicketValidationCurrentLineData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTicketValidationCurrentLineData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentLineData_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentLineData_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 0, 1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentLineData_LineRef(), ecorePackage.getEString(), "lineRef", null, 1, 1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentLineData_LineName(), ecorePackage.getEString(), "lineName", null, 0, -1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentLineData_LineShortName(), ecorePackage.getEString(), "lineShortName", null, 0, -1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentLineData_LineNumber(), ecorePackage.getEInt(), "lineNumber", "-1", 0, 1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationCurrentLineData_LineCode(), ecorePackage.getEInt(), "lineCode", "-1", 0, 1, TicketValidationCurrentLineData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ticketValidationVehicleDataEClass, TicketValidationVehicleData.class, "TicketValidationVehicleData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTicketValidationVehicleData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_ServiceOperation(), ecorePackage.getEString(), "serviceOperation", null, 1, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_Timestamp(), theProviderPackage.getEInstant(), "timestamp", null, 1, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_VehicleRef(), ecorePackage.getEString(), "vehicleRef", null, 1, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_RouteDeviation(), ecorePackage.getEString(), "routeDeviation", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_DoorState(), ecorePackage.getEString(), "doorState", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_MovingDirectionForward(), ecorePackage.getEBoolean(), "movingDirectionForward", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_VehicleMode(), ecorePackage.getEString(), "vehicleMode", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTicketValidationVehicleData_DriverNumber(), ecorePackage.getEString(), "driverNumber", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

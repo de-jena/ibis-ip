@@ -1,62 +1,62 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1683870908089">
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1684146821800">
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="de.jena.upd.sensinact.generic.message.model"/>
+      <attribute name="osgi.identity" value="de.jena.udp.sensinact.generic.message.model"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="0.0.0" type="Version"/>
+      <attribute name="version" value="1.0.0.SNAPSHOT" type="Version"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <directive name="uses" value="org.eclipse.emf.ecore,org.eclipse.sensinact.gateway.geojson"/>
-      <attribute name="bundle-symbolic-name" value="de.jena.upd.sensinact.generic.message.model"/>
-      <attribute name="bundle-version" value="0.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="de.jena.upd.sensinact.generic.message"/>
+      <attribute name="bundle-symbolic-name" value="de.jena.udp.sensinact.generic.message.model"/>
+      <attribute name="bundle-version" value="1.0.0.SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="de.jena.udp.model.sensinact.generic.message"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-63279479,976841842,-1586391828,2106895593,770180642,-366066559,-655069796,1119818078,-1236807901,1425955268,-951987617,1517434043,572955146,-1421238103,257936094,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="de.jena.upd.sensinact.generic.message,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.sensinact.gateway.geojson"/>
-      <attribute name="bundle-symbolic-name" value="de.jena.upd.sensinact.generic.message.model"/>
-      <attribute name="bundle-version" value="0.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="de.jena.upd.sensinact.generic.message.impl"/>
+      <directive name="uses" value="de.jena.udp.model.sensinact.generic.message,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.sensinact.gateway.geojson"/>
+      <attribute name="bundle-symbolic-name" value="de.jena.udp.sensinact.generic.message.model"/>
+      <attribute name="bundle-version" value="1.0.0.SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="de.jena.udp.model.sensinact.generic.message.impl"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="1694554185,1846327730,-1280830164,408217257,1349974882,-391581119,1202656732,-1071773538,-1579656221,-748265185,-1197066885,435772234,-1226179991,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.package">
-      <directive name="uses" value="de.jena.upd.sensinact.generic.message,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
-      <attribute name="bundle-symbolic-name" value="de.jena.upd.sensinact.generic.message.model"/>
-      <attribute name="bundle-version" value="0.0.0" type="Version"/>
-      <attribute name="osgi.wiring.package" value="de.jena.upd.sensinact.generic.message.util"/>
+      <directive name="uses" value="de.jena.udp.model.sensinact.generic.message,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"/>
+      <attribute name="bundle-symbolic-name" value="de.jena.udp.sensinact.generic.message.model"/>
+      <attribute name="bundle-version" value="1.0.0.SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="de.jena.udp.model.sensinact.generic.message.util"/>
       <attribute name="version" value="1.0.0" type="Version"/>
       <attribute name="bnd.hashes" value="-887512446,-755600901,1632921832,-1923478059" type="List&lt;Long&gt;"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="0.0.0" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="de.jena.upd.sensinact.generic.message.model"/>
+      <attribute name="bundle-version" value="1.0.0.SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="de.jena.udp.sensinact.generic.message.model"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="0.0.0" type="Version"/>
-      <attribute name="osgi.wiring.host" value="de.jena.upd.sensinact.generic.message.model"/>
+      <attribute name="bundle-version" value="1.0.0.SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.host" value="de.jena.udp.sensinact.generic.message.model"/>
     </capability>
-    <capability namespace="de.jena.upd.sensinact.generic.message"/>
+    <capability namespace="de.jena.udp.model.sensinact.generic.message"/>
     <capability namespace="org.eclipse.emf.ecore.generated_package">
-      <attribute name="class" value="de.jena.upd.sensinact.generic.message.MessagePackage"/>
-      <attribute name="uri" value="https://upd.jena.de/model/sensinact/mqtt/message/1.0"/>
+      <attribute name="class" value="de.jena.udp.model.sensinact.generic.message.MessagePackage"/>
+      <attribute name="uri" value="https://de.jena/udp/sensinact/generic/message/1.0"/>
       <attribute name="genModel" value="/model/generic_message.genmodel"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="size" value="108463" type="Long"/>
+      <attribute name="size" value="110053" type="Long"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="de.jena.upd.sensinact.generic.message.model/de.jena.upd.sensinact.generic.message.model-0.0.0.jar"/>
-      <attribute name="osgi.content" value="D0DAA0D1B0FF74AA10CEBC1E133202F6D2A607E08D9FBA58BC9A589BEA45E258"/>
+      <attribute name="url" value="de.jena.udp.sensinact.generic.message.model/de.jena.udp.sensinact.generic.message.model-1.0.0.jar"/>
+      <attribute name="osgi.content" value="0D391B837D5ADBDA7CD4D95D04DA27E48DB87940042703154B3808CC13FF6033"/>
     </capability>
     <capability namespace="osgi.service">
       <directive name="uses" value="org.eclipse.emf.ecore"/>
-      <attribute name="objectClass" value="de.jena.upd.sensinact.generic.message.MessageFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
+      <attribute name="objectClass" value="de.jena.udp.model.sensinact.generic.message.MessageFactory, org.eclipse.emf.ecore.EFactory" type="List&lt;String&gt;"/>
     </capability>
     <capability namespace="osgi.service">
       <directive name="uses" value="org.eclipse.emf.ecore"/>
-      <attribute name="objectClass" value="de.jena.upd.sensinact.generic.message.MessagePackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
+      <attribute name="objectClass" value="de.jena.udp.model.sensinact.generic.message.MessagePackage, org.eclipse.emf.ecore.EPackage" type="List&lt;String&gt;"/>
     </capability>
     <capability namespace="osgi.service">
       <directive name="uses" value="org.eclipse.emf.ecore"/>
@@ -75,12 +75,12 @@
       <attribute name="osgi.wiring.package" value="com.fasterxml.jackson.databind"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=de.jena.upd.sensinact.generic.message)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
-      <attribute name="osgi.wiring.package" value="de.jena.upd.sensinact.generic.message"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=de.jena.udp.model.sensinact.generic.message)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+      <attribute name="osgi.wiring.package" value="de.jena.udp.model.sensinact.generic.message"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=de.jena.upd.sensinact.generic.message.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-      <attribute name="osgi.wiring.package" value="de.jena.upd.sensinact.generic.message.impl"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=de.jena.udp.model.sensinact.generic.message.impl)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <attribute name="osgi.wiring.package" value="de.jena.udp.model.sensinact.generic.message.impl"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=java.lang)"/>

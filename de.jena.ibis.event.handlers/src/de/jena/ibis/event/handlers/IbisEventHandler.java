@@ -36,9 +36,9 @@ import de.jena.model.sensinact.ibis.IbisSensinactFactory;
  * @author ilenia
  * @since Apr 18, 2023
  */
-@Component(immediate= true, name = "IbisTCPEventHandler", service = EventHandler.class)
-@EventTopics("TCPResponse/*")
-public class IbisTCPEventHandler implements EventHandler {
+@Component(immediate= true, name = "IbisEventHandler", service = EventHandler.class)
+@EventTopics({"TCPResponse/*", "UDPPacket/*"})
+public class IbisEventHandler implements EventHandler {
 	
 	@Reference
 	PrototypePush sensinact;
@@ -46,11 +46,11 @@ public class IbisTCPEventHandler implements EventHandler {
 	@Reference(target = ("(pool.componentName=modelTransformatorService)"))
 	private ConfigurableModelTransformatorPool poolComponent;
 	
-	public static final Logger LOGGER = Logger.getLogger(IbisTCPEventHandler.class.getName());
+	public static final Logger LOGGER = Logger.getLogger(IbisEventHandler.class.getName());
 	
 	@Activate 
 	public void activate() {
-		LOGGER.info("TCP Event Handler is active!");
+		LOGGER.info("Ibis Event Handler is active!");
 	}
 	/* 
 	 * (non-Javadoc)
@@ -84,5 +84,4 @@ public class IbisTCPEventHandler implements EventHandler {
 			}
 		}
 	}
-
 }

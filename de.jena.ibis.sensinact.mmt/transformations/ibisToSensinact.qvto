@@ -1,14 +1,14 @@
 //Blackbox to convert dates
 import de.jena.ibis.sensinact.mmt.util.IbisDateTimeToInstantBlackbox;
-import ibisToSensinactLibrary;
+import ibisCustomerInfoToSensinact;
+import ibisGNSSLocationToSensinact;
+import ibisTicketValidationToSensinact;
 
-modeltype XML "strict" uses type('http://www.eclipse.org/emf/2003/XMLType');
 modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
-modeltype COMMON uses "https://jena.de/models/ibis/common/1.0";
 modeltype CUSTOMERINFO uses "https://jena.de/models/ibis/customerinfoservice/1.0";
 modeltype GNSSLOCATION uses "https://jena.de/models/ibis/gnsslocationservice/1.0";
+modeltype TICKETVALIDATION uses "https://jena.de/models/ibis/ticketvalidationservice/1.0";
 modeltype SENSINACT uses "https://jena.de/models/ibis/sensinact/1.0";
-modeltype PROVIDER uses "https://eclipse.org/sensinact/core/provider/1.0";
 
 transformation ibisToSensinact(in eobj : ECORE, out sensinact : SENSINACT);
 
@@ -23,6 +23,11 @@ main() {
 	eobj.rootObjects()[CUSTOMERINFO::VehicleDataResponse] -> map vehicleToService(); 
 
 	eobj.rootObjects()[GNSSLOCATION::GNSSLocationData] -> map gnssLocationToService();
+	
+	eobj.rootObjects()[TICKETVALIDATION::CurrentTariffStopResponse] -> map currentTariffStopToService();
+	eobj.rootObjects()[TICKETVALIDATION::CurrentLineResponse] -> map currentLineToService();
+	eobj.rootObjects()[TICKETVALIDATION::RazziaResponse] -> map razziaToService();
+	eobj.rootObjects()[TICKETVALIDATION::VehicleDataResponse] -> map vehicleToService();
 	
 }
 

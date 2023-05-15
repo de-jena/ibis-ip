@@ -27,6 +27,10 @@ import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactPackage;
 import de.jena.model.sensinact.ibis.PassengerCountingDoorCountingState;
 import de.jena.model.sensinact.ibis.StopRequested;
+import de.jena.model.sensinact.ibis.TicketValidationCurrentLineData;
+import de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData;
+import de.jena.model.sensinact.ibis.TicketValidationRazziaData;
+import de.jena.model.sensinact.ibis.TicketValidationVehicleData;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -59,6 +63,10 @@ import org.eclipse.sensinact.model.core.provider.impl.ProviderImpl;
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getDoorStateData <em>Door State Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getStopRequested <em>Stop Requested</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getGnssLocationData <em>Gnss Location Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCurrentTariffStopData <em>Current Tariff Stop Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getRazziaData <em>Razzia Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCurrentLineData <em>Current Line Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getVehicleData <em>Vehicle Data</em>}</li>
  * </ul>
  *
  * @generated
@@ -193,6 +201,46 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @ordered
 	 */
 	protected GNSSLocationData gnssLocationData;
+
+	/**
+	 * The cached value of the '{@link #getCurrentTariffStopData() <em>Current Tariff Stop Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentTariffStopData()
+	 * @generated
+	 * @ordered
+	 */
+	protected TicketValidationCurrentTariffStopData currentTariffStopData;
+
+	/**
+	 * The cached value of the '{@link #getRazziaData() <em>Razzia Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRazziaData()
+	 * @generated
+	 * @ordered
+	 */
+	protected TicketValidationRazziaData razziaData;
+
+	/**
+	 * The cached value of the '{@link #getCurrentLineData() <em>Current Line Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentLineData()
+	 * @generated
+	 * @ordered
+	 */
+	protected TicketValidationCurrentLineData currentLineData;
+
+	/**
+	 * The cached value of the '{@link #getVehicleData() <em>Vehicle Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVehicleData()
+	 * @generated
+	 * @ordered
+	 */
+	protected TicketValidationVehicleData vehicleData;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -804,6 +852,186 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @generated
 	 */
 	@Override
+	public TicketValidationCurrentTariffStopData getCurrentTariffStopData() {
+		return currentTariffStopData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCurrentTariffStopData(TicketValidationCurrentTariffStopData newCurrentTariffStopData, NotificationChain msgs) {
+		TicketValidationCurrentTariffStopData oldCurrentTariffStopData = currentTariffStopData;
+		currentTariffStopData = newCurrentTariffStopData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA, oldCurrentTariffStopData, newCurrentTariffStopData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCurrentTariffStopData(TicketValidationCurrentTariffStopData newCurrentTariffStopData) {
+		if (newCurrentTariffStopData != currentTariffStopData) {
+			NotificationChain msgs = null;
+			if (currentTariffStopData != null)
+				msgs = ((InternalEObject)currentTariffStopData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA, null, msgs);
+			if (newCurrentTariffStopData != null)
+				msgs = ((InternalEObject)newCurrentTariffStopData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA, null, msgs);
+			msgs = basicSetCurrentTariffStopData(newCurrentTariffStopData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA, newCurrentTariffStopData, newCurrentTariffStopData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TicketValidationRazziaData getRazziaData() {
+		return razziaData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRazziaData(TicketValidationRazziaData newRazziaData, NotificationChain msgs) {
+		TicketValidationRazziaData oldRazziaData = razziaData;
+		razziaData = newRazziaData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA, oldRazziaData, newRazziaData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRazziaData(TicketValidationRazziaData newRazziaData) {
+		if (newRazziaData != razziaData) {
+			NotificationChain msgs = null;
+			if (razziaData != null)
+				msgs = ((InternalEObject)razziaData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA, null, msgs);
+			if (newRazziaData != null)
+				msgs = ((InternalEObject)newRazziaData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA, null, msgs);
+			msgs = basicSetRazziaData(newRazziaData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA, newRazziaData, newRazziaData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TicketValidationCurrentLineData getCurrentLineData() {
+		return currentLineData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCurrentLineData(TicketValidationCurrentLineData newCurrentLineData, NotificationChain msgs) {
+		TicketValidationCurrentLineData oldCurrentLineData = currentLineData;
+		currentLineData = newCurrentLineData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA, oldCurrentLineData, newCurrentLineData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCurrentLineData(TicketValidationCurrentLineData newCurrentLineData) {
+		if (newCurrentLineData != currentLineData) {
+			NotificationChain msgs = null;
+			if (currentLineData != null)
+				msgs = ((InternalEObject)currentLineData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA, null, msgs);
+			if (newCurrentLineData != null)
+				msgs = ((InternalEObject)newCurrentLineData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA, null, msgs);
+			msgs = basicSetCurrentLineData(newCurrentLineData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA, newCurrentLineData, newCurrentLineData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TicketValidationVehicleData getVehicleData() {
+		return vehicleData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVehicleData(TicketValidationVehicleData newVehicleData, NotificationChain msgs) {
+		TicketValidationVehicleData oldVehicleData = vehicleData;
+		vehicleData = newVehicleData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA, oldVehicleData, newVehicleData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setVehicleData(TicketValidationVehicleData newVehicleData) {
+		if (newVehicleData != vehicleData) {
+			NotificationChain msgs = null;
+			if (vehicleData != null)
+				msgs = ((InternalEObject)vehicleData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA, null, msgs);
+			if (newVehicleData != null)
+				msgs = ((InternalEObject)newVehicleData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA, null, msgs);
+			msgs = basicSetVehicleData(newVehicleData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA, newVehicleData, newVehicleData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
@@ -832,6 +1060,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return basicSetStopRequested(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
 				return basicSetGnssLocationData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA:
+				return basicSetCurrentTariffStopData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA:
+				return basicSetRazziaData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA:
+				return basicSetCurrentLineData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
+				return basicSetVehicleData(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -870,6 +1106,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return getStopRequested();
 			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
 				return getGnssLocationData();
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA:
+				return getCurrentTariffStopData();
+			case IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA:
+				return getRazziaData();
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA:
+				return getCurrentLineData();
+			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
+				return getVehicleData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -920,6 +1164,18 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return;
 			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
 				setGnssLocationData((GNSSLocationData)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA:
+				setCurrentTariffStopData((TicketValidationCurrentTariffStopData)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA:
+				setRazziaData((TicketValidationRazziaData)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA:
+				setCurrentLineData((TicketValidationCurrentLineData)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
+				setVehicleData((TicketValidationVehicleData)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -972,6 +1228,18 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
 				setGnssLocationData((GNSSLocationData)null);
 				return;
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA:
+				setCurrentTariffStopData((TicketValidationCurrentTariffStopData)null);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA:
+				setRazziaData((TicketValidationRazziaData)null);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA:
+				setCurrentLineData((TicketValidationCurrentLineData)null);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
+				setVehicleData((TicketValidationVehicleData)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1010,6 +1278,14 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return stopRequested != null;
 			case IbisSensinactPackage.IBIS_DEVICE__GNSS_LOCATION_DATA:
 				return gnssLocationData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA:
+				return currentTariffStopData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__RAZZIA_DATA:
+				return razziaData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__CURRENT_LINE_DATA:
+				return currentLineData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
+				return vehicleData != null;
 		}
 		return super.eIsSet(featureID);
 	}

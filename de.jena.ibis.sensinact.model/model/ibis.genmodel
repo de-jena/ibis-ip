@@ -23,6 +23,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/doorStateData"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/stopRequested"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/gnssLocationData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/currentTariffStopData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/razziaData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/currentLineData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/vehicleData"/>
     </genClasses>
     <genClasses ecoreClass="ibis.ecore#//CustomerInfoAllData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//CustomerInfoAllData/serviceName"/>
@@ -171,6 +175,51 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//GNSSLocationData/trackDegreeMagnetic"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//GNSSLocationData/gNSSType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//GNSSLocationData/gNSSCoordinateSystem"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis.ecore#//TicketValidationCurrentTariffStopData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/serviceOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/stopIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/stopRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/stopName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/stopAlternativeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/platform"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/arrivalScheduled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/arrivalExpected"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/departureScheduled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/departureExpected"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/recordedArrivalTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/distanceToNextStop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/fareZone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentTariffStopData/currentTripRef"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis.ecore#//TicketValidationRazziaData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationRazziaData/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationRazziaData/serviceOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationRazziaData/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationRazziaData/razziaState"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis.ecore#//TicketValidationCurrentLineData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/serviceOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/lineRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/lineName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/lineShortName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/lineNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationCurrentLineData/lineCode"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis.ecore#//TicketValidationVehicleData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/serviceOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/vehicleRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/routeDeviation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/doorState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/movingDirectionForward"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/vehicleMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/driverNumber"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

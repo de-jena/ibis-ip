@@ -80,6 +80,10 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 			case IbisSensinactPackage.DOOR_STATE: return createDoorState();
 			case IbisSensinactPackage.STOP_REQUESTED: return createStopRequested();
 			case IbisSensinactPackage.GNSS_LOCATION_DATA: return createGNSSLocationData();
+			case IbisSensinactPackage.TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA: return createTicketValidationCurrentTariffStopData();
+			case IbisSensinactPackage.TICKET_VALIDATION_RAZZIA_DATA: return createTicketValidationRazziaData();
+			case IbisSensinactPackage.TICKET_VALIDATION_CURRENT_LINE_DATA: return createTicketValidationCurrentLineData();
+			case IbisSensinactPackage.TICKET_VALIDATION_VEHICLE_DATA: return createTicketValidationVehicleData();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -237,6 +241,50 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 	public GNSSLocationData createGNSSLocationData() {
 		GNSSLocationDataImpl gnssLocationData = new GNSSLocationDataImpl();
 		return gnssLocationData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TicketValidationCurrentTariffStopData createTicketValidationCurrentTariffStopData() {
+		TicketValidationCurrentTariffStopDataImpl ticketValidationCurrentTariffStopData = new TicketValidationCurrentTariffStopDataImpl();
+		return ticketValidationCurrentTariffStopData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TicketValidationRazziaData createTicketValidationRazziaData() {
+		TicketValidationRazziaDataImpl ticketValidationRazziaData = new TicketValidationRazziaDataImpl();
+		return ticketValidationRazziaData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TicketValidationCurrentLineData createTicketValidationCurrentLineData() {
+		TicketValidationCurrentLineDataImpl ticketValidationCurrentLineData = new TicketValidationCurrentLineDataImpl();
+		return ticketValidationCurrentLineData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TicketValidationVehicleData createTicketValidationVehicleData() {
+		TicketValidationVehicleDataImpl ticketValidationVehicleData = new TicketValidationVehicleDataImpl();
+		return ticketValidationVehicleData;
 	}
 
 	/**

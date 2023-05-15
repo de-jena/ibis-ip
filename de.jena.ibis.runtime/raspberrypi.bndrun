@@ -131,7 +131,6 @@ remote = \
 	org.osgi.service.jakartars;version='[2.0.0,2.0.1)',\
 	org.osgi.service.servlet;version='[2.0.0,2.0.1)',\
 	de.jena.ibis.raspberry.config;version=snapshot,\
-	de.jena.upd.sensinact.generic.message.model;version='[0.0.0,0.0.1)',\
 	org.gecko.core.api;version='[1.0.5,1.0.6)',\
 	org.gecko.core.pushstream;version='[1.1.0,1.1.1)',\
 	org.gecko.osgi.messaging;version='[3.2.0,3.2.1)',\
@@ -141,7 +140,9 @@ remote = \
 	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.0,2.14.1)',\
 	org.eclipse.emfcloud.emfjson-jackson;version='[2.1.0,2.1.1)',\
 	org.gecko.emf.json;version='[1.4.1,1.4.2)',\
-	org.yaml.snakeyaml;version='[1.30.0,1.30.1)'
+	org.yaml.snakeyaml;version='[1.30.0,1.30.1)',\
+	de.jena.ibis.gnss.location.service.model;version=snapshot,\
+	de.jena.udp.sensinact.generic.message.model;version='[1.0.0,1.0.1)'
 
 -runrequires: \
 	bnd.identity;id='de.jena.ibis.runtime',\

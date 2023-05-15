@@ -25,6 +25,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -35,6 +36,7 @@ import org.osgi.service.event.EventAdmin;
 import org.osgi.util.promise.PromiseFactory;
 
 import de.jena.ibis.apis.IbisUDPServiceConfig;
+import de.jena.ibis.apis.helper.IbisResponseHelper;
 
 /**
  * 
@@ -42,10 +44,10 @@ import de.jena.ibis.apis.IbisUDPServiceConfig;
  * @since Apr 3, 2023
  */
 public class IbisUDPHelper {
-	
+
 	private static PromiseFactory promiseFactory = new PromiseFactory(Executors.newFixedThreadPool(4));
 	private final static Logger LOGGER = Logger.getLogger(IbisUDPHelper.class.getName());
-	
+
 	public static void checkUDPServiceConfig(IbisUDPServiceConfig serviceConfig) throws ConfigurationException {
 		if(serviceConfig.multiCastGroupIP().isEmpty()) {
 			String msg = String.format("Multicast Group for UDP Communication is not properly set for %s", serviceConfig.serviceId());
@@ -65,7 +67,7 @@ public class IbisUDPHelper {
 			InetSocketAddress group = new InetSocketAddress(inetAddress, serviceConfig.multiCastGroupPort());
 			NetworkInterface networkInterface = NetworkInterface.getByName(serviceConfig.listenerNetworkInterface());
 			socket.joinGroup(group, networkInterface);
-			
+
 			promiseFactory.submit(() -> {
 				while (socket.isConnected()) {
 
@@ -73,26 +75,38 @@ public class IbisUDPHelper {
 					DatagramPacket response = new DatagramPacket(buffer, buffer.length);
 					socket.receive(response);
 
-					ResourceSet set = rsFactory.getService();
-					
-					try {
-						Resource res = set.createResource(URI.createURI("temp.xml"), "application/xml");
-						Map<String, Object> options = new HashMap<>();
-						options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-						options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-						options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-						res.load(new BufferedInputStream(new ByteArrayInputStream(buffer)), options);
-						if(res.getContents() != null && !res.getContents().isEmpty()) {
-							Map<String, Object> properties = new HashMap<>();
-							properties.put("serviceId", serviceConfig.serviceId());
-							properties.put("operation", operation);
-							properties.put("data", res.getContents().get(0));
-							Event evt = new Event("UDPPacket/"+serviceConfig.serviceId()+"/"+operation, properties);								
-							eventAdmin.postEvent(evt);
+					EClass responseEClass = IbisResponseHelper.getResponseEClass(serviceConfig.serviceName(), operation);
+					if(responseEClass != null) {						
+						ResourceSet set = rsFactory.getService();
+						set.getPackageRegistry().put(null, responseEClass.getEPackage());
+						try {							
+							Resource res = set.createResource(URI.createURI("temp.xml"), "application/xml");
+							Map<String, Object> options = new HashMap<>();
+							options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+							options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+							options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+							options.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
+							res.load(new BufferedInputStream(new ByteArrayInputStream(buffer)), options);
+							if(res.getContents() != null && !res.getContents().isEmpty()) {
+								Map<String, Object> properties = new HashMap<>();
+								properties.put("serviceId", serviceConfig.serviceId());
+								properties.put("operation", operation);
+								properties.put("deviceId", serviceConfig.refDeviceId());
+								properties.put("deviceType", serviceConfig.refDeviceType());
+								properties.put("eclass", responseEClass);
+								properties.put("data", res.getContents().get(0));
+										
+								Event evt = new Event(String.format("UDPPacket/%s/%s/%s/%s", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation), properties);	
+								eventAdmin.postEvent(evt);
+							}
+						} finally {
+							rsFactory.ungetService(set);
 						}
-					} finally {
-						rsFactory.ungetService(set);
+					} else {
+						LOGGER.severe(() -> String.format("No matching response EClass for %s %s", serviceConfig.serviceId(), operation));
+						return false;
 					}
+
 				}
 				return true;
 			});
@@ -103,5 +117,5 @@ public class IbisUDPHelper {
 			return -1;
 		}	
 	}
-	
+
 }

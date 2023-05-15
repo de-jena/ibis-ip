@@ -137,6 +137,22 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 				return createGNSSLocationDataAdapter();
 			}
 			@Override
+			public Adapter caseTicketValidationCurrentTariffStopData(TicketValidationCurrentTariffStopData object) {
+				return createTicketValidationCurrentTariffStopDataAdapter();
+			}
+			@Override
+			public Adapter caseTicketValidationRazziaData(TicketValidationRazziaData object) {
+				return createTicketValidationRazziaDataAdapter();
+			}
+			@Override
+			public Adapter caseTicketValidationCurrentLineData(TicketValidationCurrentLineData object) {
+				return createTicketValidationCurrentLineDataAdapter();
+			}
+			@Override
+			public Adapter caseTicketValidationVehicleData(TicketValidationVehicleData object) {
+				return createTicketValidationVehicleDataAdapter();
+			}
+			@Override
 			public Adapter caseProvider(Provider object) {
 				return createProviderAdapter();
 			}
@@ -357,6 +373,62 @@ public class IbisSensinactAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGNSSLocationDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData <em>Ticket Validation Current Tariff Stop Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData
+	 * @generated
+	 */
+	public Adapter createTicketValidationCurrentTariffStopDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.TicketValidationRazziaData <em>Ticket Validation Razzia Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationRazziaData
+	 * @generated
+	 */
+	public Adapter createTicketValidationRazziaDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.TicketValidationCurrentLineData <em>Ticket Validation Current Line Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationCurrentLineData
+	 * @generated
+	 */
+	public Adapter createTicketValidationCurrentLineDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.jena.model.sensinact.ibis.TicketValidationVehicleData <em>Ticket Validation Vehicle Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.jena.model.sensinact.ibis.TicketValidationVehicleData
+	 * @generated
+	 */
+	public Adapter createTicketValidationVehicleDataAdapter() {
 		return null;
 	}
 

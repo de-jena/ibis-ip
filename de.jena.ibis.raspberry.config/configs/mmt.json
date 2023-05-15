@@ -12,9 +12,9 @@
 	
 	"PrototypeConfigurableTransformationService~ibis": {
 		"name": "ibis",
-		"qvt.templatePath": "de.jena.ibis.sensinact.mmt/transformations/ibisCustomerInfoToSensinact.qvto",
-		"qvt.transformatorName": "ibisCustomerInfoToSensinact",
-		"qvt.model.target": "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))",
+		"qvt.templatePath": "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto",
+		"qvt.transformatorName": "ibisToSensinact",
+		"qvt.model.target": "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice))",
 		"pool.name": "ibisPool",
 		"pool.group": "sensinactPool",
 		"pool.asService": false

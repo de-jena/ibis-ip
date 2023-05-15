@@ -13,7 +13,8 @@
 	bnd.identity;id='de.jena.ibis.customer.info.service.model',\
 	bnd.identity;id='de.jena.ibis.enumerations.model',\
 	bnd.identity;id='de.jena.ibis.sensinact.model',\
-	bnd.identity;id='de.jena.ibis.gnss.location.service.model'
+	bnd.identity;id='de.jena.ibis.gnss.location.service.model',\
+	bnd.identity;id='de.jena.ibis.ticket.validation.service.model'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-17
@@ -77,5 +78,6 @@
 	de.jena.ibis.sensinact.model;version=snapshot,\
 	org.eclipse.sensinact.gateway.core.geo-json;version='[0.0.2,0.0.3)',\
 	org.eclipse.sensinact.gateway.core.models.provider;version='[0.0.2,0.0.3)',\
-	de.jena.ibis.gnss.location.service.model;version=snapshot
+	de.jena.ibis.gnss.location.service.model;version=snapshot,\
+	de.jena.ibis.ticket.validation.service.model;version=snapshot
 -resolve: manual

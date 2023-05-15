@@ -18,5 +18,5 @@ Private-Package: de.jena.ibis.event.handlers
 	org.osgi.service.typedevent,\
 	org.gecko.osgi.messaging,\
 	org.osgi.service.component,\
-	de.jena.upd.sensinact.generic.message.model,\
+	de.jena.udp.sensinact.generic.message.model,\
 	org.gecko.emf.json

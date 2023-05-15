@@ -85,6 +85,7 @@ public class IbisResource {
 					responseOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 					responseOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 					responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
+					responseOptions.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
 					responseRes.load(request.getInputStream(), responseOptions);
 					Map<String, Object> properties = new HashMap<>();
 					properties.put("deviceId", deviceId);

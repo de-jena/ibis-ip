@@ -20,6 +20,7 @@ import de.jena.ibis.apis.constants.DeviceManagementServiceConstants;
 import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
 import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServicePackage;
 import de.jena.model.ibis.devicemanagementservice.IbisDeviceManagementServicePackage;
+import de.jena.model.ibis.gnsslocationservice.IbisGNSSLocationServicePackage;
 import de.jena.model.ibis.ticketvalidationservice.IbisTicketValidationServicePackage;
 
 /**
@@ -40,6 +41,8 @@ public class IbisResponseHelper {
 			return getTicketValidationServiceResponseEClass(operation);
 		case "DeviceManagementService":
 			return getDeviceManagementServiceResponseEClass(operation);
+		case "GNSSLocationService":
+			return getGNSSLocationServiceResponseEClass(operation);
 		default:
 			LOGGER.severe(() -> String.format("No supported service %s", serviceName));
 			return null;
@@ -115,6 +118,14 @@ public class IbisResponseHelper {
 			LOGGER.severe(() -> String.format("No operation %s for service DeviceManagementService", operation));
 			return null;
 		}
+	}
+	
+	private static EClass getGNSSLocationServiceResponseEClass(String operation) {
+		if("GNSSLocationData".equals(operation)) {
+			return IbisGNSSLocationServicePackage.eINSTANCE.getGNSSLocationData();
+		}
+		LOGGER.severe(() -> String.format("No operation %s for service DeviceManagementService", operation));
+		return null;
 	}
 
 }

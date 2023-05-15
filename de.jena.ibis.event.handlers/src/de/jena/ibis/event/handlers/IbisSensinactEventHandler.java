@@ -31,9 +31,8 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.event.propertytypes.EventTopics;
 import org.osgi.service.typedevent.TypedEventHandler;
 
-import de.jena.upd.sensinact.generic.message.BooleanValueUpdate;
-import de.jena.upd.sensinact.generic.message.UpdateMessage;
-import de.jena.upd.sensinact.generic.message.util.SensinactGenericMessageUtil;
+import de.jena.udp.model.sensinact.generic.message.UpdateMessage;
+import de.jena.udp.model.sensinact.generic.message.util.SensinactGenericMessageUtil;
 
 /**
  * This handler should receives the data that have been published in sensinact...???
@@ -80,8 +79,6 @@ public class IbisSensinactEventHandler implements TypedEventHandler<ResourceData
 	 * @param value
 	 */
 	private void setValue(UpdateMessage update, Object value, String name) {
-//		if(value == null) return;
-		if(update instanceof BooleanValueUpdate && value == null) return;
 		EStructuralFeature feature = update.eClass().getEStructuralFeature(name);
 		update.eSet(feature, value);
 	}

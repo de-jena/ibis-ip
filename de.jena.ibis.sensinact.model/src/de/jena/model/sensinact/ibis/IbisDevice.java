@@ -42,6 +42,10 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getGnssLocationData <em>Gnss Location Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentTariffStopData <em>Current Tariff Stop Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getRazziaData <em>Razzia Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentLineData <em>Current Line Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getVehicleData <em>Vehicle Data</em>}</li>
  * </ul>
  *
  * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice()
@@ -335,5 +339,93 @@ public interface IbisDevice extends Provider {
 	 * @generated
 	 */
 	void setGnssLocationData(GNSSLocationData value);
+
+	/**
+	 * Returns the value of the '<em><b>Current Tariff Stop Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Tariff Stop Data</em>' containment reference.
+	 * @see #setCurrentTariffStopData(TicketValidationCurrentTariffStopData)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_CurrentTariffStopData()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TicketValidationCurrentTariffStopData getCurrentTariffStopData();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentTariffStopData <em>Current Tariff Stop Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Tariff Stop Data</em>' containment reference.
+	 * @see #getCurrentTariffStopData()
+	 * @generated
+	 */
+	void setCurrentTariffStopData(TicketValidationCurrentTariffStopData value);
+
+	/**
+	 * Returns the value of the '<em><b>Razzia Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Razzia Data</em>' containment reference.
+	 * @see #setRazziaData(TicketValidationRazziaData)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_RazziaData()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TicketValidationRazziaData getRazziaData();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getRazziaData <em>Razzia Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Razzia Data</em>' containment reference.
+	 * @see #getRazziaData()
+	 * @generated
+	 */
+	void setRazziaData(TicketValidationRazziaData value);
+
+	/**
+	 * Returns the value of the '<em><b>Current Line Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Line Data</em>' containment reference.
+	 * @see #setCurrentLineData(TicketValidationCurrentLineData)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_CurrentLineData()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TicketValidationCurrentLineData getCurrentLineData();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentLineData <em>Current Line Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Line Data</em>' containment reference.
+	 * @see #getCurrentLineData()
+	 * @generated
+	 */
+	void setCurrentLineData(TicketValidationCurrentLineData value);
+
+	/**
+	 * Returns the value of the '<em><b>Vehicle Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Vehicle Data</em>' containment reference.
+	 * @see #setVehicleData(TicketValidationVehicleData)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_VehicleData()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TicketValidationVehicleData getVehicleData();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getVehicleData <em>Vehicle Data</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Vehicle Data</em>' containment reference.
+	 * @see #getVehicleData()
+	 * @generated
+	 */
+	void setVehicleData(TicketValidationVehicleData value);
 
 } // IbisDevice

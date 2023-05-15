@@ -38,9 +38,9 @@
     <genClasses ecoreClass="ibis-ticketvalidationservice.ecore#//VehicleDataResponse">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-ticketvalidationservice.ecore#//VehicleDataResponse/vehicleData"/>
     </genClasses>
-    <genClasses ecoreClass="ibis-ticketvalidationservice.ecore#//RazziaResponseData">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-ticketvalidationservice.ecore#//RazziaResponseData/timeStamp"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-ticketvalidationservice.ecore#//RazziaResponseData/razziaState"/>
+    <genClasses ecoreClass="ibis-ticketvalidationservice.ecore#//RazziaData">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-ticketvalidationservice.ecore#//RazziaData/timeStamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-ticketvalidationservice.ecore#//RazziaData/razziaState"/>
     </genClasses>
     <genClasses ecoreClass="ibis-ticketvalidationservice.ecore#//TripDataRequest">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-ticketvalidationservice.ecore#//TripDataRequest/tripRef"/>

@@ -177,6 +177,34 @@ public class IbisSensinactSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case IbisSensinactPackage.TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA: {
+				TicketValidationCurrentTariffStopData ticketValidationCurrentTariffStopData = (TicketValidationCurrentTariffStopData)theEObject;
+				T result = caseTicketValidationCurrentTariffStopData(ticketValidationCurrentTariffStopData);
+				if (result == null) result = caseService(ticketValidationCurrentTariffStopData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IbisSensinactPackage.TICKET_VALIDATION_RAZZIA_DATA: {
+				TicketValidationRazziaData ticketValidationRazziaData = (TicketValidationRazziaData)theEObject;
+				T result = caseTicketValidationRazziaData(ticketValidationRazziaData);
+				if (result == null) result = caseService(ticketValidationRazziaData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IbisSensinactPackage.TICKET_VALIDATION_CURRENT_LINE_DATA: {
+				TicketValidationCurrentLineData ticketValidationCurrentLineData = (TicketValidationCurrentLineData)theEObject;
+				T result = caseTicketValidationCurrentLineData(ticketValidationCurrentLineData);
+				if (result == null) result = caseService(ticketValidationCurrentLineData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IbisSensinactPackage.TICKET_VALIDATION_VEHICLE_DATA: {
+				TicketValidationVehicleData ticketValidationVehicleData = (TicketValidationVehicleData)theEObject;
+				T result = caseTicketValidationVehicleData(ticketValidationVehicleData);
+				if (result == null) result = caseService(ticketValidationVehicleData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -388,6 +416,66 @@ public class IbisSensinactSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGNSSLocationData(GNSSLocationData object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticket Validation Current Tariff Stop Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticket Validation Current Tariff Stop Data</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTicketValidationCurrentTariffStopData(TicketValidationCurrentTariffStopData object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticket Validation Razzia Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticket Validation Razzia Data</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTicketValidationRazziaData(TicketValidationRazziaData object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticket Validation Current Line Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticket Validation Current Line Data</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTicketValidationCurrentLineData(TicketValidationCurrentLineData object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ticket Validation Vehicle Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ticket Validation Vehicle Data</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTicketValidationVehicleData(TicketValidationVehicleData object) {
 		return null;
 	}
 
