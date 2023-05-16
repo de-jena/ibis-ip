@@ -31,6 +31,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.event.propertytypes.EventTopics;
 import org.osgi.service.typedevent.TypedEventHandler;
 
+import de.jena.udp.model.sensinact.generic.message.ListValueUpdate;
 import de.jena.udp.model.sensinact.generic.message.UpdateMessage;
 import de.jena.udp.model.sensinact.generic.message.util.SensinactGenericMessageUtil;
 
@@ -67,7 +68,7 @@ public class IbisSensinactEventHandler implements TypedEventHandler<ResourceData
 			update.setResource(event.resource);
 			setValue(update, event.oldValue, "oldValue");
 			setValue(update, event.newValue, "newValue");
-			send(String.format("5g/sensinact/event/simulator/data/%s/%s/%s/%s", event.model, event.provider, event.service, event.resource), update );
+			send(String.format("5g/sensinact/event/data/%s/%s/%s/%s", event.model, event.provider, event.service, event.resource), update );
 		} catch (Throwable e) {
 			logger.severe("Could not send update message: " + e.getMessage());
 			e.printStackTrace();
@@ -79,9 +80,11 @@ public class IbisSensinactEventHandler implements TypedEventHandler<ResourceData
 	 * @param value
 	 */
 	private void setValue(UpdateMessage update, Object value, String name) {
+		if(update instanceof ListValueUpdate && value == null) value = Collections.EMPTY_LIST;
 		EStructuralFeature feature = update.eClass().getEStructuralFeature(name);
 		update.eSet(feature, value);
 	}
+	
 
 	private void send(String topic, EObject object) {
 		if(logger.isLoggable(Level.INFO)) {
