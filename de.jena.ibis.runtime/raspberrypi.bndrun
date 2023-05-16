@@ -142,7 +142,9 @@ remote = \
 	org.gecko.emf.json;version='[1.4.1,1.4.2)',\
 	org.yaml.snakeyaml;version='[1.30.0,1.30.1)',\
 	de.jena.ibis.gnss.location.service.model;version=snapshot,\
-	de.jena.udp.sensinact.generic.message.model;version='[1.0.0,1.0.1)'
+	de.jena.udp.sensinact.generic.message.model;version='[1.0.0,1.0.1)',\
+	org.eclipse.paho.client.mqttv3;version='[1.2.5,1.2.6)',\
+	org.gecko.adapter.mqtt;version='[1.0.6,1.0.7)'
 
 -runrequires: \
 	bnd.identity;id='de.jena.ibis.runtime',\
@@ -159,7 +161,9 @@ remote = \
 	bnd.identity;id='de.jena.ibis.components',\
 	bnd.identity;id='de.jena.ibis.rest.application',\
 	bnd.identity;id='de.jena.ibis.raspberry.config',\
-	bnd.identity;id='org.gecko.emf.json'
+	bnd.identity;id='org.gecko.emf.json',\
+	bnd.identity;id='org.gecko.adapter.mqtt',\
+	bnd.identity;id='org.eclipse.paho.client.mqttv3'
 
 -runrepos: \
 	Workspace,\
