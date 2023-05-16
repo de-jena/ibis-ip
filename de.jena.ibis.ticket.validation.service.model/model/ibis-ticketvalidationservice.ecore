@@ -7,7 +7,7 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="CurrentLineData">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.CurrentLineDataStructure"/>
+      <details key="name" value="TicketValidationService.CurrentLineData"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeStamp" lowerBound="1"
@@ -31,7 +31,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CurrentShortHaulStopsData">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.CurrentShortHaulStopsDataStructure"/>
+      <details key="name" value="TicketValidationService.CurrentShortHaulStopsData"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeStamp" lowerBound="1"
@@ -63,7 +63,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CurrentTariffStopData">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.CurrentTariffStopDataStructure"/>
+      <details key="name" value="TicketValidationService.CurrentTariffStopData"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeStamp" lowerBound="1"
@@ -95,7 +95,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CurrentLineResponse" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.GetCurrentLineResponseStructure"/>
+      <details key="name" value="TicketValidationService.GetCurrentLineResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentLineData" eType="#//CurrentLineData"
@@ -109,7 +109,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CurrentShortHaulStopsResponse" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.GetCurrentShortHaulStopsResponseStructure"/>
+      <details key="name" value="TicketValidationService.GetCurrentShortHaulStopsResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentShortHaulStopsData"
@@ -123,7 +123,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CurrentTariffStopResponse" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.GetCurrentTariffStopResponseStructure"/>
+      <details key="name" value="TicketValidationService.GetCurrentTariffStopResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentTariffStopData"
@@ -137,7 +137,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RazziaResponse" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.GetRazziaResponseStructure"/>
+      <details key="name" value="TicketValidationService.GetRazziaResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="razziaData" eType="#//RazziaData"
@@ -151,7 +151,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VehicleDataResponse" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.GetVehicleDataResponseStructure"/>
+      <details key="name" value="TicketValidationService.GetVehicleDataResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vehicleData" eType="#//VehicleData"
@@ -165,7 +165,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RazziaData">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.RazziaResponseDataStructure"/>
+      <details key="name" value="TicketValidationService.RazziaResponseData"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeStamp" lowerBound="1"
@@ -242,7 +242,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VehicleData">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="name" value="TicketValidationService.VehicleDataStructure"/>
+      <details key="name" value="TicketValidationService.VehicleData"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeStamp" lowerBound="1"
