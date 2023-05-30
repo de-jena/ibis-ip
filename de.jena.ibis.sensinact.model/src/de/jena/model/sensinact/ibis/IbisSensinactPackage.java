@@ -265,13 +265,22 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int IBIS_DEVICE__VEHICLE_DATA = ProviderPackage.PROVIDER_FEATURE_COUNT + 16;
 
 	/**
+	 * The feature id for the '<em><b>Trip Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_DEVICE__TRIP_INFO = ProviderPackage.PROVIDER_FEATURE_COUNT + 17;
+
+	/**
 	 * The number of structural features of the '<em>Ibis Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 17;
+	int IBIS_DEVICE_FEATURE_COUNT = ProviderPackage.PROVIDER_FEATURE_COUNT + 18;
 
 	/**
 	 * The number of operations of the '<em>Ibis Device</em>' class.
@@ -2342,6 +2351,70 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int TICKET_VALIDATION_VEHICLE_DATA_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link de.jena.model.sensinact.ibis.impl.TripInfoImpl <em>Trip Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.jena.model.sensinact.ibis.impl.TripInfoImpl
+	 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTripInfo()
+	 * @generated
+	 */
+	int TRIP_INFO = 18;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__METADATA = ProviderPackage.SERVICE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__LINE_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Trip Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__TRIP_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Line Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__LINE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Trip Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Trip Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO_OPERATION_COUNT = ProviderPackage.SERVICE_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.IbisDevice <em>Ibis Device</em>}'.
@@ -2539,6 +2612,17 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getIbisDevice_VehicleData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.jena.model.sensinact.ibis.IbisDevice#getTripInfo <em>Trip Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Trip Info</em>'.
+	 * @see de.jena.model.sensinact.ibis.IbisDevice#getTripInfo()
+	 * @see #getIbisDevice()
+	 * @generated
+	 */
+	EReference getIbisDevice_TripInfo();
 
 	/**
 	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.CustomerInfoAllData <em>Customer Info All Data</em>}'.
@@ -4460,6 +4544,49 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getTicketValidationVehicleData_DriverNumber();
 
 	/**
+	 * Returns the meta object for class '{@link de.jena.model.sensinact.ibis.TripInfo <em>Trip Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Trip Info</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo
+	 * @generated
+	 */
+	EClass getTripInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getLineNumber <em>Line Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Number</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#getLineNumber()
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	EAttribute getTripInfo_LineNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getTripNumber <em>Trip Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trip Number</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#getTripNumber()
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	EAttribute getTripInfo_TripNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getLineName <em>Line Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#getLineName()
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	EAttribute getTripInfo_LineName();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4627,6 +4754,14 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference IBIS_DEVICE__VEHICLE_DATA = eINSTANCE.getIbisDevice_VehicleData();
+
+		/**
+		 * The meta object literal for the '<em><b>Trip Info</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IBIS_DEVICE__TRIP_INFO = eINSTANCE.getIbisDevice_TripInfo();
 
 		/**
 		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.CustomerInfoAllDataImpl <em>Customer Info All Data</em>}' class.
@@ -6069,6 +6204,40 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute TICKET_VALIDATION_VEHICLE_DATA__DRIVER_NUMBER = eINSTANCE.getTicketValidationVehicleData_DriverNumber();
+
+		/**
+		 * The meta object literal for the '{@link de.jena.model.sensinact.ibis.impl.TripInfoImpl <em>Trip Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.jena.model.sensinact.ibis.impl.TripInfoImpl
+		 * @see de.jena.model.sensinact.ibis.impl.IbisSensinactPackageImpl#getTripInfo()
+		 * @generated
+		 */
+		EClass TRIP_INFO = eINSTANCE.getTripInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIP_INFO__LINE_NUMBER = eINSTANCE.getTripInfo_LineNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Trip Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIP_INFO__TRIP_NUMBER = eINSTANCE.getTripInfo_TripNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIP_INFO__LINE_NAME = eINSTANCE.getTripInfo_LineName();
 
 	}
 

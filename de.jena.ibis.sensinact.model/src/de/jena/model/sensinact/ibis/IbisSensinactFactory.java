@@ -197,6 +197,15 @@ public interface IbisSensinactFactory extends EFactory {
 	TicketValidationVehicleData createTicketValidationVehicleData();
 
 	/**
+	 * Returns a new object of class '<em>Trip Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Trip Info</em>'.
+	 * @generated
+	 */
+	TripInfo createTripInfo();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

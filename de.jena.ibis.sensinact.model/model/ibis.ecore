@@ -42,6 +42,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vehicleData" eType="#//TicketValidationVehicleData"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tripInfo" eType="#//TripInfo"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomerInfoAllData" eSuperTypes="../../org.eclipse.sensinact.gateway.core.models.provider/model/sensinact.ecore#//Service">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceName" lowerBound="1"
@@ -339,5 +341,10 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vehicleMode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="driverNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TripInfo" eSuperTypes="../../org.eclipse.sensinact.gateway.core.models.provider/model/sensinact.ecore#//Service">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tripNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

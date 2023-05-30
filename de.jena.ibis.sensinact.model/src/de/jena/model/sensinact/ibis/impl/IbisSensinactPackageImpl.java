@@ -32,6 +32,7 @@ import de.jena.model.sensinact.ibis.TicketValidationCurrentLineData;
 import de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData;
 import de.jena.model.sensinact.ibis.TicketValidationRazziaData;
 import de.jena.model.sensinact.ibis.TicketValidationVehicleData;
+import de.jena.model.sensinact.ibis.TripInfo;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -174,6 +175,13 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	private EClass ticketValidationVehicleDataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tripInfoEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -416,6 +424,16 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	@Override
 	public EReference getIbisDevice_VehicleData() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_TripInfo() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -2184,6 +2202,46 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
+	public EClass getTripInfo() {
+		return tripInfoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTripInfo_LineNumber() {
+		return (EAttribute)tripInfoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTripInfo_TripNumber() {
+		return (EAttribute)tripInfoEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTripInfo_LineName() {
+		return (EAttribute)tripInfoEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IbisSensinactFactory getIbisSensinactFactory() {
 		return (IbisSensinactFactory)getEFactoryInstance();
 	}
@@ -2225,6 +2283,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__RAZZIA_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CURRENT_LINE_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__VEHICLE_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__TRIP_INFO);
 
 		customerInfoAllDataEClass = createEClass(CUSTOMER_INFO_ALL_DATA);
 		createEAttribute(customerInfoAllDataEClass, CUSTOMER_INFO_ALL_DATA__SERVICE_NAME);
@@ -2418,6 +2477,11 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__MOVING_DIRECTION_FORWARD);
 		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__VEHICLE_MODE);
 		createEAttribute(ticketValidationVehicleDataEClass, TICKET_VALIDATION_VEHICLE_DATA__DRIVER_NUMBER);
+
+		tripInfoEClass = createEClass(TRIP_INFO);
+		createEAttribute(tripInfoEClass, TRIP_INFO__LINE_NUMBER);
+		createEAttribute(tripInfoEClass, TRIP_INFO__TRIP_NUMBER);
+		createEAttribute(tripInfoEClass, TRIP_INFO__LINE_NAME);
 	}
 
 	/**
@@ -2469,6 +2533,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		ticketValidationRazziaDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		ticketValidationCurrentLineDataEClass.getESuperTypes().add(theProviderPackage.getService());
 		ticketValidationVehicleDataEClass.getESuperTypes().add(theProviderPackage.getService());
+		tripInfoEClass.getESuperTypes().add(theProviderPackage.getService());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ibisDeviceEClass, IbisDevice.class, "IbisDevice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2489,6 +2554,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEReference(getIbisDevice_RazziaData(), this.getTicketValidationRazziaData(), null, "razziaData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CurrentLineData(), this.getTicketValidationCurrentLineData(), null, "currentLineData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_VehicleData(), this.getTicketValidationVehicleData(), null, "vehicleData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_TripInfo(), this.getTripInfo(), null, "tripInfo", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerInfoAllDataEClass, CustomerInfoAllData.class, "CustomerInfoAllData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomerInfoAllData_ServiceName(), ecorePackage.getEString(), "serviceName", null, 1, 1, CustomerInfoAllData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2682,6 +2748,11 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEAttribute(getTicketValidationVehicleData_MovingDirectionForward(), ecorePackage.getEBoolean(), "movingDirectionForward", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTicketValidationVehicleData_VehicleMode(), ecorePackage.getEString(), "vehicleMode", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTicketValidationVehicleData_DriverNumber(), ecorePackage.getEString(), "driverNumber", null, 0, 1, TicketValidationVehicleData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tripInfoEClass, TripInfo.class, "TripInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTripInfo_LineNumber(), ecorePackage.getEInt(), "lineNumber", null, 0, 1, TripInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTripInfo_TripNumber(), ecorePackage.getEInt(), "tripNumber", null, 0, 1, TripInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTripInfo_LineName(), ecorePackage.getEString(), "lineName", null, 0, 1, TripInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

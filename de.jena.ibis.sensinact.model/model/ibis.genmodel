@@ -27,6 +27,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/razziaData"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/currentLineData"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/vehicleData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis.ecore#//IbisDevice/tripInfo"/>
     </genClasses>
     <genClasses ecoreClass="ibis.ecore#//CustomerInfoAllData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//CustomerInfoAllData/serviceName"/>
@@ -220,6 +221,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/movingDirectionForward"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/vehicleMode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/driverNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis.ecore#//TripInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/lineNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/tripNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/lineName"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

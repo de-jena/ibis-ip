@@ -84,6 +84,7 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 			case IbisSensinactPackage.TICKET_VALIDATION_RAZZIA_DATA: return createTicketValidationRazziaData();
 			case IbisSensinactPackage.TICKET_VALIDATION_CURRENT_LINE_DATA: return createTicketValidationCurrentLineData();
 			case IbisSensinactPackage.TICKET_VALIDATION_VEHICLE_DATA: return createTicketValidationVehicleData();
+			case IbisSensinactPackage.TRIP_INFO: return createTripInfo();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -285,6 +286,17 @@ public class IbisSensinactFactoryImpl extends EFactoryImpl implements IbisSensin
 	public TicketValidationVehicleData createTicketValidationVehicleData() {
 		TicketValidationVehicleDataImpl ticketValidationVehicleData = new TicketValidationVehicleDataImpl();
 		return ticketValidationVehicleData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TripInfo createTripInfo() {
+		TripInfoImpl tripInfo = new TripInfoImpl();
+		return tripInfo;
 	}
 
 	/**

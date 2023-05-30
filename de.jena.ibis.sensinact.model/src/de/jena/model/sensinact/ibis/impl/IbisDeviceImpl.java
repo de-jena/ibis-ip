@@ -31,6 +31,7 @@ import de.jena.model.sensinact.ibis.TicketValidationCurrentLineData;
 import de.jena.model.sensinact.ibis.TicketValidationCurrentTariffStopData;
 import de.jena.model.sensinact.ibis.TicketValidationRazziaData;
 import de.jena.model.sensinact.ibis.TicketValidationVehicleData;
+import de.jena.model.sensinact.ibis.TripInfo;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -67,6 +68,7 @@ import org.eclipse.sensinact.model.core.provider.impl.ProviderImpl;
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getRazziaData <em>Razzia Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getCurrentLineData <em>Current Line Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getVehicleData <em>Vehicle Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.impl.IbisDeviceImpl#getTripInfo <em>Trip Info</em>}</li>
  * </ul>
  *
  * @generated
@@ -241,6 +243,16 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @ordered
 	 */
 	protected TicketValidationVehicleData vehicleData;
+
+	/**
+	 * The cached value of the '{@link #getTripInfo() <em>Trip Info</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTripInfo()
+	 * @generated
+	 * @ordered
+	 */
+	protected TripInfo tripInfo;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1032,6 +1044,51 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 	 * @generated
 	 */
 	@Override
+	public TripInfo getTripInfo() {
+		return tripInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTripInfo(TripInfo newTripInfo, NotificationChain msgs) {
+		TripInfo oldTripInfo = tripInfo;
+		tripInfo = newTripInfo;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO, oldTripInfo, newTripInfo);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTripInfo(TripInfo newTripInfo) {
+		if (newTripInfo != tripInfo) {
+			NotificationChain msgs = null;
+			if (tripInfo != null)
+				msgs = ((InternalEObject)tripInfo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO, null, msgs);
+			if (newTripInfo != null)
+				msgs = ((InternalEObject)newTripInfo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO, null, msgs);
+			msgs = basicSetTripInfo(newTripInfo, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO, newTripInfo, newTripInfo));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case IbisSensinactPackage.IBIS_DEVICE__IBIS_ADMIN:
@@ -1068,6 +1125,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return basicSetCurrentLineData(null, msgs);
 			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
 				return basicSetVehicleData(null, msgs);
+			case IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO:
+				return basicSetTripInfo(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1114,6 +1173,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return getCurrentLineData();
 			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
 				return getVehicleData();
+			case IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO:
+				return getTripInfo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1176,6 +1237,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return;
 			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
 				setVehicleData((TicketValidationVehicleData)newValue);
+				return;
+			case IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO:
+				setTripInfo((TripInfo)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1240,6 +1304,9 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
 				setVehicleData((TicketValidationVehicleData)null);
 				return;
+			case IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO:
+				setTripInfo((TripInfo)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1286,6 +1353,8 @@ public class IbisDeviceImpl extends ProviderImpl implements IbisDevice {
 				return currentLineData != null;
 			case IbisSensinactPackage.IBIS_DEVICE__VEHICLE_DATA:
 				return vehicleData != null;
+			case IbisSensinactPackage.IBIS_DEVICE__TRIP_INFO:
+				return tripInfo != null;
 		}
 		return super.eIsSet(featureID);
 	}

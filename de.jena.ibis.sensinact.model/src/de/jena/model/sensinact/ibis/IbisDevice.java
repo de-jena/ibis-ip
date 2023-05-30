@@ -46,6 +46,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getRazziaData <em>Razzia Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentLineData <em>Current Line Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getVehicleData <em>Vehicle Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getTripInfo <em>Trip Info</em>}</li>
  * </ul>
  *
  * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice()
@@ -427,5 +428,27 @@ public interface IbisDevice extends Provider {
 	 * @generated
 	 */
 	void setVehicleData(TicketValidationVehicleData value);
+
+	/**
+	 * Returns the value of the '<em><b>Trip Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trip Info</em>' containment reference.
+	 * @see #setTripInfo(TripInfo)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_TripInfo()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TripInfo getTripInfo();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getTripInfo <em>Trip Info</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trip Info</em>' containment reference.
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	void setTripInfo(TripInfo value);
 
 } // IbisDevice
