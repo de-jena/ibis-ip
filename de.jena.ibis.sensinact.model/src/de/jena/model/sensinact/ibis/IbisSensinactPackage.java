@@ -2371,22 +2371,13 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int TRIP_INFO__METADATA = ProviderPackage.SERVICE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Line Number</b></em>' attribute.
+	 * The feature id for the '<em><b>Device Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRIP_INFO__LINE_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Trip Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIP_INFO__TRIP_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+	int TRIP_INFO__DEVICE_TYPE = ProviderPackage.SERVICE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Line Name</b></em>' attribute.
@@ -2395,7 +2386,52 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRIP_INFO__LINE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+	int TRIP_INFO__LINE_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__LINE_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Trip Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__TRIP_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Device Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__DEVICE_NUMBER = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>At Stop</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__AT_STOP = ProviderPackage.SERVICE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Stop Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO__STOP_NAME = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Trip Info</em>' class.
@@ -2404,7 +2440,7 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRIP_INFO_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+	int TRIP_INFO_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Trip Info</em>' class.
@@ -4554,6 +4590,28 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getTripInfo();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getDeviceType <em>Device Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Device Type</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#getDeviceType()
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	EAttribute getTripInfo_DeviceType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getLineName <em>Line Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#getLineName()
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	EAttribute getTripInfo_LineName();
+
+	/**
 	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getLineNumber <em>Line Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4576,15 +4634,37 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getTripInfo_TripNumber();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getLineName <em>Line Name</em>}'.
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getDeviceNumber <em>Device Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Line Name</em>'.
-	 * @see de.jena.model.sensinact.ibis.TripInfo#getLineName()
+	 * @return the meta object for the attribute '<em>Device Number</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#getDeviceNumber()
 	 * @see #getTripInfo()
 	 * @generated
 	 */
-	EAttribute getTripInfo_LineName();
+	EAttribute getTripInfo_DeviceNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#isAtStop <em>At Stop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>At Stop</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#isAtStop()
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	EAttribute getTripInfo_AtStop();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.jena.model.sensinact.ibis.TripInfo#getStopName <em>Stop Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Stop Name</em>'.
+	 * @see de.jena.model.sensinact.ibis.TripInfo#getStopName()
+	 * @see #getTripInfo()
+	 * @generated
+	 */
+	EAttribute getTripInfo_StopName();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -6216,6 +6296,22 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass TRIP_INFO = eINSTANCE.getTripInfo();
 
 		/**
+		 * The meta object literal for the '<em><b>Device Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIP_INFO__DEVICE_TYPE = eINSTANCE.getTripInfo_DeviceType();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIP_INFO__LINE_NAME = eINSTANCE.getTripInfo_LineName();
+
+		/**
 		 * The meta object literal for the '<em><b>Line Number</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6232,12 +6328,28 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute TRIP_INFO__TRIP_NUMBER = eINSTANCE.getTripInfo_TripNumber();
 
 		/**
-		 * The meta object literal for the '<em><b>Line Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Device Number</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRIP_INFO__LINE_NAME = eINSTANCE.getTripInfo_LineName();
+		EAttribute TRIP_INFO__DEVICE_NUMBER = eINSTANCE.getTripInfo_DeviceNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>At Stop</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIP_INFO__AT_STOP = eINSTANCE.getTripInfo_AtStop();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIP_INFO__STOP_NAME = eINSTANCE.getTripInfo_StopName();
 
 	}
 

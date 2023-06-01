@@ -223,9 +223,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TicketValidationVehicleData/driverNumber"/>
     </genClasses>
     <genClasses ecoreClass="ibis.ecore#//TripInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/deviceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/lineName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/lineNumber"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/tripNumber"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/lineName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/deviceNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/atStop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis.ecore#//TripInfo/stopName"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
