@@ -38,8 +38,14 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getCustomerInfoCurrentAnnouncementData <em>Customer Info Current Announcement Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getCustomerInfoCurrentConnectionData <em>Customer Info Current Connection Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getCustomerInfoCurrentDisplayContentData <em>Customer Info Current Display Content Data</em>}</li>
- *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}</li>
- *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor1CountingState <em>Door1 Counting State</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor2CountingState <em>Door2 Counting State</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor3CountingState <em>Door3 Counting State</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor4CountingState <em>Door4 Counting State</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor1State <em>Door1 State</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor2State <em>Door2 State</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor3State <em>Door3 State</em>}</li>
+ *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor4State <em>Door4 State</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getStopRequested <em>Stop Requested</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getGnssLocationData <em>Gnss Location Data</em>}</li>
  *   <li>{@link de.jena.model.sensinact.ibis.IbisDevice#getCurrentTariffStopData <em>Current Tariff Stop Data</em>}</li>
@@ -254,48 +260,288 @@ public interface IbisDevice extends Provider {
 	void setCustomerInfoCurrentDisplayContentData(CustomerInfoCurrentDisplayContentData value);
 
 	/**
-	 * Returns the value of the '<em><b>Door Counting State Data</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Door1 Counting State</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Door Counting State Data</em>' containment reference.
-	 * @see #setDoorCountingStateData(PassengerCountingDoorCountingState)
-	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_DoorCountingStateData()
+	 * @return the value of the '<em>Door1 Counting State</em>' containment reference.
+	 * @see #isSetDoor1CountingState()
+	 * @see #unsetDoor1CountingState()
+	 * @see #setDoor1CountingState(PassengerCountingDoorCountingState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door1CountingState()
+	 * @model containment="true" unsettable="true"
+	 * @generated
+	 */
+	PassengerCountingDoorCountingState getDoor1CountingState();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor1CountingState <em>Door1 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door1 Counting State</em>' containment reference.
+	 * @see #isSetDoor1CountingState()
+	 * @see #unsetDoor1CountingState()
+	 * @see #getDoor1CountingState()
+	 * @generated
+	 */
+	void setDoor1CountingState(PassengerCountingDoorCountingState value);
+
+	/**
+	 * Unsets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor1CountingState <em>Door1 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDoor1CountingState()
+	 * @see #getDoor1CountingState()
+	 * @see #setDoor1CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	void unsetDoor1CountingState();
+
+	/**
+	 * Returns whether the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor1CountingState <em>Door1 Counting State</em>}' containment reference is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Door1 Counting State</em>' containment reference is set.
+	 * @see #unsetDoor1CountingState()
+	 * @see #getDoor1CountingState()
+	 * @see #setDoor1CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	boolean isSetDoor1CountingState();
+
+	/**
+	 * Returns the value of the '<em><b>Door2 Counting State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door2 Counting State</em>' containment reference.
+	 * @see #isSetDoor2CountingState()
+	 * @see #unsetDoor2CountingState()
+	 * @see #setDoor2CountingState(PassengerCountingDoorCountingState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door2CountingState()
+	 * @model containment="true" unsettable="true"
+	 * @generated
+	 */
+	PassengerCountingDoorCountingState getDoor2CountingState();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor2CountingState <em>Door2 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door2 Counting State</em>' containment reference.
+	 * @see #isSetDoor2CountingState()
+	 * @see #unsetDoor2CountingState()
+	 * @see #getDoor2CountingState()
+	 * @generated
+	 */
+	void setDoor2CountingState(PassengerCountingDoorCountingState value);
+
+	/**
+	 * Unsets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor2CountingState <em>Door2 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDoor2CountingState()
+	 * @see #getDoor2CountingState()
+	 * @see #setDoor2CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	void unsetDoor2CountingState();
+
+	/**
+	 * Returns whether the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor2CountingState <em>Door2 Counting State</em>}' containment reference is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Door2 Counting State</em>' containment reference is set.
+	 * @see #unsetDoor2CountingState()
+	 * @see #getDoor2CountingState()
+	 * @see #setDoor2CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	boolean isSetDoor2CountingState();
+
+	/**
+	 * Returns the value of the '<em><b>Door3 Counting State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door3 Counting State</em>' containment reference.
+	 * @see #isSetDoor3CountingState()
+	 * @see #unsetDoor3CountingState()
+	 * @see #setDoor3CountingState(PassengerCountingDoorCountingState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door3CountingState()
+	 * @model containment="true" unsettable="true"
+	 * @generated
+	 */
+	PassengerCountingDoorCountingState getDoor3CountingState();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor3CountingState <em>Door3 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door3 Counting State</em>' containment reference.
+	 * @see #isSetDoor3CountingState()
+	 * @see #unsetDoor3CountingState()
+	 * @see #getDoor3CountingState()
+	 * @generated
+	 */
+	void setDoor3CountingState(PassengerCountingDoorCountingState value);
+
+	/**
+	 * Unsets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor3CountingState <em>Door3 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDoor3CountingState()
+	 * @see #getDoor3CountingState()
+	 * @see #setDoor3CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	void unsetDoor3CountingState();
+
+	/**
+	 * Returns whether the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor3CountingState <em>Door3 Counting State</em>}' containment reference is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Door3 Counting State</em>' containment reference is set.
+	 * @see #unsetDoor3CountingState()
+	 * @see #getDoor3CountingState()
+	 * @see #setDoor3CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	boolean isSetDoor3CountingState();
+
+	/**
+	 * Returns the value of the '<em><b>Door4 Counting State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door4 Counting State</em>' containment reference.
+	 * @see #isSetDoor4CountingState()
+	 * @see #unsetDoor4CountingState()
+	 * @see #setDoor4CountingState(PassengerCountingDoorCountingState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door4CountingState()
+	 * @model containment="true" unsettable="true"
+	 * @generated
+	 */
+	PassengerCountingDoorCountingState getDoor4CountingState();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor4CountingState <em>Door4 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door4 Counting State</em>' containment reference.
+	 * @see #isSetDoor4CountingState()
+	 * @see #unsetDoor4CountingState()
+	 * @see #getDoor4CountingState()
+	 * @generated
+	 */
+	void setDoor4CountingState(PassengerCountingDoorCountingState value);
+
+	/**
+	 * Unsets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor4CountingState <em>Door4 Counting State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDoor4CountingState()
+	 * @see #getDoor4CountingState()
+	 * @see #setDoor4CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	void unsetDoor4CountingState();
+
+	/**
+	 * Returns whether the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor4CountingState <em>Door4 Counting State</em>}' containment reference is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Door4 Counting State</em>' containment reference is set.
+	 * @see #unsetDoor4CountingState()
+	 * @see #getDoor4CountingState()
+	 * @see #setDoor4CountingState(PassengerCountingDoorCountingState)
+	 * @generated
+	 */
+	boolean isSetDoor4CountingState();
+
+	/**
+	 * Returns the value of the '<em><b>Door1 State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door1 State</em>' containment reference.
+	 * @see #setDoor1State(DoorState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door1State()
 	 * @model containment="true"
 	 * @generated
 	 */
-	PassengerCountingDoorCountingState getDoorCountingStateData();
+	DoorState getDoor1State();
 
 	/**
-	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorCountingStateData <em>Door Counting State Data</em>}' containment reference.
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor1State <em>Door1 State</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Door Counting State Data</em>' containment reference.
-	 * @see #getDoorCountingStateData()
+	 * @param value the new value of the '<em>Door1 State</em>' containment reference.
+	 * @see #getDoor1State()
 	 * @generated
 	 */
-	void setDoorCountingStateData(PassengerCountingDoorCountingState value);
+	void setDoor1State(DoorState value);
 
 	/**
-	 * Returns the value of the '<em><b>Door State Data</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Door2 State</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Door State Data</em>' containment reference.
-	 * @see #setDoorStateData(DoorState)
-	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_DoorStateData()
+	 * @return the value of the '<em>Door2 State</em>' containment reference.
+	 * @see #setDoor2State(DoorState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door2State()
 	 * @model containment="true"
 	 * @generated
 	 */
-	DoorState getDoorStateData();
+	DoorState getDoor2State();
 
 	/**
-	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoorStateData <em>Door State Data</em>}' containment reference.
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor2State <em>Door2 State</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Door State Data</em>' containment reference.
-	 * @see #getDoorStateData()
+	 * @param value the new value of the '<em>Door2 State</em>' containment reference.
+	 * @see #getDoor2State()
 	 * @generated
 	 */
-	void setDoorStateData(DoorState value);
+	void setDoor2State(DoorState value);
+
+	/**
+	 * Returns the value of the '<em><b>Door3 State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door3 State</em>' containment reference.
+	 * @see #setDoor3State(DoorState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door3State()
+	 * @model containment="true"
+	 * @generated
+	 */
+	DoorState getDoor3State();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor3State <em>Door3 State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door3 State</em>' containment reference.
+	 * @see #getDoor3State()
+	 * @generated
+	 */
+	void setDoor3State(DoorState value);
+
+	/**
+	 * Returns the value of the '<em><b>Door4 State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Door4 State</em>' containment reference.
+	 * @see #setDoor4State(DoorState)
+	 * @see de.jena.model.sensinact.ibis.IbisSensinactPackage#getIbisDevice_Door4State()
+	 * @model containment="true"
+	 * @generated
+	 */
+	DoorState getDoor4State();
+
+	/**
+	 * Sets the value of the '{@link de.jena.model.sensinact.ibis.IbisDevice#getDoor4State <em>Door4 State</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Door4 State</em>' containment reference.
+	 * @see #getDoor4State()
+	 * @generated
+	 */
+	void setDoor4State(DoorState value);
 
 	/**
 	 * Returns the value of the '<em><b>Stop Requested</b></em>' containment reference.

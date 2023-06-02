@@ -26,9 +26,21 @@
         eType="#//CustomerInfoCurrentConnectionData" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="customerInfoCurrentDisplayContentData"
         eType="#//CustomerInfoCurrentDisplayContentData" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="doorCountingStateData"
-        eType="#//PassengerCountingDoorCountingState" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="doorStateData" eType="#//DoorState"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door1CountingState" eType="#//PassengerCountingDoorCountingState"
+        unsettable="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door2CountingState" eType="#//PassengerCountingDoorCountingState"
+        unsettable="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door3CountingState" eType="#//PassengerCountingDoorCountingState"
+        unsettable="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door4CountingState" eType="#//PassengerCountingDoorCountingState"
+        unsettable="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door1State" eType="#//DoorState"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door2State" eType="#//DoorState"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door3State" eType="#//DoorState"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="door4State" eType="#//DoorState"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stopRequested" eType="#//StopRequested"
         containment="true"/>

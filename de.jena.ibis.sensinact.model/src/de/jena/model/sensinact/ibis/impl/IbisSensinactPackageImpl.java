@@ -352,7 +352,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_DoorCountingStateData() {
+	public EReference getIbisDevice_Door1CountingState() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -362,7 +362,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_DoorStateData() {
+	public EReference getIbisDevice_Door2CountingState() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -372,7 +372,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_StopRequested() {
+	public EReference getIbisDevice_Door3CountingState() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -382,7 +382,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_GnssLocationData() {
+	public EReference getIbisDevice_Door4CountingState() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -392,7 +392,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CurrentTariffStopData() {
+	public EReference getIbisDevice_Door1State() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -402,7 +402,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_RazziaData() {
+	public EReference getIbisDevice_Door2State() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -412,7 +412,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_CurrentLineData() {
+	public EReference getIbisDevice_Door3State() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -422,7 +422,7 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_VehicleData() {
+	public EReference getIbisDevice_Door4State() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -432,8 +432,68 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 	 * @generated
 	 */
 	@Override
-	public EReference getIbisDevice_TripInfo() {
+	public EReference getIbisDevice_StopRequested() {
 		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_GnssLocationData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_CurrentTariffStopData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_RazziaData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_CurrentLineData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_VehicleData() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIbisDevice_TripInfo() {
+		return (EReference)ibisDeviceEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -2315,8 +2375,14 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_CONNECTION_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA);
-		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR_COUNTING_STATE_DATA);
-		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR_STATE_DATA);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR1_COUNTING_STATE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR2_COUNTING_STATE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR3_COUNTING_STATE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR4_COUNTING_STATE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR1_STATE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR2_STATE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR3_STATE);
+		createEReference(ibisDeviceEClass, IBIS_DEVICE__DOOR4_STATE);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__STOP_REQUESTED);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__GNSS_LOCATION_DATA);
 		createEReference(ibisDeviceEClass, IBIS_DEVICE__CURRENT_TARIFF_STOP_DATA);
@@ -2590,8 +2656,14 @@ public class IbisSensinactPackageImpl extends EPackageImpl implements IbisSensin
 		initEReference(getIbisDevice_CustomerInfoCurrentAnnouncementData(), this.getCustomerInfoCurrentAnnouncementData(), null, "customerInfoCurrentAnnouncementData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentConnectionData(), this.getCustomerInfoCurrentConnectionData(), null, "customerInfoCurrentConnectionData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CustomerInfoCurrentDisplayContentData(), this.getCustomerInfoCurrentDisplayContentData(), null, "customerInfoCurrentDisplayContentData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIbisDevice_DoorCountingStateData(), this.getPassengerCountingDoorCountingState(), null, "doorCountingStateData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIbisDevice_DoorStateData(), this.getDoorState(), null, "doorStateData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door1CountingState(), this.getPassengerCountingDoorCountingState(), null, "door1CountingState", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door2CountingState(), this.getPassengerCountingDoorCountingState(), null, "door2CountingState", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door3CountingState(), this.getPassengerCountingDoorCountingState(), null, "door3CountingState", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door4CountingState(), this.getPassengerCountingDoorCountingState(), null, "door4CountingState", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door1State(), this.getDoorState(), null, "door1State", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door2State(), this.getDoorState(), null, "door2State", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door3State(), this.getDoorState(), null, "door3State", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIbisDevice_Door4State(), this.getDoorState(), null, "door4State", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_StopRequested(), this.getStopRequested(), null, "stopRequested", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_GnssLocationData(), this.getGNSSLocationData(), null, "gnssLocationData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIbisDevice_CurrentTariffStopData(), this.getTicketValidationCurrentTariffStopData(), null, "currentTariffStopData", null, 0, 1, IbisDevice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
