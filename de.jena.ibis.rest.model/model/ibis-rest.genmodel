@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.jena.ibis.rest.model/src" editDirectory="/de.jena.ibis.rest.model.edit/src"
+    editorDirectory="/de.jena.ibis.rest.model.editor/src" modelPluginID="de.jena.ibis.rest.model"
+    modelName="rest" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" suppressGenModelAnnotations="false"
+    copyrightFields="false" editPluginID="de.jena.ibis.rest.model.edit" editorPluginID="de.jena.ibis.rest.model.editor"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>ibis-rest.ecore</foreignModel>
+  <genPackages prefix="IbisRest" basePackage="de.jena.model.ibis" disposableProviderFactory="true"
+      ecorePackage="ibis-rest.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibis-rest.ecore#//DeviceType">
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//DeviceType/BUS"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//DeviceType/E_BUS"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//DeviceType/TRAM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//DeviceType/TRAIN"/>
+    </genEnums>
+    <genClasses ecoreClass="ibis-rest.ecore#//Response">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-rest.ecore#//Response/data"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis-rest.ecore#//OnlineDevice">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//OnlineDevice/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//OnlineDevice/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

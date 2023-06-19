@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.components;
+package de.jena.ibis.apis;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,14 +28,12 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 
-import de.jena.ibis.apis.IbisDeviceConfiguratorConfig;
-
 /**
  * 
  * @author ilenia
  * @since Mar 29, 2023
  */
-@Component(name = "IbisDeviceConfigurator", configurationPid = "IbisDeviceConfigurator", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
+@Component(name = "IbisDeviceConfigurator", service = IbisDeviceConfigurator.class, configurationPid = "IbisDeviceConfigurator", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 @RequireConfigurationAdmin
 public class IbisDeviceConfigurator {
 
@@ -70,6 +68,10 @@ public class IbisDeviceConfigurator {
 			}
 		});
 		serviceConfigs.clear();
+	}
+	
+	public IbisDeviceConfiguratorConfig getConfig() {
+		return config;
 	}
 	
 	private void updateServiceConfig(String service) throws IOException {		

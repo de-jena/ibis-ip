@@ -117,6 +117,9 @@ org.geckoprojects.emf.persistence:org.gecko.emf.persistence.pushstreams:1.0.0-SN
 org.geckoprojects.emf.persistence:org.gecko.emf.persistence.jdbc:1.0.0-SNAPSHOT
 org.geckoprojects.emf.persistence:org.gecko.persistence.derby:1.0.0-SNAPSHOT
 
+org.eclipse.emfcloud:emfjson-jackson:2.2.0
+
+
 org.apache.derby:derby:10.14.2.0
 org.apache.felix:org.apache.felix.gogo.runtime:1.1.6
 
@@ -150,6 +153,7 @@ com.fasterxml.jackson.core:jackson-databind:${def;jackson.version;2.13.3}
 com.fasterxml.jackson.dataformat:jackson-dataformat-properties:${def;jackson.version;2.13.3}
 com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${def;jackson.version;2.13.3}
 com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${def;jackson.version;2.13.3}
+org.yaml:snakeyaml:1.33
 
 org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5
 

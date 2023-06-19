@@ -1,0 +1,20 @@
+{
+	":configurator:resource-version": 1,
+	":configurator:symbolicname": "IbisConfig",
+	":configurator:version": "0.0.0",
+	"IbisDeviceConfigurator~bus201": {
+		"deviceId" : "201",
+		"deviceName": "Bus 201",
+		"deviceType": "BUS"
+	},
+	"IbisDeviceConfigurator~tram7": {
+		"deviceId" : "7",
+		"deviceName": "Tram 7",
+		"deviceType": "TRAM"
+	},
+	"IbisDeviceConfigurator~ebus345": {
+		"deviceId" : "345",
+		"deviceName": "E-Bus 345",
+		"deviceType": "E_BUS"
+	}
+}
