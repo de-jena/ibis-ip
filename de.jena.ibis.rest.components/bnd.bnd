@@ -4,4 +4,7 @@ Bundle-Version: 1.0.0.SNAPSHOT
 Private-Package: de.jena.ibis.rest.components
 -buildpath: \
 	de.jena.ibis.apis,\
-	de.jena.ibis.rest.model
+	de.jena.ibis.rest.model,\
+	de.jena.ibis.common.model;version=latest,\
+	org.gecko.qvt.osgi.api,\
+	org.gecko.core.pool

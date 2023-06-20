@@ -15,12 +15,53 @@
       <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//DeviceType/TRAM"/>
       <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//DeviceType/TRAIN"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibis-rest.ecore#//LocationStateType">
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//LocationStateType/AFTER_STOP"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//LocationStateType/AT_STOP"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//LocationStateType/BEFORE_STOP"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//LocationStateType/BETWEEN_STOP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibis-rest.ecore#//RouteDirectionType">
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//RouteDirectionType/FORWARD"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//RouteDirectionType/BACKWARD"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//RouteDirectionType/CLOCKWISE"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//RouteDirectionType/COUNTERCLOCKWISE"/>
+      <genEnumLiterals ecoreEnumLiteral="ibis-rest.ecore#//RouteDirectionType/OTHER"/>
+    </genEnums>
     <genClasses ecoreClass="ibis-rest.ecore#//Response">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-rest.ecore#//Response/data"/>
     </genClasses>
     <genClasses ecoreClass="ibis-rest.ecore#//OnlineDevice">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//OnlineDevice/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//OnlineDevice/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis-rest.ecore#//TripData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//TripData/vehicleRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//TripData/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//TripData/currentStopIndex"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-rest.ecore#//TripData/timetable"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis-rest.ecore#//Timetable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//Timetable/timetableRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//Timetable/locationState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//Timetable/timetableDelay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//Timetable/routeDirection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//Timetable/runNumber"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-rest.ecore#//Timetable/stopSequence"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis-rest.ecore#//StopSequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-rest.ecore#//StopSequence/stopPoint"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis-rest.ecore#//StopInformation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/stopIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/stopRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/stopName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/arrivalScheduled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/arrivalExpected"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/departureScheduled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/departureExpected"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/recordedArrivalTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/distanceToNextStop"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

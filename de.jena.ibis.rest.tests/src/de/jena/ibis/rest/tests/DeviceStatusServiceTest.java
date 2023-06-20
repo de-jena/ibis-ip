@@ -54,6 +54,7 @@ public class DeviceStatusServiceTest {
 	@BeforeEach
 	public void before(@InjectBundleContext BundleContext ctx) {
 		System.out.println("Test");
+	
 		
 	}
 	

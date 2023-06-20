@@ -1,0 +1,17 @@
+Bundle-Name: Model 2 Model Transformation
+Bundle-Description: Model2Model transformation from ibis models to rest api model
+Bundle-Version: 1.0.0.SNAPSHOT
+
+-library: enable-emf
+
+-includeresource: \
+	transforms/=transforms
+
+
+
+
+
+
+
+
+-buildpath: de.jena.ibis.api.mmt.util;version=latest

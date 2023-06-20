@@ -11,28 +11,21 @@
  */
 package de.jena.ibis.rest.apis;
 
-import java.util.List;
-
 import org.osgi.annotation.versioning.ProviderType;
-import de.jena.model.ibis.rest.OnlineDevice;
+
+import de.jena.model.ibis.rest.TripData;
 
 /**
  * 
  * @author ilenia
- * @since May 30, 2023
+ * @since Jun 20, 2023
  * 
- * This service should be responsible of monitoring which devices are online
- * and which services are available on each device.
+ * This service should be responsible of retrieving information about the current trip run by 
+ * a certain device (tram, bus, etc). It should then handle the communication with the corresponding
+ * IBIS services, sending the appropriate requests and transforming the results into the api model
  */
 @ProviderType
-public interface DeviceStatusService {
+public interface TripInformationService {
 	
-	boolean isDeviceOnline(String deviceId);
-	
-	List<OnlineDevice> getOnlineDevice();
-	
-	boolean isServiceAvailableOnDevice(String serviceName, String deviceId);
-	
-	List<String> getAvailableServicesOnDevice(String deviceId);
-
+	TripData getTripData(String deviceId);
 }

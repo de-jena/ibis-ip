@@ -12,8 +12,12 @@ Private-Package: de.jena.ibis.rest.tests
 Bundle-Version: 1.0.0.SNAPSHOT
 
 # Sometimes without DynamicImport Mockito will not find certain classes
-#DynamicImport-Package: *
+DynamicImport-Package: *
+
 -buildpath: \
 	org.osgi.test.junit5.cm,\
 	de.jena.ibis.apis,\
-	de.jena.ibis.rest.model
+	de.jena.ibis.rest.model,\
+	de.jena.ibis.common.model;version=latest,\
+	de.jena.ibis.customer.info.service.model;version=latest
+-privatepackage: de.jena.ibis.rest.tests.helper
