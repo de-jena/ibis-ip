@@ -32,12 +32,14 @@ import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
 import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
 import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.common.IbisCommonPackage;
 import de.jena.model.ibis.ticketvalidationservice.CurrentLineResponse;
 import de.jena.model.ibis.ticketvalidationservice.CurrentShortHaulStopsResponse;
 import de.jena.model.ibis.ticketvalidationservice.CurrentTariffStopResponse;
 import de.jena.model.ibis.ticketvalidationservice.IbisTicketValidationServicePackage;
 import de.jena.model.ibis.ticketvalidationservice.RazziaResponse;
+import de.jena.model.ibis.ticketvalidationservice.TripDataResponse;
 import de.jena.model.ibis.ticketvalidationservice.VehicleDataResponse;
 
 /**
@@ -287,6 +289,10 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
 		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
 	}
+	
+	private <T extends GeneralResponse> T executeRetrieveOperation(String operation, GeneralRetrieveRequest request, EClass responseType) {
+		return IbisHttpRequestHelper.sendHttpRequest(config, operation, request, responseType, resourceSetFactory);
+	}
 
 	/* 
 	 * (non-Javadoc)
@@ -304,6 +310,30 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	@Override
 	public String getRefDeviceType() {
 		return config.refDeviceType();
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeRetrieveOperation(java.lang.String, de.jena.model.ibis.common.GeneralRetrieveRequest)
+	 */
+	@Override
+	public GeneralResponse executeRetrieveOperation(String operation, GeneralRetrieveRequest request) {
+		switch(operation) {
+		case TicketValidationServiceConstants.OPERATION_RETRIEVE_TRIP_DATA:
+			return retrieveTripData(request);
+		default:
+			throw new IllegalArgumentException(String.format("Retrieve Operation %s not implemented for %s!", operation, config.serviceName()));			
+		}
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisTicketValidationService#retrieveTripData(de.jena.model.ibis.common.GeneralRetrieveRequest)
+	 */
+	@Override
+	public TripDataResponse retrieveTripData(GeneralRetrieveRequest request) {
+		return executeRetrieveOperation(TicketValidationServiceConstants.OPERATION_RETRIEVE_TRIP_DATA, 
+				request, ticketValidationServicePackage.getTripDataResponse());
 	}
 
 }

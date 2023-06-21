@@ -1,17 +1,15 @@
 /**
- * Copyright (c) 2012 - 2023 Data In Motion and others.
+ * Copyright (c) 2012 - 2018 Data In Motion and others.
  * All rights reserved. 
  * 
- * This program and the accompanying materials are made
- * available under the terms of the Eclipse Public License 2.0
- * which is available at https://www.eclipse.org/legal/epl-2.0/
- *
- * SPDX-License-Identifier: EPL-2.0
+ * This program and the accompanying materials are made available under the terms of the 
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.rest.tests.helper;
+package de.jena.ibis.test.components;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -21,40 +19,51 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Modified;
 
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.GeneralIbisTCPService;
 import de.jena.ibis.apis.IbisCustomerInformationService;
+import de.jena.ibis.apis.IbisTCPServiceConfig;
 import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
+import de.jena.ibis.test.components.helper.IbisToApiHelper;
 import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.common.IBISIPDateTime;
 import de.jena.model.ibis.common.IBISIPInt;
 import de.jena.model.ibis.common.IBISIPNMTOKEN;
 import de.jena.model.ibis.common.IbisCommonFactory;
+import de.jena.model.ibis.common.StopInformation;
+import de.jena.model.ibis.common.StopSequence;
 import de.jena.model.ibis.customerinformationservice.AllDataResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentConnectionInformationResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentResponse;
+import de.jena.model.ibis.customerinformationservice.CurrentStopIndexData;
 import de.jena.model.ibis.customerinformationservice.CurrentStopIndexResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentStopPointResponse;
 import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServiceFactory;
-import de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest;
+import de.jena.model.ibis.customerinformationservice.PartialStopSequenceData;
 import de.jena.model.ibis.customerinformationservice.PartialStopSequenceResponse;
-import de.jena.model.ibis.customerinformationservice.TripDataResponse;
 import de.jena.model.ibis.customerinformationservice.TripData;
+import de.jena.model.ibis.customerinformationservice.TripDataResponse;
 import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
 
-/**
- * 
- * @author ilenia
- * @since Jun 20, 2023
- */
-@Component(immediate=true, name = "IbisCustomerInformationServiceWithResponse", 
+@Component(immediate=true, name = "FakeCustomerInfoService", 
 service = {IbisCustomerInformationService.class, GeneralIbisTCPService.class, GeneralIbisService.class},
-configurationPid = "IbisCustomerInformationServiceWithResponse", configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class IbisCustomerInformationServiceWithResponse implements IbisCustomerInformationService {
+configurationPid = "CustomerInformationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class CustomerInfoServiceTestImpl implements  IbisCustomerInformationService {
+	
+	private IbisTCPServiceConfig config;
+	
+	@Activate
+	@Modified
+	public void activate(IbisTCPServiceConfig config) {
+		this.config = config;
+	}
 
 	/* 
 	 * (non-Javadoc)
@@ -62,8 +71,7 @@ public class IbisCustomerInformationServiceWithResponse implements IbisCustomerI
 	 */
 	@Override
 	public String getServiceName() {
-		// TODO Auto-generated method stub
-		return null;
+		return config.serviceName();
 	}
 
 	/* 
@@ -72,8 +80,7 @@ public class IbisCustomerInformationServiceWithResponse implements IbisCustomerI
 	 */
 	@Override
 	public String getServiceId() {
-		// TODO Auto-generated method stub
-		return null;
+		return config.serviceId();
 	}
 
 	/* 
@@ -82,8 +89,7 @@ public class IbisCustomerInformationServiceWithResponse implements IbisCustomerI
 	 */
 	@Override
 	public String getRefDeviceId() {
-		// TODO Auto-generated method stub
-		return null;
+		return config.refDeviceId();
 	}
 
 	/* 
@@ -92,8 +98,7 @@ public class IbisCustomerInformationServiceWithResponse implements IbisCustomerI
 	 */
 	@Override
 	public String getRefDeviceType() {
-		// TODO Auto-generated method stub
-		return null;
+		return config.refDeviceType();
 	}
 
 	/* 
@@ -370,8 +375,13 @@ public class IbisCustomerInformationServiceWithResponse implements IbisCustomerI
 	 */
 	@Override
 	public CurrentStopIndexResponse getCurrentStopIndex() {
-		// TODO Auto-generated method stub
-		return null;
+		CurrentStopIndexResponse ibisResponse = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopIndexResponse();
+		CurrentStopIndexData ibisData = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopIndexData();
+		IBISIPInt stopIndex = IbisCommonFactory.eINSTANCE.createIBISIPInt();
+		stopIndex.setValue(7);
+		ibisData.setCurrentStopIndex(stopIndex);
+		ibisResponse.setCurrentStopIndexData(ibisData);
+		return ibisResponse;
 	}
 
 	/* 
@@ -419,14 +429,45 @@ public class IbisCustomerInformationServiceWithResponse implements IbisCustomerI
 		return null;
 	}
 
+
 	/* 
 	 * (non-Javadoc)
-	 * @see de.jena.ibis.apis.IbisCustomerInformationService#retrievePartialStopSequence(de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest)
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeRetrieveOperation(java.lang.String, de.jena.model.ibis.common.GeneralRetrieveRequest)
 	 */
 	@Override
-	public PartialStopSequenceResponse retrievePartialStopSequence(PartialStopSequenceRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+	public GeneralResponse executeRetrieveOperation(String operation, GeneralRetrieveRequest request) {
+		return retrievePartialStopSequence(request);
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.IbisCustomerInformationService#retrievePartialStopSequence(de.jena.model.ibis.common.GeneralRetrieveRequest)
+	 */
+	@Override
+	public PartialStopSequenceResponse retrievePartialStopSequence(GeneralRetrieveRequest request) {
+		PartialStopSequenceResponse ibisResponse = IbisCustomerInformationServiceFactory.eINSTANCE.createPartialStopSequenceResponse();
+		PartialStopSequenceData ibisData = IbisCustomerInformationServiceFactory.eINSTANCE.createPartialStopSequenceData();
+		StopSequence stopSequence = IbisCommonFactory.eINSTANCE.createStopSequence();
+		StopInformation stopInfo1 = IbisCommonFactory.eINSTANCE.createStopInformation();
+		stopInfo1.setStopIndex(IbisToApiHelper.createIbisInt(7));
+		stopInfo1.setStopRef(IbisToApiHelper.createIbisToken("stop1"));
+		stopInfo1.getStopName().add(IbisToApiHelper.createIbisTextType("stop 1 Name"));
+		stopInfo1.getStopName().add(IbisToApiHelper.createIbisTextType("stop 1 Other Name"));
+		stopInfo1.setDistanceToNextStop(IbisToApiHelper.createIbisInt(1500));
+		
+		StopInformation stopInfo2 = IbisCommonFactory.eINSTANCE.createStopInformation();
+		stopInfo2.setStopIndex(IbisToApiHelper.createIbisInt(8));
+		stopInfo2.setStopRef(IbisToApiHelper.createIbisToken("stop2"));
+		stopInfo2.getStopName().add(IbisToApiHelper.createIbisTextType("stop 2 Name"));
+		stopInfo2.getStopName().add(IbisToApiHelper.createIbisTextType("stop 2 Other Name"));
+		stopInfo2.setDistanceToNextStop(IbisToApiHelper.createIbisInt(1300));
+		
+		stopSequence.getStopPoint().add(stopInfo1);
+		stopSequence.getStopPoint().add(stopInfo2);
+		ibisData.setStopSequence(stopSequence);
+		ibisResponse.setPartialStopSequenceData(ibisData);
+		
+		return ibisResponse;
 	}
 
 }

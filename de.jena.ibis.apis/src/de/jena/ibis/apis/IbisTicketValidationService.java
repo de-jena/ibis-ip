@@ -13,10 +13,12 @@ package de.jena.ibis.apis;
 
 import org.osgi.annotation.versioning.ProviderType;
 
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.ticketvalidationservice.CurrentLineResponse;
 import de.jena.model.ibis.ticketvalidationservice.CurrentShortHaulStopsResponse;
 import de.jena.model.ibis.ticketvalidationservice.CurrentTariffStopResponse;
 import de.jena.model.ibis.ticketvalidationservice.RazziaResponse;
+import de.jena.model.ibis.ticketvalidationservice.TripDataResponse;
 import de.jena.model.ibis.ticketvalidationservice.VehicleDataResponse;
 
 /**
@@ -55,4 +57,8 @@ public interface IbisTicketValidationService extends GeneralIbisTCPService{
 	
 	void subscribeShortHaulStops();
 	void unsubscribeShortHaulStops();
+	
+//	Retrieve Operations
+	
+	TripDataResponse retrieveTripData(GeneralRetrieveRequest request);
 }

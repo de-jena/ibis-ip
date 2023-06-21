@@ -12,6 +12,7 @@ transformation IbisToApi(in response: COMMON, out api : API);
 
 main() {
 	response.rootObjects()[CUSTOMERINFO::TripDataResponse] -> map tripToApi(); 
+	response.rootObjects()[CUSTOMERINFO::PartialStopSequenceResponse] -> map stopSequenceToApi();
 
 }
 
@@ -21,6 +22,10 @@ mapping CUSTOMERINFO::TripDataResponse::tripToApi() : API::TripData {
 	timestamp := getMillis(self.tripData.timeStamp); 
 	currentStopIndex := self.tripData.currentStopIndex.value;
 	timetable := self.tripData.tripInformation.map toTimetable();
+}
+
+mapping CUSTOMERINFO::PartialStopSequenceResponse::stopSequenceToApi() : API::StopSequence {
+	stopPoint += self.partialStopSequenceData.stopSequence.stopPoint.map toApiStopInformation();
 }
 
 mapping COMMON::TripInformation::toTimetable() : API::Timetable {

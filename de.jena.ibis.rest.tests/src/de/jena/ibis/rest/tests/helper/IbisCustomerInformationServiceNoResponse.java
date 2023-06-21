@@ -23,13 +23,13 @@ import de.jena.ibis.apis.GeneralIbisTCPService;
 import de.jena.ibis.apis.IbisCustomerInformationService;
 import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
 import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.customerinformationservice.AllDataResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentConnectionInformationResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentStopIndexResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentStopPointResponse;
-import de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest;
 import de.jena.model.ibis.customerinformationservice.PartialStopSequenceResponse;
 import de.jena.model.ibis.customerinformationservice.TripDataResponse;
 import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
@@ -387,7 +387,17 @@ public class IbisCustomerInformationServiceNoResponse implements IbisCustomerInf
 	 * @see de.jena.ibis.apis.IbisCustomerInformationService#retrievePartialStopSequence(de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest)
 	 */
 	@Override
-	public PartialStopSequenceResponse retrievePartialStopSequence(PartialStopSequenceRequest request) {
+	public PartialStopSequenceResponse retrievePartialStopSequence(GeneralRetrieveRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeRetrieveOperation(java.lang.String, de.jena.model.ibis.common.GeneralRetrieveRequest)
+	 */
+	@Override
+	public GeneralResponse executeRetrieveOperation(String operation, GeneralRetrieveRequest request) {
 		// TODO Auto-generated method stub
 		return null;
 	}

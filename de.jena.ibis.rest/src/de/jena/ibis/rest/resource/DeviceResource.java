@@ -28,6 +28,7 @@ import de.jena.model.ibis.rest.DeviceType;
 import de.jena.model.ibis.rest.IbisRestFactory;
 import de.jena.model.ibis.rest.OnlineDevice;
 import de.jena.model.ibis.rest.TripData;
+import de.jena.model.ibis.rest.StopSequence;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -107,6 +108,43 @@ public class DeviceResource {
 			}
 			de.jena.model.ibis.rest.Response response = IbisRestFactory.eINSTANCE.createResponse();
 			response.getData().add(tripData);
+			return Response.ok(response).build();
+		} catch(IllegalStateException e) {
+			return Response.serverError().entity("Something went wrong and we did not get any response").build();
+		}
+	}
+	
+	@GET
+	@Path("/stop/{deviceId}")
+	public Response getCurrentStopIndex(@PathParam("deviceId") String deviceId) {
+		if(!deviceStatusService.isServiceAvailableOnDevice("CustomerInformationService", deviceId)) {
+			return Response.noContent().entity("No CustomerInformationService available on device " + deviceId).build();
+		}
+		try {
+			int stopIndex = tripInfoService.getCurrentStopIndex(deviceId);
+			if(stopIndex == -1) {
+				return Response.serverError().entity("Something went wrong and we did not get any response").build();
+			}
+			return Response.ok(stopIndex).build();
+		} catch(IllegalStateException e) {
+			return Response.serverError().entity("Something went wrong and we did not get any response").build();
+		}
+	}
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, "application/xmi"})
+	@Path("/nextStops/{deviceId}/{currentStopIndex}")
+	public Response getTripInfo(@PathParam("deviceId") String deviceId, @PathParam("currentStopIndex") int currentStopIndex) {
+		if(!deviceStatusService.isServiceAvailableOnDevice("CustomerInformationService", deviceId)) {
+			return Response.noContent().entity("No CustomerInformationService available on device " + deviceId).build();
+		}
+		try {
+			StopSequence stopSequence = tripInfoService.getNextStops(deviceId, currentStopIndex);
+			if(stopSequence == null) {
+				return Response.serverError().entity("Something went wrong and we did not get any response").build();
+			}
+			de.jena.model.ibis.rest.Response response = IbisRestFactory.eINSTANCE.createResponse();
+			response.getData().add(stopSequence);
 			return Response.ok(response).build();
 		} catch(IllegalStateException e) {
 			return Response.serverError().entity("Something went wrong and we did not get any response").build();

@@ -12,6 +12,7 @@
 package de.jena.ibis.apis;
 
 import de.jena.model.ibis.common.DataAcceptedResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.devicemanagementservice.AllSubdeviceErrorMessagesResponse;
 import de.jena.model.ibis.devicemanagementservice.AllSubdeviceInformationResponse;
 import de.jena.model.ibis.devicemanagementservice.DeviceConfigurationResponse;
@@ -23,7 +24,6 @@ import de.jena.model.ibis.devicemanagementservice.FinalizeUpdateRequest;
 import de.jena.model.ibis.devicemanagementservice.FinalizeUpdateResponse;
 import de.jena.model.ibis.devicemanagementservice.InstallUpdateRequest;
 import de.jena.model.ibis.devicemanagementservice.InstallUpdateResponse;
-import de.jena.model.ibis.devicemanagementservice.RetrieveUpdateStateRequest;
 import de.jena.model.ibis.devicemanagementservice.RetrieveUpdateStateResponse;
 import de.jena.model.ibis.devicemanagementservice.ServiceInformationResponse;
 import de.jena.model.ibis.devicemanagementservice.ServiceStatusResponse;
@@ -90,7 +90,7 @@ public interface IbisDeviceManagementService extends GeneralIbisTCPService {
 //	UPDATE Operations (they are optional)
 	InstallUpdateResponse installUpdate(InstallUpdateRequest request);
 	
-	RetrieveUpdateStateResponse retrieveUpdateState(RetrieveUpdateStateRequest request);
+	RetrieveUpdateStateResponse retrieveUpdateState(GeneralRetrieveRequest request);
 	
 	UpdateHistoryResponse getUpdateHistory();
 	

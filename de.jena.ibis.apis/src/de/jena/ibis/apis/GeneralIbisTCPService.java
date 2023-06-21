@@ -16,6 +16,7 @@ import java.util.List;
 import org.osgi.annotation.versioning.ProviderType;
 
 import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 
 /**
  * 
@@ -28,5 +29,7 @@ public interface GeneralIbisTCPService extends GeneralIbisService {
 	List<GeneralResponse> executeAllGetOperations();
 		
 	GeneralResponse executeGetOperation(String operation);	
+	
+	GeneralResponse executeRetrieveOperation(String operation, GeneralRetrieveRequest request);
 		
 }

@@ -187,7 +187,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TripDataRequest">
+  <eClassifiers xsi:type="ecore:EClass" name="TripDataRequest" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralRetrieveRequest">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="TicketValidationService.RetrieveTripDataRequestStructure"/>
       <details key="kind" value="elementOnly"/>

@@ -14,7 +14,6 @@ package de.jena.ibis.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.cm.ConfigurationException;
@@ -34,6 +33,7 @@ import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
 import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
 import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.common.IbisCommonPackage;
 import de.jena.model.ibis.customerinformationservice.AllDataResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
@@ -42,7 +42,6 @@ import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentRespon
 import de.jena.model.ibis.customerinformationservice.CurrentStopIndexResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentStopPointResponse;
 import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServicePackage;
-import de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest;
 import de.jena.model.ibis.customerinformationservice.PartialStopSequenceResponse;
 import de.jena.model.ibis.customerinformationservice.TripDataResponse;
 import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
@@ -308,18 +307,22 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA);
 	}
 
+	
 	/* 
 	 * (non-Javadoc)
-	 * @see de.jena.ibis.apis.IbisCustomerInformationService#retrievePartialStopSequence(de.jena.ibis.customerinformationservice.CustomerInformationServiceRetrievePartialStopSequenceRequest)
+	 * @see de.jena.ibis.apis.IbisCustomerInformationService#retrievePartialStopSequence(de.jena.model.ibis.common.GeneralRetrieveRequest)
 	 */
 	@Override
-	public PartialStopSequenceResponse retrievePartialStopSequence(PartialStopSequenceRequest request) {
-		throw new NotImplementedException("Operation not supported yet!");
+	public PartialStopSequenceResponse retrievePartialStopSequence(GeneralRetrieveRequest request) {
+		return executeRetrieveOperation(CustomerInformationServiceConstants.OPERATION_RETRIEVE_PARTIAL_STOP_SEQUENCE, 
+				request, customerInfoServicePackage.getPartialStopSequenceResponse());
+				
 	}
 
+	
 	/* 
 	 * (non-Javadoc)
-	 * @see de.jena.ibis.apis.GeneralIbisService#executeGetOperation(java.lang.String)
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeGetOperation(java.lang.String)
 	 */
 	@Override
 	public GeneralResponse executeGetOperation(String operation) {
@@ -356,24 +359,20 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 		return results;
 	}
 	
-
 	/* 
 	 * (non-Javadoc)
-	 * @see de.jena.ibis.apis.GeneralIbisTCPService#getServiceName()
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeRetrieveOperation(java.lang.String, de.jena.model.ibis.common.GeneralRetrieveRequest)
 	 */
 	@Override
-	public String getServiceName() {
-		return config.serviceName();
+	public GeneralResponse executeRetrieveOperation(String operation, GeneralRetrieveRequest request) {
+		switch(operation) {
+		case CustomerInformationServiceConstants.OPERATION_RETRIEVE_PARTIAL_STOP_SEQUENCE:
+			return retrievePartialStopSequence(request);
+		default:
+			throw new IllegalArgumentException(String.format("Retrieve Operation %s not implemented for %s!", operation, config.serviceName()));			
+		}
 	}
 
-	/* 
-	 * (non-Javadoc)
-	 * @see de.jena.ibis.apis.GeneralIbisTCPService#getServiceId()
-	 */
-	@Override
-	public String getServiceId() {
-		return config.serviceId();
-	}
 
 	/* 
 	 * (non-Javadoc)
@@ -402,6 +401,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
 		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
 	}
+	
+	private <T extends GeneralResponse> T executeRetrieveOperation(String operation, GeneralRetrieveRequest request, EClass responseType) {
+		return IbisHttpRequestHelper.sendHttpRequest(config, operation, request, responseType, resourceSetFactory);
+	}
 
 	/* 
 	 * (non-Javadoc)
@@ -420,4 +423,23 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	public String getRefDeviceType() {
 		return config.refDeviceType();
 	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#getServiceName()
+	 */
+	@Override
+	public String getServiceName() {
+		return config.serviceName();
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#getServiceId()
+	 */
+	@Override
+	public String getServiceId() {
+		return config.serviceId();
+	}
+	
 }

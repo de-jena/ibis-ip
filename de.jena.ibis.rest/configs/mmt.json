@@ -1,0 +1,22 @@
+{
+	":configurator:resource-version": 1,
+	":configurator:version": "1.0.0",
+	":configurator:symbolic-name": "MMTMainConfig",
+	
+	"ConfigurableModelTransformatorPool~ibis": {
+		"pool.componentName": "ibisToApiTransformatorService",
+		"pool.size": 100,
+		"pool.timeout": 100,
+		"poolRef.target": "(pool.group=ibisToApiPoolGroup)"
+	},
+	
+	"PrototypeConfigurableTransformationService~ibisToApi": {
+		"name": "ibisToApi",
+		"qvt.templatePath": "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto",
+		"qvt.transformatorName": "IbisToApi",
+		"qvt.model.target": "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=rest))",
+		"pool.name": "ibisToApiPool",
+		"pool.group": "ibisToApiPoolGroup",
+		"pool.asService": false
+	}
+}

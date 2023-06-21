@@ -7,4 +7,5 @@ Private-Package: de.jena.ibis.rest.components
 	de.jena.ibis.rest.model,\
 	de.jena.ibis.common.model;version=latest,\
 	org.gecko.qvt.osgi.api,\
-	org.gecko.core.pool
+	org.gecko.core.pool,\
+	de.jena.ibis.customer.info.service.model;version=latest

@@ -13,13 +13,13 @@ package de.jena.ibis.apis;
 
 import org.osgi.annotation.versioning.ProviderType;
 
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.customerinformationservice.AllDataResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentConnectionInformationResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentDisplayContentResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentStopIndexResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentStopPointResponse;
-import de.jena.model.ibis.customerinformationservice.PartialStopSequenceRequest;
 import de.jena.model.ibis.customerinformationservice.PartialStopSequenceResponse;
 import de.jena.model.ibis.customerinformationservice.TripDataResponse;
 import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
@@ -86,6 +86,6 @@ public interface IbisCustomerInformationService extends GeneralIbisTCPService{
 //	RETRIEVE Operations
 	
 	PartialStopSequenceResponse 
-	retrievePartialStopSequence(PartialStopSequenceRequest request);
+	retrievePartialStopSequence(GeneralRetrieveRequest request);
 	
 }

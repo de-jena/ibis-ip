@@ -478,5 +478,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//GeneralSubscribeRequest/replyPort"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//GeneralSubscribeRequest/replyPath"/>
     </genClasses>
+    <genClasses ecoreClass="ibis-common.ecore#//GeneralRetrieveRequest"/>
   </genPackages>
 </genmodel:GenModel>

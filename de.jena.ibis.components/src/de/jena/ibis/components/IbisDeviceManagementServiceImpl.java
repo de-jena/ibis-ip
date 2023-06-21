@@ -34,6 +34,7 @@ import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
 import de.jena.model.ibis.common.DataAcceptedResponse;
 import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.common.IbisCommonPackage;
 import de.jena.model.ibis.devicemanagementservice.AllSubdeviceErrorMessagesResponse;
 import de.jena.model.ibis.devicemanagementservice.AllSubdeviceInformationResponse;
@@ -47,7 +48,6 @@ import de.jena.model.ibis.devicemanagementservice.FinalizeUpdateResponse;
 import de.jena.model.ibis.devicemanagementservice.IbisDeviceManagementServicePackage;
 import de.jena.model.ibis.devicemanagementservice.InstallUpdateRequest;
 import de.jena.model.ibis.devicemanagementservice.InstallUpdateResponse;
-import de.jena.model.ibis.devicemanagementservice.RetrieveUpdateStateRequest;
 import de.jena.model.ibis.devicemanagementservice.RetrieveUpdateStateResponse;
 import de.jena.model.ibis.devicemanagementservice.ServiceInformationResponse;
 import de.jena.model.ibis.devicemanagementservice.ServiceStatusResponse;
@@ -352,13 +352,15 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 		throw new NotImplementedException("Operation not yet implemented!");
 	}
 
+	
 	/* 
 	 * (non-Javadoc)
-	 * @see de.jena.ibis.apis.IbisDeviceManagementService#retrieveUpdateState(de.jena.ibis.devicemanagementservice.DeviceManagementServiceRetrieveUpdateStateRequest)
+	 * @see de.jena.ibis.apis.IbisDeviceManagementService#retrieveUpdateState(GeneralRetrieveRequest)
 	 */
 	@Override
-	public RetrieveUpdateStateResponse retrieveUpdateState(RetrieveUpdateStateRequest request) {
-		throw new NotImplementedException("Operation not yet implemented!");
+	public RetrieveUpdateStateResponse retrieveUpdateState(GeneralRetrieveRequest request) {
+		return executeRetrieveOperation(DeviceManagementServiceConstants.OPERATION_RETRIEVE_UPDATE_STATE, 
+				request, deviceManagementServicePackage.getRetrieveUpdateStateResponse());
 	}
 
 	/* 
@@ -475,6 +477,10 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
 		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
 	}
+	
+	private <T extends GeneralResponse> T executeRetrieveOperation(String operation, GeneralRetrieveRequest request, EClass responseType) {
+		return IbisHttpRequestHelper.sendHttpRequest(config, operation, request, responseType, resourceSetFactory);
+	}
 
 	/* 
 	 * (non-Javadoc)
@@ -492,6 +498,20 @@ public class IbisDeviceManagementServiceImpl implements IbisDeviceManagementServ
 	@Override
 	public String getRefDeviceType() {
 		return config.refDeviceType();
+	}
+
+	/* 
+	 * (non-Javadoc)
+	 * @see de.jena.ibis.apis.GeneralIbisTCPService#executeRetrieveOperation(java.lang.String, de.jena.model.ibis.common.GeneralRetrieveRequest)
+	 */
+	@Override
+	public GeneralResponse executeRetrieveOperation(String operation, GeneralRetrieveRequest request) {
+		switch(operation) {
+		case DeviceManagementServiceConstants.OPERATION_RETRIEVE_UPDATE_STATE:
+			return retrieveUpdateState(request);
+		default:
+			throw new IllegalArgumentException(String.format("Retrieve Operation %s not implemented for %s!", operation, config.serviceName()));			
+		}
 	}
 	
 }

@@ -3300,4 +3300,5 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralRetrieveRequest"/>
 </ecore:EPackage>

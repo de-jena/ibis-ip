@@ -13,6 +13,7 @@ package de.jena.ibis.rest.apis;
 
 import org.osgi.annotation.versioning.ProviderType;
 
+import de.jena.model.ibis.rest.StopSequence;
 import de.jena.model.ibis.rest.TripData;
 
 /**
@@ -28,4 +29,13 @@ import de.jena.model.ibis.rest.TripData;
 public interface TripInformationService {
 	
 	TripData getTripData(String deviceId);
+	
+	int getCurrentStopIndex(String deviceId);
+	
+	/**
+	 * @param deviceId the id of the device (tram, bus, etc)
+	 * @param startStopIndex the current stop index from which to look for next stops
+	 * @return the StopSequence with the list of stops after the one at index startStopIndex
+	 */
+	StopSequence getNextStops(String deviceId, int startStopIndex);
 }

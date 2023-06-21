@@ -22,15 +22,11 @@
 	com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.14.0,2.14.1)',\
 	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.0,2.14.1)',\
 	de.jena.ibis.apis;version=snapshot,\
-	de.jena.ibis.common.model;version=snapshot,\
-	de.jena.ibis.customer.info.service.model;version=snapshot,\
-	de.jena.ibis.device.management.service.model;version=snapshot,\
-	de.jena.ibis.enumerations.model;version=snapshot,\
-	de.jena.ibis.gnss.location.service.model;version=snapshot,\
-	de.jena.ibis.rest;version=snapshot,\
-	de.jena.ibis.rest.components;version=snapshot,\
-	de.jena.ibis.rest.model;version=snapshot,\
-	de.jena.ibis.ticket.validation.service.model;version=snapshot,\
+	de.jena.ibis.api.mmt;version=snapshot,\
+	de.jena.ibis.api.mmt.util;version=snapshot,\
+	org.gecko.core.pool;version='[1.1.0,1.1.1)',\
+	org.gecko.qvt.osgi.api;version='[4.1.1,4.1.2)',\
+	org.gecko.qvt.osgi.component;version='[1.0.6,1.0.7)',\
 	jakarta.activation-api;version='[2.1.1,2.1.2)',\
 	jakarta.annotation-api;version='[2.1.1,2.1.2)',\
 	jakarta.inject.jakarta.inject-api;version='[2.0.1,2.0.2)',\
@@ -85,7 +81,33 @@
 	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
 	org.gecko.emf.osgi.model.info;version='[5.0.0,5.0.1)',\
 	org.gecko.emf.rest;version='[2.0.0,2.0.1)',\
-	slf4j.simple;version='[1.7.25,1.7.26)'
+	slf4j.simple;version='[1.7.25,1.7.26)',\
+	de.dim.eclipse.core.runtime;version='[3.14.0,3.14.1)',\
+	de.dim.eclipse.osgi;version='[3.12.50,3.12.51)',\
+	de.dim.equinox.common;version='[3.9.0,3.9.1)',\
+	de.jena.ibis.common.model;version=snapshot,\
+	de.jena.ibis.customer.info.service.model;version=snapshot,\
+	de.jena.ibis.device.management.service.model;version=snapshot,\
+	de.jena.ibis.enumerations.model;version=snapshot,\
+	de.jena.ibis.gnss.location.service.model;version=snapshot,\
+	de.jena.ibis.rest;version=snapshot,\
+	de.jena.ibis.rest.components;version=snapshot,\
+	de.jena.ibis.rest.model;version=snapshot,\
+	de.jena.ibis.ticket.validation.service.model;version=snapshot,\
+	de.jena.ibis.test.components;version=snapshot,\
+	lpg.runtime.java;version='[2.0.17,2.0.18)',\
+	org.apache.felix.log;version='[1.2.4,1.2.5)',\
+	org.eclipse.core.runtime;version='[3.14.0,3.14.1)',\
+	org.eclipse.emf.ecore.change;version='[2.14.0,2.14.1)',\
+	org.eclipse.m2m.qvt.oml;version='[3.10.0,3.10.1)',\
+	org.eclipse.m2m.qvt.oml.common;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.cst.parser;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.ecore.imperativeocl;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.emf.util;version='[3.9.0,3.9.1)',\
+	org.eclipse.m2m.qvt.oml.ocl;version='[3.9.0,3.9.1)',\
+	org.eclipse.ocl;version='[3.10.400,3.10.401)',\
+	org.eclipse.ocl.common;version='[1.8.400,1.8.401)',\
+	org.eclipse.ocl.ecore;version='[3.14.0,3.14.1)',\
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
@@ -93,4 +115,8 @@
 	bnd.identity;id='de.jena.ibis.rest',\
 	bnd.identity;id='de.jena.ibis.rest.components',\
 	bnd.identity;id='org.gecko.emf.json',\
-	bnd.identity;id='slf4j.simple'
+	bnd.identity;id='slf4j.simple',\
+	bnd.identity;id='de.jena.ibis.test.components',\
+	bnd.identity;id='org.gecko.qvt.osgi.component',\
+	bnd.identity;id='de.jena.ibis.api.mmt',\
+	bnd.identity;id='de.jena.ibis.api.mmt.util'

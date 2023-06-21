@@ -31,6 +31,7 @@ import org.osgi.test.junit5.service.ServiceExtension;
 
 import de.jena.ibis.apis.IbisCustomerInformationService;
 import de.jena.ibis.rest.apis.TripInformationService;
+import de.jena.model.ibis.rest.StopSequence;
 import de.jena.model.ibis.rest.TripData;
 
 
@@ -136,8 +137,9 @@ public class TripInformationServiceTest {
 	
 	@Test
 	@WithFactoryConfiguration(
-			factoryPid = "IbisCustomerInformationServiceWithResponse",
+			factoryPid = "CustomerInformationService",
 			name = "deviceId",
+			location = "?",
 			properties = {
 					@Property(key = "serviceId", value = "CustomerInformationService-deviceId"),
 					@Property(key = "serviceName", value = "CustomerInformationService"),
@@ -168,7 +170,7 @@ public class TripInformationServiceTest {
 					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
 			})
 	public void testTripDataValidResponse(
-			@InjectService ServiceAware<IbisCustomerInformationService> customerInfoAware,
+			@InjectService(timeout=5000l) ServiceAware<IbisCustomerInformationService> customerInfoAware,
 			@InjectService ServiceAware<TripInformationService> tripInfoAware) throws DatatypeConfigurationException {
 		
 		assertThat(customerInfoAware).isNotNull();
@@ -181,6 +183,106 @@ public class TripInformationServiceTest {
 		
 		TripData result = tripInfoService.getTripData("deviceId");
 		assertThat(result).isNotNull();			
+	}
+	
+	@Test
+	@WithFactoryConfiguration(
+			factoryPid = "CustomerInformationService",
+			name = "deviceId",
+			location = "?",
+			properties = {
+					@Property(key = "serviceId", value = "CustomerInformationService-deviceId"),
+					@Property(key = "serviceName", value = "CustomerInformationService"),
+					@Property(key = "refDeviceId", value = "deviceId"),
+					@Property(key = "refDeviceType", value = "BUS"),
+					@Property(key = "serviceType", value = "TCP"),
+			})
+	@WithConfiguration(
+			pid = "ConfigurableModelTransformatorPool",
+			location = "?",
+			properties = {
+					@Property(key = "pool.componentName", value = "ibisToApiTransformatorService"),
+					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
+					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
+					@Property(key = "poolRef.target", value = "(pool.group=ibisToApiPoolGroup)")
+
+			})
+	@WithConfiguration(
+			pid = "PrototypeConfigurableTransformationService",
+			location = "?",
+			properties = {
+					@Property(key = "name", value= "api"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto"),
+					@Property(key = "qvt.transformatorName", value = "IbisToApi"),
+					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=rest))"),
+					@Property(key = "pool.name", value= "ibisToApiPool"),
+					@Property(key = "pool.group", value = "ibisToApiPoolGroup"),
+					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
+			})
+	public void testNextStopsValidResponse(
+			@InjectService ServiceAware<IbisCustomerInformationService> customerInfoAware,
+			@InjectService ServiceAware<TripInformationService> tripInfoAware) throws DatatypeConfigurationException {
+		
+		assertThat(customerInfoAware).isNotNull();
+		IbisCustomerInformationService customerInfoService = customerInfoAware.getService();
+		assertThat(customerInfoService).isNotNull();
+	
+		assertThat(tripInfoAware).isNotNull();
+		TripInformationService tripInfoService = tripInfoAware.getService();
+		assertThat(tripInfoService).isNotNull();
+		
+		StopSequence result = tripInfoService.getNextStops("deviceId", 7);
+		assertThat(result).isNotNull();			
+	}
+	
+	@Test
+	@WithFactoryConfiguration(
+			factoryPid = "CustomerInformationService",
+			name = "deviceId",
+			location = "?",
+			properties = {
+					@Property(key = "serviceId", value = "CustomerInformationService-deviceId"),
+					@Property(key = "serviceName", value = "CustomerInformationService"),
+					@Property(key = "refDeviceId", value = "deviceId"),
+					@Property(key = "refDeviceType", value = "BUS"),
+					@Property(key = "serviceType", value = "TCP"),
+			})
+	@WithConfiguration(
+			pid = "ConfigurableModelTransformatorPool",
+			location = "?",
+			properties = {
+					@Property(key = "pool.componentName", value = "ibisToApiTransformatorService"),
+					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
+					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
+					@Property(key = "poolRef.target", value = "(pool.group=ibisToApiPoolGroup)")
+
+			})
+	@WithConfiguration(
+			pid = "PrototypeConfigurableTransformationService",
+			location = "?",
+			properties = {
+					@Property(key = "name", value= "api"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto"),
+					@Property(key = "qvt.transformatorName", value = "IbisToApi"),
+					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=rest))"),
+					@Property(key = "pool.name", value= "ibisToApiPool"),
+					@Property(key = "pool.group", value = "ibisToApiPoolGroup"),
+					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
+			})
+	public void testCurrentIndexValidResponse(
+			@InjectService(timeout=5000l) ServiceAware<IbisCustomerInformationService> customerInfoAware,
+			@InjectService ServiceAware<TripInformationService> tripInfoAware) throws DatatypeConfigurationException {
+		
+		assertThat(customerInfoAware).isNotNull();
+		IbisCustomerInformationService customerInfoService = customerInfoAware.getService();
+		assertThat(customerInfoService).isNotNull();
+	
+		assertThat(tripInfoAware).isNotNull();
+		TripInformationService tripInfoService = tripInfoAware.getService();
+		assertThat(tripInfoService).isNotNull();
+		
+		int result = tripInfoService.getCurrentStopIndex("deviceId");
+		assertThat(result).isEqualTo(7);	
 	}
 	
 }

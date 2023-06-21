@@ -1,0 +1,9 @@
+-library: enable-emf
+
+Bundle-Version: 1.0.0.SNAPSHOT
+Private-Package: de.jena.ibis.test.components
+-buildpath: \
+	de.jena.ibis.apis;version=latest,\
+	de.jena.ibis.common.model;version=latest,\
+	de.jena.ibis.customer.info.service.model;version=latest
+-privatepackage: de.jena.ibis.test.components.helper

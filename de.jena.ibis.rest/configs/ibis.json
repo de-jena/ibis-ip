@@ -5,7 +5,10 @@
 	"IbisDeviceConfigurator~bus201": {
 		"deviceId" : "201",
 		"deviceName": "Bus 201",
-		"deviceType": "BUS"
+		"deviceType": "BUS",
+		"refTCPServices" : [
+			"CustomerInformationService"
+		]
 	},
 	"IbisDeviceConfigurator~tram7": {
 		"deviceId" : "7",

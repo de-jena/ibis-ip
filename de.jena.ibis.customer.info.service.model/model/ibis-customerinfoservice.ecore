@@ -452,7 +452,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PartialStopSequenceRequest">
+  <eClassifiers xsi:type="ecore:EClass" name="PartialStopSequenceRequest" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralRetrieveRequest">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="CustomerInformationService.RetrievePartialStopSequenceRequestStructure"/>
       <details key="kind" value="elementOnly"/>
