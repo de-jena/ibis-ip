@@ -20,6 +20,7 @@ import org.gecko.qvt.osgi.api.ModelTransformator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
@@ -38,13 +39,17 @@ import de.jena.model.ibis.rest.TripData;
 @Component(name = "TripInformationService", service = TripInformationService.class, scope = ServiceScope.PROTOTYPE)
 public class TripInformationServiceImpl implements TripInformationService {
 	
-	@Reference
-	BundleContext bundleCtx;
-	
 	@Reference(target = ("(pool.componentName=ibisToApiTransformatorService)"))
 	private ConfigurableModelTransformatorPool poolComponent;
 	
 	private static final Logger LOGGER = Logger.getLogger(TripInformationServiceImpl.class.getName());
+	
+	private BundleContext bundleCtx;
+
+	@Activate
+	public void activate(BundleContext bundleCtx) {
+		this.bundleCtx = bundleCtx;
+	}
 
 	/* 
 	 * (non-Javadoc)
@@ -54,7 +59,9 @@ public class TripInformationServiceImpl implements TripInformationService {
 	@Override
 	public TripData getTripData(String deviceId) {
 		try {
-			ServiceReference<IbisCustomerInformationService>[] serviceRef = (ServiceReference<IbisCustomerInformationService>[]) bundleCtx.getAllServiceReferences(IbisCustomerInformationService.class.getName(), "(serviceId=CustomerInformationService-"+deviceId+")");
+			ServiceReference<IbisCustomerInformationService>[] serviceRef = (ServiceReference<IbisCustomerInformationService>[]) 
+					bundleCtx.getAllServiceReferences(IbisCustomerInformationService.class.getName(), 
+							"(serviceId=CustomerInformationService-"+deviceId+")");
 			if(serviceRef == null || serviceRef.length == 0) {
 				LOGGER.severe(String.format("No IbisCustomerInformationService reference found for device %s", deviceId));
 				return null;

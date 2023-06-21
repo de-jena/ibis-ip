@@ -21,6 +21,7 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.GeneralIbisTCPService;
 import de.jena.ibis.apis.IbisCustomerInformationService;
+import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
 import de.jena.model.ibis.common.GeneralResponse;
 import de.jena.model.ibis.customerinformationservice.AllDataResponse;
 import de.jena.model.ibis.customerinformationservice.CurrentAnnouncementResponse;
@@ -38,10 +39,10 @@ import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
  * @author ilenia
  * @since Jun 20, 2023
  */
-@Component(immediate=true, name = "IbisCustomerInformationService", 
+@Component(immediate=true, name = "IbisCustomerInformationServiceNoResponse", 
 service = {IbisCustomerInformationService.class, GeneralIbisTCPService.class, GeneralIbisService.class},
-configurationPid = "CustomerInformationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class SimpleIbisCustomerInformationService implements IbisCustomerInformationService {
+configurationPid = "IbisCustomerInformationServiceNoResponse", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class IbisCustomerInformationServiceNoResponse implements IbisCustomerInformationService {
 
 	/* 
 	 * (non-Javadoc)
@@ -279,8 +280,26 @@ public class SimpleIbisCustomerInformationService implements IbisCustomerInforma
 	 */
 	@Override
 	public GeneralResponse executeGetOperation(String operation) {
-		// TODO Auto-generated method stub
-		return null;
+		switch(operation) {
+		case CustomerInformationServiceConstants.OPERATION_GET_ALL_DATA:
+			return getAllData();
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_ANNOUNCEMENT:
+			return getCurrentAnnouncement();
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_CONNECTION_INFO:
+			return getCurrentConnectionInformation();
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_DISPLAY_CONTENT:
+			return getCurrentDisplayContent();
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_INDEX:
+			return getCurrentStopIndex();
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_POINT:
+			return getCurrentStopPoint();
+		case CustomerInformationServiceConstants.OPERATION_GET_TRIP_DATA:
+			return getTripData();
+		case CustomerInformationServiceConstants.OPERATION_GET_VEHICLE_DATA:
+			return getVehicleData();
+		default:
+			throw new IllegalArgumentException(String.format("Operation %s not implemented for %s!", operation, "CustomerInformationService"));			
+		}
 	}
 
 	/* 
