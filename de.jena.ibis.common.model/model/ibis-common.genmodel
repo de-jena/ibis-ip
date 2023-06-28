@@ -472,6 +472,7 @@
     </genClasses>
     <genClasses ecoreClass="ibis-common.ecore#//GeneralResponse">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//GeneralResponse/operationErrorMessage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//GeneralResponse/errorMessage"/>
     </genClasses>
     <genClasses ecoreClass="ibis-common.ecore#//GeneralSubscribeRequest">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//GeneralSubscribeRequest/clientIPAddress"/>

@@ -3273,6 +3273,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="GeneralResponse">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operationErrorMessage"
         eType="#//IBISIPString" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="errorMessage" eType="#//IBISIPString"
+        containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GeneralSubscribeRequest">
     <eStructuralFeatures xsi:type="ecore:EReference" name="clientIPAddress" lowerBound="1"

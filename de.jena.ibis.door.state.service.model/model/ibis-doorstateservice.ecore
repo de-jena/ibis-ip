@@ -5,7 +5,7 @@
   <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
     <details key="qualified" value="false"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="DoorOpenStatesResponseData">
+  <eClassifiers xsi:type="ecore:EClass" name="DoorOpenStatesData">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="List for describing the of door open states of several doors"/>
     </eAnnotations>
@@ -43,7 +43,7 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="getDoorOpenStatesResponseData"
-        eType="#//DoorOpenStatesResponseData" containment="true" resolveProxies="false">
+        eType="#//DoorOpenStatesData" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="GetDoorOpenStatesResponseData"/>
@@ -51,7 +51,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DoorOperationStatesResponseData">
+  <eClassifiers xsi:type="ecore:EClass" name="DoorOperationStatesData">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="List for describing the of door operation states of several doors"/>
     </eAnnotations>
@@ -89,7 +89,7 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="getDoorOperationStatesResponseData"
-        eType="#//DoorOperationStatesResponseData" containment="true" resolveProxies="false">
+        eType="#//DoorOperationStatesData" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="GetDoorOperationStatesResponseData"/>
@@ -97,7 +97,8 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOpenStateRequest">
+  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOpenStateRequest"
+      eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralRetrieveRequest">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Request structure for operation DoorStateService.RetrieveSpecificDoorOpenState. Specifies the door under interest by door identifier."/>
     </eAnnotations>
@@ -114,7 +115,8 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOpenStateResponse">
+  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOpenStateResponse"
+      eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Answer structure for operation DoorStateService.RetrieveSpecificDoorOpenState. Contains information about open state of the queried door. Or an error message."/>
     </eAnnotations>
@@ -130,16 +132,9 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="errorMessage" eType="ecore:EClass ../../de.jena.ibis.common.model/model/ibis-common.ecore#//IBISIPString"
-        containment="true" resolveProxies="false">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="element"/>
-        <details key="name" value="ErrorMessage"/>
-        <details key="namespace" value="##targetNamespace"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOperationStateRequest">
+  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOperationStateRequest"
+      eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralRetrieveRequest">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Request structure for operation DoorStateService.RetrieveSpecificDoorOperationnState. Specifies the door under interest by door identifier."/>
     </eAnnotations>
@@ -156,7 +151,8 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOperationStateResponse">
+  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorOperationStateResponse"
+      eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Answer structure for operation DoorStateService.RetrieveSpecificDoorOperationnState. Contains information about operationn state of the queried door. Or an error message."/>
     </eAnnotations>
@@ -169,14 +165,6 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="DoorOperationState"/>
-        <details key="namespace" value="##targetNamespace"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="errorMessage" eType="ecore:EClass ../../de.jena.ibis.common.model/model/ibis-common.ecore#//IBISIPString"
-        containment="true" resolveProxies="false">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="element"/>
-        <details key="name" value="ErrorMessage"/>
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
