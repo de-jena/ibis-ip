@@ -14,7 +14,6 @@ package de.jena.ibis.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
@@ -30,7 +29,6 @@ import de.jena.ibis.apis.GeneralIbisTCPService;
 import de.jena.ibis.apis.IbisCustomerInformationService;
 import de.jena.ibis.apis.IbisTCPServiceConfig;
 import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
-import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
 import de.jena.model.ibis.common.GeneralResponse;
 import de.jena.model.ibis.common.GeneralRetrieveRequest;
@@ -88,8 +86,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public AllDataResponse getAllData() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_ALL_DATA, 
-				customerInfoServicePackage.getAllDataResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_ALL_DATA, 
+				customerInfoServicePackage.getAllDataResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -98,8 +98,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public CurrentAnnouncementResponse getCurrentAnnouncement() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_CURRENT_ANNOUNCEMENT, 
-				customerInfoServicePackage.getCurrentAnnouncementResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_CURRENT_ANNOUNCEMENT, 
+				customerInfoServicePackage.getCurrentAnnouncementResponse(), 
+				resourceSetFactory);
 	}
 
 	/* 
@@ -108,8 +110,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public CurrentConnectionInformationResponse getCurrentConnectionInformation() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_CURRENT_CONNECTION_INFO, 
-				customerInfoServicePackage.getCurrentConnectionInformationResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_CURRENT_CONNECTION_INFO, 
+				customerInfoServicePackage.getCurrentConnectionInformationResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -118,8 +122,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public CurrentDisplayContentResponse getCurrentDisplayContent() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_CURRENT_DISPLAY_CONTENT,
-				customerInfoServicePackage.getCurrentDisplayContentResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_CURRENT_DISPLAY_CONTENT,
+				customerInfoServicePackage.getCurrentDisplayContentResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -128,8 +134,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public CurrentStopPointResponse getCurrentStopPoint() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_POINT,
-				customerInfoServicePackage.getCurrentStopPointResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_POINT,
+				customerInfoServicePackage.getCurrentStopPointResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -138,8 +146,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public CurrentStopIndexResponse getCurrentStopIndex() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_INDEX, 
-				customerInfoServicePackage.getCurrentStopIndexResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_INDEX, 
+				customerInfoServicePackage.getCurrentStopIndexResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -148,8 +158,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public TripDataResponse getTripData() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_TRIP_DATA,
-				customerInfoServicePackage.getTripDataResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_TRIP_DATA,
+				customerInfoServicePackage.getTripDataResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -158,8 +170,10 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public VehicleDataResponse getVehicleData() {
-		return executeGetOperation(CustomerInformationServiceConstants.OPERATION_GET_VEHICLE_DATA, 
-				customerInfoServicePackage.getVehicleDataResponse());
+		return IbisTCPHelper.executeGetOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_GET_VEHICLE_DATA, 
+				customerInfoServicePackage.getVehicleDataResponse(),
+				resourceSetFactory);
 	}
 
 	
@@ -169,7 +183,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeAllData() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_ALL_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_ALL_DATA, 
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -178,7 +194,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeAllData() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_ALL_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_ALL_DATA,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -187,7 +205,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeCurrentAnnouncement() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_ANNOUNCEMENT);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_ANNOUNCEMENT,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -196,7 +216,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeCurrentAnnouncement() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_ANNOUNCEMENT);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_ANNOUNCEMENT,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -205,7 +227,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeCurrentConnectionInformation() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_CONNECTION_INFO);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_CONNECTION_INFO,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -214,7 +238,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeCurrentConnectionInformation() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_CONNECTION_INFO);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_CONNECTION_INFO,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -223,7 +249,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeCurrentDisplayContent() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_DISPLAY_CONTENT);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_DISPLAY_CONTENT,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -232,7 +260,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeCurrentDisplayContent() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_DISPLAY_CONTENT);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_DISPLAY_CONTENT,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -241,7 +271,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeCurrentStopPoint() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_POINT);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_POINT,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -250,7 +282,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeCurrentStopPoint() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_STOP_POINT);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_STOP_POINT,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -259,7 +293,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeCurrentStopIndex() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_INDEX);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_INDEX,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -268,7 +304,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeCurrentStopIndex() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_STOP_INDEX);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_STOP_INDEX,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -277,7 +315,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeTripData() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_TRIP_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_TRIP_DATA, 
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -286,7 +326,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeTripData() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_TRIP_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_TRIP_DATA, 
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -295,7 +337,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void subscribeVehicleData() {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA, 
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -304,7 +348,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public void unsubscribeVehicleData(	) {
-		executeSubscriptionOperation(CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA, 
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	
@@ -314,9 +360,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	 */
 	@Override
 	public PartialStopSequenceResponse retrievePartialStopSequence(GeneralRetrieveRequest request) {
-		return executeRetrieveOperation(CustomerInformationServiceConstants.OPERATION_RETRIEVE_PARTIAL_STOP_SEQUENCE, 
-				request, customerInfoServicePackage.getPartialStopSequenceResponse());
-				
+		return IbisTCPHelper.executeRetrieveOperation(config, 
+				CustomerInformationServiceConstants.OPERATION_RETRIEVE_PARTIAL_STOP_SEQUENCE, 
+				request, customerInfoServicePackage.getPartialStopSequenceResponse(), resourceSetFactory);		
 	}
 
 	
@@ -381,7 +427,7 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	@Override
 	public void executeAllSubscriptionOperations() {
 		CustomerInformationServiceConstants.getAllSubscriptionOperations()
-		.forEach(operation -> executeSubscriptionOperation(operation));
+		.forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory));
 	}
 
 	/* 
@@ -391,21 +437,9 @@ public class IbisCustomerInformationServiceImpl implements IbisCustomerInformati
 	@Override
 	public void executeAllUnsubscriptionOperations() {
 		CustomerInformationServiceConstants.getAllUnsubscriptionOperations()
-		.forEach(operation -> executeSubscriptionOperation(operation));
+		.forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory));
 	}
 	
-	private void executeSubscriptionOperation(String operation) {
-		IbisTCPHelper.sendSubscriptionRequest(config, operation, ibisCommonPackage, resourceSetFactory);
-	}
-
-	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
-		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
-	}
-	
-	private <T extends GeneralResponse> T executeRetrieveOperation(String operation, GeneralRetrieveRequest request, EClass responseType) {
-		return IbisHttpRequestHelper.sendHttpRequest(config, operation, request, responseType, resourceSetFactory);
-	}
-
 	/* 
 	 * (non-Javadoc)
 	 * @see de.jena.ibis.apis.GeneralIbisService#getRefDeviceId()

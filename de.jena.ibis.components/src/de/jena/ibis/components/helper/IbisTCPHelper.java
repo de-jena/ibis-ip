@@ -13,11 +13,14 @@ package de.jena.ibis.components.helper;
 
 import java.util.logging.Logger;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
 
 import de.jena.ibis.apis.IbisTCPServiceConfig;
+import de.jena.model.ibis.common.GeneralResponse;
+import de.jena.model.ibis.common.GeneralRetrieveRequest;
 import de.jena.model.ibis.common.IBISIPInt;
 import de.jena.model.ibis.common.IBISIPString;
 import de.jena.model.ibis.common.IbisCommonPackage;
@@ -45,6 +48,18 @@ public class IbisTCPHelper {
 			LOGGER.severe(() -> msg);
 			throw new ConfigurationException("servicePort", msg);
 		}
+	}
+	
+	public static void executeSubscriptionOperation(IbisTCPServiceConfig serviceConfig, String operation, IbisCommonPackage ibisCommonPackage, ComponentServiceObjects<ResourceSet> rsFactory) {
+		sendSubscriptionRequest(serviceConfig, operation, ibisCommonPackage, rsFactory);
+	}
+	
+	public static <T extends GeneralResponse> T executeGetOperation(IbisTCPServiceConfig serviceConfig, String operation, EClass responseType, ComponentServiceObjects<ResourceSet> rsFactory) {
+		return IbisHttpRequestHelper.sendHttpRequest(serviceConfig, operation, null, responseType, rsFactory);
+	}
+	
+	public static <T extends GeneralResponse> T executeRetrieveOperation(IbisTCPServiceConfig serviceConfig, String operation, GeneralRetrieveRequest request, EClass responseType, ComponentServiceObjects<ResourceSet> rsFactory) {
+		return IbisHttpRequestHelper.sendHttpRequest(serviceConfig, operation, request, responseType, rsFactory);
 	}
 	
 	public static SubscribeRequest createSubscriptionRequest(IbisTCPServiceConfig serviceConfig, String operation, IbisCommonPackage ibisCommonPackage) {

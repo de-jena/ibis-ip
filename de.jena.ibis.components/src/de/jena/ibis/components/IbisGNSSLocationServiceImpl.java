@@ -56,6 +56,7 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 		IbisUDPHelper.checkUDPServiceConfig(config);
 		this.config = config;		
 		LOGGER.info("GNSSLocationService is up and running!");
+		executeAllSubscriptionOperations();
 	}
 	
 	@Deactivate() 

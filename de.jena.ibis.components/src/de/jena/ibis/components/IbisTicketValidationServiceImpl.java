@@ -14,7 +14,6 @@ package de.jena.ibis.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
@@ -29,7 +28,6 @@ import de.jena.ibis.apis.GeneralIbisTCPService;
 import de.jena.ibis.apis.IbisTCPServiceConfig;
 import de.jena.ibis.apis.IbisTicketValidationService;
 import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
-import de.jena.ibis.components.helper.IbisHttpRequestHelper;
 import de.jena.ibis.components.helper.IbisTCPHelper;
 import de.jena.model.ibis.common.GeneralResponse;
 import de.jena.model.ibis.common.GeneralRetrieveRequest;
@@ -130,7 +128,7 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void executeAllSubscriptionOperations() {
-		TicketValidationServiceConstants.getAllSubscriptionOperations().forEach(operation -> executeSubscriptionOperation(operation));
+		TicketValidationServiceConstants.getAllSubscriptionOperations().forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory));
 	}
 
 	/* 
@@ -139,7 +137,7 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void executeAllUnsubscriptionOperations() {
-		TicketValidationServiceConstants.getAllUnsubscriptionOperations().forEach(operation -> executeSubscriptionOperation(operation));
+		TicketValidationServiceConstants.getAllUnsubscriptionOperations().forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory));
 	}
 
 	/* 
@@ -148,7 +146,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void subscribeCurrentTariffStop() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_TARIFF_STOP);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_TARIFF_STOP,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -157,7 +157,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void unsubscribeCurrentTariffStop() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_TARIFF_STOP);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_TARIFF_STOP,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -166,7 +168,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void subscribeRazzia() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_RAZZIA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_SUBSCRIBE_RAZZIA,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -175,7 +179,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void unsubscribeRazzia() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_RAZZIA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_RAZZIA,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -184,7 +190,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void subscribeCurrentLine() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_LINE);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_LINE,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -193,7 +201,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void unsubscribeCurrentLine() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_LINE);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_LINE,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -202,7 +212,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void subscribeVehicleData() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA,
+				ibisCommonPackage, resourceSetFactory);
 	}
 
 	/* 
@@ -211,7 +223,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void unsubscribeVehicleData() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA);
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA,
+				ibisCommonPackage, resourceSetFactory);
 	}
 	
 	/* 
@@ -220,7 +234,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void subscribeShortHaulStops() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_SUBSCRIBE_SHORT_HAUL_STOPS);		
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_SUBSCRIBE_SHORT_HAUL_STOPS,
+				ibisCommonPackage, resourceSetFactory);		
 	}
 
 	/* 
@@ -229,7 +245,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public void unsubscribeShortHaulStops() {
-		executeSubscriptionOperation(TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_SHORT_HAUL_STOPS);	
+		IbisTCPHelper.executeSubscriptionOperation(config,
+				TicketValidationServiceConstants.OPERATION_UNSUBSCRIBE_SHORT_HAUL_STOPS,
+				ibisCommonPackage, resourceSetFactory);	
 	}
 
 	/* 
@@ -238,8 +256,10 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public CurrentTariffStopResponse getCurrentTariffStop() {
-		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_CURRENT_TARIFF_STOP,
-				ticketValidationServicePackage.getCurrentTariffStopResponse());
+		return IbisTCPHelper.executeGetOperation(config,
+				TicketValidationServiceConstants.OPERATION_GET_CURRENT_TARIFF_STOP,
+				ticketValidationServicePackage.getCurrentTariffStopResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -248,8 +268,10 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public RazziaResponse getRazzia() {
-		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_RAZZIA,
-				ticketValidationServicePackage.getRazziaResponse());
+		return IbisTCPHelper.executeGetOperation(config,
+				TicketValidationServiceConstants.OPERATION_GET_RAZZIA,
+				ticketValidationServicePackage.getRazziaResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -258,8 +280,10 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public CurrentLineResponse getCurrentLine() {
-		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_CURRENT_LINE,
-				ticketValidationServicePackage.getCurrentLineResponse());
+		return IbisTCPHelper.executeGetOperation(config,
+				TicketValidationServiceConstants.OPERATION_GET_CURRENT_LINE,
+				ticketValidationServicePackage.getCurrentLineResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -268,8 +292,10 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public VehicleDataResponse getVehicleData() {
-		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_VEHICLE_DATA,
-				ticketValidationServicePackage.getVehicleDataResponse());
+		return IbisTCPHelper.executeGetOperation(config,
+				TicketValidationServiceConstants.OPERATION_GET_VEHICLE_DATA,
+				ticketValidationServicePackage.getVehicleDataResponse(),
+				resourceSetFactory);
 	}
 	
 	/* 
@@ -278,20 +304,10 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public CurrentShortHaulStopsResponse getShortHaulsStops() {
-		return executeGetOperation(TicketValidationServiceConstants.OPERATION_GET_SHORT_HAUL_STOPS,
-				ticketValidationServicePackage.getCurrentShortHaulStopsResponse());
-	}
-	
-	private void executeSubscriptionOperation(String operation) {
-		IbisTCPHelper.sendSubscriptionRequest(config, operation, ibisCommonPackage, resourceSetFactory);
-	}
-	
-	private <T extends GeneralResponse> T executeGetOperation(String operation, EClass responseType) {
-		return IbisHttpRequestHelper.sendHttpRequest(config, operation, null, responseType, resourceSetFactory);
-	}
-	
-	private <T extends GeneralResponse> T executeRetrieveOperation(String operation, GeneralRetrieveRequest request, EClass responseType) {
-		return IbisHttpRequestHelper.sendHttpRequest(config, operation, request, responseType, resourceSetFactory);
+		return IbisTCPHelper.executeGetOperation(config,
+				TicketValidationServiceConstants.OPERATION_GET_SHORT_HAUL_STOPS,
+				ticketValidationServicePackage.getCurrentShortHaulStopsResponse(),
+				resourceSetFactory);
 	}
 
 	/* 
@@ -332,8 +348,9 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	 */
 	@Override
 	public TripDataResponse retrieveTripData(GeneralRetrieveRequest request) {
-		return executeRetrieveOperation(TicketValidationServiceConstants.OPERATION_RETRIEVE_TRIP_DATA, 
-				request, ticketValidationServicePackage.getTripDataResponse());
+		return IbisTCPHelper.executeRetrieveOperation(config, 
+				TicketValidationServiceConstants.OPERATION_RETRIEVE_TRIP_DATA, 
+				request, ticketValidationServicePackage.getTripDataResponse(), resourceSetFactory);
 	}
 
 }

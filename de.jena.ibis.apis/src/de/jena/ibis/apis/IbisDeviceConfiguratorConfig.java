@@ -40,7 +40,7 @@ public @interface IbisDeviceConfiguratorConfig {
 	
 	public int udpListenerPort() default 53000;
 	
-	public String updListenerNetworkInterface() default "test";
+	public String updListenerNetworkInterface() default "eth0";
 	
 	public String udpMultiCastGroupIP() default "224.0.0.251";
 	
