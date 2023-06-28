@@ -13,7 +13,8 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	org.osgi.service.cm,\
 	org.osgi.service.event,\
 	org.osgi.util.promise,\
-	org.apache.commons.lang3
+	org.apache.commons.lang3,\
+	de.jena.ibis.passenger.counting.service.model;version=latest
 
 	
 -privatepackage: \

@@ -120,7 +120,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CountingStateResponse">
+  <eClassifiers xsi:type="ecore:EClass" name="CountingStateResponse" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralResponse">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Response structure of the PassengerCountingService operation GetCountingState"/>
     </eAnnotations>
@@ -145,7 +145,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorDataRequest">
+  <eClassifiers xsi:type="ecore:EClass" name="RetrieveSpecificDoorDataRequest" eSuperTypes="../../de.jena.ibis.common.model/model/ibis-common.ecore#//GeneralRetrieveRequest">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Query passenger counters of all doors or of doors identified by their references"/>
     </eAnnotations>
