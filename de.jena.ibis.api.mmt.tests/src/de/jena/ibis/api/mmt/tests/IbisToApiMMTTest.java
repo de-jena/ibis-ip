@@ -44,7 +44,10 @@ import de.jena.model.ibis.customerinformationservice.TripData;
 import de.jena.model.ibis.customerinformationservice.TripDataResponse;
 import de.jena.model.ibis.enumerations.LocationStateEnumeration;
 import de.jena.model.ibis.enumerations.RouteDirectionEnumeration;
+import de.jena.model.ibis.gnsslocationservice.GNSSLocationData;
+import de.jena.model.ibis.gnsslocationservice.IbisGNSSLocationServiceFactory;
 import de.jena.model.ibis.rest.LocationStateType;
+import de.jena.model.ibis.rest.PositionData;
 import de.jena.model.ibis.rest.RouteDirectionType;
 import de.jena.model.ibis.rest.Timetable;
 
@@ -84,7 +87,7 @@ public class IbisToApiMMTTest {
 					@Property(key = "name", value= "api"),
 					@Property(key = "qvt.templatePath", value = "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto"),
 					@Property(key = "qvt.transformatorName", value = "IbisToApi"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=rest))"),
+					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice)(emf.model.name=rest))"),
 					@Property(key = "pool.name", value= "apiPool"),
 					@Property(key = "pool.group", value = "apiPoolGroup"),
 					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
@@ -136,7 +139,7 @@ public class IbisToApiMMTTest {
 					@Property(key = "name", value= "api"),
 					@Property(key = "qvt.templatePath", value = "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto"),
 					@Property(key = "qvt.transformatorName", value = "IbisToApi"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=rest))"),
+					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice)(emf.model.name=rest))"),
 					@Property(key = "pool.name", value= "apiPool"),
 					@Property(key = "pool.group", value = "apiPool"),
 					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
@@ -198,7 +201,7 @@ public class IbisToApiMMTTest {
 					@Property(key = "name", value= "api"),
 					@Property(key = "qvt.templatePath", value = "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto"),
 					@Property(key = "qvt.transformatorName", value = "IbisToApi"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=rest))"),
+					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice)(emf.model.name=rest))"),
 					@Property(key = "pool.name", value= "apiPool"),
 					@Property(key = "pool.group", value = "apiPool"),
 					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
@@ -304,7 +307,7 @@ public class IbisToApiMMTTest {
 					@Property(key = "name", value= "api"),
 					@Property(key = "qvt.templatePath", value = "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto"),
 					@Property(key = "qvt.transformatorName", value = "IbisToApi"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=rest))"),
+					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice)(emf.model.name=rest))"),
 					@Property(key = "pool.name", value= "apiPool"),
 					@Property(key = "pool.group", value = "apiPool"),
 					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
@@ -382,4 +385,55 @@ public class IbisToApiMMTTest {
 	assertThat(apiStopInfo2.getStopIndex()).isEqualTo(8);
 	assertThat(apiStopInfo2.getStopRef()).isEqualTo("stop2");
 	}
+	
+	@Test
+	@WithConfiguration(
+			pid = "ConfigurableModelTransformatorPool",
+			location = "?",
+			properties = {
+					@Property(key = "pool.componentName", value = "modelTransformatorService"),
+					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
+					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
+					@Property(key = "poolRef.target", value = "(pool.group=apiPoolGroup)")
+
+			})
+	@WithConfiguration(
+			pid = "PrototypeConfigurableTransformationService",
+			location = "?",
+			properties = {
+					@Property(key = "name", value= "api"),
+					@Property(key = "qvt.templatePath", value = "de.jena.ibis.api.mmt/transforms/IbisToApi.qvto"),
+					@Property(key = "qvt.transformatorName", value = "IbisToApi"),
+					@Property(key = "qvt.model.target", value= "(&(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice)(emf.model.name=rest))"),
+					@Property(key = "pool.name", value= "apiPool"),
+					@Property(key = "pool.group", value = "apiPoolGroup"),
+					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
+			})
+	public void testPositionData(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
+	ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
+		
+	assertThat(poolAware).isNotNull();
+	ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
+	assertThat(poolComponent).isNotNull();
+			
+	Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
+	Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-apiPool");
+	assertThat(pool).isNotNull();
+	ModelTransformator transformator = pool.poll();
+	assertThat(transformator).isNotNull();
+	
+	GNSSLocationData response = IbisGNSSLocationServiceFactory.eINSTANCE.createGNSSLocationData();
+	response.setTime(IbisToApiHelper.createIbisDateTime(new Date()));
+	response.setLatitude(IbisToApiHelper.createIbisGNSSCoordinates(50.76283, null));
+	response.setLongitude(IbisToApiHelper.createIbisGNSSCoordinates(11.35262, null));
+
+	PositionData result = (PositionData) transformator.startTransformation(response);
+	assertThat(result).isNotNull();
+	
+	assertThat(result.getTimestamp()).isNotNull();
+	assertThat(result.getPosition()).isNotNull();
+	assertThat(result.getPosition().getLatitude()).isEqualTo(50.76283);
+	assertThat(result.getPosition().getLongitude()).isEqualTo(11.35262);
+	}
+
 }

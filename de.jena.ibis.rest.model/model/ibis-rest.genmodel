@@ -63,5 +63,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/recordedArrivalTime"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//StopInformation/distanceToNextStop"/>
     </genClasses>
+    <genClasses ecoreClass="ibis-rest.ecore#//PositionData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//PositionData/timestamp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-rest.ecore#//PositionData/position"/>
+    </genClasses>
+    <genClasses ecoreClass="ibis-rest.ecore#//Position">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//Position/latitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-rest.ecore#//Position/longitude"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

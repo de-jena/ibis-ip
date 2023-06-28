@@ -8,6 +8,9 @@
 		"deviceType": "BUS",
 		"refTCPServices" : [
 			"CustomerInformationService"
+		],
+		"refUDPServices" : [
+			"GNSSLocationService"
 		]
 	},
 	"IbisDeviceConfigurator~tram7": {

@@ -5,5 +5,8 @@ Private-Package: de.jena.ibis.test.components
 -buildpath: \
 	de.jena.ibis.apis;version=latest,\
 	de.jena.ibis.common.model;version=latest,\
-	de.jena.ibis.customer.info.service.model;version=latest
+	de.jena.ibis.customer.info.service.model;version=latest,\
+	org.osgi.util.promise,\
+	de.jena.ibis.gnss.location.service.model;version=latest,\
+	org.osgi.service.event
 -privatepackage: de.jena.ibis.test.components.helper

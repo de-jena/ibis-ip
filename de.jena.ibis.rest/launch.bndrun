@@ -47,7 +47,6 @@
 	org.eclipse.emf.ecore;version='[2.33.0,2.33.1)',\
 	org.eclipse.emf.ecore.xmi;version='[2.18.0,2.18.1)',\
 	org.gecko.emf.json;version='[1.4.1,1.4.2)',\
-	org.gecko.emf.osgi.api;version='[5.0.0,5.0.1)',\
 	org.gecko.emf.osgi.component;version='[5.0.0,5.0.1)',\
 	org.gecko.rest.jersey;version='[6.0.0,6.0.1)',\
 	org.gecko.rest.jersey.servlet.whiteboard;version='[6.0.0,6.0.1)',\
@@ -70,7 +69,6 @@
 	org.objectweb.asm.tree;version='[9.3.0,9.3.1)',\
 	org.objectweb.asm.tree.analysis;version='[9.3.0,9.3.1)',\
 	org.objectweb.asm.util;version='[9.3.0,9.3.1)',\
-	org.osgi.service.cm;version='[1.6.0,1.6.1)',\
 	org.osgi.service.component;version='[1.5.0,1.5.1)',\
 	org.osgi.service.jakartars;version='[2.0.0,2.0.1)',\
 	org.osgi.util.converter;version='[1.0.8,1.0.9)',\
@@ -108,7 +106,13 @@
 	org.eclipse.ocl;version='[3.10.400,3.10.401)',\
 	org.eclipse.ocl.common;version='[1.8.400,1.8.401)',\
 	org.eclipse.ocl.ecore;version='[3.14.0,3.14.1)',\
-
+	de.jena.ibis.passenger.counting.service.model;version=snapshot,\
+	org.osgi.service.servlet;version='[2.0.0,2.0.1)',\
+	org.apache.aries.component-dsl.component-dsl;version='[1.2.2,1.2.3)',\
+	org.apache.aries.typedevent.bus;version='[0.0.2,0.0.3)',\
+	org.osgi.service.typedevent;version='[1.0.0,1.0.1)',\
+	org.osgi.util.pushstream;version='[1.1.0,1.1.1)',\
+	org.apache.felix.eventadmin;version='[1.6.2,1.6.3)'
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
@@ -119,4 +123,5 @@
 	bnd.identity;id='de.jena.ibis.test.components',\
 	bnd.identity;id='org.gecko.qvt.osgi.component',\
 	bnd.identity;id='de.jena.ibis.api.mmt',\
-	bnd.identity;id='de.jena.ibis.api.mmt.util'
+	bnd.identity;id='de.jena.ibis.api.mmt.util',\
+	bnd.identity;id='org.apache.felix.eventadmin'

@@ -49,6 +49,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordedArrivalTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceToNextStop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PositionData">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="#//Position"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Position">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longitude" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DeviceType">
     <eLiterals name="BUS"/>
     <eLiterals name="E_BUS" value="1"/>

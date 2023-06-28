@@ -9,16 +9,16 @@
 
 -plugin.1.ibis: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
-		releaseUrl			= "https://repo.maven.apache.org/maven2/";\
-		snapshotUrl			= "https://oss.sonatype.org/content/repositories/snapshots/";\
+		snapshotUrl			="https://oss.sonatype.org/content/repositories/snapshots/, https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/";\
+		releaseUrl			="https://repo.maven.apache.org/maven2/, https://devel.data-in-motion.biz/nexus/repository/dim-release/";\
 		name                = "Project Dependencies";\
 		readOnly 			= true;\
 		index				= ${.}/project.maven
 
 -plugin.2.ibis: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
-		snapshotUrl			=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
-		releaseUrl			=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
+		snapshotUrl			="https://oss.sonatype.org/content/repositories/snapshots/, https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/";\
+		releaseUrl			="https://repo.maven.apache.org/maven2/, https://devel.data-in-motion.biz/nexus/repository/dim-release/";\
 		index				=${.}/dim_release.maven;\
 		readOnly 			= true;\
 		name				='DIM Nexus'

@@ -17,5 +17,6 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	org.osgi.test.junit5.cm,\
 	org.gecko.qvt.osgi.api,\
 	org.gecko.core.pool,\
-	de.jena.ibis.enumerations.model;version=latest
+	de.jena.ibis.enumerations.model;version=latest,\
+	de.jena.ibis.gnss.location.service.model;version=latest
 -privatepackage: de.jena.ibis.api.mmt.tests.helper

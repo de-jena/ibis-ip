@@ -8,4 +8,6 @@ Private-Package: de.jena.ibis.rest.components
 	de.jena.ibis.common.model;version=latest,\
 	org.gecko.qvt.osgi.api,\
 	org.gecko.core.pool,\
-	de.jena.ibis.customer.info.service.model;version=latest
+	de.jena.ibis.customer.info.service.model;version=latest,\
+	org.osgi.service.event,\
+	org.osgi.service.typedevent,\

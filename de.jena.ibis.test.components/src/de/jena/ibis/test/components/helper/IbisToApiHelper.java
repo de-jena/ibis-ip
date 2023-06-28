@@ -81,14 +81,20 @@ public class IbisToApiHelper {
 		return language;
 	}
 	
-	public static IBISIPDateTime createIbisDateTime(Date date) throws DatatypeConfigurationException {
+	public static IBISIPDateTime createIbisDateTime(Date date) {
 		IBISIPDateTime timestamp = IbisCommonFactory.eINSTANCE.createIBISIPDateTime();
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(date);
-		XMLGregorianCalendar xCal = DatatypeFactory.newInstance()
-		    .newXMLGregorianCalendar(cal);
-		timestamp.setValue(xCal);
-		return timestamp;
+		XMLGregorianCalendar xCal;
+		try {
+			xCal = DatatypeFactory.newInstance()
+			    .newXMLGregorianCalendar(cal);
+			timestamp.setValue(xCal);
+			return timestamp;
+		} catch (DatatypeConfigurationException e) {
+			e.printStackTrace();
+			return null;
+		}		
 	}
 	
 	public static IBISIPDate createIbisDate(Date date) throws DatatypeConfigurationException {
