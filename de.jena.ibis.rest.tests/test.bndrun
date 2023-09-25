@@ -36,7 +36,6 @@
 	org.eclipse.emf.ecore;version='[2.33.0,2.33.1)',\
 	org.eclipse.emf.ecore.xmi;version='[2.18.0,2.18.1)',\
 	org.opentest4j;version='[1.2.0,1.2.1)',\
-	org.osgi.service.cm;version='[1.6.0,1.6.1)',\
 	org.osgi.service.component;version='[1.5.0,1.5.1)',\
 	org.osgi.test.common;version='[1.2.1,1.2.2)',\
 	org.osgi.test.junit5;version='[1.2.1,1.2.2)',\
@@ -71,9 +70,13 @@
 	de.jena.ibis.device.management.service.model;version=snapshot,\
 	de.jena.ibis.enumerations.model;version=snapshot,\
 	de.jena.ibis.gnss.location.service.model;version=snapshot,\
-	de.jena.ibis.rest.model;version=snapshot,\
 	de.jena.ibis.rest.tests;version=snapshot,\
 	de.jena.ibis.ticket.validation.service.model;version=snapshot,\
 	org.osgi.util.converter;version='[1.0.8,1.0.9)',\
 	org.gecko.emf.osgi.api;version='[5.0.0,5.0.1)',\
-	de.jena.ibis.test.components;version=snapshot
+	de.jena.ibis.test.components;version=snapshot,\
+	de.jena.ibis.door.state.service.model;version=snapshot,\
+	de.jena.ibis.passenger.counting.service.model;version=snapshot,\
+	de.jena.udp.trafficos.common.model;version='[1.1.0,1.1.1)',\
+	de.jena.udp.trafficos.publictransport.api.model;version='[1.0.0,1.0.1)',\
+	org.osgi.service.event;version='[1.4.1,1.4.2)'

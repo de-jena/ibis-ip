@@ -1,0 +1,61 @@
+@startuml
+actor Client as c
+participant DeviceResource as dr
+participant TripInformationService as tis
+participant DeviceStatusService as dss
+participant IbisCustomerInformationService as icis
+
+activate c
+activate dr
+c -> dr: ibis/rest/nextStops/{deviceId}/{currentStopIndex}
+
+activate dss
+
+dr -> dss: isServiceAvailable()
+note right
+Check whether the device is online and
+the IbisCustomerInformationService 
+is available on that device. Otherwise
+no info about the next stops can be recovered.
+end note
+
+alt device is online and service available
+
+dss -[#green]> dr: return TRUE
+
+else device is not online or service is unavailable
+
+dss -[#red]> dr: return FALSE
+dr -[#red]> c: 404 
+
+end
+
+dr -> tis: getNextStops(deviceId, currentStopIndex)
+activate tis
+activate icis
+tis -> icis: RETRIEVE PartialStopSequence request
+alt successfull PartialStopSequence
+icis -[#green]> tis: return response
+else something went wrong
+icis -[#red]> tis: return null
+end
+deactivate dss
+
+deactivate icis
+
+tis -> dr: return PartialStopSequence or null
+deactivate tis
+
+alt PartialStopSequence available
+dr -[#green]> c: 200 with StopSequence object
+note left
+The StopSequence object contains info about the 
+stops, including stop reference and names,
+expected arrival and departure time, etc.
+end note
+else StopSequence NOT available
+dr -[#red]> c: 500
+
+deactivate dr
+deactivate c
+@enduml

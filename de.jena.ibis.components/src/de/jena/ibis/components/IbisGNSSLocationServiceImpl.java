@@ -13,9 +13,11 @@ package de.jena.ibis.components;
 
 import java.io.IOException;
 import java.net.MulticastSocket;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.gecko.osgi.messaging.MessagingService;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
@@ -23,7 +25,6 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.event.EventAdmin;
 
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.IbisGNSSLocationService;
@@ -43,9 +44,9 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
 	
-	@Reference
-	EventAdmin eventAdmin;
-
+	@Reference(target = "(id=full)")
+	MessagingService messagingService;
+	
 	private final static Logger LOGGER = Logger.getLogger(IbisGNSSLocationServiceImpl.class.getName());
 	private IbisUDPServiceConfig config;
 	private MulticastSocket socket;
@@ -55,7 +56,7 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	public void activate(IbisUDPServiceConfig config) throws ConfigurationException{
 		IbisUDPHelper.checkUDPServiceConfig(config);
 		this.config = config;		
-		LOGGER.info("GNSSLocationService is up and running!");
+		LOGGER.info(String.format("GNSSLocationService is up and running for %s!", config.refDeviceId()));
 		executeAllSubscriptionOperations();
 	}
 	
@@ -113,11 +114,10 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 
 	private void doConnectToGNSSLocationData() {		
 		try {
-			socket = new MulticastSocket(config.listenerPort());
-			IbisUDPHelper.setupUDPConnection(socket, config, "GetGNSSLocationData", rsFactory, eventAdmin);
+			socket = new MulticastSocket(config.multiCastGroupPort());
+			IbisUDPHelper.setupUDPConnection(socket, config, "GetGNSSLocationData", rsFactory, messagingService);
 		} catch(IOException e) {
-			LOGGER.severe(() -> String.format("Something went wrong when trying to connect to multicast group for %s", config.serviceId()));
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, String.format("Something went wrong when trying to connect to multicast group for %s", config.serviceId(), e));
 		}	
 	}
 

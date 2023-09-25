@@ -7,7 +7,7 @@ Private-Package: de.jena.ibis.rest.resource
 	org.osgi.service.servlet,\
 	jakarta.ws.rs-api,\
 	de.jena.ibis.apis,\
-	de.jena.ibis.rest.model,\
+	de.jena.udp.trafficos.publictransport.api.model;version=latest,\
 	org.gecko.emf.rest;version='latest'
 		
 -includeresource: OSGI-INF/configurator/=configs/

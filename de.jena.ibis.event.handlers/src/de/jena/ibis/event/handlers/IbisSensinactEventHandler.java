@@ -36,7 +36,7 @@ import de.jena.udp.model.sensinact.generic.message.UpdateMessage;
 import de.jena.udp.model.sensinact.generic.message.util.SensinactGenericMessageUtil;
 
 /**
- * This handler should receives the data that have been published in sensinact...???
+ * This handler should receives the data that have been published in sensinact
  * @author ilenia
  * @since Apr 24, 2023
  */

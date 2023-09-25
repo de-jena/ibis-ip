@@ -9,6 +9,11 @@
 		"deviceIP": "192.168.243.1",
 		"refTCPServices" : [
 			"CustomerInformationService"
-		]
+		],
+		"refUDPServices" : [
+			"GNSSLocationService"
+		],
+		"updListenerNetworkInterface": "eth0",
+		"udpMultiCastGroupPort": 50976
 	}
 }

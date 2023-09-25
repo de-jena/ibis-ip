@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
+  <mapping sourceURI="https://jena.de/models/ibis/customerinfoservice/1.0" targetURI="platform:/resource/de.jena.ibis.customer.info.service.model/model/ibis-customerinfoservice.ecore"/>
+  <mapping sourceURI="https://jena.de/models/ibis/gnsslocationservice/1.0" targetURI="platform:/resource/de.jena.ibis.gnss.location.service.model/model/ibis-gnsslocationservice.ecore"/>
+  <mapping sourceURI="https://jena.de/models/ibis/ticketvalidationservice/1.0" targetURI="platform:/resource/de.jena.ibis.ticket.validation.service.model/model/ibis-ticketvalidationservice.ecore"/>
+  <mapping sourceURI="https://jena.de/models/ibis/common/1.0" targetURI="platform:/resource/de.jena.ibis.common.model/model/ibis-common.ecore"/>
+  <mapping sourceURI="https://jena.de/models/ibis/enumerations/1.0" targetURI="platform:/resource/de.jena.ibis.enumerations.model/model/ibis-enumerations.ecore"/>
+  <mapping sourceURI="http://jena.de/udp/trafficos/common/1.1.1" targetURI="platform:/resource/de.jena.udp.trafficos.common.model/model/tos-common.ecore"/>
+  <mapping sourceURI="http://jena.de/udp/trafficos/publictransport/1.1.1" targetURI="platform:/resource/de.jena.udp.trafficos.publictransport.model/model/tos-publictransport.ecore"/>
+</uriMap:MappingContainer>

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.osgi.service.cm.Configuration;
@@ -26,14 +27,13 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ServiceScope;
 
 /**
  * 
  * @author ilenia
  * @since Mar 29, 2023
  */
-@Component(name = "IbisDeviceConfigurator", service = IbisDeviceConfigurator.class, configurationPid = "IbisDeviceConfigurator", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
+@Component(name = "IbisDeviceConfigurator", configurationPid = "IbisDeviceConfigurator", configurationPolicy = ConfigurationPolicy.REQUIRE)
 @RequireConfigurationAdmin
 public class IbisDeviceConfigurator {
 
@@ -45,6 +45,7 @@ public class IbisDeviceConfigurator {
 
 	@Activate
 	public IbisDeviceConfigurator(IbisDeviceConfiguratorConfig config, @Reference ConfigurationAdmin configAdmin) throws IOException  {
+		LOGGER.fine("Entering Device Configurator");
 		this.config = config;
 		this.configAdmin = configAdmin;
 		String[] tcpServices = config.refTCPServices();
@@ -63,8 +64,7 @@ public class IbisDeviceConfigurator {
 			try {
 				c.delete();
 			} catch (IOException e) {
-				LOGGER.severe(() -> "Exception when trying to delete Configuration " + c.getFactoryPid());
-				e.printStackTrace();
+				LOGGER.log(Level.SEVERE, String.format("Exception when trying to delete Configuration %s", c.getFactoryPid()), e);
 			}
 		});
 		serviceConfigs.clear();

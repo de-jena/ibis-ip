@@ -2807,7 +2807,7 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SubscribeResponse" eSuperTypes="#//GeneralResponse">
+  <eClassifiers xsi:type="ecore:EClass" name="SubscribeResponse" eSuperTypes="#//GeneralSubscribeResponse">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="For compatibility reasons, this structure is now a sequence of members, all of which are optional - of course, at least one member should be included in meaningful data."/>
     </eAnnotations>
@@ -2815,14 +2815,6 @@
       <details key="name" value="SubscribeResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="active" eType="#//IBISIPBoolean"
-        containment="true" resolveProxies="false">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="element"/>
-        <details key="name" value="Active"/>
-        <details key="namespace" value="##targetNamespace"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="heartbeat" eType="#//IBISIPDuration"
         containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3151,19 +3143,11 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UnsubscribeResponse" eSuperTypes="#//GeneralResponse">
+  <eClassifiers xsi:type="ecore:EClass" name="UnsubscribeResponse" eSuperTypes="#//GeneralSubscribeResponse">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="UnsubscribeResponse"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="active" lowerBound="1"
-        eType="#//IBISIPBoolean" containment="true" resolveProxies="false">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="element"/>
-        <details key="name" value="Active"/>
-        <details key="namespace" value="##targetNamespace"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Vehicle">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -3303,4 +3287,14 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GeneralRetrieveRequest"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralSubscribeResponse" eSuperTypes="#//GeneralResponse">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="active" eType="#//IBISIPBoolean"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="Active"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
 </ecore:EPackage>

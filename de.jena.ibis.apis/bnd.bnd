@@ -13,6 +13,6 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	org.osgi.util.pushstream,\
 	org.eclipse.emf.ecore,\
 	org.osgi.service.cm,\
-	de.jena.ibis.rest.model,\
 	de.jena.ibis.passenger.counting.service.model;version=latest,\
-	de.jena.ibis.door.state.service.model;version=latest
+	de.jena.ibis.door.state.service.model;version=latest,\
+	de.jena.udp.trafficos.publictransport.api.model;version=latest

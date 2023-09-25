@@ -12,22 +12,29 @@
 package de.jena.ibis.rest.application.resource;
 
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.gecko.emf.json.constants.EMFJs;
+import org.gecko.osgi.messaging.MessagingService;
 import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
-import org.osgi.service.event.Event;
-import org.osgi.service.event.EventAdmin;
 import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
 import de.jena.ibis.apis.helper.IbisResponseHelper;
@@ -52,14 +59,15 @@ import jakarta.ws.rs.core.Response;
 scope = ServiceScope.PROTOTYPE, configurationPolicy = ConfigurationPolicy.REQUIRE)
 @Path("")
 public class IbisResource {
-
-	@Reference
-	EventAdmin eventAdmin;
+	
+	@Reference(target = "(id=full)")
+	MessagingService messagingService;
 
 	@Reference
 	private ComponentServiceObjects<ResourceSet> rsFactory;
 
 	public static final String COMPONENT_NAME = "IbisJakartarsResource";
+	private static final Logger LOGGER = Logger.getLogger(IbisResource.class.getName());
 
 	@GET
 	@Path("/{serviceId}/hello")
@@ -72,7 +80,7 @@ public class IbisResource {
 	@Consumes
 	public Response post(@PathParam("deviceId") String deviceId, @PathParam("deviceType") String deviceType, @PathParam("serviceName") String serviceName, @PathParam("operationName") String operationName, @Context HttpServletRequest request) {
 
-		System.out.println(String.format("Received POST request to %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
+		LOGGER.info(String.format("Received POST request to %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
 		if(request != null) {
 			try {
 
@@ -87,27 +95,33 @@ public class IbisResource {
 					responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
 					responseOptions.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
 					responseRes.load(request.getInputStream(), responseOptions);
-					Map<String, Object> properties = new HashMap<>();
-					properties.put("deviceId", deviceId);
-					properties.put("deviceType", deviceType);
-					properties.put("serviceName", serviceName);
-					properties.put("operation", operationName);
-					properties.put("eclass", responseEClass);
-					properties.put("data", responseRes.getContents().get(0));
-
-					Event evt = new Event(String.format("TCPResponse/%s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), properties);								
-					eventAdmin.postEvent(evt);
-					System.out.println("Resource loaded successfully!");
+					
+					sendToMQTT(String.format("TCPResponse/%s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), responseRes.getContents().get(0));
 				}
-
 			} catch(IOException e) {
+				LOGGER.severe(String.format("Cannot load request content for %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
 				e.printStackTrace();
 			}
 		}
 		else {
-			System.out.println("Request is null!");
-
+			LOGGER.severe(String.format("Request is null for %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
 		}
 		return Response.ok().build();
+	}
+	
+	private void sendToMQTT(String topic, EObject object) {
+		
+		ResourceSet set = rsFactory.getService();		
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
+			Resource resource = set.createResource(URI.createFileURI("temp_"+UUID.randomUUID().toString()+".json"));
+			resource.getContents().add(object);
+			resource.save(baos, Collections.singletonMap(EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, true));
+			messagingService.publish(topic, ByteBuffer.wrap(baos.toByteArray()));
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, "Could not forward event on topic " + topic);
+			e.printStackTrace();
+		} finally {
+			rsFactory.ungetService(set);
+		}
 	}
 }

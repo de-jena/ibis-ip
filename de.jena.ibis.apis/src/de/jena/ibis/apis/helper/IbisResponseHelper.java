@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
 import de.jena.ibis.apis.constants.DeviceManagementServiceConstants;
 import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
+import de.jena.model.ibis.common.IbisCommonPackage;
 import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServicePackage;
 import de.jena.model.ibis.devicemanagementservice.IbisDeviceManagementServicePackage;
 import de.jena.model.ibis.gnsslocationservice.IbisGNSSLocationServicePackage;
@@ -67,6 +68,11 @@ public class IbisResponseHelper {
 			return IbisCustomerInformationServicePackage.eINSTANCE.getTripDataResponse();
 		case CustomerInformationServiceConstants.OPERATION_GET_VEHICLE_DATA, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getVehicleDataResponse();
+		case CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_ALL_DATA, 
+			 CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_CURRENT_ANNOUNCEMENT,
+			 CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_TRIP_DATA,
+			 CustomerInformationServiceConstants.OPERATION_UNSUBSCRIBE_VEHICLE_DATA:
+			return IbisCommonPackage.eINSTANCE.getUnsubscribeResponse();
 		default:
 			LOGGER.severe(() -> String.format("No operation %s for service CustomerInformationService", operation));
 			return null;

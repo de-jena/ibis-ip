@@ -48,3 +48,21 @@ com.rabbitmq:amqp-client:5.6.0
 #graphql
 com.graphql-java:graphql-java:11.0
 com.graphql-java:java-dataloader:2.2.0
+
+#udp models
+de.jena:de.jena.udp.trafficos.common.model:1.1.1-SNAPSHOT
+de.jena:de.jena.udp.trafficos.publictransport.model:1.1.1-SNAPSHOT
+de.jena:de.jena.udp.trafficos.publictransport.api.model:1.1.1-SNAPSHOT
+de.jena:de.jena.udp.sensinact.generic.message.model:1.1.1-SNAPSHOT
+
+#trafficos components
+de.dim.trafficos:de.dim.trafficos.publictransport.api.component:1.0.0-SNAPSHOT
+de.dim.trafficos:de.dim.trafficos.publictransport.api.mmt:1.0.0-SNAPSHOT
+de.dim.trafficos:de.dim.trafficos.publictransport.apis:1.0.0-SNAPSHOT
+de.dim.trafficos:de.dim.trafficos.publictransport.component:1.0.0-SNAPSHOT
+de.dim.trafficos:de.dim.trafficos.publictransport.config:1.0.0-SNAPSHOT
+de.dim.trafficos:de.dim.trafficos.publictransport.value.converter:1.0.0-SNAPSHOT
+
+#gecko search
+org.geckoprojects.search:org.gecko.emf.search.bnd.project.library:1.2.0
+org.geckoprojects.search:org.gecko.search.bnd.library:1.2.0

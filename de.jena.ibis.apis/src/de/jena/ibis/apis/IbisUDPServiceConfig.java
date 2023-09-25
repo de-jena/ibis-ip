@@ -28,10 +28,10 @@ public @interface IbisUDPServiceConfig {
 	
 	public int listenerPort() default 53000;
 	
-	public String listenerNetworkInterface() default "";
-	
+	public String listenerNetworkInterface() default "eth0";
+		
 	public String multiCastGroupIP() default "224.0.0.251";
 	
-	public int multiCastGroupPort() default 54000;
+	public int multiCastGroupPort() default 5007;
 
 }

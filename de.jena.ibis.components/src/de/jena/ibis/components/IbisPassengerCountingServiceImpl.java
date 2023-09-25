@@ -86,7 +86,7 @@ public class IbisPassengerCountingServiceImpl implements IbisPassengerCountingSe
 	public void subscribeAllData() {
 		IbisTCPHelper.executeSubscriptionOperation(config,
 				PassengerCountingServiceConstants.OPERATION_SUBSCRIBE_ALL_DATA, 
-				ibisCommonPackage, resourceSetFactory);
+				ibisCommonPackage, resourceSetFactory, true);
 	}
 
 	/* 
@@ -97,7 +97,7 @@ public class IbisPassengerCountingServiceImpl implements IbisPassengerCountingSe
 	public void unsubscribeAllData() {
 		IbisTCPHelper.executeSubscriptionOperation(config,
 				PassengerCountingServiceConstants.OPERATION_UNSUBSCRIBE_ALL_DATA, 
-				ibisCommonPackage, resourceSetFactory);
+				ibisCommonPackage, resourceSetFactory, false);
 	}
 
 	/* 
@@ -108,7 +108,7 @@ public class IbisPassengerCountingServiceImpl implements IbisPassengerCountingSe
 	public void subscribeCountingState() {
 		IbisTCPHelper.executeSubscriptionOperation(config,
 				PassengerCountingServiceConstants.OPERATION_SUBSCRIBE_COUNTING_STATE, 
-				ibisCommonPackage, resourceSetFactory);
+				ibisCommonPackage, resourceSetFactory, true);
 	}
 
 	/* 
@@ -119,7 +119,7 @@ public class IbisPassengerCountingServiceImpl implements IbisPassengerCountingSe
 	public void unsubscribeCountingState() {
 		IbisTCPHelper.executeSubscriptionOperation(config,
 				PassengerCountingServiceConstants.OPERATION_UNSUBSCRIBE_COUNTING_STATE, 
-				ibisCommonPackage, resourceSetFactory);
+				ibisCommonPackage, resourceSetFactory, false);
 	}
 
 	/* 
@@ -268,7 +268,7 @@ public class IbisPassengerCountingServiceImpl implements IbisPassengerCountingSe
 	@Override
 	public void executeAllSubscriptionOperations() {
 		PassengerCountingServiceConstants.getAllSubscriptionOperations()
-		.forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory));
+		.forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory, true));
 	}
 
 	/* 
@@ -278,7 +278,7 @@ public class IbisPassengerCountingServiceImpl implements IbisPassengerCountingSe
 	@Override
 	public void executeAllUnsubscriptionOperations() {
 		PassengerCountingServiceConstants.getAllUnsubscriptionOperations()
-		.forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory));
+		.forEach(operation -> IbisTCPHelper.executeSubscriptionOperation(config, operation, ibisCommonPackage, resourceSetFactory, false));
 	}
 
 }

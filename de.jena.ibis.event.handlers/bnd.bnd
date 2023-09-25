@@ -1,10 +1,15 @@
 Bundle-Version: 1.0.0.SNAPSHOT
 Private-Package: de.jena.ibis.event.handlers
 -library: enable-emf
+
+-includeresource: OSGI-INF/configurator/=configs/
+Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'
+
 -buildpath: \
 	org.osgi.service.event,\
 	de.jena.ibis.common.model;version=latest,\
 	de.jena.ibis.customer.info.service.model;version=latest,\
+	de.jena.ibis.gnss.location.service.model;version=latest,\
 	de.jena.ibis.enumerations.model;version=latest,\
 	de.jena.ibis.sensinact.mmt;version=latest,\
 	de.jena.ibis.sensinact.mmt.util;version=latest,\
@@ -18,5 +23,9 @@ Private-Package: de.jena.ibis.event.handlers
 	org.osgi.service.typedevent,\
 	org.gecko.osgi.messaging,\
 	org.osgi.service.component,\
-	de.jena.udp.sensinact.generic.message.model,\
-	org.gecko.emf.json
+	de.jena.udp.sensinact.generic.message.model;version=latest,\
+	org.gecko.emf.json,\
+	de.dim.trafficos.publictransport.apis;version=latest,\
+	de.jena.udp.trafficos.publictransport.model;version=latest,\
+	de.jena.udp.trafficos.common.model;version=latest,\
+	org.osgi.util.pushstream

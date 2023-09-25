@@ -29,9 +29,9 @@ import org.osgi.test.junit5.cm.ConfigurationExtension;
 import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
-import de.jena.ibis.rest.apis.DeviceStatusService;
-import de.jena.model.ibis.rest.DeviceType;
-import de.jena.model.ibis.rest.OnlineDevice;
+import de.jena.ibis.rest.apis.VehicleStatusService;
+import de.jena.udp.model.trafficos.publictransport_api.VehicleType;
+import de.jena.udp.model.trafficos.publictransport_api.OnlineVehicle;
 
 /**
  * See documentation here: 
@@ -56,22 +56,22 @@ public class DeviceStatusServiceTest {
 			properties = {
 					@Property(key = "deviceId", value = "test1"),
 					@Property(key = "deviceName", value = "test1"),
-					@Property(key = "deviceType", value = "BUS")
+					@Property(key = "VehicleType", value = "BUS")
 			})
-	public void testConfiguratorRegistration(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testConfiguratorRegistration(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		List<OnlineDevice> onlineDevice = deviceStatusService.getOnlineDevice();
+		List<OnlineVehicle> onlineDevice = deviceStatusService.getOnlineVehicles();
 		assertThat(onlineDevice).hasSize(1);
 		
-		OnlineDevice result = onlineDevice.get(0);
+		OnlineVehicle result = onlineDevice.get(0);
 		assertThat(result.getId()).isEqualTo("test1");
-		assertThat(result.getType()).isEqualTo(DeviceType.BUS);
+		assertThat(result.getType()).isEqualTo(VehicleType.BUS);
 	}
 	
 	@Test
@@ -82,7 +82,7 @@ public class DeviceStatusServiceTest {
 			properties = {
 					@Property(key = "deviceId", value = "test1"),
 					@Property(key = "deviceName", value = "test1"),
-					@Property(key = "deviceType", value = "BUS")
+					@Property(key = "VehicleType", value = "BUS")
 			})
 	@WithFactoryConfiguration(
 			factoryPid = "IbisDeviceConfigurator",
@@ -91,21 +91,21 @@ public class DeviceStatusServiceTest {
 			properties = {
 					@Property(key = "deviceId", value = "test2"),
 					@Property(key = "deviceName", value = "test2"),
-					@Property(key = "deviceType", value = "TRAM")
+					@Property(key = "VehicleType", value = "TRAM")
 			})
-	public void testMultiConfiguratorRegistration(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testMultiConfiguratorRegistration(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		List<OnlineDevice> onlineDevice = deviceStatusService.getOnlineDevice();
+		List<OnlineVehicle> onlineDevice = deviceStatusService.getOnlineVehicles();
 		assertThat(onlineDevice).hasSize(2);
 		
-		OnlineDevice result1 = null, result2 = null;
-		for(OnlineDevice result : onlineDevice) {
+		OnlineVehicle result1 = null, result2 = null;
+		for(OnlineVehicle result : onlineDevice) {
 			if(result.getId().equals("test1")) {
 				result1 = result;
 			}
@@ -115,11 +115,11 @@ public class DeviceStatusServiceTest {
 		}
 		assertThat(result1).isNotNull();
 		assertThat(result1.getId()).isEqualTo("test1");
-		assertThat(result1.getType()).isEqualTo(DeviceType.BUS);
+		assertThat(result1.getType()).isEqualTo(VehicleType.BUS);
 		
 		assertThat(result2).isNotNull();
 		assertThat(result2.getId()).isEqualTo("test2");
-		assertThat(result2.getType()).isEqualTo(DeviceType.TRAM);
+		assertThat(result2.getType()).isEqualTo(VehicleType.TRAM);
 	}
 	
 	@Test
@@ -129,18 +129,18 @@ public class DeviceStatusServiceTest {
 			properties = {
 					@Property(key = "deviceId", value = "test1"),
 					@Property(key = "deviceName", value = "test1"),
-					@Property(key = "deviceType", value = "BUS")
+					@Property(key = "VehicleType", value = "BUS")
 			})
-	public void testIfOnline(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testIfOnline(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		assertThat(deviceStatusService.isDeviceOnline("test1")).isTrue();
-		assertThat(deviceStatusService.isDeviceOnline("test2")).isFalse();
+		assertThat(deviceStatusService.isVehicleOnline("test1")).isTrue();
+		assertThat(deviceStatusService.isVehicleOnline("test2")).isFalse();
 	}
 	
 	@Test
@@ -154,15 +154,15 @@ public class DeviceStatusServiceTest {
 					@Property(key = "refTCPServices", value = {"CustomerInformationService", "TicketValidationService"}, 
 						scalar = Property.Scalar.String, type = Property.Type.Array)
 			})
-	public void testAvailableTCPServices(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testAvailableTCPServices(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		List<String> services = deviceStatusService.getAvailableServicesOnDevice("test1");
+		List<String> services = deviceStatusService.getAvailableServicesOnVehicle("test1");
 		assertThat(services).contains("CustomerInformationService", "TicketValidationService");
 		assertThat(services).doesNotContain("PassengerInformationService");
 	}
@@ -178,15 +178,15 @@ public class DeviceStatusServiceTest {
 					@Property(key = "refUDPServices", value = {"GNSSLocationService"}, 
 						scalar = Property.Scalar.String, type = Property.Type.Array)
 			})
-	public void testAvailableUDPServices(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testAvailableUDPServices(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		List<String> services = deviceStatusService.getAvailableServicesOnDevice("test1");
+		List<String> services = deviceStatusService.getAvailableServicesOnVehicle("test1");
 		assertThat(services).contains("GNSSLocationService");
 		assertThat(services).doesNotContain("PassengerInformationService");
 	}
@@ -204,15 +204,15 @@ public class DeviceStatusServiceTest {
 					@Property(key = "refUDPServices", value = {"GNSSLocationService"}, 
 						scalar = Property.Scalar.String, type = Property.Type.Array)
 			})
-	public void testAvailableServices(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testAvailableServices(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		List<String> services = deviceStatusService.getAvailableServicesOnDevice("test1");
+		List<String> services = deviceStatusService.getAvailableServicesOnVehicle("test1");
 		assertThat(services).contains("CustomerInformationService", "TicketValidationService", "GNSSLocationService");
 		assertThat(services).doesNotContain("PassengerInformationService");
 	}
@@ -228,17 +228,17 @@ public class DeviceStatusServiceTest {
 					@Property(key = "refTCPServices", value = {"CustomerInformationService", "TicketValidationService"}, 
 						scalar = Property.Scalar.String, type = Property.Type.Array)
 			})
-	public void testIsTCPServiceAvailable(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testIsTCPServiceAvailable(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("CustomerInformationService", "test1")).isTrue();
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("TicketValidationService", "test1")).isTrue();
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("PassengerInformationService", "test1")).isFalse();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("CustomerInformationService", "test1")).isTrue();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("TicketValidationService", "test1")).isTrue();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("PassengerInformationService", "test1")).isFalse();
 	}
 	
 	@Test
@@ -252,16 +252,16 @@ public class DeviceStatusServiceTest {
 					@Property(key = "refUDPServices", value = {"GNSSLocationService"}, 
 						scalar = Property.Scalar.String, type = Property.Type.Array)
 			})
-	public void testIsUDPServiceAvailable(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testIsUDPServiceAvailable(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("GNSSLocationService", "test1")).isTrue();
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("PassengerInformationService", "test1")).isFalse();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("GNSSLocationService", "test1")).isTrue();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("PassengerInformationService", "test1")).isFalse();
 	}
 	
 	@Test
@@ -277,18 +277,18 @@ public class DeviceStatusServiceTest {
 					@Property(key = "refUDPServices", value = {"GNSSLocationService"}, 
 						scalar = Property.Scalar.String, type = Property.Type.Array)
 			})
-	public void testIsServiceAvailable(@InjectService ServiceAware<DeviceStatusService> deviceStatusAware) throws InterruptedException {
+	public void testIsServiceAvailable(@InjectService ServiceAware<VehicleStatusService> deviceStatusAware) throws InterruptedException {
 		
 		assertThat(deviceStatusAware).isNotNull();
-		DeviceStatusService deviceStatusService = deviceStatusAware.getService();
+		VehicleStatusService deviceStatusService = deviceStatusAware.getService();
 		assertThat(deviceStatusService).isNotNull();
 		
 		Thread.sleep(1000);
 		
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("CustomerInformationService", "test1")).isTrue();
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("TicketValidationService", "test1")).isTrue();
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("GNSSLocationService", "test1")).isTrue();
-		assertThat(deviceStatusService.isServiceAvailableOnDevice("PassengerInformationService", "test1")).isFalse();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("CustomerInformationService", "test1")).isTrue();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("TicketValidationService", "test1")).isTrue();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("GNSSLocationService", "test1")).isTrue();
+		assertThat(deviceStatusService.isServiceAvailableOnVehicle("PassengerInformationService", "test1")).isFalse();
 	}
 
 }

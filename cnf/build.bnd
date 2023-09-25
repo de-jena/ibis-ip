@@ -38,7 +38,8 @@ Bundle-Developers: \
 	geckoOSGi-Test,\
 	geckoDIMC,\
 	geckoJacoco,\
-	geckoEMFUtil
+	geckoEMFUtil,\
+	geckoSearch
 	
 # Needed because we enabled library 'gecko-dimc' 	
 github-project: de-jena/ibis-ip

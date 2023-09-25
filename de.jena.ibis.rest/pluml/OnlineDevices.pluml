@@ -1,0 +1,39 @@
+@startuml
+actor Client as c
+participant DeviceResource as dr
+participant DeviceStatusService as dss
+participant IbisDeviceConfigurator as idc
+
+activate dss
+activate idc
+activate c
+activate dr
+c -> dr: ibis/rest/devices/all
+note left
+Same steps are used for requesting 
+trams (ibis/rest/devices/tram) and 
+e-busses (ibis/rest/devices/ebus).
+An additional filter is just applied
+to select the relevant devices.
+
+The resulting objects contain the id
+of the device and the type 
+(TRAM, BUS, E-BUS, etc)
+end note
+
+
+dr -> dss: getOnlineDevices()
+idc -[#blue]> dss: addDevice()/removeDevice() 
+note right
+This is an async operation. Every time an 
+IbisDeviceConfigurator is activated the 
+DeviceStatusService is notified, so to keep 
+track of all online devices. 
+end note
+dss -> dr: return online devices
+dr -[#green]> c: 200 with online devices
+deactivate dss
+deactivate idc
+deactivate c
+deactivate dr
+@enduml

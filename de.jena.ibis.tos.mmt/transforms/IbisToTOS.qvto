@@ -1,0 +1,60 @@
+import de.jena.ibis.tos.mmt.util.IbisDateTimeToDateBlackbox;
+
+modeltype COMMON uses "https://jena.de/models/ibis/common/1.0";
+modeltype ENUMERATIONS uses "https://jena.de/models/ibis/enumerations/1.0";
+modeltype CUSTOMERINFO uses "https://jena.de/models/ibis/customerinfoservice/1.0";
+modeltype GNSSLOCATION uses "https://jena.de/models/ibis/gnsslocationservice/1.0";
+modeltype TOSPT uses "http://jena.de/udp/trafficos/publictransport/1.1.1";
+modeltype TOSCOMMON uses "http://jena.de/udp/trafficos/common/1.1.1";
+modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
+
+
+
+transformation IbisToTOS(in response: COMMON, out tos : TOSPT);
+
+main() {
+	response.rootObjects()[CUSTOMERINFO::TripDataResponse] -> map tripToTosTripUpdate(); 
+	response.rootObjects()[GNSSLOCATION::GNSSLocationData] -> map locationToTosPositionUpdate();
+
+}
+
+
+
+mapping CUSTOMERINFO::TripDataResponse::tripToTosTripUpdate() : TOSPT::PTTripUpdate {
+	
+	refScheduleId := self.tripData.tripInformation.tripRef.value.toString();
+	currentStopIndex := self.tripData.currentStopIndex.value;
+	timetableDelay := self.tripData.tripInformation.timetableDelay.value;
+	locationState := self.tripData.tripInformation.locationState.toTOSLocationState();
+	runNumber := self.tripData.tripInformation.runNumber.value;
+	patternNumber := self.tripData.tripInformation.patternNumber.value;
+	pathDestinationNumber := self.tripData.tripInformation.pathDestinationNumber.value;
+	currentStopIndex := self.tripData.currentStopIndex.value;
+	stopUpdate += self.tripData.tripInformation.stopSequence.stopPoint -> map toTOSStopUpdate();
+}
+
+mapping COMMON::StopInformation::toTOSStopUpdate() : TOSPT::PTStopUpdate {
+	refStopId := self.stopRef.value.toString();
+	expectedArrivalTime := getLocalTime(self.arrivalExpected); 
+	expectedDepartureTime := getLocalTime(self.departureExpected); 
+	recordedArrivalTime := getLocalTime(self.recordedArrivalTime);
+	distanceFromNextStop := self.distanceToNextStop.value;
+}
+
+query ENUMERATIONS::LocationStateEnumeration::toTOSLocationState() : TOSPT::PTLocationStateType {
+	return switch {
+		case(self = ENUMERATIONS::LocationStateEnumeration::AfterStop) return TOSPT::PTLocationStateType::AFTER_STOP;
+		case(self = ENUMERATIONS::LocationStateEnumeration::AtStop) return TOSPT::PTLocationStateType::AT_STOP;
+		case(self = ENUMERATIONS::LocationStateEnumeration::BeforeStop) return TOSPT::PTLocationStateType::BEFORE_STOP;
+		case(self = ENUMERATIONS::LocationStateEnumeration::BetweenStop) return TOSPT::PTLocationStateType::BETWEEN_STOP;
+	}
+}
+
+mapping GNSSLOCATION::GNSSLocationData::locationToTosPositionUpdate() : TOSPT::PTPositionUpdate {
+	position := self.map toTOSPosition();
+}
+
+mapping GNSSLOCATION::GNSSLocationData::toTOSPosition() : TOSCOMMON::Position {
+	latitude := self.latitude.degree.value;
+	longitude := self.longitude.degree.value;
+}

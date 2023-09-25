@@ -38,7 +38,6 @@
     </genClasses>
     <genClasses ecoreClass="ibis-passengercountingservice.ecore#//CountingStateResponse">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-passengercountingservice.ecore#//CountingStateResponse/data"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-passengercountingservice.ecore#//CountingStateResponse/errorMessage"/>
     </genClasses>
     <genClasses ecoreClass="ibis-passengercountingservice.ecore#//RetrieveSpecificDoorDataRequest">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-passengercountingservice.ecore#//RetrieveSpecificDoorDataRequest/doorID"/>

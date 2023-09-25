@@ -408,7 +408,6 @@
     </genClasses>
     <genClasses ecoreClass="ibis-common.ecore#//SubscribeRequest"/>
     <genClasses ecoreClass="ibis-common.ecore#//SubscribeResponse">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//SubscribeResponse/active"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//SubscribeResponse/heartbeat"/>
     </genClasses>
     <genClasses ecoreClass="ibis-common.ecore#//TimingPoint">
@@ -452,9 +451,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//TSPPoint/desciption"/>
     </genClasses>
     <genClasses ecoreClass="ibis-common.ecore#//UnsubscribeRequest"/>
-    <genClasses ecoreClass="ibis-common.ecore#//UnsubscribeResponse">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//UnsubscribeResponse/active"/>
-    </genClasses>
+    <genClasses ecoreClass="ibis-common.ecore#//UnsubscribeResponse"/>
     <genClasses ecoreClass="ibis-common.ecore#//Vehicle">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//Vehicle/vehicleTypeRef"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//Vehicle/name"/>
@@ -480,5 +477,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//GeneralSubscribeRequest/replyPath"/>
     </genClasses>
     <genClasses ecoreClass="ibis-common.ecore#//GeneralRetrieveRequest"/>
+    <genClasses ecoreClass="ibis-common.ecore#//GeneralSubscribeResponse">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-common.ecore#//GeneralSubscribeResponse/active"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

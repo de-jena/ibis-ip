@@ -44,6 +44,6 @@ public @interface IbisDeviceConfiguratorConfig {
 	
 	public String udpMultiCastGroupIP() default "224.0.0.251";
 	
-	public int udpMultiCastGroupPort() default 54000;
+	public int udpMultiCastGroupPort() default 5007;
 	
 }

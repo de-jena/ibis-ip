@@ -14,6 +14,7 @@ package de.jena.ibis.components.helper;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -52,8 +53,7 @@ public class IbisHttpRequestHelper {
 			LOGGER.severe(String.format("Response for URI %s is not valid. Returning null!", uri.toString()));
 			return null;
 		} catch (Throwable e) {
-			LOGGER.severe(String.format("Something went wrong during request %s. Returning null!", uri.toString()));
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, String.format("Something went wrong during request %s. Returning null!", uri.toString()), e);
 			return null;
 		}
 	}
