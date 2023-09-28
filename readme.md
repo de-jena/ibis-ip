@@ -8,7 +8,7 @@ Implementation of the IBIS IP protocol to get information from public transports
 
 ## Links
 
-* [Documentation](https://github.com/de-jena/ibis-ip/docs/README.md)
+* [Documentation](https://github.com/de-jena/ibis-ip/tree/ibis-with-docs/docs)
 * [Source Code](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬) (clone with `scm:git@github.com:de-jena/ibis-ip.git`)
 
 
