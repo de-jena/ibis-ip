@@ -1,11 +1,15 @@
-[![CI Build](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬/actions/workflows/build.yml/badge.svg)](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬/actions/workflows/build.yml)[![License](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬/actions/workflows/license.yml/badge.svg)](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬/actions/workflows/license.yml )[![Sonar](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬/actions/workflows/sonar.yml/badge.svg)](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬/actions/workflows/sonar.yml )[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=bugs)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=code_smells)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=coverage)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=alert_status)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=security_rating)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=sqale_index)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=geckoprojects-org_â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)
+[![CI Build](https://github.com/de-jena/ibis-ip/blob/master/.github/workflows/build.yml)][![License](https://github.com/de-jena/ibis-ip/blob/master/.github/workflows/license.yml)][![Sonar](https://github.com/de-jena/ibis-ip/blob/master/.github/workflows/sonar.yml)]
 
-# â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬
+# IBIS IP
+
+## Description
+
+Implementation of the IBIS IP protocol to get information from public transports.
 
 ## Links
 
-* [Documentation](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬)
-* [Source Code](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬) (clone with `scm:git:git@github.com:geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬.git`)
+* [Documentation](https://github.com/de-jena/ibis-ip/docs/README.md)
+* [Source Code](https://github.com/geckoprojects-org/â‚¬â‚¬project-symbolic-nameâ‚¬â‚¬) (clone with `scm:git@github.com:de-jena/ibis-ip.git`)
 
 
 ## Developers
