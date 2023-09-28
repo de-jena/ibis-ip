@@ -39,11 +39,9 @@
 	de.dim.equinox.common;version='[3.9.0,3.9.1)',\
 	de.dim.trafficos.publictransport.apis;version='[1.0.0,1.0.1)',\
 	de.jena.ibis.common.model;version=snapshot,\
-	de.jena.ibis.customer.info.service.model;version=snapshot,\
 	de.jena.ibis.enumerations.model;version=snapshot,\
 	de.jena.ibis.event.handlers;version=snapshot,\
 	de.jena.ibis.gnss.location.service.model;version=snapshot,\
-	de.jena.ibis.sensinact.model;version=snapshot,\
 	de.jena.udp.sensinact.generic.message.model;version='[1.1.1,1.1.2)',\
 	de.jena.udp.trafficos.common.model;version='[1.1.1,1.1.2)',\
 	de.jena.udp.trafficos.publictransport.api.model;version='[1.1.1,1.1.2)',\
@@ -118,4 +116,5 @@
 	org.gecko.util.pushstream;version='[6.0.0,6.0.1)',\
 	de.dim.trafficos.publictransport.config;version='[1.0.0,1.0.1)',\
 	de.dim.trafficos.publictransport.value.converter;version='[1.0.0,1.0.1)',\
-	org.gecko.emf.osgi.api;version='[5.0.0,5.0.1)'
+	org.gecko.emf.osgi.api;version='[5.0.0,5.0.1)',\
+	de.jena.ibis.sensinact.model;version=snapshot

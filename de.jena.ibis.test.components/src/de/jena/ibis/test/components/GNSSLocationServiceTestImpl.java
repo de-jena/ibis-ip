@@ -11,7 +11,6 @@
  */
 package de.jena.ibis.test.components;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -36,9 +35,9 @@ import org.osgi.util.promise.PromiseFactory;
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.IbisGNSSLocationService;
 import de.jena.ibis.apis.IbisUDPServiceConfig;
+import de.jena.ibis.gnsslocationservice.GNSSLSFactory;
+import de.jena.ibis.gnsslocationservice.GNSSLocationServiceDataStructure;
 import de.jena.ibis.test.components.helper.IbisToApiHelper;
-import de.jena.model.ibis.gnsslocationservice.GNSSLocationData;
-import de.jena.model.ibis.gnsslocationservice.IbisGNSSLocationServiceFactory;
 
 /**
  * 
@@ -178,8 +177,8 @@ public class GNSSLocationServiceTestImpl implements IbisGNSSLocationService {
 		properties.put("operation", "GNSSLocationData");
 		properties.put("deviceId", config.refDeviceId());
 		properties.put("deviceType", config.refDeviceType());
-		GNSSLocationData data = IbisGNSSLocationServiceFactory.eINSTANCE.createGNSSLocationData();
-		data.setTime(IbisToApiHelper.createIbisDateTime(new Date()));
+		GNSSLocationServiceDataStructure data = GNSSLSFactory.eINSTANCE.createGNSSLocationServiceDataStructure();
+//		data.setTime(IbisToApiHelper.createIbisDateTime(new Date()));
 		Random r = new Random();
 		double randomLat = 50. + (51. - 50.) * r.nextDouble();
 		r = new Random();

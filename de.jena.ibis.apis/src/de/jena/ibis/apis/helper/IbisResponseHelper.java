@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.EClass;
 import de.jena.ibis.apis.constants.CustomerInformationServiceConstants;
 import de.jena.ibis.apis.constants.DeviceManagementServiceConstants;
 import de.jena.ibis.apis.constants.TicketValidationServiceConstants;
+import de.jena.ibis.gnsslocationservice.GNSSLSPackage;
 import de.jena.model.ibis.common.IbisCommonPackage;
 import de.jena.model.ibis.customerinformationservice.IbisCustomerInformationServicePackage;
 import de.jena.model.ibis.devicemanagementservice.IbisDeviceManagementServicePackage;
-import de.jena.model.ibis.gnsslocationservice.IbisGNSSLocationServicePackage;
 import de.jena.model.ibis.ticketvalidationservice.IbisTicketValidationServicePackage;
 
 /**
@@ -127,10 +127,10 @@ public class IbisResponseHelper {
 	}
 	
 	private static EClass getGNSSLocationServiceResponseEClass(String operation) {
-		if("GNSSLocationData".equals(operation)) {
-			return IbisGNSSLocationServicePackage.eINSTANCE.getGNSSLocationData();
+		if("GetGNSSLocationData".equals(operation)) {
+			return GNSSLSPackage.eINSTANCE.getGNSSLocationServiceDataStructure();
 		}
-		LOGGER.severe(() -> String.format("No operation %s for service DeviceManagementService", operation));
+		LOGGER.severe(() -> String.format("No operation %s for service GNSSLocationService", operation));
 		return null;
 	}
 

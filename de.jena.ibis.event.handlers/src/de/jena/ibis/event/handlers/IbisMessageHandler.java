@@ -13,18 +13,22 @@ package de.jena.ibis.event.handlers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.XMLResource.MissingPackageHandler;
 import org.eclipse.sensinact.prototype.PrototypePush;
 import org.gecko.core.pool.Pool;
 import org.gecko.emf.json.constants.EMFJs;
@@ -39,18 +43,13 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.util.pushstream.PushStream;
 
 import de.dim.trafficos.publictransport.apis.PTUpdateService;
+import de.jena.ibis.gnsslocationservice.GNSSLSPackage;
+import de.jena.ibis.gnsslocationservice.GNSSLocationServiceDataStructure;
 import de.jena.model.ibis.common.IbisCommonPackage;
-import de.jena.model.ibis.customerinformationservice.TripDataResponse;
-import de.jena.model.ibis.gnsslocationservice.IbisGNSSLocationServicePackage;
-import de.jena.model.sensinact.ibis.GNSSLocationData;
 import de.jena.model.sensinact.ibis.IbisAdmin;
 import de.jena.model.sensinact.ibis.IbisDevice;
 import de.jena.model.sensinact.ibis.IbisSensinactFactory;
-import de.jena.udp.model.trafficos.publictransport.PTPositionUpdate;
-import de.jena.udp.model.trafficos.publictransport.PTTripUpdate;
 import de.jena.udp.model.trafficos.publictransport.PTUpdate;
-import de.jena.udp.model.trafficos.publictransport.PTUpdateValueType;
-import de.jena.udp.model.trafficos.publictransport.TOSPublicTransportFactory;
 
 /**
  * This handler listens to the ibis data the bus,tram,etc are sending, pushes them to sensinact and save them in the db
@@ -58,7 +57,7 @@ import de.jena.udp.model.trafficos.publictransport.TOSPublicTransportFactory;
  * @author ilenia
  * @since Apr 18, 2023
  */
-@Component(immediate= true, name = "IbisMessageHandler", service = IbisMessageHandler.class)
+@Component(immediate= true, name = "IbisMessageHandler")
 public class IbisMessageHandler {
 	
 //	@Reference
@@ -92,8 +91,7 @@ public class IbisMessageHandler {
 			subscription = subscription.merge(messagingService.subscribe(UDP_MQTT_TOPIC));
 			subscription.forEach(this::handleMessage);			
 		} catch (Exception e) {
-			LOGGER.severe(String.format("Exception while subscribing to TCP and/or UDP ibis messages!"));
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, String.format("Exception while subscribing to TCP and/or UDP ibis messages!"), e);
 		}
 	}
 	
@@ -117,22 +115,14 @@ public class IbisMessageHandler {
 	
 	private EObject extractMessageContent(byte[] content, String topic) {
 		if(content.length == 0) return null;
+		EClass rootObjClass = null;
+		
 		if(topic.startsWith("TCP")) {
-			return loadResource(URI.createFileURI("temp.json"), "application/json", content, Collections.singletonMap(EMFJs.OPTION_ROOT_ELEMENT, IbisCommonPackage.eINSTANCE.getGeneralResponse()));
+			rootObjClass = IbisCommonPackage.eINSTANCE.getGeneralResponse();
 		} else if(topic.startsWith("UDP")) {
-			Map<String, Object> options = new HashMap<>();
-			options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-			options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-			options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-			options.put(XMLResource.OPTION_MISSING_PACKAGE_HANDLER, new MissingPackageHandler() {
-
-				@Override
-				public EPackage getPackage(String nsURI) {
-					return IbisGNSSLocationServicePackage.eINSTANCE.getGNSSLocationData().getEPackage();
-				}}
-			);
-			return loadResource(URI.createFileURI("temp.xml"), "application/xml", content, options);
+			rootObjClass = GNSSLSPackage.eINSTANCE.getGNSSLocationServiceDataStructure();			
 		}
+		if(rootObjClass != null) return loadResource(URI.createFileURI("temp.json"), "application/json", content, Collections.singletonMap(EMFJs.OPTION_ROOT_ELEMENT, rootObjClass));
 		return null;
 	}
 
@@ -141,11 +131,12 @@ public class IbisMessageHandler {
 		try {
 			Resource res = set.createResource(uri, mediaType);
 			res.load(new ByteArrayInputStream(content),options);
-			if(res.getContents() != null & !res.getContents().isEmpty()) return res.getContents().get(0);
+			if(res.getContents() != null & !res.getContents().isEmpty()) {
+				return res.getContents().get(0);
+			}
 			return null;
 		} catch(IOException e) {
-			LOGGER.severe(String.format("IOException while reading payload from MQTT"));
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, String.format("IOException while reading payload from MQTT"), e);
 			return null;
 		}
 		finally {
@@ -155,7 +146,7 @@ public class IbisMessageHandler {
 	
 //	private void publishToSensinact(EObject data, String providerId, String deviceType) {
 //		Map<String,Pool<ModelTransformator>> poolMap = sensinactPoolComponent.getPoolMap();
-//		Pool<ModelTransformator> pool = poolMap.get("ibisToSensinactPool-ibisToSensinact");
+//		Pool<ModelTransformator> pool = poolMap.get("ibisToSensinactPool-sensinactPool");
 //		if(pool != null) {
 //			ModelTransformator transformator = pool.poll();
 //			try {
@@ -168,7 +159,7 @@ public class IbisMessageHandler {
 //				
 //				sensinact.pushUpdate(push);
 //			} catch(Exception e) {
-//				e.printStackTrace();
+//				LOGGER.log(Level.SEVERE, String.format("Something went wrong when publishing data on sensinact for provider %s", providerId), e);
 //			}			
 //			finally {
 //				pool.release(transformator);
@@ -182,25 +173,22 @@ public class IbisMessageHandler {
 		if(pool != null) {
 			ModelTransformator transformator = pool.poll();
 			try {
-				PTUpdate update = TOSPublicTransportFactory.eINSTANCE.createPTUpdate();
-				update.setDataSource("IBIS");
+				PTUpdate update = (PTUpdate) transformator.startTransformation(data);
 				update.setRefVehicleId(vehicleId);
-				if(data instanceof TripDataResponse tripDataResponse) {
-					update.setType(PTUpdateValueType.TRIP_DATA);
-					update.setTimestamp(tripDataResponse.getTripData().getTimeStamp().getValue().getMillisecond());
-					PTTripUpdate updateValue = (PTTripUpdate) transformator.startTransformation(tripDataResponse);
-					update.setValue(updateValue);
-				} else if(data instanceof GNSSLocationData locationData) {
-					update.setType(PTUpdateValueType.GEO_INFO);
-					update.setTimestamp(locationData.getTimestamp().toEpochMilli());
-					PTPositionUpdate updateValue = (PTPositionUpdate) transformator.startTransformation(locationData);
-					update.setValue(updateValue);
-				}
-				if(update.getValue() != null) {
+				update.setDataSource("IBIS");
+				if(data instanceof GNSSLocationServiceDataStructure locationData) {
+					XMLGregorianCalendar date = locationData.getDate().getValue();
+					XMLGregorianCalendar time = locationData.getTime().getValue();
+					LocalDate locDate = LocalDate.of(date.getYear(), date.getMonth(), date.getDay());
+					LocalTime locTime = LocalTime.of(time.getHour(), time.getMinute(), time.getSecond());
+					LocalDateTime locDateTime = LocalDateTime.of(locDate, locTime);
+					update.setTimestamp(locDateTime.atZone(ZoneId.of("GMT+2")).toInstant().toEpochMilli());
+				} 		
+				if(update != null) {
 					tosPTUpdateService.savePTUpdate(update);
 				}
 			} catch(Exception e) {
-				e.printStackTrace();
+				LOGGER.log(Level.SEVERE, String.format("Something went wrong when transforming and savinfǵ data on TOS for vehicle %s", vehicleId), e);
 			}			
 			finally {
 				pool.release(transformator);

@@ -29,6 +29,7 @@ import de.jena.model.ibis.common.IBISIPInt;
 import de.jena.model.ibis.common.IBISIPLanguage;
 import de.jena.model.ibis.common.IBISIPNMTOKEN;
 import de.jena.model.ibis.common.IBISIPString;
+import de.jena.model.ibis.common.IBISIPTime;
 import de.jena.model.ibis.common.IbisCommonFactory;
 import de.jena.model.ibis.common.InternationalTextType;
 
@@ -89,6 +90,16 @@ public class IbisToSensinactTestHelper {
 		    .newXMLGregorianCalendar(cal);
 		timestamp.setValue(xCal);
 		return timestamp;
+	}
+	
+	public static IBISIPTime createIbisTime(Date time) throws DatatypeConfigurationException {
+		IBISIPTime ibisTime = IbisCommonFactory.eINSTANCE.createIBISIPTime();
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(time);
+		XMLGregorianCalendar xCal = DatatypeFactory.newInstance()
+		    .newXMLGregorianCalendar(cal);
+		ibisTime.setValue(xCal);
+		return ibisTime;
 	}
 	
 	public static IBISIPDate createIbisDate(Date date) throws DatatypeConfigurationException {

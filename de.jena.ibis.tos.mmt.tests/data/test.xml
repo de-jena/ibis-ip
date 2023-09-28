@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GNSSLocationService.Data>
+	<latitude>
+		<Degree>
+			<Value>50.8795750</Value>
+		</Degree>
+		<Direction>
+			<Value>N</Value>
+		</Direction>
+	</latitude>
+	<longitude>
+		<Degree>
+			<Value>11.6350900</Value>
+		</Degree>
+		<Direction>
+			<Value>E</Value>
+		</Direction>
+	</longitude>
+	<altitude>
+		<Value>204.3000000</Value>
+	</altitude>
+	<time>
+		<Value>14:04:16</Value>
+	</time>
+	<date>
+		<Value>2023-09-26</Value>
+	</date>
+	<SpeedOverGround>
+		<Value>0.0000000</Value>
+	</SpeedOverGround>
+	<SignalQuality>GPS</SignalQuality>
+	<NumberOfSatellites>
+		<Value>9</Value>
+	</NumberOfSatellites>
+	<GNSSType>GPS</GNSSType>
+	<GNSSCoordinateSystem>WGS84</GNSSCoordinateSystem>
+</GNSSLocationService.Data>

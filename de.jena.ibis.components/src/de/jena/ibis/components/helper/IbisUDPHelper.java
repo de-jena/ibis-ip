@@ -42,6 +42,7 @@ import org.osgi.util.promise.PromiseFactory;
 
 import de.jena.ibis.apis.IbisUDPServiceConfig;
 import de.jena.ibis.apis.helper.IbisResponseHelper;
+import de.jena.ibis.gnsslocationservice.DocumentRoot;
 
 /**
  * 
@@ -80,13 +81,13 @@ public class IbisUDPHelper {
 				
 				while (true) {
 
-					byte[] buffer = new byte[512];
+					byte[] buffer = new byte[2048];
 					DatagramPacket response = new DatagramPacket(buffer, buffer.length);
-					LOGGER.info("=============================================");
-					LOGGER.info("Listening to " + inetAddress + " - " + serviceConfig.multiCastGroupPort());
 					socket.receive(response);
 					String received = new String(
 							response.getData(), 0, response.getLength());
+					received = received.replaceAll("^\\x00*", "");
+//					System.out.println(received);
 					EClass responseEClass = IbisResponseHelper.getResponseEClass(serviceConfig.serviceName(), operation);
 					if(responseEClass != null) {
 						LOGGER.info("=============================================");
@@ -100,10 +101,18 @@ public class IbisUDPHelper {
 							options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 							options.put(XMLResource.OPTION_ENCODING, "UTF-8");
 							options.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
-							res.load(new BufferedInputStream(new ByteArrayInputStream(buffer)), options);
+							res.load(new BufferedInputStream(new ByteArrayInputStream(received.getBytes())), options);
+							res.getWarnings().forEach(w -> System.out.println("WARNING " +w.getMessage()));
+							res.getErrors().forEach(e -> System.out.println("ERROR " +e.getMessage()));
+							
 							if(res.getContents() != null && !res.getContents().isEmpty()) {
-								sendToMQTT(String.format("UDPPacket/%s/%s/%s/%s", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation), 
-										res.getContents().get(0), rsFactory, messagingService);
+								EObject content = res.getContents().get(0);
+								if(content instanceof DocumentRoot docRoot) {
+									sendToMQTT(String.format("UDPPacket/%s/%s/%s/%s", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation), 
+											docRoot.getGNSSLocationServiceData(), rsFactory, messagingService);
+								} else {
+									LOGGER.severe(String.format("Content in Resource for UDPPacket/%s/%s/%s/%s is not of type DocumentRoot", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation));
+								}
 							}
 							else {
 								LOGGER.severe(String.format("No content in Resource for UDPPacket/%s/%s/%s/%s", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation));
@@ -146,8 +155,7 @@ public class IbisUDPHelper {
 			resource.save(baos, Collections.singletonMap(EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, true));
 			messagingService.publish(topic, ByteBuffer.wrap(baos.toByteArray()));
 		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE, "Could not forward event on topic " + topic);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, String.format("Could not forward event on topic %s", topic), e);
 		} finally {
 			rsFactory.ungetService(set);
 		}

@@ -8,8 +8,7 @@
     operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>ibis-doorstateservice.ecore</foreignModel>
   <genPackages prefix="IbisDoorStateService" basePackage="de.jena.ibis.model" resource="XML"
-      disposableProviderFactory="true" loadInitialization="true" literalsInterface="false"
-      ecorePackage="ibis-doorstateservice.ecore#/">
+      disposableProviderFactory="true" ecorePackage="ibis-doorstateservice.ecore#/">
     <genClasses ecoreClass="ibis-doorstateservice.ecore#//DoorOpenStatesData">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-doorstateservice.ecore#//DoorOpenStatesData/timeStamp"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-doorstateservice.ecore#//DoorOpenStatesData/doorOpenStates"/>

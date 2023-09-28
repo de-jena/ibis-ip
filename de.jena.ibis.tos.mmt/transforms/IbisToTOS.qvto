@@ -13,14 +13,85 @@ modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
 transformation IbisToTOS(in response: COMMON, out tos : TOSPT);
 
 main() {
-	response.rootObjects()[CUSTOMERINFO::TripDataResponse] -> map tripToTosTripUpdate(); 
-	response.rootObjects()[GNSSLOCATION::GNSSLocationData] -> map locationToTosPositionUpdate();
+	
+	response.rootObjects()[COMMON::GeneralResponse] -> map toTOSUpdate(); 
+	response.rootObjects()[GNSSLOCATION::GNSSLocationServiceDataStructure] -> map toTOSUpdate();
+}
 
+mapping COMMON::GeneralResponse::toTOSUpdate() : TOSPT::PTUpdate {
+	
+	init {
+		if(self.oclIsTypeOf(CUSTOMERINFO::TripDataResponse)) {
+			var update := object TOSPT::PTUpdate {
+				type := TOSPT::PTUpdateValueType::TRIP_DATA;
+				timestamp := getMillis(self.oclAsType(CUSTOMERINFO::TripDataResponse).tripData.timeStamp);
+				value := self.oclAsType(CUSTOMERINFO::TripDataResponse).map toTOSTripUpdate();
+			};
+			result := update;
+		} else if(self.oclIsTypeOf(CUSTOMERINFO::CurrentAnnouncementResponse)) {
+			var update := object TOSPT::PTUpdate {
+				type := TOSPT::PTUpdateValueType::CURRENT_ANNOUNCEMENT;
+				timestamp := getMillis(self.oclAsType(CUSTOMERINFO::CurrentAnnouncementResponse).currentAnnouncementData.timeStamp);
+				value := self.oclAsType(CUSTOMERINFO::CurrentAnnouncementResponse).map toTOSAnnouncemetUpdate();
+			};
+			result := update;
+		} else if(self.oclIsTypeOf(CUSTOMERINFO::CurrentStopIndexResponse)) {
+			var update := object TOSPT::PTUpdate {
+				type := TOSPT::PTUpdateValueType::CURRENT_STOP_INDEX;
+				timestamp := getMillis(self.oclAsType(CUSTOMERINFO::CurrentStopIndexResponse).currentStopIndexData.timeStamp);
+				value := self.oclAsType(CUSTOMERINFO::CurrentStopIndexResponse).map toTOSStopIndexUpdate();
+			};
+			result := update;
+		} else if(self.oclIsTypeOf(CUSTOMERINFO::CurrentStopPointResponse)) {
+			var update := object TOSPT::PTUpdate {
+				type := TOSPT::PTUpdateValueType::CURRENT_STOP_POINT;
+				timestamp := getMillis(self.oclAsType(CUSTOMERINFO::CurrentStopPointResponse).currentStopPointData.timeStamp);
+				value := self.oclAsType(CUSTOMERINFO::CurrentStopPointResponse).map toTOSStopUpdate();
+			};
+			result := update;
+		} else if(self.oclIsTypeOf(CUSTOMERINFO::VehicleDataResponse)) {
+			var update := object TOSPT::PTUpdate {
+				type := TOSPT::PTUpdateValueType::VEHICLE_DATA;
+				timestamp := getMillis(self.oclAsType(CUSTOMERINFO::VehicleDataResponse).vehicleData.timeStamp);
+				value := self.oclAsType(CUSTOMERINFO::VehicleDataResponse).map toTOSVehicleUpdate();
+			};
+			result := update;
+		}
+	}
+	
+}
+
+mapping CUSTOMERINFO::VehicleDataResponse::toTOSVehicleUpdate() : TOSPT::PTVehicleUpdate {
+	vehicleRef := self.vehicleData.vehicleRef.value.toString();
+	inPanic := self.vehicleData.inPanic.value;
+	vehicleStopRequested := self.vehicleData.vehicleStopRequested.value;
+	movingForward := self.vehicleData.movingDirectionForward.value;
+	speakerActive := self.vehicleData.speakerActive.value;
+	stopInformationActive := self.vehicleData.stopInformationActive.value;
+	routeDeviation := self.vehicleData.routeDeviation.toTOSRouteDeviation();
+	doorState := self.vehicleData.doorState.toTOSDoorOpenState();
+	tripState := self.vehicleData.tripState.toTOSTripState();
+	exitSide := self.vehicleData.exitSide.toTOSExitSide();
+}
+
+mapping CUSTOMERINFO::CurrentAnnouncementResponse::toTOSAnnouncemetUpdate() : TOSPT::PTAnnouncementUpdate {
+		annoucementRef := self.currentAnnouncementData.currentAnnouncement.announcementRef.value.toString();
+		annoucementText += self.currentAnnouncementData.currentAnnouncement.announcementText.value.toString();
+		annoucementTTSText += self.currentAnnouncementData.currentAnnouncement.announcementTTSText.value.toString();
+}
+
+mapping CUSTOMERINFO::CurrentStopIndexResponse::toTOSStopIndexUpdate() : TOSPT::PTStopIndexUpdate {
+		currentStopIndex := self.currentStopIndexData.currentStopIndex.value;
+}
+
+mapping CUSTOMERINFO::CurrentStopPointResponse::toTOSStopUpdate() : TOSPT::PTStopUpdate {
+		init {
+			result := self.currentStopPointData.currentStopPoint.map toTOSStopUpdate();
+		}
 }
 
 
-
-mapping CUSTOMERINFO::TripDataResponse::tripToTosTripUpdate() : TOSPT::PTTripUpdate {
+mapping CUSTOMERINFO::TripDataResponse::toTOSTripUpdate() : TOSPT::PTTripUpdate {
 	
 	refScheduleId := self.tripData.tripInformation.tripRef.value.toString();
 	currentStopIndex := self.tripData.currentStopIndex.value;
@@ -50,11 +121,53 @@ query ENUMERATIONS::LocationStateEnumeration::toTOSLocationState() : TOSPT::PTLo
 	}
 }
 
-mapping GNSSLOCATION::GNSSLocationData::locationToTosPositionUpdate() : TOSPT::PTPositionUpdate {
+query ENUMERATIONS::RouteDeviationEnumeration::toTOSRouteDeviation() : TOSPT::PTRouteDeviationType {
+	return switch {
+		case(self = ENUMERATIONS::RouteDeviationEnumeration::onroute) return TOSPT::PTRouteDeviationType::ON_ROUTE;
+		case(self = ENUMERATIONS::RouteDeviationEnumeration::offroute) return TOSPT::PTRouteDeviationType::OFF_ROUTE;
+		case(self = ENUMERATIONS::RouteDeviationEnumeration::unknown) return TOSPT::PTRouteDeviationType::UNKNOWN;
+	}
+}
+
+query ENUMERATIONS::DoorOpenStateEnumeration::toTOSDoorOpenState() : TOSPT::PTDoorOpenStateType {
+	return switch {
+		case(self = ENUMERATIONS::DoorOpenStateEnumeration::DoorsOpen) return TOSPT::PTDoorOpenStateType::DOORS_OPEN;
+		case(self = ENUMERATIONS::DoorOpenStateEnumeration::AllDoorsClosed) return TOSPT::PTDoorOpenStateType::ALL_DOORS_CLOSED;
+		case(self = ENUMERATIONS::DoorOpenStateEnumeration::SingleDoorOpen) return TOSPT::PTDoorOpenStateType::SINGLE_DOOR_OPEN;
+		case(self = ENUMERATIONS::DoorOpenStateEnumeration::SingleDoorClosed) return TOSPT::PTDoorOpenStateType::SINGLE_DOOR_CLOSED;
+	}
+}
+
+query ENUMERATIONS::ExitSideEnumeration::toTOSExitSide() : TOSPT::PTExitSideType {
+	return switch {
+		case(self = ENUMERATIONS::ExitSideEnumeration::both) return TOSPT::PTExitSideType::BOTH;
+		case(self = ENUMERATIONS::ExitSideEnumeration::left) return TOSPT::PTExitSideType::LEFT;
+		case(self = ENUMERATIONS::ExitSideEnumeration::right) return TOSPT::PTExitSideType::RIGHT;
+		case(self = ENUMERATIONS::ExitSideEnumeration::unknown) return TOSPT::PTExitSideType::UNKNOWN;
+	}
+}
+
+query ENUMERATIONS::TripStateEnumeration::toTOSTripState() : TOSPT::PTTripStateType {
+	return switch {
+		case(self = ENUMERATIONS::TripStateEnumeration::EmptyRun) return TOSPT::PTTripStateType::EMPTY_RUN;
+		case(self = ENUMERATIONS::TripStateEnumeration::OnTrip) return TOSPT::PTTripStateType::ON_TRIP;
+		case(self = ENUMERATIONS::TripStateEnumeration::OffTrip) return TOSPT::PTTripStateType::OFF_TRIP;
+		case(self = ENUMERATIONS::TripStateEnumeration::TripBreak) return TOSPT::PTTripStateType::TRIP_BREAK;
+		case(self = ENUMERATIONS::TripStateEnumeration::OffDuty) return TOSPT::PTTripStateType::OFF_DUTY;
+		case(self = ENUMERATIONS::TripStateEnumeration::unknown) return TOSPT::PTTripStateType::UNKNOWN;
+	}
+}
+
+mapping GNSSLOCATION::GNSSLocationServiceDataStructure::toTOSUpdate(): TOSPT::PTUpdate {
+	type := TOSPT::PTUpdateValueType::GEO_INFO;
+	value := self.map toTOSPositionUpdate();
+}
+
+mapping GNSSLOCATION::GNSSLocationServiceDataStructure::toTOSPositionUpdate() : TOSPT::PTPositionUpdate {
 	position := self.map toTOSPosition();
 }
 
-mapping GNSSLOCATION::GNSSLocationData::toTOSPosition() : TOSCOMMON::Position {
+mapping GNSSLOCATION::GNSSLocationServiceDataStructure::toTOSPosition() : TOSCOMMON::Position {
 	latitude := self.latitude.degree.value;
 	longitude := self.longitude.degree.value;
 }

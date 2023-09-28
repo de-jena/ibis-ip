@@ -1,7 +1,8 @@
 -buildpath: \
-	org.osgi.service.condition,\
+	org.osgi.service.condition;version=latest,\
 	de.jena.ibis.common.model;version=latest,\
-	de.jena.ibis.enumerations.model;version=latest
+	de.jena.ibis.enumerations.model;version=latest,\
+	org.gecko.emf.osgi.codegen
 
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -library: enable-emf
@@ -23,3 +24,8 @@
 
 Bundle-Version: 1.0.0.SNAPSHOT
 
+Export-Package: \
+	de.jena.ibis.gnsslocationservice,\
+	de.jena.ibis.gnsslocationservice.impl,\
+	de.jena.ibis.gnsslocationservice.util
+-privatepackage: de.jena.ibis.gnsslocationservice.configuration

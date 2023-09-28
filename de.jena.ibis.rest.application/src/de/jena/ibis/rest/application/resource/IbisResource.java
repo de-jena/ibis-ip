@@ -12,6 +12,8 @@
 package de.jena.ibis.rest.application.resource;
 
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -83,7 +85,7 @@ public class IbisResource {
 		LOGGER.info(String.format("Received POST request to %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
 		if(request != null) {
 			try {
-
+				String received = new String(request.getInputStream().readAllBytes());
 				EClass responseEClass = IbisResponseHelper.getResponseEClass(serviceName, operationName);
 				if(responseEClass != null) {
 					ResourceSet set = rsFactory.getService();
@@ -94,13 +96,11 @@ public class IbisResource {
 					responseOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 					responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
 					responseOptions.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
-					responseRes.load(request.getInputStream(), responseOptions);
-					
+					responseRes.load(new BufferedInputStream(new ByteArrayInputStream(received.getBytes())), responseOptions);
 					sendToMQTT(String.format("TCPResponse/%s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), responseRes.getContents().get(0));
 				}
 			} catch(IOException e) {
-				LOGGER.severe(String.format("Cannot load request content for %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
-				e.printStackTrace();
+				LOGGER.log(Level.SEVERE, String.format("Cannot load request content for %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), e);
 			}
 		}
 		else {
@@ -118,8 +118,7 @@ public class IbisResource {
 			resource.save(baos, Collections.singletonMap(EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, true));
 			messagingService.publish(topic, ByteBuffer.wrap(baos.toByteArray()));
 		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE, "Could not forward event on topic " + topic);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, String.format("Could not forward event on topic %s", topic), e);
 		} finally {
 			rsFactory.ungetService(set);
 		}

@@ -20,11 +20,11 @@ import de.jena.ibis.components.helper.MulticastPublisher;
 import de.jena.ibis.components.helper.MulticastReceiver;
 
 /**
- * 
+ * Test component to check UDP connection
  * @author ilenia
  * @since Sep 25, 2023
  */
-@Component(name = "FakeUDPComponent", immediate=true)
+//@Component(name = "FakeUDPComponent", immediate=true)
 public class FakeUDPComponent {
 	
 	@Activate

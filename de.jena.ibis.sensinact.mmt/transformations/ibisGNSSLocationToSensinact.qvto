@@ -6,12 +6,12 @@ modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
 modeltype GNSSLOCATION uses "https://jena.de/models/ibis/gnsslocationservice/1.0";
 modeltype SENSINACT uses "https://jena.de/models/ibis/sensinact/1.0";
 
-mapping GNSSLOCATION::GNSSLocationData::gnssLocationToService(): SENSINACT::IbisDevice {
+mapping GNSSLOCATION::GNSSLocationServiceDataStructure::gnssLocationToService(): SENSINACT::IbisDevice {
 	gnssLocationData := self.map locationDataToService("GNSSLocationService", "GNSSLocationData");
 	admin := toAdmin("GNSSLocationService-GNSSLocationData");
 }
 
-mapping GNSSLOCATION::GNSSLocationData::locationDataToService(friendlyServiceName : String, operation : String): SENSINACT::GNSSLocationData {
+mapping GNSSLOCATION::GNSSLocationServiceDataStructure::locationDataToService(friendlyServiceName : String, operation : String): SENSINACT::GNSSLocationData {
 	var eClass := SENSINACT::GNSSLocationData.oclAsType(ECORE::EClass);
 	
 	timestamp := self.time.getEInstant();

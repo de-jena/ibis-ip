@@ -29,12 +29,12 @@ import org.osgi.test.junit5.cm.ConfigurationExtension;
 import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
+import de.jena.ibis.gnsslocationservice.GNSSLSFactory;
+import de.jena.ibis.gnsslocationservice.GNSSLocationServiceDataStructure;
 import de.jena.ibis.sensinact.mmt.tests.helper.IbisToSensinactTestHelper;
 import de.jena.model.ibis.enumerations.GNSSCoordinateSystemEnumeration;
 import de.jena.model.ibis.enumerations.GNSSQualityEnumeration;
 import de.jena.model.ibis.enumerations.GNSSTypeEnumeration;
-import de.jena.model.ibis.gnsslocationservice.GNSSLocationData;
-import de.jena.model.ibis.gnsslocationservice.IbisGNSSLocationServiceFactory;
 import de.jena.model.sensinact.ibis.IbisDevice;
 
 
@@ -85,7 +85,7 @@ public class IbisGnssLocationToSensinactMMTTest {
 		ModelTransformator transformator = pool.poll();
 		assertThat(transformator).isNotNull();
 		
-		GNSSLocationData data = IbisGNSSLocationServiceFactory.eINSTANCE.createGNSSLocationData();
+		GNSSLocationServiceDataStructure data = GNSSLSFactory.eINSTANCE.createGNSSLocationServiceDataStructure();
 		data.setLatitude(IbisToSensinactTestHelper.createIbisGNSSCoordinates(78, "north"));
 		data.setLongitude(IbisToSensinactTestHelper.createIbisGNSSCoordinates(46, "east"));
 		data.setAltitude(IbisToSensinactTestHelper.createIbisDouble(300));
@@ -97,7 +97,7 @@ public class IbisGnssLocationToSensinactMMTTest {
 		data.setNumberOfSatellites(IbisToSensinactTestHelper.createIbisInt(7));
 		data.setSignalQuality(GNSSQualityEnumeration.GPS);
 		data.setSpeedOverGround(IbisToSensinactTestHelper.createIbisDouble(50.3));
-		data.setTime(IbisToSensinactTestHelper.createIbisDateTime(new Date()));
+		data.setTime(IbisToSensinactTestHelper.createIbisTime(new Date()));
 		data.setTrackDegreeMagnetic(IbisToSensinactTestHelper.createIbisDouble(3.2));
 		data.setTrackDegreeTrue(IbisToSensinactTestHelper.createIbisDouble(4.5));
 		

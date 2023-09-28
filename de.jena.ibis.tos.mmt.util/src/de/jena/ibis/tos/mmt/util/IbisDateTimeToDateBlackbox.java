@@ -14,13 +14,16 @@ package de.jena.ibis.tos.mmt.util;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.eclipse.m2m.qvt.oml.blackbox.java.Module;
 import org.eclipse.m2m.qvt.oml.blackbox.java.Operation;
 import org.gecko.qvt.osgi.api.ModelTransformationConstants;
 import org.osgi.service.component.annotations.Component;
 
+import de.jena.model.ibis.common.IBISIPDate;
 import de.jena.model.ibis.common.IBISIPDateTime;
+import de.jena.model.ibis.common.IBISIPTime;
 import de.jena.model.ibis.common.IbisCommonPackage;
 import de.jena.udp.model.trafficos.common.TOSCommonPackage;
 
@@ -35,6 +38,22 @@ public class IbisDateTimeToDateBlackbox {
 	public Long getMillis(IBISIPDateTime ibisDateTime) {
 		if(ibisDateTime != null) {			
 			return ibisDateTime.getValue().toGregorianCalendar().getTimeInMillis();	
+		}
+		return null;
+	}
+	
+	@Operation(description = "Converts from IBISIPDate into milliseconds")
+	public Long getMillis(IBISIPDate ibisDate) {
+		if(ibisDate != null) {			
+			return ibisDate.getValue().toGregorianCalendar(TimeZone.getTimeZone(ZoneId.of("Europe/Berlin")), null, null).getTimeInMillis();	
+		}
+		return null;
+	}
+	
+	@Operation(description = "Converts from IBISIPTime into milliseconds")
+	public Long getMillis(IBISIPTime ibisTime) {
+		if(ibisTime != null) {			
+			return ibisTime.getValue().toGregorianCalendar(TimeZone.getTimeZone(ZoneId.of("Europe/Berlin")), null, null).getTimeInMillis();	
 		}
 		return null;
 	}

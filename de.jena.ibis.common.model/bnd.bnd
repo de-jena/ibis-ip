@@ -1,6 +1,7 @@
 -buildpath: \
 	org.osgi.service.condition,\
-	de.jena.ibis.enumerations.model;version=latest
+	de.jena.ibis.enumerations.model;version=latest,\
+	org.gecko.emf.osgi.component;version=latest
 
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -library: enable-emf

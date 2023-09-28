@@ -8,8 +8,7 @@
     operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>ibis-passengercountingservice.ecore</foreignModel>
   <genPackages prefix="IbisPassengerCountingService" basePackage="de.jena.model.ibis"
-      resource="XML" disposableProviderFactory="true" loadInitialization="true" literalsInterface="false"
-      ecorePackage="ibis-passengercountingservice.ecore#/">
+      resource="XML" disposableProviderFactory="true" literalsInterface="false" ecorePackage="ibis-passengercountingservice.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibis-passengercountingservice.ecore#//CountingStateEnumeration">
       <genEnumLiterals ecoreEnumLiteral="ibis-passengercountingservice.ecore#//CountingStateEnumeration/StartRequested"/>
       <genEnumLiterals ecoreEnumLiteral="ibis-passengercountingservice.ecore#//CountingStateEnumeration/Started"/>

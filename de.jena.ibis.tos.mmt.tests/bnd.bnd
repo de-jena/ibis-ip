@@ -4,6 +4,7 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 	enableOSGi-Test,\
 	enable-emf
 	
+-includeresource: data/=data/
 Private-Package: de.jena.ibis.tos.mmt.tests
 
 Bundle-Version: 1.0.0.SNAPSHOT

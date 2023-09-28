@@ -22,7 +22,7 @@ main() {
 	eobj.rootObjects()[CUSTOMERINFO::TripDataResponse] -> map tripToService(); 
 	eobj.rootObjects()[CUSTOMERINFO::VehicleDataResponse] -> map vehicleToService(); 
 
-	eobj.rootObjects()[GNSSLOCATION::GNSSLocationData] -> map gnssLocationToService();
+	eobj.rootObjects()[GNSSLOCATION::GNSSLocationServiceDataStructure] -> map gnssLocationToService();
 	
 	eobj.rootObjects()[TICKETVALIDATION::CurrentTariffStopResponse] -> map currentTariffStopToService();
 	eobj.rootObjects()[TICKETVALIDATION::CurrentLineResponse] -> map currentLineToService();
