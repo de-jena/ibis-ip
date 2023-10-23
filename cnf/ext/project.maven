@@ -157,3 +157,12 @@ org.yaml:snakeyaml:1.33
 
 org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5
 
+#CSV Parser
+com.opencsv:opencsv:5.8
+commons-beanutils:commons-beanutils:1.9.4
+commons-collections:commons-collections:3.2.2
+org.apache.commons:commons-collections4:4.4
+org.apache.commons:commons-lang3:3.13.0
+org.apache.commons:commons-text:1.10.0
+commons-logging:commons-logging:1.2
+

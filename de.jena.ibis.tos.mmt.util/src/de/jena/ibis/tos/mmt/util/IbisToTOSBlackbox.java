@@ -20,6 +20,10 @@ import org.eclipse.m2m.qvt.oml.blackbox.java.Module;
 import org.eclipse.m2m.qvt.oml.blackbox.java.Operation;
 import org.gecko.qvt.osgi.api.ModelTransformationConstants;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
+import org.osgi.service.component.annotations.ReferencePolicyOption;
 
 import de.jena.model.ibis.common.IBISIPDate;
 import de.jena.model.ibis.common.IBISIPDateTime;
@@ -27,12 +31,33 @@ import de.jena.model.ibis.common.IBISIPTime;
 import de.jena.model.ibis.common.IbisCommonPackage;
 import de.jena.udp.model.trafficos.common.TOSCommonPackage;
 
-@Component(service = IbisDateTimeToDateBlackbox.class, immediate=true, 
+@Component(service = IbisToTOSBlackbox.class, immediate=true, name="IbisToTOSBlackbox", 
 property = {ModelTransformationConstants.QVT_BLACKBOX + "=true", 
-		  ModelTransformationConstants.BLACKBOX_MODULENAME + "=IbisDateTimeToDate", 
-		  ModelTransformationConstants.BLACKBOX_QUALIFIED_UNIT_NAME + "=de.jena.ibis.tos.mmt.util.IbisDateTimeToDateBlackbox"})
+		  ModelTransformationConstants.BLACKBOX_MODULENAME + "=IbisToTOSBlackbox", 
+		  ModelTransformationConstants.BLACKBOX_QUALIFIED_UNIT_NAME + "=de.jena.ibis.tos.mmt.util.IbisToTOSBlackbox"})
 @Module(packageURIs={IbisCommonPackage.eNS_URI, "http://www.eclipse.org/emf/2002/Ecore", TOSCommonPackage.eNS_URI})
-public class IbisDateTimeToDateBlackbox {
+public class IbisToTOSBlackbox {
+
+	
+	private static IbisToOpenDataIdMapping IBIS_TO_OPEN_DATA_MAPPING;
+	
+	@Reference(cardinality = ReferenceCardinality.MANDATORY, 
+			policy = ReferencePolicy.DYNAMIC, policyOption = ReferencePolicyOption.GREEDY, 
+			bind = "unbindIbisToOpenDataMapping")
+	public void bindIbisToOpenDataMapping(IbisToOpenDataIdMapping ibisToOpenDataMapping) {
+		IBIS_TO_OPEN_DATA_MAPPING = ibisToOpenDataMapping;
+	}
+	
+	public void unbindIbisToOpenDataMapping(IbisToOpenDataIdMapping mapping) {
+		IBIS_TO_OPEN_DATA_MAPPING = null;
+	}
+	
+	@Operation(description = "Converts Ibis Stop ID into Open Data Stop ID")
+	public String getOpenDataId(String ibisId) {
+		String openDataID = IBIS_TO_OPEN_DATA_MAPPING.getOpenDataID(ibisId);;
+		if(openDataID == null) return null;
+		return "de:16053:".concat(openDataID);
+	}
 
 	@Operation(description = "Converts from IBISIPDateTime into milliseconds")
 	public Long getMillis(IBISIPDateTime ibisDateTime) {

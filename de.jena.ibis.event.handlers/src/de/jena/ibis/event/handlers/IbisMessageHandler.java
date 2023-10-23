@@ -11,8 +11,8 @@
  */
 package de.jena.ibis.event.handlers;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.sensinact.prototype.PrototypePush;
 import org.gecko.core.pool.Pool;
 import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.osgi.messaging.Message;
@@ -40,16 +39,18 @@ import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.util.pushstream.PushStream;
 
 import de.dim.trafficos.publictransport.apis.PTUpdateService;
+import de.jena.ibis.apis.helper.IbisResponseHelper;
 import de.jena.ibis.gnsslocationservice.GNSSLSPackage;
 import de.jena.ibis.gnsslocationservice.GNSSLocationServiceDataStructure;
-import de.jena.model.ibis.common.IbisCommonPackage;
-import de.jena.model.sensinact.ibis.IbisAdmin;
-import de.jena.model.sensinact.ibis.IbisDevice;
-import de.jena.model.sensinact.ibis.IbisSensinactFactory;
+import de.jena.udp.model.trafficos.publictransport.PTOnlineUpdate;
+import de.jena.udp.model.trafficos.publictransport.PTType;
 import de.jena.udp.model.trafficos.publictransport.PTUpdate;
+import de.jena.udp.model.trafficos.publictransport.PTUpdateValueType;
+import de.jena.udp.model.trafficos.publictransport.TOSPublicTransportFactory;
 
 /**
  * This handler listens to the ibis data the bus,tram,etc are sending, pushes them to sensinact and save them in the db
@@ -63,16 +64,7 @@ public class IbisMessageHandler {
 //	@Reference
 //	PrototypePush sensinact;
 	
-	@Reference(target = "(id=full)")
-	MessagingService messagingService;
-	
-	@Reference
-	private ComponentServiceObjects<ResourceSet> rsFactory;
-	
-//	@Reference(target = ("(pool.componentName=ibisToSensinactPool)"))
-//	private ConfigurableModelTransformatorPool sensinactPoolComponent;
-	
-	@Reference(target = ("(pool.componentName=ibisToTOSPool)"))
+	private ComponentServiceObjects<ResourceSet> rsFactory;	
 	private ConfigurableModelTransformatorPool tosPoolComponent;
 	
 	@Reference
@@ -81,23 +73,37 @@ public class IbisMessageHandler {
 	private static final Logger LOGGER = Logger.getLogger(IbisMessageHandler.class.getName());
 	private static final String TCP_MQTT_TOPIC = "TCPResponse/#";
 	private static final String UDP_MQTT_TOPIC = "UDPPacket/#";
+	private static final String ONLINE_MQTT_TOPIC = "IBIS/#";
+	
 
 	
 	@Activate 
-	public void activate() {
+	public IbisMessageHandler(
+			@Reference(cardinality = ReferenceCardinality.MANDATORY) ComponentServiceObjects<ResourceSet> rsFactory,
+			@Reference(target = "(id=full)", cardinality = ReferenceCardinality.MANDATORY) MessagingService messagingService,
+			@Reference(target = "(pool.componentName=ibisToTOSPool)", cardinality = ReferenceCardinality.MANDATORY) ConfigurableModelTransformatorPool tosPoolComponent) {
+		
 		LOGGER.info("Ibis Message Handler is active!");
+		this.rsFactory = rsFactory;
+		this.tosPoolComponent = tosPoolComponent;
 		try {
-			PushStream<Message> subscription = messagingService.subscribe(TCP_MQTT_TOPIC);
-			subscription = subscription.merge(messagingService.subscribe(UDP_MQTT_TOPIC));
+			PushStream<Message> subscription = messagingService.subscribe(TCP_MQTT_TOPIC)
+					.merge(messagingService.subscribe(UDP_MQTT_TOPIC))
+					.merge(messagingService.subscribe(ONLINE_MQTT_TOPIC));
 			subscription.forEach(this::handleMessage);			
 		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE, String.format("Exception while subscribing to TCP and/or UDP ibis messages!"), e);
+			LOGGER.log(Level.SEVERE, String.format("Exception while subscribing to one of these topics: %s %s %s",TCP_MQTT_TOPIC, UDP_MQTT_TOPIC, ONLINE_MQTT_TOPIC), e);
 		}
 	}
 	
 	private void handleMessage(Message message) {
 		LOGGER.info(String.format("Received event for topic %s", message.topic()));
 		String[] topicSegments = message.topic().split("/");
+		if(message.topic().startsWith("IBIS") && topicSegments.length == 4) {
+			saveOnlineUpdate(topicSegments);
+			return;
+		}
+		
 		if(topicSegments.length != 5) {
 			LOGGER.severe(String.format("Received event has been published in a non conformed topic %s. \n "
 					+ "Expected form is TCPResponse/<deviceId>/<deviceType>/<serviceName>/<serviceOperation> or \n "
@@ -113,29 +119,59 @@ public class IbisMessageHandler {
 	}
 
 	
+	/**
+	 * Save the online update to TOS db
+	 */
+	private void saveOnlineUpdate(String[] topicSegments) {
+		String deviceId = topicSegments[1];
+		String deviceType = topicSegments[2];
+		boolean online = Boolean.valueOf(topicSegments[3]);
+		
+		PTUpdate update = TOSPublicTransportFactory.eINSTANCE.createPTUpdate();
+		update.setRefVehicleId(deviceId);
+		update.setDataSource("IBIS");
+		update.setTimestamp(System.currentTimeMillis());
+		update.setType(PTUpdateValueType.ONLINE);
+		PTOnlineUpdate updateValue = TOSPublicTransportFactory.eINSTANCE.createPTOnlineUpdate();
+		updateValue.setOnline(online);
+		updateValue.setType(PTType.valueOf(deviceType));
+		update.setValue(updateValue);
+		tosPTUpdateService.savePTUpdate(update);
+	}
+
 	private EObject extractMessageContent(byte[] content, String topic) {
 		if(content.length == 0) return null;
 		EClass rootObjClass = null;
 		
 		if(topic.startsWith("TCP")) {
-			rootObjClass = IbisCommonPackage.eINSTANCE.getGeneralResponse();
+			String service = topic.split("/")[3];
+			String operation = topic.split("/")[4];
+			rootObjClass = IbisResponseHelper.getResponseEClass(service, operation);
 		} else if(topic.startsWith("UDP")) {
 			rootObjClass = GNSSLSPackage.eINSTANCE.getGNSSLocationServiceDataStructure();			
 		}
-		if(rootObjClass != null) return loadResource(URI.createFileURI("temp.json"), "application/json", content, Collections.singletonMap(EMFJs.OPTION_ROOT_ELEMENT, rootObjClass));
+		if(rootObjClass != null) {
+			EObject obj = loadResource(URI.createFileURI("temp.json"), "application/json", content, Collections.singletonMap(EMFJs.OPTION_ROOT_ELEMENT, rootObjClass));
+			return obj;
+		}
 		return null;
 	}
 
 	private EObject loadResource(URI uri, String mediaType, byte[] content, Map<String, Object> options) {
 		ResourceSet set = rsFactory.getService();
 		try {
+			LOGGER.info("Creating resource");
 			Resource res = set.createResource(uri, mediaType);
-			res.load(new ByteArrayInputStream(content),options);
+			String received = new String(content).replaceAll("^\\x00*", "");
+			res.load(new BufferedInputStream(new ByteArrayInputStream(received.getBytes())), options);
 			if(res.getContents() != null & !res.getContents().isEmpty()) {
+				LOGGER.info("Returning resource");
 				return res.getContents().get(0);
+			} else {
+				LOGGER.info("Returning null");
 			}
 			return null;
-		} catch(IOException e) {
+		} catch(Exception e) {
 			LOGGER.log(Level.SEVERE, String.format("IOException while reading payload from MQTT"), e);
 			return null;
 		}
@@ -184,15 +220,15 @@ public class IbisMessageHandler {
 					LocalDateTime locDateTime = LocalDateTime.of(locDate, locTime);
 					update.setTimestamp(locDateTime.atZone(ZoneId.of("GMT+2")).toInstant().toEpochMilli());
 				} 		
-				if(update != null) {
-					tosPTUpdateService.savePTUpdate(update);
-				}
+				tosPTUpdateService.savePTUpdate(update);
 			} catch(Exception e) {
 				LOGGER.log(Level.SEVERE, String.format("Something went wrong when transforming and savinfǵ data on TOS for vehicle %s", vehicleId), e);
 			}			
 			finally {
 				pool.release(transformator);
 			}
+		} else {
+			LOGGER.severe("Ibis To TOS ModelTransformator Pool is null!");
 		}
 	}
 }

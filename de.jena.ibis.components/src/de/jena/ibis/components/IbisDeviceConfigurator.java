@@ -9,7 +9,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package de.jena.ibis.apis;
+package de.jena.ibis.components;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.gecko.osgi.messaging.MessagingService;
 import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.cm.annotations.RequireConfigurationAdmin;
@@ -27,8 +28,16 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+
+import de.jena.ibis.apis.IbisDeviceConfiguratorConfig;
+import de.jena.ibis.apis.helper.IbisMQTTHelper;
 
 /**
+ * This component is responsible for registering the IBIS services which are active on the vehicle, and that
+ * will perform the subscriptions operations to gather the data.
+ * When a new IbisDeviceConfigurator comes up, an MQTT message is also sent to be notified about that. 
+ * The same happens when an IbisDeviceConfigurator is deactivated.
  * 
  * @author ilenia
  * @since Mar 29, 2023
@@ -36,18 +45,21 @@ import org.osgi.service.component.annotations.Reference;
 @Component(name = "IbisDeviceConfigurator", configurationPid = "IbisDeviceConfigurator", configurationPolicy = ConfigurationPolicy.REQUIRE)
 @RequireConfigurationAdmin
 public class IbisDeviceConfigurator {
-
+	
 	private static final Logger LOGGER = Logger.getLogger(IbisDeviceConfigurator.class.getName());
+	private static final String MQTT_TOPIC = "IBIS/%s/%s/%s";
 
 	private ConfigurationAdmin configAdmin;
+	private MessagingService messagingService;
 	private IbisDeviceConfiguratorConfig config;
 	private List<Configuration> serviceConfigs = new ArrayList<>();
 
 	@Activate
-	public IbisDeviceConfigurator(IbisDeviceConfiguratorConfig config, @Reference ConfigurationAdmin configAdmin) throws IOException  {
-		LOGGER.fine("Entering Device Configurator");
+	public IbisDeviceConfigurator(IbisDeviceConfiguratorConfig config, @Reference ConfigurationAdmin configAdmin, 
+			@Reference(target = "(id=full)", cardinality = ReferenceCardinality.MANDATORY) MessagingService messagingService) throws IOException  {
 		this.config = config;
 		this.configAdmin = configAdmin;
+		this.messagingService = messagingService;
 		String[] tcpServices = config.refTCPServices();
 		for(String service : tcpServices) {
 			updateServiceConfig(service);
@@ -56,6 +68,7 @@ public class IbisDeviceConfigurator {
 		for(String service : udpServices) {
 			updateServiceConfig(service);
 		}
+		sendToMQTT(true);
 	}
 	
 	@Deactivate
@@ -68,10 +81,16 @@ public class IbisDeviceConfigurator {
 			}
 		});
 		serviceConfigs.clear();
+		sendToMQTT(false);
 	}
 	
 	public IbisDeviceConfiguratorConfig getConfig() {
 		return config;
+	}
+	
+	private void sendToMQTT(boolean online) {
+		IbisMQTTHelper.sendToMQTT(String.format(MQTT_TOPIC, config.deviceId(), config.deviceType(), online),
+				null, null, messagingService);
 	}
 	
 	private void updateServiceConfig(String service) throws IOException {		
@@ -141,7 +160,6 @@ public class IbisDeviceConfigurator {
 		props.put("listenerNetworkInterface", config.updListenerNetworkInterface());
 		props.put("multiCastGroupPort", config.udpMultiCastGroupPort());
 		props.put("multiCastGroupIP", config.udpMultiCastGroupIP());
-		props.put("listenerPort", config.udpListenerPort());
 		return props;
 	}
 }

@@ -24,7 +24,8 @@
 	bnd.identity;id='slf4j.simple',\
 	bnd.identity;id='de.dim.trafficos.publictransport.component',\
 	bnd.identity;id='de.dim.trafficos.publictransport.config',\
-	bnd.identity;id='de.dim.trafficos.publictransport.value.converter'
+	bnd.identity;id='de.dim.trafficos.publictransport.value.converter',\
+	bnd.identity;id='org.eclipse.emfcloud.emfjson-jackson'
 -runbundles: \
 	com.fasterxml.jackson.core.jackson-annotations;version='[2.14.0,2.14.1)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.14.0,2.14.1)',\
@@ -116,5 +117,16 @@
 	org.gecko.util.pushstream;version='[6.0.0,6.0.1)',\
 	de.dim.trafficos.publictransport.config;version='[1.0.0,1.0.1)',\
 	de.dim.trafficos.publictransport.value.converter;version='[1.0.0,1.0.1)',\
-	org.gecko.emf.osgi.api;version='[5.0.0,5.0.1)',\
-	de.jena.ibis.sensinact.model;version=snapshot
+	de.jena.ibis.apis;version=snapshot,\
+	de.jena.ibis.customer.info.service.model;version=snapshot,\
+	de.jena.ibis.device.management.service.model;version=snapshot,\
+	de.jena.ibis.door.state.service.model;version=snapshot,\
+	de.jena.ibis.passenger.counting.service.model;version=snapshot,\
+	de.jena.ibis.ticket.validation.service.model;version=snapshot,\
+	com.opencsv;version='[5.8.0,5.8.1)',\
+	org.apache.commons.collections;version='[3.2.2,3.2.3)',\
+	org.apache.commons.commons-beanutils;version='[1.9.4,1.9.5)',\
+	org.apache.commons.commons-collections4;version='[4.4.0,4.4.1)',\
+	org.apache.commons.commons-text;version='[1.10.0,1.10.1)',\
+	org.apache.commons.lang3;version='[3.13.0,3.13.1)',\
+	org.apache.commons.logging;version='[1.2.0,1.2.1)'

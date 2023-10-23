@@ -7,7 +7,8 @@
 	bnd.identity;id='org.apache.felix.gogo.shell',\
 	bnd.identity;id='org.gecko.qvt.osgi.component',\
 	bnd.identity;id='de.jena.ibis.tos.mmt',\
-	bnd.identity;id='de.jena.ibis.tos.mmt.util'
+	bnd.identity;id='de.jena.ibis.tos.mmt.util',\
+	bnd.identity;id='org.gecko.emf.json'
 	
 -runbundles.test: \
 	de.jena.ibis.tos.mmt.tests;version=snapshot
@@ -39,7 +40,6 @@
 	org.apache.felix.gogo.shell;version='[1.1.4,1.1.5)',\
 	org.apache.felix.log;version='[1.2.4,1.2.5)',\
 	org.apache.felix.scr;version='[2.2.6,2.2.7)',\
-	org.gecko.emf.osgi.api;version='[5.0.0,5.0.1)',\
 	org.gecko.emf.osgi.component;version='[5.0.0,5.0.1)',\
 	org.gecko.qvt.osgi.api;version='[4.1.1,4.1.2)',\
 	org.gecko.qvt.osgi.component;version='[1.0.6,1.0.7)',\
@@ -70,4 +70,20 @@
 	de.jena.ibis.enumerations.model;version=snapshot,\
 	de.jena.ibis.gnss.location.service.model;version=snapshot,\
 	de.jena.udp.trafficos.common.model;version='[1.1.1,1.1.2)',\
-	de.jena.udp.trafficos.publictransport.model;version='[1.1.1,1.1.2)'
+	de.jena.udp.trafficos.publictransport.model;version='[1.1.1,1.1.2)',\
+	com.fasterxml.jackson.core.jackson-annotations;version='[2.14.0,2.14.1)',\
+	com.fasterxml.jackson.core.jackson-core;version='[2.14.0,2.14.1)',\
+	com.fasterxml.jackson.core.jackson-databind;version='[2.14.0,2.14.1)',\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-properties;version='[2.14.0,2.14.1)',\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.14.0,2.14.1)',\
+	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.0,2.14.1)',\
+	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
+	org.gecko.emf.json;version='[1.4.1,1.4.2)',\
+	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
+	com.opencsv;version='[5.8.0,5.8.1)',\
+	org.apache.commons.collections;version='[3.2.2,3.2.3)',\
+	org.apache.commons.commons-beanutils;version='[1.9.4,1.9.5)',\
+	org.apache.commons.commons-collections4;version='[4.4.0,4.4.1)',\
+	org.apache.commons.commons-text;version='[1.10.0,1.10.1)',\
+	org.apache.commons.lang3;version='[3.13.0,3.13.1)',\
+	org.apache.commons.logging;version='[1.2.0,1.2.1)'

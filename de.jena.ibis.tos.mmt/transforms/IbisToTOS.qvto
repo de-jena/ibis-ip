@@ -1,4 +1,4 @@
-import de.jena.ibis.tos.mmt.util.IbisDateTimeToDateBlackbox;
+import de.jena.ibis.tos.mmt.util.IbisToTOSBlackbox;
 
 modeltype COMMON uses "https://jena.de/models/ibis/common/1.0";
 modeltype ENUMERATIONS uses "https://jena.de/models/ibis/enumerations/1.0";
@@ -105,7 +105,9 @@ mapping CUSTOMERINFO::TripDataResponse::toTOSTripUpdate() : TOSPT::PTTripUpdate 
 }
 
 mapping COMMON::StopInformation::toTOSStopUpdate() : TOSPT::PTStopUpdate {
-	refStopId := self.stopRef.value.toString();
+//	We set the refStopId through a mapping which maps the ibis ID to the OpenData ID
+	refStopId := getOpenDataId(self.stopRef.value.toString());
+	ibisID := self.stopRef.value.toString();
 	expectedArrivalTime := getLocalTime(self.arrivalExpected); 
 	expectedDepartureTime := getLocalTime(self.departureExpected); 
 	recordedArrivalTime := getLocalTime(self.recordedArrivalTime);

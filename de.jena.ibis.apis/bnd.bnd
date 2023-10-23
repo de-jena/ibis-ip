@@ -15,4 +15,8 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	org.osgi.service.cm,\
 	de.jena.ibis.passenger.counting.service.model;version=latest,\
 	de.jena.ibis.door.state.service.model;version=latest,\
-	de.jena.udp.trafficos.publictransport.api.model;version=latest
+	de.jena.udp.trafficos.publictransport.api.model;version=latest,\
+	org.osgi.service.component,\
+	org.eclipse.emf.common,\
+	org.gecko.emf.json,\
+	org.gecko.osgi.messaging

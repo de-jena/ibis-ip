@@ -37,9 +37,7 @@ public @interface IbisDeviceConfiguratorConfig {
 	public String[] refTCPServices() default {};
 	
 	public String[] refUDPServices() default {};
-	
-	public int udpListenerPort() default 53000;
-	
+		
 	public String updListenerNetworkInterface() default "eth0";
 	
 	public String udpMultiCastGroupIP() default "224.0.0.251";

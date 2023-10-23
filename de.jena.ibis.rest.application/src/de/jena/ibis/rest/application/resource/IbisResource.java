@@ -14,23 +14,17 @@ package de.jena.ibis.rest.application.resource;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.osgi.messaging.MessagingService;
 import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Component;
@@ -39,6 +33,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
 
+import de.jena.ibis.apis.helper.IbisMQTTHelper;
 import de.jena.ibis.apis.helper.IbisResponseHelper;
 import de.jena.ibis.runtime.annotation.RequireRuntime;
 import jakarta.servlet.http.HttpServletRequest;
@@ -97,7 +92,7 @@ public class IbisResource {
 					responseOptions.put(XMLResource.OPTION_ENCODING, "UTF-8");
 					responseOptions.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
 					responseRes.load(new BufferedInputStream(new ByteArrayInputStream(received.getBytes())), responseOptions);
-					sendToMQTT(String.format("TCPResponse/%s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), responseRes.getContents().get(0));
+					IbisMQTTHelper.sendToMQTT(String.format("TCPResponse/%s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), responseRes.getContents().get(0), rsFactory, messagingService);
 				}
 			} catch(IOException e) {
 				LOGGER.log(Level.SEVERE, String.format("Cannot load request content for %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName), e);
@@ -107,20 +102,5 @@ public class IbisResource {
 			LOGGER.severe(String.format("Request is null for %s/%s/%s/%s", deviceId, deviceType, serviceName, operationName));
 		}
 		return Response.ok().build();
-	}
-	
-	private void sendToMQTT(String topic, EObject object) {
-		
-		ResourceSet set = rsFactory.getService();		
-		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
-			Resource resource = set.createResource(URI.createFileURI("temp_"+UUID.randomUUID().toString()+".json"));
-			resource.getContents().add(object);
-			resource.save(baos, Collections.singletonMap(EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, true));
-			messagingService.publish(topic, ByteBuffer.wrap(baos.toByteArray()));
-		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE, String.format("Could not forward event on topic %s", topic), e);
-		} finally {
-			rsFactory.ungetService(set);
-		}
 	}
 }

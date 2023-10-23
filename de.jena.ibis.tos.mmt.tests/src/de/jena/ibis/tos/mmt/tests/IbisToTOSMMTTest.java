@@ -14,23 +14,11 @@ package de.jena.ibis.tos.mmt.tests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.gecko.core.pool.Pool;
 import org.gecko.qvt.osgi.api.ConfigurableModelTransformatorPool;
 import org.gecko.qvt.osgi.api.ModelTransformator;
@@ -44,11 +32,8 @@ import org.osgi.test.junit5.cm.ConfigurationExtension;
 import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
-import de.jena.ibis.gnsslocationservice.DocumentRoot;
 import de.jena.ibis.gnsslocationservice.GNSSLSFactory;
-import de.jena.ibis.gnsslocationservice.GNSSLSPackage;
 import de.jena.ibis.gnsslocationservice.GNSSLocationServiceDataStructure;
-import de.jena.ibis.gnsslocationservice.util.GNSSLSResourceFactoryImpl;
 import de.jena.ibis.tos.mmt.tests.helper.IbisToTOSHelper;
 import de.jena.model.ibis.common.Announcement;
 import de.jena.model.ibis.common.IbisCommonFactory;
@@ -97,82 +82,6 @@ import de.jena.udp.model.trafficos.publictransport.PTVehicleUpdate;
 @ExtendWith(ServiceExtension.class)
 @ExtendWith(ConfigurationExtension.class)
 public class IbisToTOSMMTTest {
-	
-	@Test
-	public void test(@InjectService(filter = "(emf.model.name=gnsslocationservice)") ServiceAware<ResourceSet> resSetAware) {
-		assertThat(resSetAware).isNotNull();
-		ResourceSet set = resSetAware.getService();
-		assertThat(set).isNotNull();
-		
-		EClass responseEClass = GNSSLSPackage.eINSTANCE.getGNSSLocationServiceDataStructure();
-//		EClass responseEClass = IbisCustomerInformationServicePackage.eINSTANCE.getAllDataResponse();
-		set.getPackageRegistry().put(null, responseEClass.getEPackage());
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("gnss", new GNSSLSResourceFactoryImpl());
-		
-		Resource res = set.createResource(URI.createURI("temp.gnss"));
-		Map<String, Object> options = new HashMap<>();
-//		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-//		options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-//		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-//		options.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
-		try {
-			res.load(new FileInputStream(new File("data/test.xml")), options);
-//			res.load(new FileInputStream(new File("data/response.xml")), options);
-			if(res instanceof XMLResource xmlRes) {
-				Map<EObject, AnyType> unknownFeature = xmlRes.getEObjectToExtensionMap();
-				System.out.println("Test");
-			}
-			if(res.getContents() != null && !res.getContents().isEmpty()) {
-				EObject content = res.getContents().get(0);
-				System.out.println("Test ");
-				System.out.println(content.eClass().getName());
-				System.out.println(((DocumentRoot)content).getGNSSLocationServiceData());
-			}
-		} catch(Exception e) {
-			fail(e.getMessage());
-		}
-	}
-	@Test
-	public void testSave(@InjectService(filter = "(emf.resource.configurator.name=GeckoXMLResourceFactory)") ServiceAware<ResourceSet> resSetAware) {
-		assertThat(resSetAware).isNotNull();
-		ResourceSet set = resSetAware.getService();
-		assertThat(set).isNotNull();
-		
-		try {
-		EClass responseEClass = GNSSLSPackage.eINSTANCE.getGNSSLocationServiceDataStructure();
-		set.getPackageRegistry().put(null, responseEClass.getEPackage());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-//		EClass responseEClass = IbisCustomerInformationServicePackage.eINSTANCE.getAllDataResponse();
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put("gns", new GNSSLSResourceFactoryImpl());
-		
-		Resource res = set.createResource(URI.createURI("temp_save.gns"));
-		Map<String, Object> options = new HashMap<>();
-//		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-//		options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-//		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-//		options.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, true);
-		DocumentRoot root = GNSSLSFactory.eINSTANCE.createDocumentRoot();
-		GNSSLocationServiceDataStructure data = GNSSLSFactory.eINSTANCE.createGNSSLocationServiceDataStructure();
-		root.setGNSSLocationServiceData(data);
-		res.getContents().add(root);
-		try {
-			res.save(new FileOutputStream(new File("data/test2.xml")), options);
-//			res.load(new FileInputStream(new File("data/response.xml")), options);
-//			if(res instanceof XMLResource xmlRes) {
-//				Map<EObject, AnyType> unknownFeature = xmlRes.getEObjectToExtensionMap();
-//				System.out.println("Test");
-//			}
-//			if(res.getContents() != null && !res.getContents().isEmpty()) {
-//				EObject content = res.getContents().get(0);
-//				System.out.println("Test ");
-//				System.out.println(content.eClass().getName());
-//			}
-		} catch(Exception e) {
-			fail(e.getMessage());
-		}
-	}
 	
 	@Test
 	@WithConfiguration(
@@ -340,7 +249,7 @@ public class IbisToTOSMMTTest {
 	StopSequence stopSequence = IbisCommonFactory.eINSTANCE.createStopSequence();
 	StopInformation stopInfo1 = IbisCommonFactory.eINSTANCE.createStopInformation();
 	stopInfo1.setStopIndex(IbisToTOSHelper.createIbisInt(7));
-	stopInfo1.setStopRef(IbisToTOSHelper.createIbisToken("stop1"));
+	stopInfo1.setStopRef(IbisToTOSHelper.createIbisToken("3025"));
 	stopInfo1.getStopName().add(IbisToTOSHelper.createIbisTextType("stop 1 Name"));
 	stopInfo1.getStopName().add(IbisToTOSHelper.createIbisTextType("stop 1 Other Name"));
 	stopInfo1.setDistanceToNextStop(IbisToTOSHelper.createIbisInt(1500));
@@ -352,7 +261,7 @@ public class IbisToTOSMMTTest {
 	
 	StopInformation stopInfo2 = IbisCommonFactory.eINSTANCE.createStopInformation();
 	stopInfo2.setStopIndex(IbisToTOSHelper.createIbisInt(8));
-	stopInfo2.setStopRef(IbisToTOSHelper.createIbisToken("stop2"));
+	stopInfo2.setStopRef(IbisToTOSHelper.createIbisToken("3121"));
 	stopInfo2.getStopName().add(IbisToTOSHelper.createIbisTextType("stop 2 Name"));
 	stopInfo2.getStopName().add(IbisToTOSHelper.createIbisTextType("stop 2 Other Name"));
 	stopInfo2.setDistanceToNextStop(IbisToTOSHelper.createIbisInt(1300));
@@ -383,6 +292,8 @@ public class IbisToTOSMMTTest {
 	assertThat(stopUpdates).hasSize(2);
 	
 	PTStopUpdate stopUpdate1 = stopUpdates.get(0);
+	assertThat(stopUpdate1.getIbisID()).isEqualTo("3025");
+	assertThat(stopUpdate1.getRefStopId()).isEqualTo("de:16053:15300300");
 	assertThat(stopUpdate1.getExpectedArrivalTime()).isNotNull();
 	assertThat(stopUpdate1.getExpectedDepartureTime()).isNotNull();
 	assertThat(stopUpdate1.getRecordedArrivalTime()).isNotNull();
@@ -390,6 +301,8 @@ public class IbisToTOSMMTTest {
 
 	
 	PTStopUpdate stopUpdate2 = stopUpdates.get(1);
+	assertThat(stopUpdate2.getIbisID()).isEqualTo("3121");
+	assertThat(stopUpdate2.getRefStopId()).isEqualTo("de:16053:15312803");
 	assertThat(stopUpdate2.getExpectedArrivalTime()).isNotNull();
 	assertThat(stopUpdate2.getExpectedDepartureTime()).isNotNull();
 	assertThat(stopUpdate2.getRecordedArrivalTime()).isNotNull();
@@ -419,8 +332,10 @@ public class IbisToTOSMMTTest {
 					@Property(key = "pool.group", value = "tosPool"),
 					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
 			})
-	public void testCurrentStopPoint(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-	ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
+	public void testCurrentStopPoint(
+		@InjectService(timeout = 10000l, filter="(pool.componentName=modelTransformatorService)") 
+	ServiceAware<ConfigurableModelTransformatorPool> poolAware
+	) throws Exception{
 		
 	assertThat(poolAware).isNotNull();
 	ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
@@ -437,7 +352,7 @@ public class IbisToTOSMMTTest {
 	
 	StopInformation stopInfo1 = IbisCommonFactory.eINSTANCE.createStopInformation();
 	stopInfo1.setStopIndex(IbisToTOSHelper.createIbisInt(7));
-	stopInfo1.setStopRef(IbisToTOSHelper.createIbisToken("stop1"));
+	stopInfo1.setStopRef(IbisToTOSHelper.createIbisToken("3025"));
 	stopInfo1.getStopName().add(IbisToTOSHelper.createIbisTextType("stop 1 Name"));
 	stopInfo1.getStopName().add(IbisToTOSHelper.createIbisTextType("stop 1 Other Name"));
 	stopInfo1.setDistanceToNextStop(IbisToTOSHelper.createIbisInt(1500));
@@ -449,7 +364,7 @@ public class IbisToTOSMMTTest {
 	
 	data.setCurrentStopPoint(stopInfo1);
 	response.setCurrentStopPointData(data);
-	
+		
 	PTUpdate result = (PTUpdate) transformator.startTransformation(response);
 	assertThat(result).isNotNull();
 	assertThat(result.getType()).isEqualTo(PTUpdateValueType.CURRENT_STOP_POINT);
@@ -457,7 +372,8 @@ public class IbisToTOSMMTTest {
 	assertThat(result.getValue()).isInstanceOf(PTStopUpdate.class);
 	
 	PTStopUpdate value = (PTStopUpdate) result.getValue();
-	assertThat(value.getRefStopId()).isEqualTo("stop1");
+	assertThat(value.getIbisID()).isEqualTo("3025");
+	assertThat(value.getRefStopId()).isEqualTo("de:16053:15300300");
 	assertThat(value.getExpectedArrivalTime()).isNotNull();
 	assertThat(value.getExpectedDepartureTime()).isNotNull();
 	assertThat(value.getRecordedArrivalTime()).isNotNull();

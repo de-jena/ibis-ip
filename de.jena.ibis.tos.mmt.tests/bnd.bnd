@@ -18,6 +18,8 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	de.jena.ibis.enumerations.model;version=latest,\
 	de.jena.ibis.gnss.location.service.model;version=latest,\
 	de.jena.udp.trafficos.common.model;version=latest,\
-	de.jena.udp.trafficos.publictransport.model;version=latest
+	de.jena.udp.trafficos.publictransport.model;version=latest,\
+	org.gecko.emf.json,\
+	org.gecko.qvt.osgi.component
 	
 -privatepackage: de.jena.ibis.tos.mmt.tests.helper

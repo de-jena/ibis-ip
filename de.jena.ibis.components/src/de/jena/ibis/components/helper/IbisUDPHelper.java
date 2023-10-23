@@ -13,17 +13,13 @@ package de.jena.ibis.components.helper;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
 import java.net.NetworkInterface;
-import java.nio.ByteBuffer;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,13 +30,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.osgi.messaging.MessagingService;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.util.promise.PromiseFactory;
 
 import de.jena.ibis.apis.IbisUDPServiceConfig;
+import de.jena.ibis.apis.helper.IbisMQTTHelper;
 import de.jena.ibis.apis.helper.IbisResponseHelper;
 import de.jena.ibis.gnsslocationservice.DocumentRoot;
 
@@ -87,7 +83,6 @@ public class IbisUDPHelper {
 					String received = new String(
 							response.getData(), 0, response.getLength());
 					received = received.replaceAll("^\\x00*", "");
-//					System.out.println(received);
 					EClass responseEClass = IbisResponseHelper.getResponseEClass(serviceConfig.serviceName(), operation);
 					if(responseEClass != null) {
 						LOGGER.info("=============================================");
@@ -108,7 +103,7 @@ public class IbisUDPHelper {
 							if(res.getContents() != null && !res.getContents().isEmpty()) {
 								EObject content = res.getContents().get(0);
 								if(content instanceof DocumentRoot docRoot) {
-									sendToMQTT(String.format("UDPPacket/%s/%s/%s/%s", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation), 
+									IbisMQTTHelper.sendToMQTT(String.format("UDPPacket/%s/%s/%s/%s", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation), 
 											docRoot.getGNSSLocationServiceData(), rsFactory, messagingService);
 								} else {
 									LOGGER.severe(String.format("Content in Resource for UDPPacket/%s/%s/%s/%s is not of type DocumentRoot", serviceConfig.refDeviceId(), serviceConfig.refDeviceType(), serviceConfig.serviceName(), operation));
@@ -145,20 +140,4 @@ public class IbisUDPHelper {
 			return -1;
 		}	
 	}
-	
-	private static void sendToMQTT(String topic, EObject object, ComponentServiceObjects<ResourceSet> rsFactory, MessagingService messagingService) {
-		
-		ResourceSet set = rsFactory.getService();		
-		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
-			Resource resource = set.createResource(URI.createFileURI("temp_"+UUID.randomUUID().toString()+".json"));
-			resource.getContents().add(object);
-			resource.save(baos, Collections.singletonMap(EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, true));
-			messagingService.publish(topic, ByteBuffer.wrap(baos.toByteArray()));
-		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE, String.format("Could not forward event on topic %s", topic), e);
-		} finally {
-			rsFactory.ungetService(set);
-		}
-	}
-
 }

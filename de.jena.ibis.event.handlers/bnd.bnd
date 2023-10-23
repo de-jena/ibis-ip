@@ -28,4 +28,6 @@ Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'
 	de.dim.trafficos.publictransport.apis;version=latest,\
 	de.jena.udp.trafficos.publictransport.model;version=latest,\
 	de.jena.udp.trafficos.common.model;version=latest,\
-	org.osgi.util.pushstream
+	org.osgi.util.pushstream,\
+	org.eclipse.emfcloud.emfjson-jackson,\
+	de.jena.ibis.apis;version=latest
