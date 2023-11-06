@@ -1,8 +1,8 @@
-#Model to Model Transformation
+# Model to Model Transformation
 
 This sample model-to-model transformation projects provides you the basic project structure for a mmt project, together with some examples.
 
-##Things you need to take care of
+## Things you need to take care of
 
 ### Models
 The two (or more) .ecore models you need for the transformation can be put in the folder ./models, where now the two example models are located. 

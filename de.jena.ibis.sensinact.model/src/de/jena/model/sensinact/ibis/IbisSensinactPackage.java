@@ -12,6 +12,7 @@
  */
 package de.jena.model.sensinact.ibis;
 
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
@@ -40,7 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-@EPackage(uri = IbisSensinactPackage.eNS_URI, genModel = "/model/ibis.genmodel")
+@EPackage(uri = IbisSensinactPackage.eNS_URI, genModel = "/model/ibis.genmodel", genModelSourceLocations = {"model/ibis.genmodel","de.jena.ibis.sensinact.model/model/ibis.genmodel"}, ecore="/model/ibis.ecore", ecoreSourceLocations="/model/ibis.ecore")
 public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	/**
 	 * The package name.
