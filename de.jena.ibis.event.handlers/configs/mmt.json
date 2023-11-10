@@ -14,7 +14,7 @@
 		"name": "ibis",
 		"qvt.templatePath": "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto",
 		"qvt.transformatorName": "ibisToSensinact",
-		"qvt.model.target": "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice)(emf.model.name=ticketvalidationservice))",
+		"qvt.model.target": "(&(emf.model.name=ibis)(emf.model.name=common)(emf.model.name=enumerations)(emf.model.name=customerinformationservice)(emf.model.name=gnsslocationservice)(emf.model.name=ticketvalidationservice))",
 		"pool.name": "sensinactPool",
 		"pool.group": "sensinactPoolGroup",
 		"pool.asService": false

@@ -13,6 +13,8 @@ package de.jena.ibis.sensinact.mmt.util;
 
 import java.time.Instant;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.m2m.qvt.oml.blackbox.java.Module;
 import org.eclipse.m2m.qvt.oml.blackbox.java.Operation;
 import org.gecko.qvt.osgi.api.ModelTransformationConstants;
@@ -20,6 +22,7 @@ import org.osgi.service.component.annotations.Component;
 
 import de.jena.model.ibis.common.IBISIPDate;
 import de.jena.model.ibis.common.IBISIPDateTime;
+import de.jena.model.ibis.common.IBISIPTime;
 import de.jena.model.ibis.common.IbisCommonPackage;
 
 @Component(service = IbisDateTimeToInstantBlackbox.class, immediate=true, 
@@ -32,7 +35,7 @@ public class IbisDateTimeToInstantBlackbox {
 	@Operation(description = "Converts from IBISIPDateTime into milliseconds")
 	public Long getMillis(IBISIPDateTime ibisDateTime) {
 		if(ibisDateTime != null) {			
-			return ibisDateTime.getValue().toGregorianCalendar().getTimeInMillis();	
+			return getMillis(ibisDateTime.getValue());	
 		}
 		return null;
 	}
@@ -40,7 +43,15 @@ public class IbisDateTimeToInstantBlackbox {
 	@Operation(description = "Converts from IBISIPDate into milliseconds")
 	public Long getMillis(IBISIPDate ibisDate) {
 		if(ibisDate != null) {			
-			return ibisDate.getValue().toGregorianCalendar().getTimeInMillis();	
+			return getMillis(ibisDate.getValue());	
+		}
+		return null;
+	}
+	
+	@Operation(description = "Converts from IBISIPTime into milliseconds")
+	public Long getMillis(IBISIPTime ibisTime) {
+		if(ibisTime != null) {			
+			return getMillis(ibisTime.getValue());	
 		}
 		return null;
 	}
@@ -51,5 +62,9 @@ public class IbisDateTimeToInstantBlackbox {
 			return Instant.ofEpochMilli(millis);
 		}
 		return null;
+	}
+	
+	private Long getMillis(XMLGregorianCalendar xmlCalendar) {
+		return xmlCalendar.toGregorianCalendar().getTimeInMillis();
 	}
 }

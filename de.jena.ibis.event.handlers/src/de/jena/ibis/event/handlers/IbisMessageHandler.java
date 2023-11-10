@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.sensinact.prototype.PrototypePush;
 import org.gecko.core.pool.Pool;
 import org.gecko.emf.json.constants.EMFJs;
 import org.gecko.osgi.messaging.Message;
@@ -46,6 +47,9 @@ import de.dim.trafficos.publictransport.apis.PTUpdateService;
 import de.jena.ibis.apis.helper.IbisResponseHelper;
 import de.jena.ibis.gnsslocationservice.GNSSLSPackage;
 import de.jena.ibis.gnsslocationservice.GNSSLocationServiceDataStructure;
+import de.jena.model.sensinact.ibis.IbisAdmin;
+import de.jena.model.sensinact.ibis.IbisDevice;
+import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 import de.jena.udp.model.trafficos.publictransport.PTOnlineUpdate;
 import de.jena.udp.model.trafficos.publictransport.PTType;
 import de.jena.udp.model.trafficos.publictransport.PTUpdate;
@@ -61,11 +65,12 @@ import de.jena.udp.model.trafficos.publictransport.TOSPublicTransportFactory;
 @Component(immediate= true, name = "IbisMessageHandler")
 public class IbisMessageHandler {
 	
-//	@Reference
-//	PrototypePush sensinact;
+	@Reference
+	PrototypePush sensinact;
 	
 	private ComponentServiceObjects<ResourceSet> rsFactory;	
 	private ConfigurableModelTransformatorPool tosPoolComponent;
+	private ConfigurableModelTransformatorPool sensinactPoolComponent;
 	
 	@Reference
 	PTUpdateService tosPTUpdateService;
@@ -81,11 +86,13 @@ public class IbisMessageHandler {
 	public IbisMessageHandler(
 			@Reference(cardinality = ReferenceCardinality.MANDATORY) ComponentServiceObjects<ResourceSet> rsFactory,
 			@Reference(target = "(id=full)", cardinality = ReferenceCardinality.MANDATORY) MessagingService messagingService,
-			@Reference(target = "(pool.componentName=ibisToTOSPool)", cardinality = ReferenceCardinality.MANDATORY) ConfigurableModelTransformatorPool tosPoolComponent) {
+			@Reference(target = "(pool.componentName=ibisToTOSPool)", cardinality = ReferenceCardinality.MANDATORY) ConfigurableModelTransformatorPool tosPoolComponent,
+			@Reference(target = "(pool.componentName=ibisToSensinactPool)", cardinality = ReferenceCardinality.MANDATORY) ConfigurableModelTransformatorPool sensinactPoolComponent) {
 		
 		LOGGER.info("Ibis Message Handler is active!");
 		this.rsFactory = rsFactory;
 		this.tosPoolComponent = tosPoolComponent;
+		this.sensinactPoolComponent = sensinactPoolComponent;
 		try {
 			PushStream<Message> subscription = messagingService.subscribe(TCP_MQTT_TOPIC)
 					.merge(messagingService.subscribe(UDP_MQTT_TOPIC))
@@ -114,7 +121,7 @@ public class IbisMessageHandler {
 		String deviceType = topicSegments[2];
 		byte[] content = message.payload().array();
 		EObject obj = extractMessageContent(content, message.topic());
-//		publishToSensinact(obj, deviceId, deviceType);
+		publishToSensinact(obj, deviceId, deviceType);
 		saveToTOSDB(obj, deviceId);		
 	}
 
@@ -180,28 +187,27 @@ public class IbisMessageHandler {
 		}
 	}
 	
-//	private void publishToSensinact(EObject data, String providerId, String deviceType) {
-//		Map<String,Pool<ModelTransformator>> poolMap = sensinactPoolComponent.getPoolMap();
-//		Pool<ModelTransformator> pool = poolMap.get("ibisToSensinactPool-sensinactPool");
-//		if(pool != null) {
-//			ModelTransformator transformator = pool.poll();
-//			try {
-//				IbisDevice push = (IbisDevice) transformator.startTransformation(data);
-//				push.setId(providerId);
-//				
-//				IbisAdmin ibisAdmin = IbisSensinactFactory.eINSTANCE.createIbisAdmin();
-//				ibisAdmin.setDeviceType(deviceType);
-//				push.setIbisAdmin(ibisAdmin);
-//				
-//				sensinact.pushUpdate(push);
-//			} catch(Exception e) {
-//				LOGGER.log(Level.SEVERE, String.format("Something went wrong when publishing data on sensinact for provider %s", providerId), e);
-//			}			
-//			finally {
-//				pool.release(transformator);
-//			}
-//		}
-//	}
+	private void publishToSensinact(EObject data, String providerId, String deviceType) {
+		Map<String,Pool<ModelTransformator>> poolMap = sensinactPoolComponent.getPoolMap();
+		Pool<ModelTransformator> pool = poolMap.get("ibisToSensinactPool-sensinactPool");
+		if(pool != null) {
+			ModelTransformator transformator = pool.poll();
+			try {
+				IbisDevice push = (IbisDevice) transformator.startTransformation(data);
+				push.setId(providerId);
+				
+				IbisAdmin ibisAdmin = IbisSensinactFactory.eINSTANCE.createIbisAdmin();
+				ibisAdmin.setDeviceType(deviceType);
+				push.setIbisAdmin(ibisAdmin);				
+				sensinact.pushUpdate(push);
+			} catch(Exception e) {
+				LOGGER.log(Level.SEVERE, String.format("Something went wrong when publishing data on sensinact for provider %s", providerId), e);
+			}			
+			finally {
+				pool.release(transformator);
+			}
+		}
+	}
 	
 	private void saveToTOSDB(EObject data, String vehicleId) {
 		Map<String,Pool<ModelTransformator>> poolMap = tosPoolComponent.getPoolMap();
