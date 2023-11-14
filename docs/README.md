@@ -29,11 +29,69 @@ All the above mentioned IBIS-IP services send data via TCP, with the exception o
 
 Anyway, once we get a new piece of information from one of the service operation, this is posted via MQTT to our DIM broker. 
 
+## The Raspberry
+
+In `de.jena.ibis.runtime` there is a `raspberrypi.bndrun` which is needed to launch the application within the tram 702. 
+
+The corresponding configuration for the IBIS services running within the tram is located in `de.jena.ibis.raspeberry.config/configs/ibis.json`
+
+```json
+{
+	":configurator:resource-version": 1,
+	":configurator:symbolicname": "IbisConfig",
+	":configurator:version": "0.0.0",
+	"IbisDeviceConfigurator~tram702": {
+		"deviceId" : "tram702",
+		"deviceName": "Tram 702",
+		"deviceType": "TRAM",
+		"deviceIP": "192.168.243.1",
+		"refTCPServices" : [
+			"CustomerInformationService"
+		],
+		"refUDPServices" : [
+			"GNSSLocationService"
+		],
+		"updListenerNetworkInterface": "eth0",
+		"udpMultiCastGroupPort": 5007
+	}
+}
+```
+
+For attributes that are not set here, you have to refer to the default properties, defined in `de.jena.ibis.apis/IbisDeviceConfiguratorConfig`:
+
+```java
+public @interface IbisDeviceConfiguratorConfig {
+	
+	public String deviceId() default "";	
+	public String deviceName() default "";	
+	public String deviceType() default "BUS";	
+	public String deviceIP() default "";	
+	public String clientSubscriptionIP() default "192.168.243.250";
+	public int clientSubscriptionPort() default 52000;	
+	public String customerInfoServicePort() default "2092";
+	public String ticketValidationServicePort() default "51001";
+	public String[] refTCPServices() default {};
+	public String[] refUDPServices() default {};
+	public String updListenerNetworkInterface() default "eth0";
+	public String udpMultiCastGroupIP() default "224.0.0.251";
+	public int udpMultiCastGroupPort() default 5007;
+}
+
+```
+
 ## The Event Handlers
 
 In the `de.jena.ibis.event.hanlders` bundle we currently have a separate lunch `bndrun` than can be started. An event handler there connects to our DIM broker, to listen to TCP and UDP messages sent from inside the public transport. The data is then saved into a db and posted to the sensinact broker. A second handler connects to the sensinact broker and repost the event to our DIM MQTT broker. 
 
 For the saving operation, we are using the model available [here](https://github.com/de-jena/upd-models/tree/snapshot/de.jena.udp.trafficos.publictransport.model). 
+
+## Stop ID Mapping
+
+The IBIS stop ids do not match the ids we get from OpenData portal, which is from where we download the static information.
+
+So, when we save the IBIS live updates we have also to map the stop id (if any) to its corresponding OpenData stop id, in such a way that we are able to retrieve the right information from the static data (e.g. in the broker public transport API).
+
+This is done with the help of a table provided by the city, which is located in `de.jena.ibis.tos.mmt.util/data/StopMapping_IbisID_OpenDataID.csv`, and as part of the mmt transformations from the ibis model to the TOS model (the one used to store data in the db). 
 
 ## Trouble Shooting
 
