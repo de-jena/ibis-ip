@@ -25,7 +25,8 @@
 	bnd.identity;id='de.dim.trafficos.publictransport.component',\
 	bnd.identity;id='de.dim.trafficos.publictransport.config',\
 	bnd.identity;id='de.dim.trafficos.publictransport.value.converter',\
-	bnd.identity;id='org.eclipse.emfcloud.emfjson-jackson'
+	bnd.identity;id='org.eclipse.emfcloud.emfjson-jackson',\
+	bnd.identity;id='de.jena.ibis.event.handlers.config'
 -runbundles: \
 	com.fasterxml.jackson.core.jackson-annotations;version='[2.14.0,2.14.1)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.14.0,2.14.1)',\
@@ -130,4 +131,5 @@
 	org.apache.commons.commons-text;version='[1.10.0,1.10.1)',\
 	org.apache.commons.lang3;version='[3.13.0,3.13.1)',\
 	org.apache.commons.logging;version='[1.2.0,1.2.1)',\
-	de.jena.ibis.sensinact.model;version=snapshot
+	de.jena.ibis.sensinact.model;version=snapshot,\
+	de.jena.ibis.event.handlers.config;version=snapshot
