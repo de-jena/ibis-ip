@@ -85,6 +85,8 @@ In the `de.jena.ibis.event.hanlders` bundle we currently have a separate lunch `
 
 For the saving operation, we are using the model available [here](https://github.com/de-jena/upd-models/tree/snapshot/de.jena.udp.trafficos.publictransport.model). 
 
+These event handlers are basically those which have been deployed in the broker in such a way to connect IBIS to the broker.
+
 ## Stop ID Mapping
 
 The IBIS stop ids do not match the ids we get from OpenData portal, which is from where we download the static information.
