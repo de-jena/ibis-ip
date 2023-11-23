@@ -31,9 +31,9 @@ Anyway, once we get a new piece of information from one of the service operation
 
 ## The Raspberry
 
-In `de.jena.ibis.runtime` there is a `raspberrypi.bndrun` which is needed to launch the application within the tram 702. 
+In `de.jena.ibis.runtime` there is a `raspberrypi_local.bndrun` and a `raspberry_broker.bndrun` which are needed to launch the application within the tram 702: the first one uses a local MQTT config attached to our DIM MQTT broker, while the second one uses the MQTT broker from the city, which is the same as it is deployed in the jena broker. So the first one can be used when testing locally, while the second one has to be the deployed one when we want to make the actual connection with the jena broker.
 
-The corresponding configuration for the IBIS services running within the tram is located in `de.jena.ibis.raspeberry.config/configs/ibis.json`
+The configuration for the IBIS services running within the tram is located in `de.jena.ibis.raspeberry.config/configs/ibis.json`
 
 ```json
 {
@@ -94,6 +94,8 @@ The IBIS stop ids do not match the ids we get from OpenData portal, which is fro
 So, when we save the IBIS live updates we have also to map the stop id (if any) to its corresponding OpenData stop id, in such a way that we are able to retrieve the right information from the static data (e.g. in the broker public transport API).
 
 This is done with the help of a table provided by the city, which is located in `de.jena.ibis.tos.mmt.util/data/StopMapping_IbisID_OpenDataID.csv`, and as part of the mmt transformations from the ibis model to the TOS model (the one used to store data in the db). 
+
+We have in principle the same issue with the schedule ids, which do not match between OpenData and IBIS, but for those the city could not provide a similar mapper, so this is still an **open issue**.
 
 ## Trouble Shooting
 
