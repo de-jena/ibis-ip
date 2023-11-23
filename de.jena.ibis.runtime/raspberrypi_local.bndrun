@@ -119,7 +119,8 @@ pi01 = \
 	org.apache.felix.configurator;version='[1.0.8,1.0.9)',\
 	org.eclipse.parsson;version='[1.1.5,1.1.6)',\
 	org.eclipse.parsson.jakarta.json;version='[1.1.5,1.1.6)',\
-	org.apache.felix.configadmin;version='[1.9.22,1.9.23)'
+	org.apache.felix.configadmin;version='[1.9.22,1.9.23)',\
+	de.jena.ibis.raspberry.local.config;version=snapshot
 
 -runrequires: \
 	bnd.identity;id='de.jena.ibis.runtime',\
@@ -132,7 +133,8 @@ pi01 = \
 	bnd.identity;id='org.gecko.emf.json',\
 	bnd.identity;id='org.gecko.adapter.mqtt',\
 	bnd.identity;id='org.eclipse.paho.client.mqttv3',\
-	bnd.identity;id='org.eclipse.parsson'
+	bnd.identity;id='org.eclipse.parsson',\
+	bnd.identity;id='de.jena.ibis.raspberry.local.config'
 
 -runrepos: \
 	Workspace,\
