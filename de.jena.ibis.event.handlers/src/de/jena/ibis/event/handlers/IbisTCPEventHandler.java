@@ -15,9 +15,9 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sensinact.core.push.DataUpdate;
 import org.eclipse.sensinact.model.core.provider.Admin;
 import org.eclipse.sensinact.model.core.provider.ProviderFactory;
-import org.eclipse.sensinact.prototype.PrototypePush;
 import org.gecko.core.pool.Pool;
 import org.gecko.qvt.osgi.api.ConfigurableModelTransformatorPool;
 import org.gecko.qvt.osgi.api.ModelTransformator;
@@ -43,7 +43,7 @@ import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 public class IbisTCPEventHandler implements EventHandler {
 	
 	@Reference
-	PrototypePush sensinact;
+	DataUpdate sensinact;
 	
 	@Reference(target = ("(pool.componentName=modelTransformatorService)"))
 	private ConfigurableModelTransformatorPool poolComponent;

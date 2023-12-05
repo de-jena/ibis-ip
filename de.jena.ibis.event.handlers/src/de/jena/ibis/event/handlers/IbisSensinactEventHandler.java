@@ -11,7 +11,7 @@
  */
 package de.jena.ibis.event.handlers;
 
-import org.eclipse.sensinact.prototype.notification.ResourceDataNotification;
+import org.eclipse.sensinact.core.notification.ResourceDataNotification;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.event.propertytypes.EventTopics;
 import org.osgi.service.typedevent.TypedEventHandler;
