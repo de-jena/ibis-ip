@@ -69,3 +69,5 @@ releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version
 		overwrite           =true;\
 		pretty              =true;\
 		name            	=Local
+		
+-buildrepo: Release
