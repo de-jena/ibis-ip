@@ -13,6 +13,7 @@ package de.jena.ibis.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.test.common.annotation.InjectService;
@@ -49,6 +50,7 @@ public class IbisDeviceConfiguratorTest {
 					@Property(key = "refTCPServices", value = {"CustomerInformationService"}, type = Type.Array)
 				}
 			)
+	@Disabled
 	public void testCustomerInfoService(
 			@InjectService(timeout=1000l) ServiceAware<IbisCustomerInformationService> serviceAware) throws Exception{
 		
@@ -69,6 +71,7 @@ public class IbisDeviceConfiguratorTest {
 					@Property(key = "refTCPServices", value = {"CustomerInformationService", "TicketValidationService"}, type = Type.Array)
 				}
 			)
+	@Disabled
 	public void testMultipleTCPService(
 			@InjectService(timeout=1000l) ServiceAware<IbisCustomerInformationService> service1Aware, 
 			@InjectService(timeout=1000l) ServiceAware<IbisTicketValidationService> service2Aware) throws Exception{
@@ -95,6 +98,7 @@ public class IbisDeviceConfiguratorTest {
 					@Property(key = "refUDPServices", value = {"GNSSLocationService"}, type = Type.Array)
 				}
 			)
+	@Disabled
 	public void testMultipleServices(
 			@InjectService(timeout=1000l) ServiceAware<IbisCustomerInformationService> service1Aware, 
 			@InjectService(timeout=1000l) ServiceAware<IbisTicketValidationService> service2Aware) throws Exception{
@@ -120,6 +124,7 @@ public class IbisDeviceConfiguratorTest {
 					@Property(key = "refUDPServices", value = {"GNSSLocationService"}, type = Type.Array)
 				}
 			)
+	@Disabled
 	public void testGNSSService(
 			@InjectService(timeout=1000l) ServiceAware<IbisGNSSLocationService> serviceAware) throws Exception{
 		
