@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.XMLResource.MissingPackageHandler;
-import org.gecko.emf.osgi.EMFUriHandlerConstants;
+import org.gecko.emf.osgi.constants.EMFUriHandlerConstants;
 import org.osgi.service.component.ComponentServiceObjects;
 
 import de.jena.ibis.apis.IbisTCPServiceConfig;

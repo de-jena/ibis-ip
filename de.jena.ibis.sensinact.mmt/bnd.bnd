@@ -1,4 +1,10 @@
--includeresource: transformations=transformations
-#Require-Capability: osgi.identity;filter:="(osgi.identity=de.jena.ibis.sensinact.model)"
+-includeresource: \
+	transformations=transformations
+
 -library: enable-emf
--buildpath: de.jena.ibis.sensinact.mmt.util;version=latest
+
+-buildpath: \
+	org.eclipse.m2m.qvt.oml,\
+	de.jena.ibis.common.model,\
+	org.eclipse.sensinact.gateway.core.models.provider,\
+	org.gecko.qvt.osgi.api;version=latest

@@ -14,16 +14,15 @@ package de.jena.ibis.sensinact.mmt.tests;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Date;
-import java.util.Map;
 
-import org.gecko.core.pool.Pool;
-import org.gecko.qvt.osgi.api.ConfigurableModelTransformatorPool;
+import javax.xml.datatype.DatatypeConfigurationException;
+
+import org.gecko.qvt.osgi.api.ModelTransformationConstants;
 import org.gecko.qvt.osgi.api.ModelTransformator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.test.common.annotation.InjectService;
-import org.osgi.test.common.annotation.Property;
-import org.osgi.test.common.annotation.config.WithConfiguration;
 import org.osgi.test.common.service.ServiceAware;
 import org.osgi.test.junit5.cm.ConfigurationExtension;
 import org.osgi.test.junit5.context.BundleContextExtension;
@@ -80,43 +79,17 @@ import de.jena.model.sensinact.ibis.IbisDevice;
 @ExtendWith(ConfigurationExtension.class)
 public class IbisCustomerInfoToSensinactMMTTest {
 
-
+	//@InjectService(filter = "(" + ModelTransformationConstants.TRANSFORMATOR_ID + "=ibisToSensinact)")
+	ModelTransformator transformator;
+	
+	@BeforeEach
+	public void test(@InjectService(filter = "(" + ModelTransformationConstants.TRANSFORMATOR_ID + "=ibisToSensinact)", cardinality = 0) ServiceAware<ModelTransformator> trafoAware) throws InterruptedException{
+		transformator = trafoAware.waitForService(500);			
+	}
+	
+	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testAllData(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testAllData() throws DatatypeConfigurationException {
 		AllDataResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createAllDataResponse();
 		AllData data = IbisCustomerInformationServiceFactory.eINSTANCE.createAllData();
 	
@@ -137,7 +110,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 		response.setAllData(data);
 		
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoAllData sensinactData = sensinactDevice.getCustomerInfoAllData();
@@ -162,41 +135,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 	}
 	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testCurrentConnectionData(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testCurrentConnectionData() throws DatatypeConfigurationException { 
 		CurrentConnectionInformationResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentConnectionInformationResponse();
 		CurrentConnectionInformationData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentConnectionInformationData();
 	
@@ -204,7 +143,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 		
 		response.setCurrentConnectionData(data);
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoCurrentConnectionData sensinactData = sensinactDevice.getCustomerInfoCurrentConnectionData();
@@ -214,48 +153,14 @@ public class IbisCustomerInfoToSensinactMMTTest {
 	}
 	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testCurrentDisplayContentData(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testCurrentDisplayContentData() throws DatatypeConfigurationException { 
 		CurrentDisplayContentResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentDisplayContentResponse();
 		CurrentDisplayContentData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentDisplayContentData();
 		
 		data.setTimeStamp(IbisToSensinactTestHelper.createIbisDateTime(new Date()));		
 		response.setCurrentDisplayContentData(data);
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoCurrentDisplayContentData sensinactData = sensinactDevice.getCustomerInfoCurrentDisplayContentData();
@@ -265,41 +170,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 	}
 	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testCurrentAnnouncement(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testCurrentAnnouncement() throws DatatypeConfigurationException { 
 		CurrentAnnouncementResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentAnnouncementResponse();
 		CurrentAnnouncementData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentAnnouncementData();
 	
@@ -315,7 +186,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 		
 		response.setCurrentAnnouncementData(data);
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoCurrentAnnouncementData sensinactData = sensinactDevice.getCustomerInfoCurrentAnnouncementData();
@@ -332,41 +203,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 	}
 	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testCurrentStopIndex(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testCurrentStopIndex() throws DatatypeConfigurationException { 
 		CurrentStopIndexResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopIndexResponse();
 		CurrentStopIndexData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopIndexData();
 	
@@ -375,7 +212,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 		
 		response.setCurrentStopIndexData(data);
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoCurrentStopIndexData sensinactData = sensinactDevice.getCustomerInfoCurrentStopIndexData();
@@ -388,41 +225,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 	}
 	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testCurrentStopPoint(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testCurrentStopPoint() throws DatatypeConfigurationException {  
 		CurrentStopPointResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopPointResponse();
 		CurrentStopPointData data = IbisCustomerInformationServiceFactory.eINSTANCE.createCurrentStopPointData();
 	
@@ -447,7 +250,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 		data.setCurrentStopPoint(stopInfo);
 		response.setCurrentStopPointData(data);
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoCurrentStopPointData sensinactData = sensinactDevice.getCustomerInfoCurrentStopPointData();
@@ -474,41 +277,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 	}
 	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testTripData(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testTripData() throws DatatypeConfigurationException {  
 		TripDataResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createTripDataResponse();
 		TripData data = IbisCustomerInformationServiceFactory.eINSTANCE.createTripData();
 		
@@ -539,7 +308,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 		data.setTripInformation(tripInfo);
 		response.setTripData(data);
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoTripData sensinactData = sensinactDevice.getCustomerInfoTripData();
@@ -571,41 +340,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 	}
 	
 	@Test
-	@WithConfiguration(
-			pid = "ConfigurableModelTransformatorPool",
-			location = "?",
-			properties = {
-					@Property(key = "pool.componentName", value = "modelTransformatorService"),
-					@Property(key = "pool.size", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "pool.timeout", value = "100", scalar = Property.Scalar.Integer),
-					@Property(key = "poolRef.target", value = "(pool.group=sensinactPool)")
-
-			})
-	@WithConfiguration(
-			pid = "PrototypeConfigurableTransformationService",
-			location = "?",
-			properties = {
-					@Property(key = "name", value= "ibis"),
-					@Property(key = "qvt.templatePath", value = "de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto"),
-					@Property(key = "qvt.transformatorName", value = "ibisToSensinact"),
-					@Property(key = "qvt.model.target", value= "(&(emf.model.name=ibis)(emf.model.name=customerinformationservice))"),
-					@Property(key = "pool.name", value= "ibisPool"),
-					@Property(key = "pool.group", value = "sensinactPool"),
-					@Property(key = "pool.asService", value = "false", scalar = Property.Scalar.Boolean)	
-			})
-	public void testVehicleData(@InjectService(timeout = 5000l, filter="(pool.componentName=modelTransformatorService)") 
-		ServiceAware<ConfigurableModelTransformatorPool> poolAware) throws Exception{
-		
-		assertThat(poolAware).isNotNull();
-		ConfigurableModelTransformatorPool poolComponent = poolAware.getService();
-		assertThat(poolComponent).isNotNull();
-				
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		assertThat(pool).isNotNull();
-		ModelTransformator transformator = pool.poll();
-		assertThat(transformator).isNotNull();
-		
+	public void testVehicleData() throws DatatypeConfigurationException {  
 		VehicleDataResponse response = IbisCustomerInformationServiceFactory.eINSTANCE.createVehicleDataResponse();
 		VehicleData data = IbisCustomerInformationServiceFactory.eINSTANCE.createVehicleData();
 	
@@ -624,7 +359,7 @@ public class IbisCustomerInfoToSensinactMMTTest {
 		
 		response.setVehicleData(data);
 		
-		IbisDevice sensinactDevice = (IbisDevice) transformator.startTransformation(response);
+		IbisDevice sensinactDevice = (IbisDevice) transformator.doTransformation(response);
 		assertThat(sensinactDevice).isNotNull();
 		
 		CustomerInfoVehicleData sensinactData = sensinactDevice.getCustomerInfoVehicleData();

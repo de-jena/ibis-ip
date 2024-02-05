@@ -12,6 +12,5 @@ Private-Package: de.jena.ibis.tests
 	org.osgi.framework,\
 	org.eclipse.emf.ecore,\
 	org.eclipse.emf.common,\
-	org.eclipse.emfcloud.emfjson-jackson,\
 	org.eclipse.emf.ecore.xmi,\
 	org.osgi.test.junit5.cm

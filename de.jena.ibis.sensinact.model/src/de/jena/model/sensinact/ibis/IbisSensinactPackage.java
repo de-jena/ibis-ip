@@ -12,6 +12,7 @@
  */
 package de.jena.model.sensinact.ibis;
 
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
@@ -40,7 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-@EPackage(uri = IbisSensinactPackage.eNS_URI, genModel = "/model/ibis.genmodel")
+@EPackage(uri = IbisSensinactPackage.eNS_URI, genModel = "/model/ibis.genmodel", genModelSourceLocations = {"model/ibis.genmodel","de.jena.ibis.sensinact.model/model/ibis.genmodel"}, ecore="/model/ibis.ecore", ecoreSourceLocations="/model/ibis.ecore")
 public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	/**
 	 * The package name.
@@ -518,6 +519,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int CUSTOMER_INFO_ALL_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 16;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_ALL_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Customer Info All Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -589,6 +599,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_CURRENT_STOP_INDEX_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Customer Info Current Stop Index Data</em>' class.
@@ -761,6 +780,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int CUSTOMER_INFO_CURRENT_STOP_POINT_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 15;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_CURRENT_STOP_POINT_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Customer Info Current Stop Point Data</em>' class.
@@ -1007,6 +1035,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int CUSTOMER_INFO_TRIP_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 23;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_TRIP_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Customer Info Trip Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1170,6 +1207,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int CUSTOMER_INFO_VEHICLE_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 14;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_VEHICLE_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Customer Info Vehicle Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1261,6 +1307,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_CURRENT_ANNOUNCEMENT_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Customer Info Current Announcement Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1323,6 +1378,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int CUSTOMER_INFO_CURRENT_CONNECTION_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_CURRENT_CONNECTION_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Customer Info Current Connection Data</em>' class.
@@ -1389,6 +1453,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_INFO_CURRENT_DISPLAY_CONTENT_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Customer Info Current Display Content Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1433,6 +1506,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int IBIS_ADMIN_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IBIS_ADMIN___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Ibis Admin</em>' class.
@@ -1544,6 +1626,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int PASSENGER_COUNTING_DOOR_COUNTING_STATE_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 8;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSENGER_COUNTING_DOOR_COUNTING_STATE___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Passenger Counting Door Counting State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1635,6 +1726,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int DOOR_STATE_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOOR_STATE___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Door State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1706,6 +1806,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int STOP_REQUESTED_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STOP_REQUESTED___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Stop Requested</em>' class.
@@ -1916,6 +2025,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int GNSS_LOCATION_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 19;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_LOCATION_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>GNSS Location Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2097,6 +2215,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 16;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_TARIFF_STOP_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Ticket Validation Current Tariff Stop Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2168,6 +2295,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int TICKET_VALIDATION_RAZZIA_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_RAZZIA_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Ticket Validation Razzia Data</em>' class.
@@ -2277,6 +2413,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int TICKET_VALIDATION_CURRENT_LINE_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 8;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_CURRENT_LINE_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Ticket Validation Current Line Data</em>' class.
@@ -2397,6 +2542,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	int TICKET_VALIDATION_VEHICLE_DATA_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 9;
 
 	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TICKET_VALIDATION_VEHICLE_DATA___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
+
+	/**
 	 * The number of operations of the '<em>Ticket Validation Vehicle Data</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2495,6 +2649,15 @@ public interface IbisSensinactPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @ordered
 	 */
 	int TRIP_INFO_FEATURE_COUNT = ProviderPackage.SERVICE_FEATURE_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>EIs Set</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIP_INFO___EIS_SET__ESTRUCTURALFEATURE = ProviderPackage.SERVICE___EIS_SET__ESTRUCTURALFEATURE;
 
 	/**
 	 * The number of operations of the '<em>Trip Info</em>' class.

@@ -15,18 +15,25 @@ import java.time.Instant;
 
 import org.eclipse.m2m.qvt.oml.blackbox.java.Module;
 import org.eclipse.m2m.qvt.oml.blackbox.java.Operation;
-import org.gecko.qvt.osgi.api.ModelTransformationConstants;
 import org.osgi.service.component.annotations.Component;
 
 import de.jena.model.ibis.common.IBISIPDate;
 import de.jena.model.ibis.common.IBISIPDateTime;
 import de.jena.model.ibis.common.IbisCommonPackage;
+import org.eclipse.sensinact.model.core.provider.ProviderPackage;
+import org.gecko.qvt.osgi.annotations.ModuleName;
+import org.gecko.qvt.osgi.annotations.QvtBlackbox;
+import org.gecko.qvt.osgi.annotations.TemplatePath;
+import org.gecko.qvt.osgi.annotations.TransformatorId;
+import org.gecko.qvt.osgi.annotations.UnitQualifiedName;
 
-@Component(service = IbisDateTimeToInstantBlackbox.class, immediate=true, 
-property = {ModelTransformationConstants.QVT_BLACKBOX + "=true", 
-		  ModelTransformationConstants.BLACKBOX_MODULENAME + "=IbisDateTimeToInstant", 
-		  ModelTransformationConstants.BLACKBOX_QUALIFIED_UNIT_NAME + "=de.jena.ibis.sensinact.mmt.util.IbisDateTimeToInstantBlackbox"})
-@Module(packageURIs={IbisCommonPackage.eNS_URI, "https://eclipse.org/sensinact/core/provider/1.0"})
+@Component(service = IbisDateTimeToInstantBlackbox.class)
+@QvtBlackbox
+@ModuleName("IbisDateTimeToInstant")
+@UnitQualifiedName("de.jena.ibis.sensinact.mmt.util.IbisDateTimeToInstantBlackbox")
+@TemplatePath("de.jena.ibis.sensinact.mmt/transformations/ibisToSensinact.qvto")
+@TransformatorId("ibisToSensinact")
+@Module(packageURIs={IbisCommonPackage.eNS_URI, ProviderPackage.eNS_URI})
 public class IbisDateTimeToInstantBlackbox {
 	
 	@Operation(description = "Converts from IBISIPDateTime into milliseconds")

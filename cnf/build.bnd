@@ -5,7 +5,7 @@ Bundle-DocURL: https://github.com/de-jena/ibis-ip
 Bundle-SCM: url=https://github.com/de-jena/ibis-ip, \
 	connection=scm:git:git@github.com:de-jena/ibis-ip.git, \
 	developerConnection=scm:git:git@github.com:de-jena/ibis-ip.git
-
+Bundle-Version: 1.0.0.SNAPSHOT
 
 Bundle-Developers: \
     sbischof; \
@@ -28,24 +28,23 @@ Bundle-Developers: \
         organizationUrl="https://www.datainmotion.de"; \
         roles="developer,architect"
 
-# We include setups for
-#	Gecko EMF OSGi - geckoEMF
-#	OSGi-Test Support - gecko-osgitest
-#	DIMC Github-Configuration - gecko-dimc
-#	Jacoco Support - gecko-jacoco
 -library: \
 	geckoEMF,\
 	geckoOSGi-Test,\
-	geckoDIMC,\
-	geckoJacoco,\
-	geckoEMFUtil
+	geckoEMFRepository,\
+	geckoEMFUtil,\
+	geckoUtil,\
+	geckoUtilQVT,\
+	jakartaREST,\
+	geckoMessaging
 	
 # Needed because we enabled library 'gecko-dimc' 	
 github-project: de-jena/ibis-ip
 base-version: 1.0.0
 ibis-version: ${base-version}.SNAPSHOT
 sensinact.version: 0.0.2-SNAPSHOT
-jackson.version: 2.14.0
+jackson.version: 2.16.0
+upd.models.version: 1.2.0-SNAPSHOT
 
 
 # Maven Central Group-Id
@@ -58,11 +57,6 @@ jackson.version: 2.14.0
 
 -snapshot: ${tstamp}-SNAPSHOT
 -pom: version=${versionmask;===s;${@version}}	
-# Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
-releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${ibis-version}));REPOS}
-
-# If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
--maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
 
 -plugin: aQute.bnd.deployer.repository.LocalIndexedRepo;\
 		local               =${.}/local;\

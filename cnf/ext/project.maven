@@ -1,12 +1,5 @@
 org.apache.felix:org.apache.felix.http.servlet-api:1.2.0
 
-org.geckoprojects.bnd:org.gecko.bnd.dimc.library:1.2.0-SNAPSHOT
-org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:1.2.0-SNAPSHOT
-org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:1.2.0-SNAPSHOT
-org.geckoprojects.emf:org.gecko.emf.osgi.bnd.library.workspace:5.0.0-SNAPSHOT
-org.geckoprojects.emf:org.gecko.emf.osgi.extender:4.5.0
-org.geckoprojects.emf.utils:org.gecko.emf.util.bnd.library.workspace:1.0.0-SNAPSHOT
-
 org.bndtools:org.bndtools.templates.osgi:6.3.1
 org.apiguardian:apiguardian-api:1.1.2
 org.gecko.runtime:org.gecko.templates:1.0.31
@@ -80,8 +73,8 @@ biz.aQute.bnd:aQute.libg:6.2.0
 biz.aQute.bnd:biz.aQute.bnd.annotation:6.2.0
 biz.aQute:biz.aQute.wrapper.hamcrest:1.9.0
 
-com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.11.2
-com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.2
+com.fasterxml.jackson.dataformat:jackson-dataformat-csv:${def;jackson.version;2.13.3}
+com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${def;jackson.version;2.13.3}
 
 #jdbc
 
@@ -98,38 +91,7 @@ org.osgi:org.osgi.framework:1.10.0
 org.osgi:org.osgi.service.event:1.4.1
 org.osgi:org.osgi.service.typedevent:1.0.0
 
-
-org.xerial:sqlite-jdbc:jar:3.36.0.3
-org.apache.servicemix.bundles:org.apache.servicemix.bundles.junit:jar:4.13.2_1
-org.junit.vintage:junit-vintage-engine:jar:5.7.2
-commons-logging:commons-logging:jar:1.2
-
-org.mongodb:mongo-java-driver:3.9.1
-org.geckoprojects.mongo:org.gecko.emf.mongo.api:6.0.0
-org.geckoprojects.mongo:org.gecko.emf.mongo.component:6.0.0
-org.geckoprojects.mongo:org.gecko.emf.mongo.pushstream:6.0.0
-org.geckoprojects.mongo:org.gecko.mongo.osgi.component:6.0.0
-
-org.geckoprojects.emf.utils:org.gecko.emf.rest:2.0.0
-org.geckoprojects.emf.utils:org.gecko.emf.util.model:2.1.0
-org.geckoprojects.emf.persistence:org.gecko.emf.persistence:1.0.0-SNAPSHOT
-org.geckoprojects.emf.persistence:org.gecko.emf.persistence.pushstreams:1.0.0-SNAPSHOT
-org.geckoprojects.emf.persistence:org.gecko.emf.persistence.jdbc:1.0.0-SNAPSHOT
-org.geckoprojects.emf.persistence:org.gecko.persistence.derby:1.0.0-SNAPSHOT
-
-org.apache.derby:derby:10.14.2.0
 org.apache.felix:org.apache.felix.gogo.runtime:1.1.6
-
-#graphql
-com.graphql-java:graphql-java:11.0
-com.graphql-java:java-dataloader:2.2.0
-org.antlr:antlr4-runtime:4.7.1
-org.reactivestreams:reactive-streams:1.0.2
-com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.11.2
-com.google.guava:guava:22.0
-javax.websocket:javax.websocket-api:1.1
-
-
 
 # ASM
 org.ow2.asm:asm:jar:9.3
@@ -152,4 +114,3 @@ com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${def;jackson.version;2
 com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${def;jackson.version;2.13.3}
 
 org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5
-

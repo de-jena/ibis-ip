@@ -15,9 +15,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sensinact.prototype.PrototypePush;
-import org.gecko.core.pool.Pool;
-import org.gecko.qvt.osgi.api.ConfigurableModelTransformatorPool;
+import org.eclipse.sensinact.core.push.DataUpdate;
 import org.gecko.qvt.osgi.api.ModelTransformator;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -41,10 +39,10 @@ import de.jena.model.sensinact.ibis.IbisSensinactFactory;
 public class IbisEventHandler implements EventHandler {
 	
 	@Reference
-	PrototypePush sensinact;
+	DataUpdate sensinact;
 	
-	@Reference(target = ("(pool.componentName=modelTransformatorService)"))
-	private ConfigurableModelTransformatorPool poolComponent;
+	@Reference(target = ("(transformator.id=ibisToSensinact)"))
+	private ModelTransformator transformator;
 	
 	public static final Logger LOGGER = Logger.getLogger(IbisEventHandler.class.getName());
 	
@@ -63,25 +61,13 @@ public class IbisEventHandler implements EventHandler {
 	}
 	
 	private void publish(EObject data, String providerId, String deviceType) {
-		Map<String,Pool<ModelTransformator>> poolMap = poolComponent.getPoolMap();
-		Pool<ModelTransformator> pool = poolMap.get("modelTransformatorService-ibisPool");
-		if(pool != null) {
-			ModelTransformator transformator = pool.poll();
-			try {
-				IbisDevice push = (IbisDevice) transformator.startTransformation(data);
-				push.setId(providerId);
-				
-				IbisAdmin ibisAdmin = IbisSensinactFactory.eINSTANCE.createIbisAdmin();
-				ibisAdmin.setDeviceType(deviceType);
-				push.setIbisAdmin(ibisAdmin);
-				
-				sensinact.pushUpdate(push);
-			} catch(Exception e) {
-				e.printStackTrace();
-			}			
-			finally {
-				pool.release(transformator);
-			}
-		}
+		IbisDevice push = (IbisDevice) transformator.doTransformation(data);
+		push.setId(providerId);
+		
+		IbisAdmin ibisAdmin = IbisSensinactFactory.eINSTANCE.createIbisAdmin();
+		ibisAdmin.setDeviceType(deviceType);
+		push.setIbisAdmin(ibisAdmin);
+		
+		sensinact.pushUpdate(push);
 	}
 }

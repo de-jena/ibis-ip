@@ -7,16 +7,14 @@ Private-Package: de.jena.ibis.event.handlers
 	de.jena.ibis.customer.info.service.model;version=latest,\
 	de.jena.ibis.enumerations.model;version=latest,\
 	de.jena.ibis.sensinact.mmt;version=latest,\
-	de.jena.ibis.sensinact.mmt.util;version=latest,\
 	de.jena.ibis.sensinact.model;version=latest,\
 	org.gecko.qvt.osgi.api,\
-	org.gecko.core.pool,\
 	org.eclipse.sensinact.gateway.core.api,\
 	org.eclipse.sensinact.gateway.core.models.provider,\
 	org.osgi.util.promise;version=latest,\
 	org.osgi.util.function;version=latest,\
 	org.osgi.service.typedevent,\
-	org.gecko.osgi.messaging,\
 	org.osgi.service.component,\
 	de.jena.udp.sensinact.generic.message.model,\
-	org.gecko.emf.json
+	org.gecko.osgi.messaging,\
+	org.gecko.emf.util.annotations

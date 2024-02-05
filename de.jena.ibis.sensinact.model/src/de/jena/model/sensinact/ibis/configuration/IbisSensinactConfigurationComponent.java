@@ -22,7 +22,7 @@ import java.util.Hashtable;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 
-import org.gecko.emf.osgi.EPackageConfigurator;
+import org.gecko.emf.osgi.configurator.EPackageConfigurator;
 
 import org.osgi.annotation.bundle.Capability;
 
@@ -32,23 +32,19 @@ import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
 
 import org.osgi.service.condition.Condition;
-
 /**
  * The <b>PackageConfiguration</b> for the model.
  * The package will be registered into a OSGi base model registry.
  * 
  * @generated
  */
-@Component(name = "IbisSensinactConfigurator",
- 	reference = @Reference( name = "ResourceSetFactory", service = org.gecko.emf.osgi.ResourceSetFactory.class, cardinality = ReferenceCardinality.MANDATORY)
- )
-@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.jena.model.sensinact.ibis.IbisSensinactFactory, org.eclipse.emf.ecore.EFactory\"" , "uses:=org.eclipse.emf.ecore,de.jena.model.sensinact.ibis" })
-@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.jena.model.sensinact.ibis.IbisSensinactPackage, org.eclipse.emf.ecore.EPackage\"" , "uses:=org.eclipse.emf.ecore,de.jena.model.sensinact.ibis" })
-@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"org.gecko.emf.osgi.EPackageConfigurator\"" , "uses:=org.eclipse.emf.ecore,de.jena.model.sensinact.ibis" })
+@Component(name = "IbisSensinactConfigurator")
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.jena.model.sensinact.ibis.util.IbisSensinactResourceFactoryImpl, org.eclipse.emf.ecore.resource.Resource.Factory\"" , "uses:=\"org.eclipse.emf.ecore.resource,de.jena.model.sensinact.ibis.util\"" })
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.jena.model.sensinact.ibis.IbisSensinactFactory, org.eclipse.emf.ecore.EFactory\"" , "uses:=\"org.eclipse.emf.ecore,de.jena.model.sensinact.ibis\"" })
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"de.jena.model.sensinact.ibis.IbisSensinactPackage, org.eclipse.emf.ecore.EPackage\"" , "uses:=\"org.eclipse.emf.ecore,de.jena.model.sensinact.ibis\"" })
+@Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"org.gecko.emf.osgi.configurator.EPackageConfigurator\"" , "uses:=\"org.eclipse.emf.ecore,de.jena.model.sensinact.ibis\"" })
 @Capability( namespace = "osgi.service", attribute = { "objectClass:List<String>=\"org.osgi.service.condition.Condition\"" , "uses:=org.osgi.service.condition" })
 public class IbisSensinactConfigurationComponent {
 	
@@ -65,6 +61,7 @@ public class IbisSensinactConfigurationComponent {
 	@Activate
 	public void activate(BundleContext ctx) {
 		IbisSensinactPackage ePackage = IbisSensinactPackageImpl.eINSTANCE;
+		
 		
 		IbisSensinactEPackageConfigurator packageConfigurator = registerEPackageConfiguratorService(ePackage, ctx);
 		registerEPackageService(ePackage, packageConfigurator, ctx);
@@ -86,6 +83,7 @@ public class IbisSensinactConfigurationComponent {
 
 		return packageConfigurator;
 	}
+
 
 	/**
 	 * Registers the IbisSensinactPackage as a service.
@@ -129,6 +127,7 @@ public class IbisSensinactConfigurationComponent {
 		conditionRegistration.unregister();
 		eFactoryRegistration.unregister();
 		packageRegistration.unregister();
+
 		ePackageConfiguratorRegistration.unregister();
 		EPackage.Registry.INSTANCE.remove(IbisSensinactPackage.eNS_URI);
 	}

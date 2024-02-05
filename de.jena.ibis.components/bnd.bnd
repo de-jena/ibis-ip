@@ -9,11 +9,11 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	de.jena.ibis.enumerations.model;version=latest,\
 	de.jena.ibis.gnss.location.service.model;version=latest,\
 	de.jena.ibis.ticket.validation.service.model;version=project,\
-	org.osgi.service.component,\
-	org.osgi.service.cm,\
 	org.osgi.service.event,\
 	org.osgi.util.promise,\
-	org.apache.commons.lang3
+	org.apache.commons.lang3,\
+	org.osgi.service.component,\
+	org.osgi.service.cm
 
 	
 -privatepackage: \

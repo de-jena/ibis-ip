@@ -6,7 +6,6 @@
 	org.gecko.emf.osgi.component,\
 	org.osgi.service.jakartars,\
 	org.osgi.service.servlet,\
-	org.gecko.emf.rest,\
 	org.apache.felix.configurator,\
 	jakarta.ws.rs-api;version=latest,\
 	de.jena.ibis.apis,\
@@ -18,7 +17,8 @@
 	org.osgi.service.component,\
 	org.eclipse.emf.common,\
 	org.eclipse.emf.ecore.xmi,\
-	org.osgi.service.event
+	org.osgi.service.event,\
+	org.osgi.service.component.annotations
 	
 Bundle-Version: 1.0.0.SNAPSHOT
 
