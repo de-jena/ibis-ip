@@ -63,3 +63,12 @@ upd.models.version: 1.2.0-SNAPSHOT
 		overwrite           =true;\
 		pretty              =true;\
 		name            	=Local
+
+-plugin.release: \
+	aQute.bnd.repository.maven.provider.MavenBndRepository;\
+		snapshotUrl			=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
+		releaseUrl			=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
+		index				=${.}/release.maven;\
+		name				='Release'
+
+-releaserepo: Release		
