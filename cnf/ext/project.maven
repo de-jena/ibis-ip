@@ -27,8 +27,6 @@ com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.2
 io.github.classgraph:classgraph:4.6.32
 
 # Felix Deps
-org.apache.felix:org.apache.felix.configadmin.plugin.interpolation:1.1.0
-org.apache.felix:org.apache.felix.configurator:1.0.8
 org.apache.felix:org.apache.felix.connect:0.2.0
 org.apache.felix:org.apache.felix.coordinator:1.0.2
 org.apache.felix:org.apache.felix.deploymentadmin:0.9.10
@@ -89,7 +87,6 @@ org.osgi:org.osgi.resource:1.0.1
 org.osgi:org.osgi.util.tracker:1.5.4
 org.osgi:org.osgi.framework:1.10.0
 org.osgi:org.osgi.service.event:1.4.1
-org.osgi:org.osgi.service.typedevent:1.0.0
 
 org.apache.felix:org.apache.felix.gogo.runtime:1.1.6
 
@@ -113,4 +110,8 @@ com.fasterxml.jackson.dataformat:jackson-dataformat-properties:${def;jackson.ver
 com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${def;jackson.version;2.13.3}
 com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${def;jackson.version;2.13.3}
 
-org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5
+#org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5
+#org.osgi:org.osgi.service.typedevent:1.1.0-SNAPSHOT
+org.osgi:org.osgi.service.typedevent:1.0.0
+org.apache.felix:org.apache.felix.configadmin.plugin.interpolation:1.2.8
+org.apache.felix:org.apache.felix.configurator:1.0.18

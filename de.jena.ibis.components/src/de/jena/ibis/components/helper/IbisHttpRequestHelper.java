@@ -14,6 +14,7 @@ package de.jena.ibis.components.helper;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -102,7 +103,7 @@ public class IbisHttpRequestHelper {
 			options.put(XMLResource.OPTION_ENCODING, "UTF-8");
 
 			if("POST".equals(method)) {
-				Resource responseRes = set.createResource(URI.createURI("temp.xml"), "application/xml");
+				Resource responseRes = set.createResource(URI.createURI(UUID.randomUUID().toString() + ".xml"), "application/xml");
 				Map<String, Object> responseOptions = new HashMap<>();
 				responseOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 				responseOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);

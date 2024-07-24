@@ -29,12 +29,11 @@ import de.jena.model.ibis.ticketvalidationservice.IbisTicketValidationServicePac
  * @since Apr 17, 2023
  */
 public class IbisResponseHelper {
-	
-	
+
 	private static final Logger LOGGER = Logger.getLogger(IbisResponseHelper.class.getName());
 
 	public static EClass getResponseEClass(String serviceName, String operation) {
-		switch(serviceName) {
+		switch (serviceName) {
 		case "CustomerInformationService":
 			return getCustomerInfoServiceResponseEClass(operation);
 		case "TicketValidationService":
@@ -46,82 +45,103 @@ public class IbisResponseHelper {
 		default:
 			LOGGER.severe(() -> String.format("No supported service %s", serviceName));
 			return null;
-		}		
+		}
 	}
-	
+
 	private static EClass getCustomerInfoServiceResponseEClass(String operation) {
-		switch(operation) {
-		case CustomerInformationServiceConstants.OPERATION_GET_ALL_DATA, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_ALL_DATA:
+		switch (operation) {
+		case CustomerInformationServiceConstants.OPERATION_GET_ALL_DATA:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_ALL_DATA:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getAllDataResponse();
-		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_ANNOUNCEMENT, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_ANNOUNCEMENT:
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_ANNOUNCEMENT:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_ANNOUNCEMENT:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getCurrentAnnouncementResponse();
-		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_CONNECTION_INFO, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_CONNECTION_INFO:
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_CONNECTION_INFO:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_CONNECTION_INFO:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getCurrentConnectionInformationResponse();
-		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_DISPLAY_CONTENT, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_DISPLAY_CONTENT:
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_DISPLAY_CONTENT:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_DISPLAY_CONTENT:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getCurrentDisplayContentResponse();
-		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_INDEX, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_INDEX:
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_INDEX:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_INDEX:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getCurrentStopIndexResponse();
-		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_POINT, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_POINT:
+		case CustomerInformationServiceConstants.OPERATION_GET_CURRENT_STOP_POINT:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_STOP_POINT:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getCurrentStopPointResponse();
-		case CustomerInformationServiceConstants.OPERATION_GET_TRIP_DATA, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_TRIP_DATA:
+		case CustomerInformationServiceConstants.OPERATION_GET_TRIP_DATA:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_TRIP_DATA:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getTripDataResponse();
-		case CustomerInformationServiceConstants.OPERATION_GET_VEHICLE_DATA, CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA:
+		case CustomerInformationServiceConstants.OPERATION_GET_VEHICLE_DATA:
+		case CustomerInformationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA:
 			return IbisCustomerInformationServicePackage.eINSTANCE.getVehicleDataResponse();
 		default:
 			LOGGER.severe(() -> String.format("No operation %s for service CustomerInformationService", operation));
 			return null;
 		}
 	}
-	
+
 	private static EClass getTicketValidationServiceResponseEClass(String operation) {
-		switch(operation) {
-		case TicketValidationServiceConstants.OPERATION_GET_CURRENT_LINE, TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_LINE:
+		switch (operation) {
+		case TicketValidationServiceConstants.OPERATION_GET_CURRENT_LINE:
+		case TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_LINE:
 			return IbisTicketValidationServicePackage.eINSTANCE.getCurrentLineResponse();
-		case TicketValidationServiceConstants.OPERATION_GET_CURRENT_TARIFF_STOP, TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_TARIFF_STOP:
+		case TicketValidationServiceConstants.OPERATION_GET_CURRENT_TARIFF_STOP:
+		case TicketValidationServiceConstants.OPERATION_SUBSCRIBE_CURRENT_TARIFF_STOP:
 			return IbisTicketValidationServicePackage.eINSTANCE.getCurrentTariffStopResponse();
-		case TicketValidationServiceConstants.OPERATION_GET_RAZZIA, TicketValidationServiceConstants.OPERATION_SUBSCRIBE_RAZZIA:
+		case TicketValidationServiceConstants.OPERATION_GET_RAZZIA:
+		case TicketValidationServiceConstants.OPERATION_SUBSCRIBE_RAZZIA:
 			return IbisTicketValidationServicePackage.eINSTANCE.getRazziaResponse();
-		case TicketValidationServiceConstants.OPERATION_GET_SHORT_HAUL_STOPS, TicketValidationServiceConstants.OPERATION_SUBSCRIBE_SHORT_HAUL_STOPS:
+		case TicketValidationServiceConstants.OPERATION_GET_SHORT_HAUL_STOPS:
+		case TicketValidationServiceConstants.OPERATION_SUBSCRIBE_SHORT_HAUL_STOPS:
 			return IbisTicketValidationServicePackage.eINSTANCE.getCurrentShortHaulStopsResponse();
-		case TicketValidationServiceConstants.OPERATION_GET_VEHICLE_DATA, TicketValidationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA:
+		case TicketValidationServiceConstants.OPERATION_GET_VEHICLE_DATA:
+		case TicketValidationServiceConstants.OPERATION_SUBSCRIBE_VEHICLE_DATA:
 			return IbisTicketValidationServicePackage.eINSTANCE.getVehicleDataResponse();
 		default:
 			LOGGER.severe(() -> String.format("No operation %s for service TicketValidationService", operation));
 			return null;
 		}
 	}
-	
-	
+
 	private static EClass getDeviceManagementServiceResponseEClass(String operation) {
-		switch(operation) {
-		case DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_ERR_MSG, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_ERR_MSG:
+		switch (operation) {
+		case DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_ERR_MSG:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_ERR_MSG:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getAllSubdeviceErrorMessagesResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_INFO, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_INFO:
+		case DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_INFO:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_INFO:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getAllSubdeviceInformationResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_STATUS_INFO, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_STATUS_INFO:
+		case DeviceManagementServiceConstants.OPERATION_GET_ALL_SUBDEVICE_STATUS_INFO:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_ALL_SUBDEVICE_STATUS_INFO:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getAllSubdeviceStatusInformationResponse();
 		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_CONFIGURATION:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getDeviceConfigurationResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_ERR_MSG, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_ERR_MSG:
+		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_ERR_MSG:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_ERR_MSG:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getDeviceErrorMessagesResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_INFO, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_INFO:
+		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_INFO:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_INFO:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getDeviceInformationResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS:
+		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getDeviceStatusResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS_INFO, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS_INFO:
+		case DeviceManagementServiceConstants.OPERATION_GET_DEVICE_STATUS_INFO:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_DEVICE_STATUS_INFO:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getDeviceStatusInformationResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_SERVICE_INFO, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_INFO:
+		case DeviceManagementServiceConstants.OPERATION_GET_SERVICE_INFO:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_INFO:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getServiceInformationResponse();
-		case DeviceManagementServiceConstants.OPERATION_GET_SERVICE_STATUS, DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_STATUS:
+		case DeviceManagementServiceConstants.OPERATION_GET_SERVICE_STATUS:
+		case DeviceManagementServiceConstants.OPERATION_SUBSCRIBE_SERVICE_STATUS:
 			return IbisDeviceManagementServicePackage.eINSTANCE.getServiceStatusResponse();
 		default:
 			LOGGER.severe(() -> String.format("No operation %s for service DeviceManagementService", operation));
 			return null;
 		}
 	}
-	
+
 	private static EClass getGNSSLocationServiceResponseEClass(String operation) {
-		if("GNSSLocationData".equals(operation)) {
+		if ("GetGNSSLocationData".equals(operation)) {
 			return IbisGNSSLocationServicePackage.eINSTANCE.getGNSSLocationData();
 		}
 		LOGGER.severe(() -> String.format("No operation %s for service DeviceManagementService", operation));

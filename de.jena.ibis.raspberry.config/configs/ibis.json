@@ -2,13 +2,25 @@
 	":configurator:resource-version": 1,
 	":configurator:symbolicname": "IbisConfig",
 	":configurator:version": "0.0.0",
+	
 	"IbisDeviceConfigurator~tram702": {
-		"deviceId" : "tram702",
+		"deviceId": "tram702",
 		"deviceName": "Tram 702",
 		"deviceType": "TRAM",
 		"deviceIP": "192.168.243.1",
-		"refTCPServices" : [
+		"refTCPServices": [
 			"CustomerInformationService"
 		]
+	},
+	
+	"IbisGNSSLocationService": {
+		"serviceId": "LocationServiceId",
+		"serviceName": "GNSSLocationService",
+		"refDeviceId": "tram702",
+		"refDeviceType": "TRAM",
+		"multiCastGroupPort": "5007",
+		"multiCastGroupIP": "224.0.0.251",
+		"listenerNetworkInterface": "eth0",
+		"listenerPort": "5007"
 	}
 }

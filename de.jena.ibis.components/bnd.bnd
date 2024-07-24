@@ -13,7 +13,10 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	org.osgi.util.promise,\
 	org.apache.commons.lang3,\
 	org.osgi.service.component,\
-	org.osgi.service.cm
+	org.osgi.service.cm,\
+	org.osgi.util.function,\
+	org.gecko.osgi.messaging,\
+	org.gecko.emf.json
 
 	
 -privatepackage: \

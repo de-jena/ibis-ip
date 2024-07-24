@@ -25,5 +25,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-gnsslocationservice.ecore#//GNSSLocationData/gNSSType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibis-gnsslocationservice.ecore#//GNSSLocationData/gNSSCoordinateSystem"/>
     </genClasses>
+    <genClasses ecoreClass="ibis-gnsslocationservice.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ibis-gnsslocationservice.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ibis-gnsslocationservice.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ibis-gnsslocationservice.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibis-gnsslocationservice.ecore#//DocumentRoot/locationData"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
