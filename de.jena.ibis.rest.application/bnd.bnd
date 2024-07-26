@@ -17,8 +17,9 @@
 	org.osgi.service.component,\
 	org.eclipse.emf.common,\
 	org.eclipse.emf.ecore.xmi,\
-	org.osgi.service.event,\
-	org.osgi.service.component.annotations
+	org.osgi.service.component.annotations,\
+	org.gecko.emf.json,\
+	org.gecko.osgi.messaging
 	
 Bundle-Version: 1.0.0.SNAPSHOT
 
