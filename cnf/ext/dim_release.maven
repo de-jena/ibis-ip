@@ -5,3 +5,12 @@ de.jena:de.jena.udp.trafficos.intersection.model:${upd.models.version}
 de.jena:de.jena.udp.trafficos.intersectionsystem.model:${upd.models.version}
 de.jena:de.jena.udp.trafficos.trafficlight.model:${upd.models.version}
 de.jena:de.jena.udp.sensinact.generic.message.model:${upd.models.version}
+
+de.jena:de.jena.ibis.common.model:1.0.0-SNAPSHOT
+de.jena:de.jena.ibis.customer.info.service.model:1.0.0-SNAPSHOT
+de.jena:de.jena.ibis.device.management.service.model:1.0.0-SNAPSHOT
+de.jena:de.jena.ibis.door.state.service.model:1.0.0-SNAPSHOT
+de.jena:de.jena.ibis.enumerations.model:1.0.0-SNAPSHOT
+de.jena:de.jena.ibis.gnss.location.service.model:1.0.0-SNAPSHOT
+de.jena:de.jena.ibis.passenger.counting.service.model:1.0.0-SNAPSHOT
+de.jena:de.jena.ibis.ticket.validation.service.model:1.0.0-SNAPSHOT

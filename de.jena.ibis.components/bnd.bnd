@@ -8,7 +8,7 @@ Bundle-Version: 1.0.0.SNAPSHOT
 	de.jena.ibis.device.management.service.model;version=latest,\
 	de.jena.ibis.enumerations.model;version=latest,\
 	de.jena.ibis.gnss.location.service.model;version=latest,\
-	de.jena.ibis.ticket.validation.service.model;version=project,\
+	de.jena.ibis.ticket.validation.service.model;version=latest,\
 	org.osgi.service.event,\
 	org.osgi.util.promise,\
 	org.apache.commons.lang3,\
