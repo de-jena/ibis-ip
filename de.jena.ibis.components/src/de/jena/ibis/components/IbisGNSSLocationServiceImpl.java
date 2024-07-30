@@ -72,7 +72,7 @@ import de.jena.model.ibis.gnsslocationservice.util.IbisGNSSLocationServiceResour
  * @since Jan 18, 2023
  */
 @Component(immediate = true, name = "IbisGNSSLocationService", service = { IbisGNSSLocationService.class,
-		GeneralIbisService.class }, configurationPolicy = ConfigurationPolicy.REQUIRE)
+		GeneralIbisService.class }, configurationPid = "GNSSLocationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 
 	private static final Logger LOGGER = Logger.getLogger(IbisGNSSLocationServiceImpl.class.getName());
@@ -109,7 +109,8 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 		executor.execute(this::readMulticastGNSSPackage);
 		scheduledExecutor = Executors.newScheduledThreadPool(1);
 		scheduledExecutor.scheduleAtFixedRate(this::sendGNSS, 5, 1, TimeUnit.SECONDS);
-		LOGGER.info("GNSSLocationService is up and running!" + config);
+		LOGGER.info("GNSSLocationService is up and running on " + config.listenerNetworkInterface() + ":"
+				+ config.multiCastGroupIP() + ":" + config.multiCastGroupPort() + " - " + config.listenerPort());
 	}
 
 	private Object readMulticastGNSSPackage() {
@@ -136,16 +137,14 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	}
 
 	private void readData(DatagramPacket packet, String data) throws IOException {
-		LOGGER.finest(
-				String.format("Multicast packet received from %s Data is : %s", packet.getAddress(), data));
+		LOGGER.info(String.format("Multicast packet received from %s Data is : %s", packet.getAddress(), data));
 		EClass responseEClass = IbisResponseHelper.getResponseEClass(config.serviceName(), OPERATION);
 		if (responseEClass != null) {
 			ResourceSet set = rsFactory.getService();
 			initResourceSet(set);
 
 			try {
-				Resource res = set
-						.createResource(URI.createURI(UUID.randomUUID().toString() + ".gnsslocation"));
+				Resource res = set.createResource(URI.createURI(UUID.randomUUID().toString() + ".gnsslocation"));
 				res.load(new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8)), getLoadOptions(set));
 				EList<EObject> contents = res.getContents();
 				if (contents != null && !contents.isEmpty()) {
@@ -161,8 +160,7 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 				rsFactory.ungetService(set);
 			}
 		} else {
-			LOGGER.severe(
-					String.format("No matching response EClass for %s %s", config.serviceId(), OPERATION));
+			LOGGER.severe(String.format("No matching response EClass for %s %s", config.serviceId(), OPERATION));
 		}
 	}
 

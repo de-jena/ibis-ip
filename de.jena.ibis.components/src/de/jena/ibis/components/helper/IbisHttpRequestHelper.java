@@ -73,6 +73,7 @@ public class IbisHttpRequestHelper {
 		sb.append(serviceName);
 		sb.append("/");
 		sb.append(operationName);
+		sb.append("/");
 		return sb.toString();
 	}
 

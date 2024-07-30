@@ -55,7 +55,8 @@ import de.jena.model.ibis.customerinformationservice.VehicleDataResponse;
  * @since Jan 18, 2023
  */
 @Component(immediate = true, name = "IbisCustomerInformationService", service = { IbisCustomerInformationService.class,
-		GeneralIbisTCPService.class, GeneralIbisService.class }, configurationPolicy = ConfigurationPolicy.REQUIRE)
+		GeneralIbisTCPService.class,
+		GeneralIbisService.class }, configurationPid = "CustomerInformationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class IbisCustomerInformationServiceImpl implements IbisCustomerInformationService {
 
 	@Reference

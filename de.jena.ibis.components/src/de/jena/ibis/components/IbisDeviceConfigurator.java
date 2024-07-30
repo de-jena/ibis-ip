@@ -73,8 +73,7 @@ public class IbisDeviceConfigurator {
 	}
 	
 	private void updateServiceConfig(String service) throws IOException {		
-		String factoryPid = service;
-		Configuration serviceConfig = configAdmin.getFactoryConfiguration(factoryPid, config.deviceId(), "?");		
+		Configuration serviceConfig = configAdmin.getFactoryConfiguration(service, config.deviceId(), "?");		
 		if(isSupportedTCPService(service)) {
 			String servicePort = determineServicePort(service);
 			serviceConfig.update(createTCPServiceProperties(service, servicePort));
