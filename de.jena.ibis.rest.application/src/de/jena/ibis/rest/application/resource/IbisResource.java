@@ -78,7 +78,7 @@ public class IbisResource {
 	}
 
 	@POST
-	@Path("/{deviceType}/{deviceId}/{serviceName}/{operationName}")
+	@Path("/{deviceId}/{deviceType}/{serviceName}/{operationName}")
 	@Consumes
 	public Response post(@PathParam("deviceType") String deviceType, @PathParam("deviceId") String deviceId,
 			@PathParam("serviceName") String serviceName, @PathParam("operationName") String operationName,
