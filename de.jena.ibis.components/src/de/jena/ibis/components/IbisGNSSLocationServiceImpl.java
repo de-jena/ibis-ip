@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.namespace.XMLNamespacePackage;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
@@ -98,6 +99,8 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 	private GNSSLocationData currentLocation = null;
 
 	private ScheduledExecutorService scheduledExecutor;
+
+	private GNSSLocationData oldLocation;
 
 	@Activate
 	public void activate(IbisUDPServiceConfig config) throws ConfigurationException {
@@ -242,18 +245,22 @@ public class IbisGNSSLocationServiceImpl implements IbisGNSSLocationService {
 		if (currentLocation == null) {
 			return;
 		}
-		ResourceSet set = rsFactory.getService();
-		try {
-			Resource outResource = set.createResource(URI.createFileURI(UUID.randomUUID().toString() + ".json"));
-			outResource.getContents().add(currentLocation);
-			ByteArrayOutputStream bao = new ByteArrayOutputStream();
-			outResource.save(bao, outConfig);
-			messaging.publish(topic, ByteBuffer.wrap(bao.toByteArray()));
-		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE,
-					String.format("Something went wrong when sending current position via %s", config.serviceId()), e);
-		} finally {
-			rsFactory.ungetService(set);
+		if (!EcoreUtil.equals(oldLocation, currentLocation)) {
+			ResourceSet set = rsFactory.getService();
+			try {
+				Resource outResource = set.createResource(URI.createFileURI(UUID.randomUUID().toString() + ".json"));
+				outResource.getContents().add(currentLocation);
+				ByteArrayOutputStream bao = new ByteArrayOutputStream();
+				outResource.save(bao, outConfig);
+				messaging.publish(topic, ByteBuffer.wrap(bao.toByteArray()));
+				oldLocation = currentLocation;
+			} catch (Exception e) {
+				LOGGER.log(Level.SEVERE,
+						String.format("Something went wrong when sending current position via %s", config.serviceId()),
+						e);
+			} finally {
+				rsFactory.ungetService(set);
+			}
 		}
 
 	}

@@ -60,8 +60,10 @@ import jakarta.ws.rs.core.Response;
 @Path("")
 public class IbisResource {
 	private static final Logger LOGGER = Logger.getLogger(IbisResource.class.getName());
-
 	private static final String TOPIC = "5g/ibis/";
+	private static final Map<String, Object> EMF_CONFIG = Collections.singletonMap(EMFJs.OPTION_DATE_FORMAT,
+			"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'zzz");
+
 
 	@Reference(target = "(id=full)")
 	private MessagingService messaging;
@@ -131,7 +133,7 @@ public class IbisResource {
 		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
 			Resource resource = set.createResource(URI.createFileURI(UUID.randomUUID().toString() + "-mqtt.json"));
 			resource.getContents().add(data);
-			resource.save(baos, Collections.singletonMap(EMFJs.OPTION_SERIALIZE_DEFAULT_VALUE, true));
+			resource.save(baos, EMF_CONFIG);
 			messaging.publish(topic, ByteBuffer.wrap(baos.toByteArray()));
 		} catch (Exception e) {
 			LOGGER.severe("Error while publishing ibis resource." + e.getLocalizedMessage());
