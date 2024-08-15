@@ -24,8 +24,14 @@ pipeline  {
         }
         stage('Build and Test') {
             steps {
-                echo "I am building on ${env.BRANCH_NAME}"
-                sh "./gradlew clean build testOSGi --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                script {
+                    echo "I am building on ${env.BRANCH_NAME}"
+                    try {
+                        sh "./gradlew clean build testOSGi --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                    } finally {
+                        junit testResults: '**/generated/test-reports/**/TEST-*.xml', skipPublishingChecks: true 
+                    }
+                }
             }
         }
         stage('Main branch release') {
