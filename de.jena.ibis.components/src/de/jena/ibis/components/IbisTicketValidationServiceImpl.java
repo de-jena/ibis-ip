@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
@@ -23,6 +24,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceScope;
 
 import de.jena.ibis.apis.GeneralIbisService;
 import de.jena.ibis.apis.GeneralIbisTCPService;
@@ -56,7 +58,8 @@ public class IbisTicketValidationServiceImpl implements IbisTicketValidationServ
 	@Reference 
 	IbisCommonPackage ibisCommonPackage;
 	
-	@Reference(target = "(emf.resource.configurator.name=GeckoXMLResourceFactory)")
+	@Reference(target = "(" + EMFNamespaces.EMF_CONFIGURATOR_NAME
+			+ "=GeckoXMLResourceFactory)", scope = ReferenceScope.PROTOTYPE_REQUIRED)
 	private ComponentServiceObjects<ResourceSet> resourceSetFactory;
 	
 	private IbisTCPServiceConfig config;

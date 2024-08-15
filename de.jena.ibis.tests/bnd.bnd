@@ -13,4 +13,7 @@ Private-Package: de.jena.ibis.tests
 	org.eclipse.emf.ecore,\
 	org.eclipse.emf.common,\
 	org.eclipse.emf.ecore.xmi,\
-	org.osgi.test.junit5.cm
+	org.osgi.test.junit5.cm,\
+	org.osgi.service.component,\
+	org.osgi.service.component.annotations,\
+	org.gecko.emf.osgi.api
