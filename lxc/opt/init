@@ -1,0 +1,14 @@
+#!/bin/sh
+echo "Download and start IBIS IP"
+#wget -O tram.jar https://devel.data-in-motion.biz/repository/ibis-ip/tram.jar
+SHELL="-Dosgi.shell.telnet.ip=127.0.0.1 -Dosgi.shell.telnet.port=4003"
+DEBUG="-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=0.0.0.0:8999,server=y,suspend=n"
+
+MQTT_FULL_USER=<username>
+MQTT_FULL_PWD=<password>
+MQTT_FULL_HOST=mqttbr.jena.de
+MQTT_FULL_PORT=8883
+export MQTT_FULL_USER MQTT_FULL_PWD MQTT_FULL_HOST MQTT_FULL_PORT
+
+java -Xms128m -Xmx512m -Dorg.jline.terminal.dumb=true -Dgosh.args=--nointeractive -Dfelix.cm.config.plugins=org.apache.felix.configadmin.plugin.interpolation -Dconfigurator.initial="file:///opt/ibis/ibis.config" ${SHELL} -jar ibis.jar
+

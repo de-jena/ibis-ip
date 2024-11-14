@@ -1,0 +1,34 @@
+#!/bin/bash
+# 
+# Run as root
+
+SCRIPT=$(readlink -f "$0")
+BASEDIR=$(dirname "${SCRIPT}")
+
+BUILD=${BASEDIR}/build
+IBIS=${BUILD}/ibis
+ROOTFS=${IBIS}/rootfs
+
+if [ -d ${IBIS} ]; then
+    rm -r ${IBIS}
+fi
+
+lxc-create -P ${BUILD} -n ibis -t ibis -- -d ubuntu -r noble -a armhf --packages sudo,openjdk-17-jre-headless,wget,autossh,net-tools,tcpdump -u ibis --password ibis
+if [ $? -ne 0 ]; then
+    echo "Error while lxc-create"
+    exit 1
+fi
+cp ${BASEDIR}/services/*.service ${ROOTFS}/etc/systemd/system/
+chroot ${ROOTFS} systemctl enable autossh-tunnel
+chroot ${ROOTFS} systemctl enable ibis
+
+mkdir ${ROOTFS}/opt/ibis/
+cp ${BASEDIR}/opt/* ${ROOTFS}/opt/ibis/
+
+cp -r ${BASEDIR}/.ssh ${ROOTFS}/root
+
+chroot ${ROOTFS} apt clean
+chroot ${ROOTFS} apt autoclean
+
+cd ${ROOTFS}/
+tar cJvf ${BASEDIR}/ibis_rootfs.tar.xz *

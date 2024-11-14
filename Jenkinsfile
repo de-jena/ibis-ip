@@ -52,5 +52,23 @@ pipeline  {
                 sh "./gradlew release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
         	}
         }
+        stage('Resolve Application'){
+
+            steps  {
+                echo "I am exporting applications on branch: ${env.GIT_BRANCH}"
+
+                sh "./gradlew de.jena.ibis.runtime:resolve.ibis --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+            }
+        }
+
+        stage('Export Application'){
+
+            steps  {
+                echo "I am exporting applications on branch: ${env.GIT_BRANCH}"
+
+                sh "./gradlew de.jena.ibis.runtime:export.ibis --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+            }
+        }
+
     }
 }

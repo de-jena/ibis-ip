@@ -1,0 +1,10 @@
+[Unit]
+Description=AutoSSH tunnel service to connect from devel.data-in-motion.biz
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -p 8477 -R 2223:192.168.240.1:22 ibis@135.181.131.254 -N
+
+[Install]
+WantedBy=multi-user.target

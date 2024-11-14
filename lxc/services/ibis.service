@@ -1,0 +1,13 @@
+[Unit]
+Description=Setup and start IBIS-IP
+
+[Service]
+WorkingDirectory=/opt/ibis
+ExecStart=/opt/ibis/init
+User=root
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
